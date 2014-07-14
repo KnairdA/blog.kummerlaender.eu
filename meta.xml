@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta>
+	<title>/home/adrian</title>
+	<base>/home/common/projects/dev/static_site_generator</base>
+	<target>
+		<url>/home/common/projects/dev/static_site_generator/result</url>
+		<directory>/home/common/projects/dev/static_site_generator/result</directory>
+	</target>
+	<source>
+		<directory>/home/common/projects/dev/static_site_generator/source</directory>
+	</source>
+</meta>
