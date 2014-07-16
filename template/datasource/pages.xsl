@@ -7,22 +7,8 @@
 	exclude-result-prefixes="xalan InputXSLT"
 >
 
-<xsl:output
-	method="xml"
-	omit-xml-declaration="no"
-	encoding="UTF-8"
-	indent="yes"
-/>
-
+<xsl:include href="[utility/datasource.xsl]"/>
 <xsl:include href="[utility/formatter.xsl]"/>
-
-<xsl:template match="data">
-	<datasource>
-		<xsl:apply-templates />
-	</datasource>
-</xsl:template>
-
-<xsl:template match="text()|@*"/>
 
 <xsl:template match="source/pages">
 	<pages>
