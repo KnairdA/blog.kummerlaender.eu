@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <meta>
 	<title>/home/adrian</title>
-	<base>/home/common/projects/dev/static_site_generator</base>
 	<target>
-		<url>/home/common/projects/dev/static_site_generator/result</url>
-		<directory>/home/common/projects/dev/static_site_generator/result</directory>
+		<datasource>/home/common/projects/dev/static_site_generator/datasource</datasource>
+		<output>/home/common/projects/dev/static_site_generator/result</output>
+		<public>/home/common/projects/dev/static_site_generator/result</public>
 	</target>
 	<source>
-		<directory>/home/common/projects/dev/static_site_generator/source</directory>
+		<content>/home/common/projects/dev/static_site_generator/source</content>
+		<datasource>/home/common/projects/dev/static_site_generator/template/datasource</datasource>
+		<output>/home/common/projects/dev/static_site_generator/template/output</output>
 	</source>
 </meta>
