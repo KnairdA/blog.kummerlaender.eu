@@ -10,13 +10,7 @@
 <xsl:include href="[utility/datasource.xsl]"/>
 <xsl:include href="[utility/formatter.xsl]"/>
 
-<xsl:template match="source/pages">
-	<pages>
-		<xsl:apply-templates select="./*"/>
-	</pages>
-</xsl:template>
-
-<xsl:template match="file[./extension = '.md']">
+<xsl:template match="source/pages/file[./extension = '.md']">
 	<entry handle="{./name}">
 		<xsl:choose>
 			<xsl:when test="./extension = '.md'">

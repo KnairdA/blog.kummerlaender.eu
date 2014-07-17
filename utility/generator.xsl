@@ -14,8 +14,8 @@
 
 	<xsl:copy-of select="InputXSLT:generate(
 		$input,
-		string($transformation),
-		string($target)
+		$transformation,
+		$target
 	)/self::generation"/>
 </xsl:template>
 

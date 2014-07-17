@@ -7,14 +7,19 @@
 	exclude-result-prefixes="xalan InputXSLT"
 >
 
-<xsl:template name="transformer">
-	<xsl:param name="input"/>
-	<xsl:param name="transformation"/>
+<xsl:output
+	method="xml"
+	omit-xml-declaration="no"
+	encoding="UTF-8"
+	indent="yes"
+/>
 
-	<xsl:copy-of select="InputXSLT:transform(
-		$input,
-		$transformation
-	)/self::transformation/*"/>
+<xsl:variable name="datasources">
+	<file name="pages.xml"/>
+</xsl:variable>
+
+<xsl:template match="datasource[@name = 'pages.xml']/entry">
+	<compile>Compile page: <xsl:value-of select="@handle"/></compile>
 </xsl:template>
 
 </xsl:stylesheet>

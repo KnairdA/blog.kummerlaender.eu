@@ -9,6 +9,7 @@
 	<source>
 		<content>/home/common/projects/dev/static_site_generator/source</content>
 		<datasource>/home/common/projects/dev/static_site_generator/template/datasource</datasource>
+		<compiler>/home/common/projects/dev/static_site_generator/template/compiler</compiler>
 		<output>/home/common/projects/dev/static_site_generator/template/output</output>
 	</source>
 </meta>

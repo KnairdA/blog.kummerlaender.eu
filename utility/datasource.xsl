@@ -14,7 +14,7 @@
 	indent="yes"
 />
 
-<xsl:template match="data">
+<xsl:template match="/">
 	<datasource>
 		<xsl:apply-templates />
 	</datasource>
