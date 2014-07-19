@@ -17,6 +17,8 @@
 <xsl:include href="utility/context.xsl"/>
 <xsl:include href="utility/reader.xsl"/>
 
+<xsl:variable name="context" select="meta"/>
+
 <xsl:template name="generate_datasource">
 	<xsl:param name="source"/>
 	<xsl:param name="transformation"/>

@@ -14,12 +14,20 @@
 	indent="yes"
 />
 
+<xsl:include href="utility/context.xsl"/>
+
+<xsl:variable name="context" select="/data/meta"/>
+
 <xsl:variable name="datasources">
 	<file name="pages.xml"/>
 </xsl:variable>
 
 <xsl:template match="datasource[@name = 'pages.xml']/entry">
-	<compile>Compile page: <xsl:value-of select="@handle"/></compile>
+	<xsl:call-template name="generate_in_context">
+		<xsl:with-param name="input"          select="."/>
+		<xsl:with-param name="transformation" select="string('[template/output/page.xsl]')"/>
+		<xsl:with-param name="target"         select="concat($context/target/output, '/pages/', @handle)"/>
+	</xsl:call-template>
 </xsl:template>
 
 </xsl:stylesheet>

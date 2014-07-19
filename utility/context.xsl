@@ -10,8 +10,6 @@
 <xsl:include href="generator.xsl"/>
 <xsl:include href="transformer.xsl"/>
 
-<xsl:variable name="context" select="meta"/>
-
 <xsl:template name="transform_in_context">
 	<xsl:param name="input"/>
 	<xsl:param name="transformation"/>
