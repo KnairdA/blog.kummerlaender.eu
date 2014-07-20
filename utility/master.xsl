@@ -16,7 +16,9 @@
 	indent="yes"
 />
 
-<xsl:template match="data">
+<xsl:variable name="url" select="datasource/meta/url"/>
+
+<xsl:template match="/">
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -24,8 +26,8 @@
 	<meta name="robots" content="all"/>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 
-	<title><xsl:call-template name="title-text"/></title>
-	<link rel="stylesheet" type="text/css" href="{/meta/target/public}/main.css" />
+	<title><xsl:call-template name="title-text"/> @ /home/adrian</title>
+	<link rel="stylesheet" type="text/css" href="{$url}/main.css" />
 
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /> 
 </head>
@@ -33,25 +35,25 @@
 	<div id="wrapper">
 		<div id="content">
 			<div id="nav_wrap">
-				<h1><xsl:value-of select="/meta/title"/></h1>
+				<h1><xsl:value-of select="datasource/meta/title"/></h1>
 				<ul>
-					<li><a href="{/meta/target/public}">Start</a></li>
-					<li><a href="{/meta/target/public}/archiv">Archiv</a></li>
-					<li><a href="{/meta/target/public}/projekte">Projekte</a></li>
-					<li><a href="{/meta/target/public}/seiten/kontakt">Kontakt</a></li>
-					<li class="last_item"><a href="{/meta/target/public}/rss">RSS</a></li>
+					<li><a href="{$url}">Start</a></li>
+					<li><a href="{$url}/archiv">Archiv</a></li>
+					<li><a href="{$url}/projekte">Projekte</a></li>
+					<li><a href="{$url}/seiten/kontakt">Kontakt</a></li>
+					<li class="last_item"><a href="{$url}/rss">RSS</a></li>
 				</ul>
 			</div>
 			<div id="main">
-				<xsl:apply-templates select="/entry"/>
+				<xsl:apply-templates />
 			</div>
 			<div id="footer_wrap">
 			</div>
 			<div id="last_line">
 				<a href="https://github.com/KnairdA/InputXSLT">Gemacht mit XSLT</a>
 				<ul>
-					<li><a href="{/meta/target/public}/seiten/kontakt">Kontakt</a></li>
-					<li class="last_item"><a href="{/meta/target/public}/rss">RSS</a></li>
+					<li><a href="{$url}/seiten/kontakt">Kontakt</a></li>
+					<li class="last_item"><a href="{$url}/rss">RSS</a></li>
 				</ul>
 			</div>
 		</div>
@@ -59,6 +61,8 @@
 </body>
 </html>
 </xsl:template>
+
+<xsl:template match="text()|@*"/>
 
 </xsl:stylesheet>
 
