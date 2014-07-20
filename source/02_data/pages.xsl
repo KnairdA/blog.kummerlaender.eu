@@ -24,20 +24,10 @@
 
 <xsl:template match="files/pages/file[./extension = '.md']">
 	<entry handle="{./name}">
-		<xsl:choose>
-			<xsl:when test="./extension = '.md'">
-				<xsl:call-template name="formatter">
-					<xsl:with-param name="format">/usr/bin/markdown</xsl:with-param>
-					<xsl:with-param name="source" select="InputXSLT:read-file(./full)/text()"/>
-				</xsl:call-template>
-			</xsl:when>
-			<xsl:when test="./extension = '.xml'">
-				<xsl:copy-of select="InputXSLT:read-file(./full)/*"/>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:copy-of select="InputXSLT:read-file(./full)/text()"/>
-			</xsl:otherwise>
-		</xsl:choose>
+		<xsl:call-template name="formatter">
+			<xsl:with-param name="format">/usr/bin/markdown</xsl:with-param>
+			<xsl:with-param name="source" select="InputXSLT:read-file(./full)/text()"/>
+		</xsl:call-template>
 	</entry>
 </xsl:template>
 
