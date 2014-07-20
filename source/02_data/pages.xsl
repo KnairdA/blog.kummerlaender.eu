@@ -23,11 +23,20 @@
 </xsl:variable>
 
 <xsl:template match="files/pages/file[./extension = '.md']">
-	<entry handle="{./name}">
+	<xsl:variable name="content">
 		<xsl:call-template name="formatter">
 			<xsl:with-param name="format">/usr/bin/markdown</xsl:with-param>
 			<xsl:with-param name="source" select="InputXSLT:read-file(./full)/text()"/>
 		</xsl:call-template>
+	</xsl:variable>
+
+	<entry handle="{./name}">
+		<title>
+			<xsl:value-of select="xalan:nodeset($content)/h1"/>
+		</title>
+		<content>
+			<xsl:copy-of select="xalan:nodeset($content)/*[name() != 'h1']"/>
+		</content>
 	</entry>
 </xsl:template>
 

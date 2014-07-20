@@ -23,12 +23,13 @@
 </xsl:variable>
 
 <xsl:template name="title-text">
-	<xsl:value-of select="/datasource/page/entry/h1"/>
+	<xsl:value-of select="/datasource/page/entry/title"/>
 </xsl:template>
 
 <xsl:template match="page/entry">
 	<div class="last article">
-		<xsl:copy-of select="./*"/>
+		<h3><xsl:value-of select="./title"/></h3>
+		<xsl:copy-of select="./content/*"/>
 	</div>
 </xsl:template>
 
