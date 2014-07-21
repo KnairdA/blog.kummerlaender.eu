@@ -14,6 +14,8 @@
 	indent="yes"
 />
 
+<xsl:include href="[utility/datasource.xsl]"/>
+
 <xsl:variable name="meta">
 	<datasource type="main"/>
 	<target     mode="plain" value="source.xml"/> 
@@ -40,12 +42,10 @@
 	</xsl:for-each>
 </xsl:template>
 
-<xsl:template match="/">
-	<datasource>
-		<xsl:call-template name="list_source">
-			<xsl:with-param name="base">[source/00_content]</xsl:with-param>
-		</xsl:call-template>
-	</datasource>
+<xsl:template match="datasource">
+	<xsl:call-template name="list_source">
+		<xsl:with-param name="base">[source/00_content]</xsl:with-param>
+	</xsl:call-template>
 </xsl:template>
 
 </xsl:stylesheet>
