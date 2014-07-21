@@ -79,47 +79,49 @@
 		<xsl:variable name="level" select="."/>
 
 		<xsl:for-each select="InputXSLT:read-directory(./full)/entry[./extension = '.xsl']">
-			<xsl:variable name="transformation" select="."/>
-			<xsl:variable name="stylesheet"     select="InputXSLT:read-file($transformation/full)/self::file/*"/>
-			<xsl:variable name="meta"           select="$stylesheet/self::*[name() = 'xsl:stylesheet']/*[name() = 'xsl:variable' and @name = 'meta']"/>
-			<xsl:variable name="main"           select="$meta/datasource[@type = 'main']"/>
+			<xsl:variable name="transformation" select="InputXSLT:read-file(./full)/self::file/*"/>
+			<xsl:variable name="meta"           select="$transformation/self::*[name() = 'xsl:stylesheet']/*[name() = 'xsl:variable' and @name = 'meta']"/>
+			<xsl:variable name="main_source"    select="$meta/datasource[@type = 'main']"/>
+			<xsl:variable name="support_source" select="$meta/datasource[@type = 'support']"/>
+			<xsl:variable name="target_prefix"  select="concat('target/', $level/name)"/>
+			<xsl:variable name="target"         select="$meta/target"/>
 
 			<xsl:choose>
-				<xsl:when test="$main/@mode = 'full'">
+				<xsl:when test="$main_source/@mode = 'full'">
 					<xsl:call-template name="compiler">
 						<xsl:with-param name="input">
 							<xsl:call-template name="datasource">
 								<xsl:with-param name="main">
-									<xsl:element name="{$main/@target}">
-										<xsl:copy-of select="InputXSLT:read-file($main/@source)/self::file/*/*"/>
+									<xsl:element name="{$main_source/@target}">
+										<xsl:copy-of select="InputXSLT:read-file($main_source/@source)/self::file/*/*"/>
 									</xsl:element>
 								</xsl:with-param>
-								<xsl:with-param name="support" select="$meta/datasource[@type = 'support']"/>
+								<xsl:with-param name="support" select="$support_source"/>
 							</xsl:call-template>
 						</xsl:with-param>
-						<xsl:with-param name="transformation" select="$stylesheet"/>
-						<xsl:with-param name="target_prefix"  select="concat('target/', $level/name)"/>
-						<xsl:with-param name="target"         select="$meta/target"/>
+						<xsl:with-param name="transformation" select="$transformation"/>
+						<xsl:with-param name="target_prefix"  select="$target_prefix"/>
+						<xsl:with-param name="target"         select="$target"/>
 					</xsl:call-template>
 				</xsl:when>
-				<xsl:when test="$main/@mode = 'iterate'">
-					<xsl:variable name="datasource" select="InputXSLT:read-file($main/@source)/self::file/*"/>
+				<xsl:when test="$main_source/@mode = 'iterate'">
+					<xsl:variable name="datasource" select="InputXSLT:read-file($main_source/@source)/self::file/*"/>
 
 					<xsl:for-each select="$datasource/entry">
 						<xsl:call-template name="compiler">
 							<xsl:with-param name="input">
 								<xsl:call-template name="datasource">
 									<xsl:with-param name="main">
-										<xsl:element name="{$main/@target}">
+										<xsl:element name="{$main_source/@target}">
 											<xsl:copy-of select="."/>
 										</xsl:element>
 									</xsl:with-param>
 									<xsl:with-param name="support" select="$meta/datasource[@type = 'support']"/>
 								</xsl:call-template>
 							</xsl:with-param>
-							<xsl:with-param name="transformation" select="$stylesheet"/>
-							<xsl:with-param name="target_prefix"  select="concat('target/', $level/name)"/>
-							<xsl:with-param name="target"         select="$meta/target"/>
+							<xsl:with-param name="transformation" select="$transformation"/>
+							<xsl:with-param name="target_prefix"  select="$target_prefix"/>
+							<xsl:with-param name="target"         select="$target"/>
 						</xsl:call-template>
 					</xsl:for-each>
 				</xsl:when>
@@ -130,9 +132,9 @@
 								<xsl:with-param name="support" select="$meta/datasource[@type = 'support']"/>
 							</xsl:call-template>
 						</xsl:with-param>
-						<xsl:with-param name="transformation" select="$stylesheet"/>
-						<xsl:with-param name="target_prefix"  select="concat('target/', $level/name)"/>
-						<xsl:with-param name="target"         select="$meta/target"/>
+						<xsl:with-param name="transformation" select="$transformation"/>
+						<xsl:with-param name="target_prefix"  select="$target_prefix"/>
+						<xsl:with-param name="target"         select="$target"/>
 					</xsl:call-template>
 				</xsl:otherwise>
 			</xsl:choose>
