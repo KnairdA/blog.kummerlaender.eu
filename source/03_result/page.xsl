@@ -19,7 +19,7 @@
 <xsl:variable name="meta">
 	<datasource type="main"    mode="iterate" source="target/02_data/pages.xml"   target="page"/>
 	<datasource type="support" mode="full"    source="source/00_content/meta.xml" target="meta"/>
-	<target     mode="xpath"   value="concat('pages/', xalan:nodeset($input)/datasource/page/entry/@handle)"/> 
+	<target     mode="xpath"   value="concat('pages/', xalan:nodeset($datasource)/datasource/page/entry/@handle)"/>
 </xsl:variable>
 
 <xsl:template name="title-text">
