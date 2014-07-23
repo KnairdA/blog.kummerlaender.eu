@@ -100,14 +100,13 @@
 </xsl:template>
 
 <xsl:template name="process">
-	<xsl:param name="level"/>
 	<xsl:param name="file"/>
+	<xsl:param name="target"/>
 
 	<xsl:variable name="transformation" select="InputXSLT:read-file($file/full)/self::file/*"/>
 	<xsl:variable name="meta"           select="$transformation/self::*[name() = 'xsl:stylesheet']/*[name() = 'xsl:variable' and @name = 'meta']"/>
 	<xsl:variable name="main_source"    select="$meta/datasource[@type = 'main']"/>
 	<xsl:variable name="support_source" select="$meta/datasource[@type = 'support']"/>
-	<xsl:variable name="target_prefix"  select="concat('target/', $level/name)"/>
 
 	<xsl:choose>
 		<xsl:when test="$main_source/@mode = 'full'">
@@ -119,7 +118,7 @@
 				</xsl:with-param>
 				<xsl:with-param name="support"        select="$support_source"/>
 				<xsl:with-param name="transformation" select="$transformation"/>
-				<xsl:with-param name="target_prefix"  select="$target_prefix"/>
+				<xsl:with-param name="target_prefix"  select="$target"/>
 				<xsl:with-param name="target"         select="$meta/target"/>
 			</xsl:call-template>
 		</xsl:when>
@@ -133,7 +132,7 @@
 					</xsl:with-param>
 					<xsl:with-param name="support"        select="$support_source"/>
 					<xsl:with-param name="transformation" select="$transformation"/>
-					<xsl:with-param name="target_prefix"  select="$target_prefix"/>
+					<xsl:with-param name="target_prefix"  select="$target"/>
 					<xsl:with-param name="target"         select="$meta/target"/>
 				</xsl:call-template>
 			</xsl:for-each>
@@ -142,24 +141,51 @@
 			<xsl:call-template name="compile">
 				<xsl:with-param name="support"        select="$support_source"/>
 				<xsl:with-param name="transformation" select="$transformation"/>
-				<xsl:with-param name="target_prefix"  select="$target_prefix"/>
+				<xsl:with-param name="target_prefix"  select="$target"/>
 				<xsl:with-param name="target"         select="$meta/target"/>
 			</xsl:call-template>
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
 
-<xsl:template match="/">
-	<xsl:for-each select="InputXSLT:read-directory('source/')/entry[@type = 'directory']">
-		<xsl:variable name="level" select="."/>
+<xsl:template name="traverse">
+	<xsl:param name="source"/>
+	<xsl:param name="target"/>
+	<xsl:param name="path"/>
 
-		<xsl:for-each select="InputXSLT:read-directory(./full)/entry[./extension = '.xsl']">
-			<xsl:call-template name="process">
-				<xsl:with-param name="level" select="$level"/>
-				<xsl:with-param name="file"  select="."/>
-			</xsl:call-template>
-		</xsl:for-each>
+	<xsl:variable name="entries" select="InputXSLT:read-directory(
+		concat($source, '/', $path)
+	)/entry"/>
+
+	<xsl:for-each select="$entries">
+		<xsl:choose>
+			<xsl:when test="@type = 'directory'">
+				<xsl:call-template name="traverse">
+					<xsl:with-param name="source" select="$source"/>
+					<xsl:with-param name="target" select="$target"/>
+					<xsl:with-param name="path"   select="concat($path, '/', ./name)"/>
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:if test="./extension = '.xsl'">
+					<xsl:call-template name="process">
+						<xsl:with-param name="file"   select="."/>
+						<xsl:with-param name="target" select="concat($target, '/', $path)"/>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:for-each>
+</xsl:template>
+
+<xsl:template match="/">
+	<xsl:variable name="source">source</xsl:variable>
+	<xsl:variable name="target">target</xsl:variable>
+
+	<xsl:call-template name="traverse">
+		<xsl:with-param name="source" select="$source"/>
+		<xsl:with-param name="target" select="$target"/>
+	</xsl:call-template>
 </xsl:template>
 
 </xsl:stylesheet>
