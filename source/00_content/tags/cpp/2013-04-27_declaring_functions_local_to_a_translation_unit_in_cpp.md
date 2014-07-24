@@ -1,0 +1,1 @@
+../../articles/2013-04-27_declaring_functions_local_to_a_translation_unit_in_cpp.md

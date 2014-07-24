@@ -22,6 +22,14 @@
 	<target     mode="plain" value="articles.xml"/> 
 </xsl:variable>
 
+<xsl:template name="list_tags">
+	<xsl:param name="path"/>
+
+	<xsl:for-each select="../../tags/*[./file/full = $path]">
+		<tag><xsl:value-of select="name()"/></tag>
+	</xsl:for-each>
+</xsl:template>
+
 <xsl:template match="files/articles/file[./extension = '.md']">
 	<xsl:variable name="content">
 		<xsl:call-template name="formatter">
@@ -37,6 +45,11 @@
 		<date>
 			<xsl:value-of select="substring(./name, 0, 11)"/>
 		</date>
+		<tags>
+			<xsl:call-template name="list_tags">
+				<xsl:with-param name="path" select="./full"/>
+			</xsl:call-template>
+		</tags>
 		<content>
 			<xsl:copy-of select="xalan:nodeset($content)/*[name() != 'h1']"/>
 		</content>
