@@ -25,7 +25,7 @@
 <xsl:template name="list_tags">
 	<xsl:param name="path"/>
 
-	<xsl:for-each select="../../tags/*[./file/full = $path]">
+	<xsl:for-each select="$root/files/tags/*[./file/full = $path]">
 		<tag><xsl:value-of select="name()"/></tag>
 	</xsl:for-each>
 </xsl:template>

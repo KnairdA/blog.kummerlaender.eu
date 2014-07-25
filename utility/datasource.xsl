@@ -14,6 +14,8 @@
 	indent="yes"
 />
 
+<xsl:variable name="root" select="/datasource"/>
+
 <xsl:template match="/">
 	<datasource>
 		<xsl:apply-templates />

@@ -25,7 +25,7 @@
 <xsl:template name="get_article_data">
 	<xsl:param name="handle"/>
 
-	<xsl:copy-of select="ancestor::node()[4]/articles/entry[@handle = $handle]/*[self::title | self::date]"/>
+	<xsl:copy-of select="$root/articles/entry[@handle = $handle]/*[self::title | self::date]"/>
 </xsl:template>
 
 <xsl:template match="files/tags/*">
