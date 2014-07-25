@@ -38,9 +38,9 @@
 				<h1><xsl:value-of select="datasource/meta/title"/></h1>
 				<ul>
 					<li><a href="{$url}">Start</a></li>
-					<li><a href="{$url}/archiv">Archiv</a></li>
-					<li><a href="{$url}/projekte">Projekte</a></li>
-					<li><a href="{$url}/seiten/kontakt">Kontakt</a></li>
+					<li><a href="{$url}/archive">Archive</a></li>
+					<li><a href="{$url}/projects">Projects</a></li>
+					<li><a href="{$url}/page/contact">Contact</a></li>
 					<li class="last_item"><a href="{$url}/rss">RSS</a></li>
 				</ul>
 			</div>
@@ -50,9 +50,9 @@
 			<div id="footer_wrap">
 			</div>
 			<div id="last_line">
-				<a href="https://github.com/KnairdA/InputXSLT">Gemacht mit XSLT</a>
+				<a href="https://github.com/KnairdA/InputXSLT">Made with XSLT</a>
 				<ul>
-					<li><a href="{$url}/seiten/kontakt">Kontakt</a></li>
+					<li><a href="{$url}/page/contact">Contact</a></li>
 					<li class="last_item"><a href="{$url}/rss">RSS</a></li>
 				</ul>
 			</div>
