@@ -65,4 +65,3 @@
 <xsl:template match="text()|@*"/>
 
 </xsl:stylesheet>
-
