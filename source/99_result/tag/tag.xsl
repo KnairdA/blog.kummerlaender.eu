@@ -20,6 +20,7 @@
 <xsl:variable name="meta">
 	<datasource type="main"    mode="iterate" source="target/03_meta/tags.xml"    target="tag"/>
 	<datasource type="support" mode="full"    source="source/00_content/meta.xml" target="meta"/>
+	<datasource type="support" mode="full"    source="target/02_data/tags.xml"    target="tags"/>
 	<target     mode="xpath"   value="xalan:nodeset($datasource)/datasource/tag/entry/@handle"/>
 </xsl:variable>
 
@@ -31,12 +32,12 @@
 	<div class="archiv left articlelist archivlist">
 		All articles tagged as &#187;<xsl:value-of select="@handle"/>&#171;
 		<ol>
-			<xsl:apply-templates select="article"/>
+			<xsl:apply-templates />
 		</ol>
 	</div>
 </xsl:template>
 
-<xsl:template match="article">
+<xsl:template match="tag/entry/article">
 	<li>
 		<xsl:call-template name="format-date">
 			<xsl:with-param name="date" select="date"/>

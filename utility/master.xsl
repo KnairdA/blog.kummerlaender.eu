@@ -18,6 +18,18 @@
 
 <xsl:variable name="url" select="datasource/meta/url"/>
 
+<xsl:template name="list_tags">
+	<ul>
+		<xsl:for-each select="datasource/tags/entry">
+			<li>
+				<a href="{$url}/tag/{@handle}">
+					<xsl:value-of select="@handle"/>
+				</a>
+			</li>
+		</xsl:for-each>
+	</ul>
+</xsl:template>
+
 <xsl:template match="/">
 <html>
 <head>
@@ -48,6 +60,10 @@
 				<xsl:apply-templates />
 			</div>
 			<div id="footer_wrap">
+				<div class="right taglist">
+					Tags:
+					<xsl:call-template name="list_tags"/>
+				</div>
 			</div>
 			<div id="last_line">
 				<a href="https://github.com/KnairdA/InputXSLT">Made with XSLT</a>
