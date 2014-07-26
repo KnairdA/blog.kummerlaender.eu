@@ -17,7 +17,7 @@
 <xsl:include href="[utility/datasource.xsl]"/>
 
 <xsl:variable name="meta">
-	<datasource type="main"    mode="full" source="target/01_files/source.xml"  target="files"/>
+	<datasource type="main"    mode="full" source="target/02_data/tags.xml"     target="tags"/>
 	<datasource type="support" mode="full" source="target/02_data/articles.xml" target="articles"/>
 	<target     mode="plain"   value="tags.xml"/> 
 </xsl:variable>
@@ -28,18 +28,16 @@
 	<xsl:copy-of select="$root/articles/entry[@handle = $handle]/*[self::title | self::date]"/>
 </xsl:template>
 
-<xsl:template match="files/tags/*">
-	<entry handle="{name()}">
+<xsl:template match="tags/entry">
+	<entry handle="{@handle}">
 		<xsl:apply-templates />
 	</entry>
 </xsl:template>
 
-<xsl:template match="tags/*/file[./extension = '.md']">
-	<xsl:variable name="handle" select="substring(./name, 12, string-length(./name))"/>
-
-	<article handle="{$handle}">
+<xsl:template match="tags/*/article">
+	<article handle="{@handle}">
 		<xsl:call-template name="get_article_data">
-			<xsl:with-param name="handle" select="$handle"/>
+			<xsl:with-param name="handle" select="@handle"/>
 		</xsl:call-template>
 	</article>
 </xsl:template>
