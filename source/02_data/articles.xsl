@@ -49,7 +49,12 @@
 			<xsl:value-of select="xalan:nodeset($content)/h1"/>
 		</title>
 		<date>
-			<xsl:value-of select="substring(./name, 0, 11)"/>
+			<full>
+				<xsl:value-of select="substring(./name, 0, 11)"/>
+			</full>
+			<year>
+				<xsl:value-of select="substring(./name, 0, 5)"/>
+			</year>
 		</date>
 		<tags>
 			<xsl:call-template name="list_tags">

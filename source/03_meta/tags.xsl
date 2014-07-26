@@ -22,7 +22,14 @@
 <xsl:template name="get_article_data">
 	<xsl:param name="handle"/>
 
-	<xsl:copy-of select="$root/articles/entry[@handle = $handle]/*[self::title | self::date]"/>
+	<xsl:variable name="article" select="$root/articles/entry[@handle = $handle]/*[self::title | self::date]"/>
+
+	<title>
+		<xsl:value-of select="$article/self::title"/>
+	</title>
+	<date>
+		<xsl:value-of select="$article/self::date/full"/>
+	</date>
 </xsl:template>
 
 <xsl:template match="tags/entry">
