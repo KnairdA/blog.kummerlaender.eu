@@ -30,6 +30,12 @@
 	</xsl:for-each>
 </xsl:template>
 
+<xsl:template match="files/articles">
+	<xsl:apply-templates select="file">
+		<xsl:sort select="name" order="descending"/>
+	</xsl:apply-templates>
+</xsl:template>
+
 <xsl:template match="files/articles/file[./extension = '.md']">
 	<xsl:variable name="content">
 		<xsl:call-template name="formatter">

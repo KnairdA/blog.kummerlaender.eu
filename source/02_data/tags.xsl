@@ -23,7 +23,9 @@
 
 <xsl:template match="files/tags/*">
 	<entry handle="{name()}">
-		<xsl:apply-templates />
+		<xsl:apply-templates select="file">
+			<xsl:sort select="name" order="descending"/>
+		</xsl:apply-templates>
 	</entry>
 </xsl:template>
 
