@@ -18,9 +18,8 @@
 <xsl:include href="[utility/date-time.xsl]"/>
 
 <xsl:variable name="meta">
-	<datasource type="main"    mode="iterate" source="target/03_meta/tags.xml"    target="tag"/>
-	<datasource type="support" mode="full"    source="source/00_content/meta.xml" target="meta"/>
-	<datasource type="support" mode="full"    source="target/02_data/tags.xml"    target="tags"/>
+	<datasource type="main"    mode="iterate" source="target/03_meta/tags.xml" target="tag"/>
+	<datasource type="support" mode="full"    source="target/03_meta/meta.xml" target="meta"/>
 	<target     mode="xpath"   value="xalan:nodeset($datasource)/datasource/tag/entry/@handle"/>
 </xsl:variable>
 
