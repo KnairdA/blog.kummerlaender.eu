@@ -15,7 +15,6 @@
 />
 
 <xsl:include href="[utility/master.xsl]"/>
-<xsl:include href="[utility/date-time.xsl]"/>
 
 <xsl:variable name="meta">
 	<datasource type="main"    mode="iterate" source="target/03_meta/tags.xml" target="tag"/>
@@ -38,11 +37,7 @@
 
 <xsl:template match="tag/entry/article">
 	<li>
-		<xsl:call-template name="format-date">
-			<xsl:with-param name="date" select="date"/>
-			<xsl:with-param name="format" select="'x. M Y'"/>
-		</xsl:call-template>
-		» <a href="{$url}/article/{@handle}"><xsl:value-of select="title"/></a>
+		<xsl:value-of select="date"/> » <a href="{$url}/article/{@handle}"><xsl:value-of select="title"/></a>
 	</li>
 </xsl:template>
 
