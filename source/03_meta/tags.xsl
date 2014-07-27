@@ -4,13 +4,6 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 >
 
-<xsl:output
-	method="xml"
-	omit-xml-declaration="no"
-	encoding="UTF-8"
-	indent="yes"
-/>
-
 <xsl:include href="[utility/datasource.xsl]"/>
 
 <xsl:variable name="meta">
