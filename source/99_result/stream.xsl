@@ -22,7 +22,14 @@
 </xsl:variable>
 
 <xsl:template name="title-text">
-	<xsl:value-of select="/datasource/page/entry/@index"/>
+	<xsl:choose>
+		<xsl:when test="/datasource/page/entry/@index = 0">
+			Start
+		</xsl:when>
+		<xsl:otherwise>
+			Page <xsl:value-of select="/datasource/page/entry/@index"/>
+		</xsl:otherwise>
+	</xsl:choose>
 </xsl:template>
 
 <xsl:template name="get_article">

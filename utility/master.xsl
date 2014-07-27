@@ -47,7 +47,7 @@
 			<div id="nav_wrap">
 				<h1><xsl:value-of select="datasource/meta/title"/></h1>
 				<ul>
-					<li><a href="{$url}">Start</a></li>
+					<li><a href="{$url}/0">Start</a></li>
 					<li><a href="{$url}/archive">Archive</a></li>
 					<li><a href="{$url}/projects">Projects</a></li>
 					<li><a href="{$url}/page/contact">Contact</a></li>
