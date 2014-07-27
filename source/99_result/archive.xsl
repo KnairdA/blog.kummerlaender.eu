@@ -30,14 +30,14 @@
 	</div>
 </xsl:template>
 
-<xsl:template match="articles/year">
+<xsl:template match="articles/entry">
 	<li class="dateitem">
 		<xsl:value-of select="@handle"/>
 	</li>
 	<xsl:apply-templates />
 </xsl:template>
 
-<xsl:template match="year/article">
+<xsl:template match="entry/article">
 	<li>
 		<a href="{$url}/article/{@handle}">
 			<xsl:value-of select="title"/>

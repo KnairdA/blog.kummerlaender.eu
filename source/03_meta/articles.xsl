@@ -22,11 +22,11 @@
 
 <xsl:template match="articles">
 	<xsl:for-each select="entry/date/year/text()[generate-id() = generate-id(key('years',.)[1])]">
-		<year handle="{.}">
+		<entry handle="{.}">
 			<xsl:call-template name="get_articles">
 				<xsl:with-param name="year" select="."/>
 			</xsl:call-template>
-		</year>
+		</entry>
 	</xsl:for-each>
 </xsl:template>
 
