@@ -13,7 +13,8 @@
 	indent="yes"
 />
 
-<xsl:variable name="url" select="datasource/meta/url"/>
+<xsl:variable name="root" select="/datasource"/>
+<xsl:variable name="url" select="$root/meta/url"/>
 
 <xsl:template name="list_tags">
 	<ul>

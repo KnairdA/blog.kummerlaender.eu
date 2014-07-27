@@ -27,11 +27,11 @@
 <xsl:template match="article/entry">
 	<div class="last article">
 		<h2>
-			» <a href="{$url}/article/{@handle}"><xsl:value-of select="./title"/></a>
+			» <a href="{$url}/article/{@handle}"><xsl:value-of select="title"/></a>
 		</h2>
 		<p class="info">
 			<xsl:call-template name="format-date">
-				<xsl:with-param name="date" select="./date/full"/>
+				<xsl:with-param name="date" select="date/full"/>
 				<xsl:with-param name="format" select="'M x, Y'"/>
 			</xsl:call-template> 
 			| <xsl:for-each select="tags/tag">
@@ -41,7 +41,7 @@
 			</xsl:for-each>
 			| Adrian Kummerländer
 		</p>
-		<xsl:copy-of select="./content/*"/>
+		<xsl:copy-of select="content/*"/>
 	</div>
 </xsl:template>
 
