@@ -51,7 +51,7 @@
 					<li><a href="{$url}/archive">Archive</a></li>
 					<li><a href="{$url}/projects">Projects</a></li>
 					<li><a href="{$url}/page/contact">Contact</a></li>
-					<li class="last_item"><a href="{$url}/rss">RSS</a></li>
+					<li class="last_item"><a href="{$url}/atom.xml">Feed</a></li>
 				</ul>
 			</div>
 			<div id="main">
@@ -67,7 +67,7 @@
 				<a href="https://github.com/KnairdA/InputXSLT">Made with XSLT</a>
 				<ul>
 					<li><a href="{$url}/page/contact">Contact</a></li>
-					<li class="last_item"><a href="{$url}/rss">RSS</a></li>
+					<li class="last_item"><a href="{$url}/atom.xml">Feed</a></li>
 				</ul>
 			</div>
 		</div>
