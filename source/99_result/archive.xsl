@@ -9,7 +9,7 @@
 <xsl:variable name="meta">
 	<datasource type="main"    mode="full" source="target/03_meta/articles.xml" target="articles"/>
 	<datasource type="support" mode="full" source="target/03_meta/meta.xml" target="meta"/>
-	<target     mode="plain"   value="archive"/> 
+	<target     mode="plain"   value="archive/index.html"/> 
 </xsl:variable>
 
 <xsl:template name="title-text">Archive</xsl:template>

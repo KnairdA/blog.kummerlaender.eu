@@ -36,7 +36,7 @@
 	<meta name="robots" content="all"/>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 
-	<title><xsl:call-template name="title-text"/> @ /home/adrian</title>
+	<title><xsl:call-template name="title-text"/> @ <xsl:value-of select="$root/meta/title"/></title>
 	<link rel="stylesheet" type="text/css" href="{$url}/main.css" />
 
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /> 
@@ -45,7 +45,7 @@
 	<div id="wrapper">
 		<div id="content">
 			<div id="nav_wrap">
-				<h1><xsl:value-of select="datasource/meta/title"/></h1>
+				<h1><xsl:value-of select="$root/meta/title"/></h1>
 				<ul>
 					<li><a href="{$url}/0">Start</a></li>
 					<li><a href="{$url}/archive">Archive</a></li>

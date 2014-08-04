@@ -11,7 +11,7 @@
 	<datasource type="main"    mode="iterate" source="target/03_meta/paginated_articles.xml" target="page"/>
 	<datasource type="support" mode="full"    source="target/03_meta/meta.xml"               target="meta"/>
 	<datasource type="support" mode="full"    source="target/02_data/articles.xml"           target="articles"/>
-	<target     mode="xpath"   value="xalan:nodeset($datasource)/datasource/page/entry/@index"/>
+	<target     mode="xpath"   value="concat(xalan:nodeset($datasource)/datasource/page/entry/@index, '/index.html')"/>
 </xsl:variable>
 
 <xsl:template name="title-text">
