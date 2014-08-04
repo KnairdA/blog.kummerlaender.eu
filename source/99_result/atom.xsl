@@ -19,6 +19,16 @@
 
 <xsl:variable name="url" select="datasource/meta/url"/>
 
+<xsl:template match="*" mode="xhtml_copy">
+	<xsl:element name="{name()}" namespace="http://www.w3.org/1999/xhtml">
+		<xsl:apply-templates select="@*|node()" mode="xhtml_copy" />
+	</xsl:element>
+</xsl:template>
+
+<xsl:template match="@*|text()|comment()" mode="xhtml_copy">
+	<xsl:copy/>
+</xsl:template>
+
 <xsl:template match="/">
 	<feed xmlns="http://www.w3.org/2005/Atom">
 		<id><xsl:value-of select="$url"/></id>
@@ -32,18 +42,18 @@
 </xsl:template>
 
 <xsl:template match="datasource/articles/entry">
-	<entry>
+	<entry xmlns="http://www.w3.org/2005/Atom">
 		<title><xsl:value-of select="title"/></title>
 		<link><xsl:value-of select="$url"/>/article/<xsl:value-of select="@handle"/></link>
 		<content type="xhtml">
-			<div xmlns="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-				<xsl:copy-of select="content/node()"/>
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<xsl:apply-templates mode="xhtml_copy" select="content/node()" />
 			</div>
 		</content>
-		<published>
+		<updated>
 			<xsl:value-of select="date/full"/>
 			<xsl:text>T00:00:01+02:00</xsl:text>
-		</published>
+		</updated>
 	</entry>
 </xsl:template>
 
