@@ -14,7 +14,7 @@
 	<xsl:copy-of select="InputXSLT:external-text-formatter(
 		$format,
 		$source
-	)/self::output/*"/>
+	)/self::output/node()"/>
 </xsl:template>
 
 </xsl:stylesheet>

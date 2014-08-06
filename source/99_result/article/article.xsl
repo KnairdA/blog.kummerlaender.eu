@@ -34,7 +34,7 @@
 			</xsl:for-each>
 			| Adrian Kummerländer
 		</p>
-		<xsl:copy-of select="content/*"/>
+		<xsl:copy-of select="content/node()"/>
 	</div>
 </xsl:template>
 

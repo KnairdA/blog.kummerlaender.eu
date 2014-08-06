@@ -8,7 +8,7 @@
 	method="xml"
 	omit-xml-declaration="no"
 	encoding="UTF-8"
-	indent="yes"
+	indent="no"
 />
 
 <xsl:variable name="root" select="/datasource"/>

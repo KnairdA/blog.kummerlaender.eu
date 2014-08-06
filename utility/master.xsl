@@ -10,7 +10,7 @@
 	doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
 	omit-xml-declaration="yes"
 	encoding="UTF-8"
-	indent="yes"
+	indent="no"
 />
 
 <xsl:variable name="root" select="/datasource"/>

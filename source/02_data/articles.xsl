@@ -15,6 +15,19 @@
 	<target     mode="plain" value="articles.xml"/> 
 </xsl:variable>
 
+<xsl:template match="@*|node()" mode="embellish">
+	<xsl:copy>
+		<xsl:apply-templates select="@*|node()" mode="embellish"/>
+	</xsl:copy>
+</xsl:template>
+
+<xsl:template match="pre" mode="embellish">
+	<xsl:call-template name="formatter">
+		<xsl:with-param name="format">/usr/bin/highlight.sh</xsl:with-param>
+		<xsl:with-param name="source" select="code/text()"/>
+	</xsl:call-template>
+</xsl:template>
+
 <xsl:template name="list_tags">
 	<xsl:param name="path"/>
 
@@ -27,23 +40,6 @@
 	<xsl:apply-templates select="file">
 		<xsl:sort select="name" order="descending"/>
 	</xsl:apply-templates>
-</xsl:template>
-
-<xsl:template match="@*|node()" mode="content_transform">
-	<xsl:copy>
-		<xsl:apply-templates select="@*|node()" mode="content_transform"/>
-	</xsl:copy>
-</xsl:template>
-
-<xsl:template match="pre/code" mode="content_transform">
-	<xsl:variable name="formatted_code">
-		<xsl:call-template name="formatter">
-			<xsl:with-param name="format">/usr/bin/highlight.sh</xsl:with-param>
-			<xsl:with-param name="source" select="text()"/>
-		</xsl:call-template>
-	</xsl:variable>
-
-	<xsl:copy-of select="xalan:nodeset($formatted_code)/pre/node()"/>
 </xsl:template>
 
 <xsl:template match="files/articles/file[./extension = '.md']">
@@ -72,7 +68,7 @@
 			</xsl:call-template>
 		</tags>
 		<content>
-			<xsl:apply-templates mode="content_transform" select="xalan:nodeset($content)/*[name() != 'h1']"/>
+			<xsl:apply-templates select="xalan:nodeset($content)/*[name() != 'h1']" mode="embellish"/>
 		</content>
 	</entry>
 </xsl:template>
