@@ -22,10 +22,16 @@
 </xsl:template>
 
 <xsl:template match="pre" mode="embellish">
-	<xsl:call-template name="formatter">
-		<xsl:with-param name="format">/usr/bin/highlight.sh</xsl:with-param>
-		<xsl:with-param name="source" select="code/text()"/>
-	</xsl:call-template>
+	<xsl:variable name="formatted_code">
+		<xsl:call-template name="formatter">
+			<xsl:with-param name="format">/usr/bin/highlight.sh</xsl:with-param>
+			<xsl:with-param name="source" select="code/text()"/>
+		</xsl:call-template>
+	</xsl:variable>
+
+	<pre>
+		<xsl:copy-of select="xalan:nodeset($formatted_code)/pre/node()"/>
+	</pre>
 </xsl:template>
 
 <xsl:template name="list_tags">
