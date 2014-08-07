@@ -71,7 +71,7 @@
 
 <xsl:template match="page/entry/article">
 	<xsl:choose>
-		<xsl:when test="position()+1 = last()">
+		<xsl:when test="position() = last()">
 			<div class="last article">
 				<xsl:call-template name="get_article">
 					<xsl:with-param name="handle" select="@handle"/>
