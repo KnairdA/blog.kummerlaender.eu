@@ -1,5 +1,12 @@
 # Contact
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+**eMail:** adrian[ät]kummerlaender[punkt]eu  
+**Public Key:** [key.kummerlaender.eu](http://key.kummerlaender.eu)  
+**Jabber:** adrian[unterstrich]kummerlaender[ät]jabber[punkt]ccc[punkt]de  
+**Twitter:** [KnairdA](https://twitter.com/KnairdA)  
+**Github:** [KnairdA](https://github.com/KnairdA)  
+**cgit** [code.kummerlaender.eu](http://code.kummerlaender.eu)
 
-Invidunt ut *labore* et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+### About me
+
+Hi, my name is Adrian Kummerländer and I am a Software Developer located in southern Germany.
