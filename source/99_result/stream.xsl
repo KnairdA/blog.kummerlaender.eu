@@ -59,7 +59,7 @@
 				</a>
 			</span>
 		</xsl:if>
-		<xsl:if test="@index &lt; @total">
+		<xsl:if test="@index &lt; @total - 1">
 			<span>
 				<a class="pagination-next" href="{$url}/{@index + 1}">
 					older »
