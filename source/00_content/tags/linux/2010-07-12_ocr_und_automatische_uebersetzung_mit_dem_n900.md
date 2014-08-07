@@ -1,0 +1,1 @@
+../../articles/2010-07-12_ocr_und_automatische_uebersetzung_mit_dem_n900.md

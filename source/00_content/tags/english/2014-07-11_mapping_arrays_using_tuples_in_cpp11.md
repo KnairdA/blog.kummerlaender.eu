@@ -1,0 +1,1 @@
+../../articles/2014-07-11_mapping_arrays_using_tuples_in_cpp11.md
