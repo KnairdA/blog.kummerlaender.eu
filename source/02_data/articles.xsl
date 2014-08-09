@@ -24,7 +24,7 @@
 <xsl:template match="pre" mode="embellish">
 	<xsl:variable name="formatted_code">
 		<xsl:call-template name="formatter">
-			<xsl:with-param name="format">/usr/bin/highlight.sh</xsl:with-param>
+			<xsl:with-param name="format">highlight --out-format=xhtml --inline-css --style=molokai --syntax=cpp -f --enclose-pre --wrap-simple</xsl:with-param>
 			<xsl:with-param name="source" select="code/text()"/>
 		</xsl:call-template>
 	</xsl:variable>
@@ -51,7 +51,7 @@
 <xsl:template match="files/articles/file[./extension = '.md']">
 	<xsl:variable name="content">
 		<xsl:call-template name="formatter">
-			<xsl:with-param name="format">/usr/bin/markdown</xsl:with-param>
+			<xsl:with-param name="format">markdown</xsl:with-param>
 			<xsl:with-param name="source" select="InputXSLT:read-file(./full)/text()"/>
 		</xsl:call-template>
 	</xsl:variable>
