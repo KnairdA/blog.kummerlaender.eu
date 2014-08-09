@@ -8,7 +8,7 @@
 	method="xml"
 	omit-xml-declaration="no"
 	encoding="UTF-8"
-	indent="yes"
+	indent="no"
 />
 
 <xsl:variable name="meta">
@@ -37,7 +37,7 @@
 			<name>Adrian Kummerländer</name>
 		</author>
 
-		<xsl:apply-templates select="datasource/articles/entry"/>
+		<xsl:apply-templates select="datasource/articles/entry[position() &lt;= 5]"/>
 	</feed>
 </xsl:template>
 
