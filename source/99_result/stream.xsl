@@ -17,10 +17,11 @@
 <xsl:template name="title-text">
 	<xsl:choose>
 		<xsl:when test="/datasource/page/entry/@index = 0">
-			Start
+			<xsl:text>Start</xsl:text>
 		</xsl:when>
 		<xsl:otherwise>
-			Page <xsl:value-of select="/datasource/page/entry/@index"/>
+			<xsl:text>Page </xsl:text>
+			<xsl:value-of select="/datasource/page/entry/@index"/>
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
@@ -38,12 +39,13 @@
 			<xsl:with-param name="date" select="$article/date/full"/>
 			<xsl:with-param name="format" select="'M x, Y'"/>
 		</xsl:call-template> 
-		| <xsl:for-each select="$article/tags/tag">
+		<xsl:text> | </xsl:text>
+		<xsl:for-each select="$article/tags/tag">
 			<a href="{$url}/tag/{.}">
 				<xsl:value-of select="."/>
 			</a>
 		</xsl:for-each>
-		| Adrian Kummerländer
+		<xsl:text> | Adrian Kummerländer</xsl:text>
 	</p>
 	<xsl:copy-of select="$article/content/*"/>
 </xsl:template>
@@ -55,14 +57,14 @@
 		<xsl:if test="@index > 0">
 			<span>
 				<a class="pagination-previous" href="{$url}/{@index - 1}">
-					« newer
+					<xsl:text>« newer</xsl:text>
 				</a>
 			</span>
 		</xsl:if>
 		<xsl:if test="@index &lt; @total - 1">
 			<span>
 				<a class="pagination-next" href="{$url}/{@index + 1}">
-					older »
+					<xsl:text>older »</xsl:text>
 				</a>
 			</span>
 		</xsl:if>

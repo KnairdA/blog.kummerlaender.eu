@@ -27,12 +27,13 @@
 				<xsl:with-param name="date" select="date/full"/>
 				<xsl:with-param name="format" select="'M x, Y'"/>
 			</xsl:call-template> 
-			| <xsl:for-each select="tags/tag">
+			<xsl:text> | </xsl:text>
+			<xsl:for-each select="tags/tag">
 				<a href="{$url}/tag/{.}">
 					<xsl:value-of select="."/>
 				</a>
 			</xsl:for-each>
-			| Adrian Kummerländer
+			<xsl:text> | Adrian Kummerländer</xsl:text>
 		</p>
 		<xsl:copy-of select="content/node()"/>
 	</div>

@@ -58,8 +58,7 @@
 				<xsl:apply-templates />
 			</div>
 			<div id="footer_wrap">
-				<div class="right taglist">
-					Tags:
+				<div class="taglist">
 					<xsl:call-template name="list_tags"/>
 				</div>
 			</div>
