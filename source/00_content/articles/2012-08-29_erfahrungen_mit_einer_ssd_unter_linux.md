@@ -21,14 +21,17 @@ nötig sein sollte ist das umso besser. Die 16 GiB SD-Karte des SheevaPlugs läu
 
 Hier meine derzeitige `/etc/fstab`:
 
-	# 
-	# /etc/fstab: static file system information
-	#
-	# <file system>	<dir>	<type>	<options>	<dump>	<pass>
-	tmpfs	/tmp	tmpfs	nodev,nosuid	0	0
+~~~
+# 
+# /etc/fstab: static file system information
+#
+# <file system>	<dir>	<type>	<options>	<dump>	<pass>
+tmpfs	/tmp	tmpfs	nodev,nosuid	0	0
 
-	/dev/sda1	swap	swap	defaults,noatime,discard	0 0
-	/dev/sda2	/		ext4	defaults,noatime,discard,data=ordered	0 0
+/dev/sda1	swap	swap	defaults,noatime,discard	0 0
+/dev/sda2	/		ext4	defaults,noatime,discard,data=ordered	0 0
+~~~
+{: .language-sh}
 
 ### Verschlüsselung?
 

@@ -25,8 +25,11 @@ des Gast-Systems werden auf die gleiche Weise gesetzt. Aus diesem Grund gehe ich
 
 Hier als Beispiel mein derzeitiger Standardaufruf von KVM, der für alle VMs gleich ist. Dynamisch ist allein das zu verwendende Speicher-Gerät - in meinem Fall verschiedene Image-Dateien.
 
-	#!/bin/sh
-	qemu-kvm -cpu host -hda $1 -m 1024 -daemonize -vnc none -usb -net nic -net vde
+~~~
+#!/bin/sh
+qemu-kvm -cpu host -hda $1 -m 1024 -daemonize -vnc none -usb -net nic -net vde
+~~~
+{: .language-sh}
 
 Dieser verwendet das als erster Parameter übergebene Gerät als Festplatte und setzt neben den nötigen Netzwerk-Einstellungen die VM mittels `-daemonize` in den Hintergrund. Falls benötigt, kann
 als Wert des Parameters `-vnc` auch eine von einem Doppelpunkt angeführte Zahl übergeben werden um die Grafik-Ausgabe der VM an einen VNC-Server anzubinden (z.B. `-vnc :1` für `127.0.0.1:1`). Diese
@@ -38,19 +41,22 @@ Funktion verwende ich nicht, da ich ausschließlich über das interne Netzwerk d
 
 Meine Konfiguration hält sich dabei im wesentlichen an den [Vorschlag](https://wiki.archlinux.org/index.php/QEMU#Networking_with_VDE2) im englischen Arch-Wiki, welchen ich in ein einfaches Script verpackt habe:
 
-	#!/bin/sh
-	case "$1" in
-		start)
-			tunctl -t tap0
-			vde_switch -tap tap0 -daemon -pidfile .switch.pid -mod 660 -group kvm
-			ifconfig tap0 192.168.100.254 netmask 255.255.255.0
-		;;
-		stop)
-			kill -9 `cat .switch.pid`
-			rm .switch.pid
-			tunctl -d tap0
-		;;
-	esac
+~~~
+#!/bin/sh
+case "$1" in
+	start)
+		tunctl -t tap0
+		vde_switch -tap tap0 -daemon -pidfile .switch.pid -mod 660 -group kvm
+		ifconfig tap0 192.168.100.254 netmask 255.255.255.0
+	;;
+	stop)
+		kill -9 `cat .switch.pid`
+		rm .switch.pid
+		tunctl -d tap0
+	;;
+esac
+~~~
+{: .language-sh}
 
 Dieses Script erzeugt ein virtuelles Interface `tap0` und verbindet ein neues, als Daemon im Hintergrund laufendes, virtuelles Switch mit diesem. Als nächstes wird dann noch eine statische IP
 Konfiguration für das virtuelle Interface definiert. Durch diese können alle mit `-net nic -net vde` Parametern gestarteten KVM Gäste über die IP `192.168.100.254` auf den Host zugreifen.
@@ -65,17 +71,20 @@ In den Gast-Systemen selbst muss zusätzlich eine statische IP Konfiguration vor
 
 Um das interne virtuelle LAN bei Bedarf mit der Außenwelt zu verbinden gibt es ebenfalls ein kleines Script welches die nötige Route erzeugt bzw. löscht:
 
-	#!/bin/sh
-	case "$1" in
-		start)
-			echo "1" > /proc/sys/net/ipv4/ip_forward
-			iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o $2 -j MASQUERADE
-		;;
-		stop)
-			iptables -t nat -X
-			echo "0" > /proc/sys/net/ipv4/ip_forward
-		;;
-	esac
+~~~
+#!/bin/sh
+case "$1" in
+	start)
+		echo "1" > /proc/sys/net/ipv4/ip_forward
+		iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o $2 -j MASQUERADE
+	;;
+	stop)
+		iptables -t nat -X
+		echo "0" > /proc/sys/net/ipv4/ip_forward
+	;;
+esac
+~~~
+{: .language-sh}
 
 Anpassbar ist hierbei das Interface, um z.B. daheim `eth0` und unterwegs wahlweise `wlan0` oder `usb0` verwenden zu können.
 
@@ -84,12 +93,12 @@ Anpassbar ist hierbei das Interface, um z.B. daheim `eth0` und unterwegs wahlwei
 Nach einer Kernel Aktualisierung im ArchLinux Gast-System, kam es beim Neustart plötzlich zu dieser etwas erschreckenden Meldung:
 
 	KVM: entry failed, hardware error 0x80000021
-
+	
 	If you're running a guest on an Intel machine without unrestricted mode
 	support, the failure can be most likely due to the guest entering an invalid
 	state for Intel VT. For example, the guest maybe running in big real mode
 	which is not supported on less recent Intel processors.
-
+	
 	EAX=00000000 EBX=0020fa5c ECX=00000000 EDX=fffff000
 	ESI=f6d29014 EDI=00000001 EBP=f6461fa0 ESP=f6461f60
 	EIP=c0128443 EFL=00010246 [---Z-P-] CPL=0 II=0 A20=1 SMM=0 HLT=0
@@ -111,7 +120,10 @@ Nach einer Kernel Aktualisierung im ArchLinux Gast-System, kam es beim Neustart 
 
 Dies sah für mich im ersten Moment wie ein klarer Hardware-Fehler aus, alle Informationen die sich über meine bevorzugte Suchmaschine finden ließen, waren jedoch für andere Situationen und ältere Kernel Versionen als `3.6.6-1`. Nach Tests mit verschiedenen Parametern für die zuständigen Kernel-Module, funktionierte es schließlich nach Laden des Moduls mit folgendem Befehl wieder einwandfrei:
 
-	modprobe kvm_intel emulate_invalid_guest_state=0
+~~~
+modprobe kvm_intel emulate_invalid_guest_state=0
+~~~
+{: .language-sh}
 
 Um den `emulate_invalid_guest_state` Parameter dauerhaft zu setzen reicht ein Eintrag in `/etc/modprobe.d`.
 

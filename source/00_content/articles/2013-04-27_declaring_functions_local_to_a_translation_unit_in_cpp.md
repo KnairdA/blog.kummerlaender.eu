@@ -2,21 +2,27 @@
 
 In a current project of mine I defined the following function marked with the inline hint without declaring it in a header file:
 
-	inline bool checkStorageSection(const void* keyBuffer) {
-		return (StorageSection::Edge == readNumber<uint8_t>(
-			reinterpret_cast<const uint8_t*>(keyBuffer)+0
-		));
-	}
+~~~
+inline bool checkStorageSection(const void* keyBuffer) {
+	return (StorageSection::Edge == readNumber<uint8_t>(
+		reinterpret_cast<const uint8_t*>(keyBuffer)+0
+	));
+}
+~~~
+{: .language-cpp}
 
 This function was not defined in one but in multiple translation units - each instance with the same signature but a slightly different comparison contained in the function body. I expected these functions to be local to their respective translation unit and in the best case to be inlined into their calling member methods. 
 
 While debugging another issue that seemed to be unrelated to these functions I noticed a strange behaviour: The calls in the member methods that should have linked to their respective local function definition all linked to the same definition in a different translation unit (the one displayed above). A quick check in GDB using the _x_-command to display the function addresses confirmed this suspicion:
 
-	// Function address in translation unit A
-	0x804e718 <GraphDB::checkStorageSection(void const*)>:  0x83e58955
+~~~
+// Function address in translation unit A
+0x804e718 <GraphDB::checkStorageSection(void const*)>:  0x83e58955
 
-	// Function address in translation unit B
-	0x804e718 <GraphDB::checkStorageSection(void const*)>:  0x83e58955
+// Function address in translation unit B
+0x804e718 <GraphDB::checkStorageSection(void const*)>:  0x83e58955
+~~~
+{: .language-gdb}
 
 The address _0x804e718_ was the address of the function definition in translation unit "A" in both cases. At first I suspected that the cause was probably that both definitions were located in the same namespace, but excluding them from the enclosing namespace declaration did not fix the problem.
 

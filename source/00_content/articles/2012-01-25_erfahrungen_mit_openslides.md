@@ -20,27 +20,30 @@ Theoretisch ermöglicht es diese Software also - bei entsprechender Authentifizi
 Der einzige Punkt der mich wirklich störte war die fehlende Anzeige von Wahlergebnissen der Teilnehmer die eine Wahl verloren hatten. Die jeweilige Stimmenzahl war im Frontend erst sichtbar nachdem der entsprechende Kandidat als Sieger markiert worden war.  
 Doch auch dieses Problem ließ sich - OpenSource sei Dank - schnell über manuelles Eingreifen im Quelltext korrigieren:
 
-	--- /home/adrian/Downloads/original_views.py
-	+++ /opt/hg.openslides.org/openslides/agenda/views.py
-	@@ -132,14 +132,11 @@
-				 for poll in assignment.poll_set.all():
-					 if poll.published:
-						 if candidate in poll.options_values:
-	-                        if assignment.is_elected(candidate):
-	-                            option = Option.objects.filter(poll=poll).filter(user=candidate)[0]
-	-                            if poll.optiondecision:
-	-                                tmplist[1].append([option.yes, option.no, option.undesided])
-	-                            else:
-	-                                tmplist[1].append(option.yes)
-	+                        option = Option.objects.filter(poll=poll).filter(user=candidate)[0]
-	+                        if poll.optiondecision:
-	+                            tmplist[1].append([option.yes, option.no, option.undesided])
-							 else:
-	-                            tmplist[1].append("")
-	+                            tmplist[1].append(option.yes)
-						 else:
-							 tmplist[1].append("-")
-				 votes.append(tmplist)
+~~~
+--- /home/adrian/Downloads/original_views.py
++++ /opt/hg.openslides.org/openslides/agenda/views.py
+@@ -132,14 +132,11 @@
+             for poll in assignment.poll_set.all():
+                 if poll.published:
+                     if candidate in poll.options_values:
+-                        if assignment.is_elected(candidate):
+-                            option = Option.objects.filter(poll=poll).filter(user=candidate)[0]
+-                            if poll.optiondecision:
+-                                tmplist[1].append([option.yes, option.no, option.undesided])
+-                            else:
+-                                tmplist[1].append(option.yes)
++                        option = Option.objects.filter(poll=poll).filter(user=candidate)[0]
++                        if poll.optiondecision:
++                            tmplist[1].append([option.yes, option.no, option.undesided])
+                         else:
+-                            tmplist[1].append("")
++                            tmplist[1].append(option.yes)
+                     else:
+                         tmplist[1].append("-")
+             votes.append(tmplist)
+~~~
+{: .language-diff}
 
 OpenSlides ist wirklich ein tolles Stück Software und ich kann nur jedem der vor der Aufgabe steht eine Versammlung zu organisieren, sei es die eines Vereins oder wie in meinem Fall die einer Partei, empfehlen sich es einmal näher anzusehen.  
 Weitere Angaben zur Installation und Konfiguration finden sich auf der [Webpräsenz](http://openslides.org/de/index.html) und im [Quell-Archiv](http://openslides.org/download/openslides-1.1.tar.gz).

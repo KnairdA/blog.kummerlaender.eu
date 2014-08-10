@@ -6,51 +6,57 @@ While it is possible to unpack a `std::tuple` instance into individual predefine
 
 Extracting array elements obviously requires some way of defining the appropriate indexes and mapping the elements using a tuple blueprint additionally requires this way to be statically resolvable as one can not pass a dynamic index value to `std::tuple_element`. So the first step to fullfilling the defined requirements involved the implementation of a template based index or sequence type.
 
-	template <std::size_t...>
-	struct Sequence {
-		typedef Sequence type;
-	};
+~~~
+template <std::size_t...>
+struct Sequence {
+	typedef Sequence type;
+};
 
-	template <
-		std::size_t Size,
-		std::size_t Index = 0,
-		std::size_t... Current
-	>
-	struct IndexSequence {
-		typedef typename std::conditional<
-			Index < Size,
-			IndexSequence<Size, Index + 1, Current..., Index>,
-			Sequence<Current...>
-		>::type::type type;
-	};
+template <
+	std::size_t Size,
+	std::size_t Index = 0,
+	std::size_t... Current
+>
+struct IndexSequence {
+	typedef typename std::conditional<
+		Index < Size,
+		IndexSequence<Size, Index + 1, Current..., Index>,
+		Sequence<Current...>
+	>::type::type type;
+};
+~~~
+{: .language-cpp}
 
 This is achieved by the [`IndexSequence` template](https://github.com/KnairdA/InputXSLT/blob/master/src/support/type/sequence.h) above by recursively specializing the `Sequence` template using static recursion controlled by the standard libraries template metaprogramming utility template `std::conditional`. This means that e.g. the type `Sequence<0, 1, 2, 3>` can also be defined as `IndexSequence<4>::type`.
 
 Now all that is required to accomplish the goal is instantiating the sequence type and passing it to a variadic member template as [follows](https://github.com/KnairdA/InputXSLT/blob/master/src/function/base.h):
 
+~~~
+[...]
+this->callConstructDocument(
+	parameters,
+	locator,
+	typename IndexSequence<parameter_count>::type()
+)
+[...]
+template <std::size_t... Index>
+inline xalan::XalanDocument* callConstructDocument(
+	const XObjectArgVectorType& parameters,
+	const xalan::Locator* locator,
+	Sequence<Index...>
+) const {
 	[...]
-	this->callConstructDocument(
-		parameters,
-		locator,
-		typename IndexSequence<parameter_count>::type()
-	)
-	[...]
-	template <std::size_t... Index>
-	inline xalan::XalanDocument* callConstructDocument(
-		const XObjectArgVectorType& parameters,
-		const xalan::Locator* locator,
-		Sequence<Index...>
-	) const {
-		[...]
-		return this->document_cache_->create(
-			static_cast<const Implementation*>(this)->constructDocument(
-				valueGetter.get<typename std::tuple_element<
-					Index,
-					std::tuple<Types...>
-				>::type>(parameters[Index])...
-			)
-		);
-	}
+	return this->document_cache_->create(
+		static_cast<const Implementation*>(this)->constructDocument(
+			valueGetter.get<typename std::tuple_element<
+				Index,
+				std::tuple<Types...>
+			>::type>(parameters[Index])...
+		)
+	);
+}
+~~~
+{: .language-cpp}
 
 As we can see a `IndexSequence` template specialization instance is passed to the variadic `callConstructDocument` method to expose the actual sequence values as `Index`. This method then resolves the `Index` parameter pack as both the array and `std::tuple` index inside the calls to the `valueGetter.get` template method which is called for every sequence element because of this. What this means is that we are now able to implement non-template `constructDocument` methods inside XSLT external function implementations such as [FunctionTransform](https://github.com/KnairdA/InputXSLT/blob/master/src/function/transform.h). The values passed to these methods are automatically extracted from the argument array and converted into their respective types as required.
 

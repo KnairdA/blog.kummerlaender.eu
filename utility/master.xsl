@@ -18,7 +18,7 @@
 
 <xsl:template name="list_tags">
 	<ul>
-		<xsl:for-each select="datasource/meta/tags/entry">
+		<xsl:for-each select="$root/meta/tags/entry">
 			<li>
 				<a href="{$url}/tag/{@handle}">
 					<xsl:value-of select="@handle"/>
