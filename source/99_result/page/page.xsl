@@ -18,8 +18,14 @@
 
 <xsl:template match="page/entry">
 	<div class="last article">
-		<h3><xsl:value-of select="./title"/></h3>
-		<xsl:copy-of select="./content/*"/>
+		<h2>
+			<xsl:text>» </xsl:text>
+			<a href="{$url}/page/{@handle}">
+				<xsl:value-of select="title"/>
+			</a>
+		</h2>
+		<p class="info"/>
+		<xsl:copy-of select="content/*"/>
 	</div>
 </xsl:template>
 

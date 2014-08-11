@@ -2,6 +2,7 @@
 <xsl:stylesheet
 	version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:math="http://exslt.org/math"
 >
 
 <xsl:include href="[utility/master.xsl]"/>
@@ -17,9 +18,18 @@
 </xsl:template>
 
 <xsl:template match="category/entry">
+	<h3>
+		<xsl:text>All pages categorized as &#187;</xsl:text>
+		<xsl:value-of select="@handle"/>
+		<xsl:text>&#171; in random order</xsl:text>
+	</h3>
 	<div class="archiv columns">
 		<ul class="prettylist">
-			<xsl:apply-templates />
+			<xsl:for-each select="page">
+				<xsl:sort select="position() mod math:random()" order="descending"/>
+
+				<xsl:apply-templates select="."/>
+			</xsl:for-each>
 		</ul>
 	</div>
 </xsl:template>

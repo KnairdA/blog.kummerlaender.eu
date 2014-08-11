@@ -20,7 +20,10 @@
 <xsl:template match="article/entry">
 	<div class="last article">
 		<h2>
-			» <a href="{$url}/article/{@handle}"><xsl:value-of select="title"/></a>
+			<xsl:text>» </xsl:text>
+			<a href="{$url}/article/{@handle}">
+				<xsl:value-of select="title"/>
+			</a>
 		</h2>
 		<p class="info">
 			<xsl:call-template name="format-date">

@@ -32,7 +32,10 @@
 	<xsl:variable name="article" select="$root/articles/entry[@handle = $handle]"/>
 
 	<h2>
-		» <a href="{$url}/article/{$handle}"><xsl:value-of select="$article/title"/></a>
+		<xsl:text>» </xsl:text>
+		<a href="{$url}/article/{$handle}">
+			<xsl:value-of select="$article/title"/>
+		</a>
 	</h2>
 	<p class="info">
 		<xsl:call-template name="format-date">
