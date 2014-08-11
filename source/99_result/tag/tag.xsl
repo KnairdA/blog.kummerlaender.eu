@@ -17,8 +17,10 @@
 </xsl:template>
 
 <xsl:template match="tag/entry">
-	<div class="archiv left articlelist archivlist">
-		All articles tagged as &#187;<xsl:value-of select="@handle"/>&#171;
+	<div class="archiv articlelist archivlist">
+		<xsl:text>All articles tagged as &#187;</xsl:text>
+		<xsl:value-of select="@handle"/>
+		<xsl:text>&#171;</xsl:text>
 		<ol>
 			<xsl:apply-templates />
 		</ol>
@@ -27,7 +29,11 @@
 
 <xsl:template match="tag/entry/article">
 	<li>
-		<xsl:value-of select="date"/> » <a href="{$url}/article/{@handle}"><xsl:value-of select="title"/></a>
+		<xsl:value-of select="date"/>
+		<xsl:text> » </xsl:text>
+		<a href="{$url}/article/{@handle}">
+			<xsl:value-of select="title"/>
+		</a>
 	</li>
 </xsl:template>
 

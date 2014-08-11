@@ -15,10 +15,10 @@
 	<target     mode="plain" value="pages.xml"/> 
 </xsl:variable>
 
-<xsl:template match="files/pages/file[./extension = '.md']">
+<xsl:template match="files/pages//file[./extension = '.md']">
 	<xsl:variable name="content">
 		<xsl:call-template name="formatter">
-			<xsl:with-param name="format">/usr/bin/markdown</xsl:with-param>
+			<xsl:with-param name="format">kramdown</xsl:with-param>
 			<xsl:with-param name="source" select="InputXSLT:read-file(./full)/text()"/>
 		</xsl:call-template>
 	</xsl:variable>

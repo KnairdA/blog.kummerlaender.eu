@@ -49,7 +49,7 @@
 				<ul>
 					<li><a href="{$url}/0">Start</a></li>
 					<li><a href="{$url}/archive">Archive</a></li>
-					<li><a href="{$url}/projects">Projects</a></li>
+					<li><a href="{$url}/category/projects">Projects</a></li>
 					<li><a href="{$url}/page/contact">Contact</a></li>
 					<li class="last_item"><a href="{$url}/atom.xml">Feed</a></li>
 				</ul>

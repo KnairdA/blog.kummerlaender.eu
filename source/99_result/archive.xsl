@@ -32,12 +32,10 @@
 
 <xsl:template match="microblog">
 	<div class="column taglist archivtag">
-		<div>
-			<a href="https://twitter.com/KnairdA">Microblog:</a>
-			<ul class="tweetlist">
-				<xsl:apply-templates select="item[substring(text, 1, 1) != '@'][position() &lt;= 7]" />
-			</ul>
-		</div>
+		<a href="https://twitter.com/KnairdA">Microblog:</a>
+		<ul class="prettylist">
+			<xsl:apply-templates select="item[substring(text, 1, 1) != '@'][position() &lt;= 9]" />
+		</ul>
 	</div>
 </xsl:template>
 
