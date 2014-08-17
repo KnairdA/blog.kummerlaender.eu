@@ -11,7 +11,7 @@
 	<xsl:param name="format"/>
 	<xsl:param name="source"/>
 
-	<xsl:copy-of select="InputXSLT:external-text-formatter(
+	<xsl:copy-of select="InputXSLT:external-command(
 		$format,
 		$source
 	)/self::output/node()"/>

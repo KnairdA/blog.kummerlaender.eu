@@ -9,4 +9,4 @@
 
 ### About me
 
-Hi, my name is Adrian Kummerländer and I am a Software Developer located in southern Germany.
+Hi, my name is Adrian Kummerländer. I am a Software Developer located in southern Germany.
