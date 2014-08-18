@@ -8,6 +8,8 @@
 	exclude-result-prefixes="dyn xalan InputXSLT"
 >
 
+<xsl:import href="utility/helper.xsl"/>
+
 <xsl:output
 	method="xml"
 	omit-xml-declaration="yes"
@@ -167,12 +169,20 @@
 				</xsl:call-template>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:if test="./extension = '.xsl'">
-					<xsl:call-template name="process">
-						<xsl:with-param name="file"   select="."/>
-						<xsl:with-param name="target" select="concat($target, '/', $path)"/>
-					</xsl:call-template>
-				</xsl:if>
+				<xsl:choose>
+					<xsl:when test="./extension = '.xsl'">
+						<xsl:call-template name="process">
+							<xsl:with-param name="file"   select="."/>
+							<xsl:with-param name="target" select="concat($target, '/', $path)"/>
+						</xsl:call-template>
+					</xsl:when>
+					<xsl:when test="./extension = '.css'">
+						<xsl:call-template name="linker">
+							<xsl:with-param name="from" select="./full"/>
+							<xsl:with-param name="to"   select="concat($target, '/', $path, '/', ./name, ./extension)"/>
+						</xsl:call-template>
+					</xsl:when>
+				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:for-each>
@@ -181,6 +191,10 @@
 <xsl:template match="/">
 	<xsl:variable name="source">source</xsl:variable>
 	<xsl:variable name="target">target</xsl:variable>
+
+	<xsl:call-template name="cleaner">
+		<xsl:with-param name="path" select="$target"/>
+	</xsl:call-template>
 
 	<xsl:call-template name="traverse">
 		<xsl:with-param name="source" select="$source"/>

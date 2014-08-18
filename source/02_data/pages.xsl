@@ -7,8 +7,8 @@
 	exclude-result-prefixes="xalan InputXSLT"
 >
 
+<xsl:include href="[utility/helper.xsl]"/>
 <xsl:include href="[utility/datasource.xsl]"/>
-<xsl:include href="[utility/formatter.xsl]"/>
 
 <xsl:variable name="meta">
 	<datasource type="main"  mode="full" source="target/01_files/source.xml" target="files"/>

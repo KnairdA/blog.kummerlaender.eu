@@ -47,6 +47,7 @@
 			<a href="{$url}/tag/{.}">
 				<xsl:value-of select="."/>
 			</a>
+			<xsl:text> </xsl:text>
 		</xsl:for-each>
 		<xsl:text> | Adrian Kummerländer</xsl:text>
 	</p>
