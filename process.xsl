@@ -8,8 +8,6 @@
 	exclude-result-prefixes="dyn xalan InputXSLT"
 >
 
-<xsl:import href="utility/helper.xsl"/>
-
 <xsl:output
 	method="xml"
 	omit-xml-declaration="yes"
@@ -17,7 +15,7 @@
 	indent="yes"
 />
 
-<xsl:variable name="root" select="/datasource"/>
+<xsl:include href="utility/helper.xsl"/>
 
 <xsl:template name="generate">
 	<xsl:param name="input"/>
@@ -35,8 +33,8 @@
 	<xsl:param name="from"/>
 	<xsl:param name="to"/>
 
-	<linkage from="{$from}" to="{$to}" result="{InputXSLT:external-command(
-		concat('ln -sr ', $to, ' ', $from)
+	<linkage from="./{$from}" to="./{$to}" result="{InputXSLT:external-command(
+		concat('ln -sr ./', $to, ' ./', $from)
 	)/self::command/@result}"/>
 </xsl:template>
 
@@ -159,59 +157,30 @@
 	</xsl:choose>
 </xsl:template>
 
-<xsl:template name="traverse">
-	<xsl:param name="source"/>
-	<xsl:param name="target"/>
-	<xsl:param name="path"/>
-	<xsl:param name="node"/>
+<xsl:template match="task[@type = 'clean']">
+	<xsl:call-template name="cleaner">
+		<xsl:with-param name="path" select="path"/>
+	</xsl:call-template>
+</xsl:template>
 
-	<xsl:for-each select="$node/directory">
-		<xsl:choose>
-			<xsl:when test=".//file/@extension = '.xsl'">
-				<xsl:call-template name="traverse">
-					<xsl:with-param name="source" select="$source"/>
-					<xsl:with-param name="target" select="$target"/>
-					<xsl:with-param name="path"   select="concat($path, '/', @name)"/>
-					<xsl:with-param name="node"   select="."/>
-				</xsl:call-template>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:call-template name="linker">
-					<xsl:with-param name="from" select="concat($target, '/', $path, '/', @name)"/>
-					<xsl:with-param name="to"   select="concat($source, '/', $path, '/', @name)"/>
-				</xsl:call-template>
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:for-each>
+<xsl:template match="task[@type = 'generate']">
+	<xsl:call-template name="process">
+		<xsl:with-param name="source" select="source"/>
+		<xsl:with-param name="target" select="target"/>
+	</xsl:call-template>
+</xsl:template>
 
-	<xsl:for-each select="$node/file">
-		<xsl:choose>
-			<xsl:when test="@extension = '.xsl'">
-				<xsl:call-template name="process">
-					<xsl:with-param name="source" select="concat($source, '/', $path, '/', @name, @extension)"/>
-					<xsl:with-param name="target" select="concat($target, '/', $path)"/>
-				</xsl:call-template>
-			</xsl:when>
-			<xsl:when test="@extension = '.css'">
-				<xsl:call-template name="linker">
-					<xsl:with-param name="from" select="concat($target, '/', $path, '/', @name, @extension)"/>
-					<xsl:with-param name="to"   select="concat($source, '/', $path, '/', @name, @extension)"/>
-				</xsl:call-template>
-			</xsl:when>
-		</xsl:choose>
-	</xsl:for-each>
+<xsl:template match="task[@type = 'link']">
+	<xsl:call-template name="linker">
+		<xsl:with-param name="from" select="from"/>
+		<xsl:with-param name="to"   select="to"/>
+	</xsl:call-template>
 </xsl:template>
 
 <xsl:template match="datasource">
-	<xsl:call-template name="cleaner">
-		<xsl:with-param name="path" select="meta/target"/>
-	</xsl:call-template>
-
-	<xsl:call-template name="traverse">
-		<xsl:with-param name="source" select="$root/meta/source"/>
-		<xsl:with-param name="target" select="$root/meta/target"/>
-		<xsl:with-param name="node"   select="source"/>
-	</xsl:call-template>
+	<xsl:apply-templates select="task[@type = 'clean']"/>
+	<xsl:apply-templates select="task[@type = 'generate']"/>
+	<xsl:apply-templates select="task[@type = 'link']"/>
 </xsl:template>
 
 </xsl:stylesheet>

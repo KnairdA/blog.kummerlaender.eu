@@ -32,26 +32,31 @@
 
 	<xsl:call-template name="generate">
 		<xsl:with-param name="input">
-			<xsl:call-template name="merge_datasource">
-				<xsl:with-param name="main">
-					<xsl:call-template name="generate">
-						<xsl:with-param name="input">
-							<datasource>
-								<xsl:value-of select="$source"/>
-							</datasource>
+			<xsl:call-template name="generate">
+				<xsl:with-param name="input">
+					<xsl:call-template name="merge_datasource">
+						<xsl:with-param name="main">
+							<xsl:call-template name="generate">
+								<xsl:with-param name="input">
+									<datasource>
+										<xsl:value-of select="$source"/>
+									</datasource>
+								</xsl:with-param>
+								<xsl:with-param name="transformation">list.xsl</xsl:with-param>
+							</xsl:call-template>
 						</xsl:with-param>
-						<xsl:with-param name="transformation">list.xsl</xsl:with-param>
+						<xsl:with-param name="support">
+							<meta>
+								<source><xsl:value-of select="$source"/></source>
+								<target><xsl:value-of select="$target"/></target>
+							</meta>
+						</xsl:with-param>
 					</xsl:call-template>
 				</xsl:with-param>
-				<xsl:with-param name="support">
-					<meta>
-						<source><xsl:value-of select="$source"/></source>
-						<target><xsl:value-of select="$target"/></target>
-					</meta>
-				</xsl:with-param>
+				<xsl:with-param name="transformation">plan.xsl</xsl:with-param>
 			</xsl:call-template>
 		</xsl:with-param>
-		<xsl:with-param name="transformation">traverse.xsl</xsl:with-param>
+		<xsl:with-param name="transformation">process.xsl</xsl:with-param>
 	</xsl:call-template>
 </xsl:template>
 
