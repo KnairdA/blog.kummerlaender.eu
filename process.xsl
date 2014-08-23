@@ -17,47 +17,40 @@
 
 <xsl:include href="utility/helper.xsl"/>
 
+<xsl:template name="create_link">
+	<xsl:param name="from"/>
+	<xsl:param name="to"/>
+
+	<xsl:value-of select="InputXSLT:external-command(
+		concat('ln -sr ./', $to, ' ./', $from)
+	)/self::command/@result"/>
+</xsl:template>
+
+<xsl:template name="clean">
+	<xsl:param name="path"/>
+
+	<xsl:value-of select="InputXSLT:external-command(
+		concat('rm -r ./', $path, '/*')
+	)/self::command/@result"/>
+</xsl:template>
+
 <xsl:template name="generate">
 	<xsl:param name="input"/>
 	<xsl:param name="transformation"/>
 	<xsl:param name="target"/>
 
-	<xsl:copy-of select="InputXSLT:generate(
-		$input,
-		$transformation,
-		$target
-	)/self::generation"/>
-</xsl:template>
-
-<xsl:template name="linker">
-	<xsl:param name="from"/>
-	<xsl:param name="to"/>
-
-	<linkage from="./{$from}" to="./{$to}" result="{InputXSLT:external-command(
-		concat('ln -sr ./', $to, ' ./', $from)
-	)/self::command/@result}"/>
-</xsl:template>
-
-<xsl:template name="cleaner">
-	<xsl:param name="path"/>
-
-	<cleaning path="./{$path}" result="{InputXSLT:external-command(
-		concat('rm -r ./', $path, '/*')
-	)/self::command/@result}"/>
-</xsl:template>
-
-<xsl:template name="resolve_datasource">
-	<xsl:param name="datasource"/>
-
-	<xsl:for-each select="$datasource">
-		<xsl:element name="{@target}">
-			<xsl:choose>
-				<xsl:when test="@mode = 'full'">
-					<xsl:copy-of select="InputXSLT:read-file(@source)/self::file/*/*"/>
-				</xsl:when>
-			</xsl:choose>
-		</xsl:element>
-	</xsl:for-each>
+	<subtask>
+		<xsl:attribute name="result">
+			<xsl:value-of select="InputXSLT:generate(
+				$input,
+				$transformation,
+				$target
+			)/self::generation/@result"/>
+		</xsl:attribute>
+		<target>
+			<xsl:value-of select="$target"/>
+		</target>
+	</subtask>
 </xsl:template>
 
 <xsl:template name="resolve_target">
@@ -73,6 +66,20 @@
 			<xsl:value-of select="concat($prefix, '/', dyn:evaluate($target/@value))"/>
 		</xsl:when>
 	</xsl:choose>
+</xsl:template>
+
+<xsl:template name="resolve_datasource">
+	<xsl:param name="datasource"/>
+
+	<xsl:for-each select="$datasource">
+		<xsl:element name="{@target}">
+			<xsl:choose>
+				<xsl:when test="@mode = 'full'">
+					<xsl:copy-of select="InputXSLT:read-file(@source)/self::file/*/*"/>
+				</xsl:when>
+			</xsl:choose>
+		</xsl:element>
+	</xsl:for-each>
 </xsl:template>
 
 <xsl:template name="compile">
@@ -158,23 +165,50 @@
 </xsl:template>
 
 <xsl:template match="task[@type = 'clean']">
-	<xsl:call-template name="cleaner">
-		<xsl:with-param name="path" select="path"/>
-	</xsl:call-template>
+	<xsl:copy>
+		<xsl:attribute name="result">
+			<xsl:call-template name="clean">
+				<xsl:with-param name="path" select="path"/>
+			</xsl:call-template>
+		</xsl:attribute>
+		<xsl:copy-of select="@* | node()"/>
+	</xsl:copy>
 </xsl:template>
 
 <xsl:template match="task[@type = 'generate']">
-	<xsl:call-template name="process">
-		<xsl:with-param name="source" select="source"/>
-		<xsl:with-param name="target" select="target"/>
-	</xsl:call-template>
+	<xsl:variable name="results">
+		<xsl:call-template name="process">
+			<xsl:with-param name="source" select="source"/>
+			<xsl:with-param name="target" select="target"/>
+		</xsl:call-template>
+	</xsl:variable>
+
+	<xsl:copy>
+		<xsl:attribute name="result">
+			<xsl:choose>
+				<xsl:when test="count(xalan:nodeset($results)/subtask[@result = 'success']) = count(xalan:nodeset($results)/subtask)">
+					<xsl:text>success</xsl:text>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text>error</xsl:text>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:attribute>
+		<xsl:copy-of select="@* | source"/>
+		<xsl:copy-of select="$results"/>
+	</xsl:copy>
 </xsl:template>
 
 <xsl:template match="task[@type = 'link']">
-	<xsl:call-template name="linker">
-		<xsl:with-param name="from" select="from"/>
-		<xsl:with-param name="to"   select="to"/>
-	</xsl:call-template>
+	<xsl:copy>
+		<xsl:attribute name="result">
+			<xsl:call-template name="create_link">
+				<xsl:with-param name="from" select="from"/>
+				<xsl:with-param name="to"   select="to"/>
+			</xsl:call-template>
+		</xsl:attribute>
+		<xsl:copy-of select="@* | node()"/>
+	</xsl:copy>
 </xsl:template>
 
 <xsl:template match="datasource">
