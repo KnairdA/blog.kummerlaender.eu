@@ -7,6 +7,16 @@
 	exclude-result-prefixes="xalan InputXSLT"
 >
 
+<xsl:template name="merge_datasource">
+	<xsl:param name="main"/>
+	<xsl:param name="support"/>
+
+	<datasource>
+		<xsl:copy-of select="$main"/>
+		<xsl:copy-of select="$support"/>
+	</datasource>
+</xsl:template>
+
 <xsl:template name="formatter">
 	<xsl:param name="format"/>
 	<xsl:param name="source"/>
@@ -17,20 +27,4 @@
 	)/self::command/node()"/>
 </xsl:template>
 
-<xsl:template name="cleaner">
-	<xsl:param name="path"/>
-
-	<cleaning path="./{$path}" result="{InputXSLT:external-command(
-		concat('rm -r ./', $path, '/*')
-	)/self::command/@result}"/>
-</xsl:template>
-
-<xsl:template name="linker">
-	<xsl:param name="from"/>
-	<xsl:param name="to"/>
-
-	<linkage from="{$from}" to="{$to}" result="{InputXSLT:external-command(
-		concat('ln -s ', $from, ' ./', $to)
-	)/self::command/@result}"/>
-</xsl:template>
 </xsl:stylesheet>
