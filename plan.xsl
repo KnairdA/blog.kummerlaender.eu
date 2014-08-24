@@ -12,7 +12,7 @@
 	method="xml"
 	omit-xml-declaration="yes"
 	encoding="UTF-8"
-	indent="yes"
+	indent="no"
 />
 
 <xsl:include href="utility/datasource.xsl"/>

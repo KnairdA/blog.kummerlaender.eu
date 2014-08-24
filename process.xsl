@@ -12,10 +12,10 @@
 	method="xml"
 	omit-xml-declaration="yes"
 	encoding="UTF-8"
-	indent="yes"
+	indent="no"
 />
 
-<xsl:include href="utility/helper.xsl"/>
+<xsl:include href="utility/datasource.xsl"/>
 
 <xsl:template name="create_link">
 	<xsl:param name="from"/>
@@ -51,6 +51,16 @@
 			<xsl:value-of select="$target"/>
 		</target>
 	</subtask>
+</xsl:template>
+
+<xsl:template name="merge_datasource">
+	<xsl:param name="main"/>
+	<xsl:param name="support"/>
+
+	<datasource>
+		<xsl:copy-of select="$main"/>
+		<xsl:copy-of select="$support"/>
+	</datasource>
 </xsl:template>
 
 <xsl:template name="resolve_target">

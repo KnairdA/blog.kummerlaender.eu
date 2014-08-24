@@ -7,16 +7,6 @@
 	exclude-result-prefixes="xalan InputXSLT"
 >
 
-<xsl:template name="merge_datasource">
-	<xsl:param name="main"/>
-	<xsl:param name="support"/>
-
-	<datasource>
-		<xsl:copy-of select="$main"/>
-		<xsl:copy-of select="$support"/>
-	</datasource>
-</xsl:template>
-
 <xsl:template name="formatter">
 	<xsl:param name="format"/>
 	<xsl:param name="source"/>
