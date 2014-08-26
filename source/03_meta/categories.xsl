@@ -20,12 +20,14 @@
 
 	<xsl:variable name="page" select="$root/pages/entry[@handle = $handle]"/>
 
-	<title>
-		<xsl:value-of select="$page/title"/>
-	</title>
-	<digest>
-		<xsl:copy-of select="$page/content/p[1]/node()"/>
-	</digest>
+	<page handle="{$handle}">
+		<title>
+			<xsl:value-of select="$page/title"/>
+		</title>
+		<digest size="{string-length($page/content/p[1])}">
+			<xsl:copy-of select="$page/content/p[1]/node()"/>
+		</digest>
+	</page>
 </xsl:template>
 
 <xsl:template match="files/pages/*[name() != 'file']">
@@ -35,11 +37,9 @@
 </xsl:template>
 
 <xsl:template match="files/pages/*/file[./extension = '.md']">
-	<page handle="{./name}">
-		<xsl:call-template name="get_page_data">
-			<xsl:with-param name="handle" select="./name"/>
-		</xsl:call-template>
-	</page>
+	<xsl:call-template name="get_page_data">
+		<xsl:with-param name="handle" select="./name"/>
+	</xsl:call-template>
 </xsl:template>
 
 </xsl:stylesheet>
