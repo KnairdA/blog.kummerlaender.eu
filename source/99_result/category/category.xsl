@@ -45,24 +45,36 @@
 
 			<xsl:variable name="sorted_pages">
 				<xsl:for-each select="page">
-					<xsl:sort select="digest/@size" order="ascending"/>
-					<xsl:copy-of select="."/>
+					<xsl:sort select="digest/@size" data-type="number" order="descending"/>
+
+					<xsl:if test="position() &lt;= $boundary">
+						<xsl:copy-of select="."/>
+					</xsl:if>
+				</xsl:for-each>
+
+				<xsl:for-each select="page">
+					<xsl:sort select="digest/@size" data-type="number" order="ascending"/>
+
+					<xsl:if test="position() &lt; $boundary">
+						<xsl:copy-of select="."/>
+					</xsl:if>
 				</xsl:for-each>
 			</xsl:variable>
 
-			<xsl:for-each select="xalan:nodeset($sorted_pages)/page">
+			<xsl:variable name="lower_half" select="xalan:nodeset($sorted_pages)/page[position() &lt;= $boundary]"/>
+			<xsl:variable name="upper_half" select="xalan:nodeset($sorted_pages)/page[position() &gt;  $boundary]"/>
+
+			<xsl:for-each select="$lower_half">
 				<xsl:variable name="index" select="position()"/>
 
-				<xsl:if test="$index &lt;= $boundary">
-					<xsl:call-template name="page_entry">
-						<xsl:with-param name="source" select="."/>
-					</xsl:call-template>
+				<xsl:call-template name="page_entry">
+					<xsl:with-param name="source" select="."/>
+				</xsl:call-template>
 
-					<xsl:if test="$ceiling - $index != $index">
-						<xsl:call-template name="page_entry">
-							<xsl:with-param name="source" select="xalan:nodeset($sorted_pages)/page[$ceiling - $index]"/>
-						</xsl:call-template>
-					</xsl:if>
+				<xsl:if test="$upper_half[$index]">
+					<xsl:call-template name="page_entry">
+						<xsl:with-param name="source" select="$upper_half[$index]"/>
+					</xsl:call-template>
 				</xsl:if>
 			</xsl:for-each>
 		</ul>
