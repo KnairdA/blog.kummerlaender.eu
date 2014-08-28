@@ -39,14 +39,22 @@
 	<xsl:param name="transformation"/>
 	<xsl:param name="target"/>
 
+	<xsl:variable name="generation_result" select="InputXSLT:generate(
+		$input,
+		$transformation,
+		$target
+	)/self::generation"/>
+
 	<subtask>
 		<xsl:attribute name="result">
-			<xsl:value-of select="InputXSLT:generate(
-				$input,
-				$transformation,
-				$target
-			)/self::generation/@result"/>
+			<xsl:value-of select="$generation_result/@result"/>
 		</xsl:attribute>
+		<xsl:if test="$generation_result/@result = 'error'">
+			<log>
+				<xsl:copy-of select="$generation_result/error"/>
+			</log>
+		</xsl:if>
+
 		<target>
 			<xsl:value-of select="$target"/>
 		</target>
