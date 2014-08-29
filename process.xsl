@@ -201,10 +201,13 @@
 		</xsl:call-template>
 	</xsl:variable>
 
+	<xsl:variable name="total_count"   select="count(xalan:nodeset($results)/subtask)"/>
+	<xsl:variable name="success_count" select="count(xalan:nodeset($results)/subtask[@result = 'success'])"/>
+
 	<xsl:copy>
 		<xsl:attribute name="result">
 			<xsl:choose>
-				<xsl:when test="count(xalan:nodeset($results)/subtask[@result = 'success']) = count(xalan:nodeset($results)/subtask)">
+				<xsl:when test="$success_count = $total_count">
 					<xsl:text>success</xsl:text>
 				</xsl:when>
 				<xsl:otherwise>
