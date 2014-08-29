@@ -11,7 +11,7 @@
 <xsl:include href="[utility/datasource.xsl]"/>
 
 <xsl:variable name="meta">
-	<datasource type="main"  mode="full" source="target/01_files/source.xml" target="files"/>
+	<datasource type="main"  mode="full" source="01_files/source.xml" target="files"/>
 	<target     mode="plain" value="pages.xml"/> 
 </xsl:variable>
 

@@ -7,8 +7,8 @@
 <xsl:include href="[utility/master.xsl]"/>
 
 <xsl:variable name="meta">
-	<datasource type="main"    mode="iterate" source="target/02_data/pages.xml" target="page"/>
-	<datasource type="support" mode="full"    source="target/03_meta/meta.xml"  target="meta"/>
+	<datasource type="main"    mode="iterate" source="02_data/pages.xml" target="page"/>
+	<datasource type="support" mode="full"    source="03_meta/meta.xml"  target="meta"/>
 	<target     mode="xpath"   value="concat(xalan:nodeset($datasource)/datasource/page/entry/@handle, '/index.html')"/>
 </xsl:variable>
 

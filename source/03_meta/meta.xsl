@@ -7,8 +7,8 @@
 <xsl:include href="[utility/datasource.xsl]"/>
 
 <xsl:variable name="meta">
-	<datasource type="main"    mode="full" source="source/00_content/meta.xml" target="meta"/>
-	<datasource type="support" mode="full" source="target/02_data/tags.xml"    target="tags"/>
+	<datasource type="main"    mode="full" source="00_content/meta.xml" target="meta"/>
+	<datasource type="support" mode="full" source="02_data/tags.xml"    target="tags"/>
 	<target     mode="plain"   value="meta.xml"/> 
 </xsl:variable>
 

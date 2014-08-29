@@ -12,8 +12,8 @@
 />
 
 <xsl:variable name="meta">
-	<datasource type="main"    mode="full" source="target/02_data/articles.xml" target="articles"/>
-	<datasource type="support" mode="full" source="target/03_meta/meta.xml"     target="meta"/>
+	<datasource type="main"    mode="full" source="02_data/articles.xml" target="articles"/>
+	<datasource type="support" mode="full" source="03_meta/meta.xml"     target="meta"/>
 	<target     mode="plain"   value="atom.xml"/> 
 </xsl:variable>
 

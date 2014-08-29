@@ -50,6 +50,11 @@
 		<xsl:choose>
 			<xsl:when test="@extension = '.xsl'">
 				<task type="generate">
+					<meta>
+						<datasource_prefix>
+							<xsl:value-of select="$target"/>
+						</datasource_prefix>
+					</meta>
 					<source>
 						<xsl:value-of select="concat($source, '/', $path, '/', @name, @extension)"/>
 					</source>

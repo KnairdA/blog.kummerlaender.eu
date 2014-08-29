@@ -10,8 +10,8 @@
 <xsl:include href="[utility/datasource.xsl]"/>
 
 <xsl:variable name="meta">
-	<datasource type="main"    mode="full" source="target/01_files/source.xml" target="files"/>
-	<datasource type="support" mode="full" source="target/02_data/pages.xml"   target="pages"/>
+	<datasource type="main"    mode="full" source="01_files/source.xml" target="files"/>
+	<datasource type="support" mode="full" source="02_data/pages.xml"   target="pages"/>
 	<target     mode="plain"   value="categories.xml"/> 
 </xsl:variable>
 
