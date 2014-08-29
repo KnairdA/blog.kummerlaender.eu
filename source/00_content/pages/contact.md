@@ -10,3 +10,5 @@
 ### About me
 
 Hi, my name is Adrian Kummerländer. I am a Software Developer located in southern Germany.
+
+This blog contains some of my thoughts and experiences concerning software development and various other topics.

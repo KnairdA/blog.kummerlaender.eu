@@ -51,7 +51,6 @@ pre{padding:1em;border-radius:0.75em;color:#f8f8f2;background:#272822}
 .columns {column-count:2;-moz-column-count:2;-webkit-column-count:2;column-gap:0;-moz-column-gap:0;-webkit-column-gap:0}
 .columns a {color:#272828; text-decoration:none}
 .columns a:hover {text-decoration:underline}
-.columns .column {display:inline-block}
 .taglist ul{padding:0.2em; float:none; overflow:hidden}
 .taglist ul li{margin:0.2em 0 0.2em 0; padding:0.2em}
 .articlelist ol{margin:0; padding:0.3em;  list-style:none}
@@ -63,7 +62,7 @@ pre{padding:1em;border-radius:0.75em;color:#f8f8f2;background:#272822}
 .archivlist ol li.dateitem{padding:0; font-weight:bold}
 .archivtag ul{margin-top:0.2em; border-top:0.1em solid #e3e8e8}
 .archivtag div{overflow:hidden; margin-bottom:0.5em}
-.prettylist li {float:none; overflow:hidden}
+.prettylist li {float:none; display:inline-block}
 .prettylist li a{background:none}
 .prettylist li em{font-style:normal; font-size:1.4em; color:#F80}
 .commentlist ol{margin-top:0.2em; border-top:0.1em solid #e3e8e8}
