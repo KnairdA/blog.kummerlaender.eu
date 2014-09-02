@@ -17,7 +17,8 @@
 	<target     mode="plain"   value="atom.xml"/> 
 </xsl:variable>
 
-<xsl:variable name="url" select="datasource/meta/url"/>
+<xsl:variable name="url"    select="datasource/meta/url"/>
+<xsl:variable name="author" select="datasource/meta/author"/>
 
 <xsl:template match="*" mode="xhtml_copy">
 	<xsl:element name="{name()}" namespace="http://www.w3.org/1999/xhtml">
@@ -34,7 +35,9 @@
 		<id><xsl:value-of select="$url"/></id>
 		<title><xsl:value-of select="datasource/meta/title"/></title>
 		<author>
-			<name>Adrian Kummerländer</name>
+			<name>
+				<xsl:value-of select="$author"/>
+			</name>
 		</author>
 
 		<xsl:apply-templates select="datasource/articles/entry[position() &lt;= 5]"/>

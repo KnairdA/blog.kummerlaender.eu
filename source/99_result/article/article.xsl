@@ -9,7 +9,7 @@
 
 <xsl:variable name="meta">
 	<datasource type="main"    mode="iterate" source="02_data/articles.xml" target="article"/>
-	<datasource type="support" mode="full"    source="03_meta/meta.xml" target="meta"/>
+	<datasource type="support" mode="full"    source="03_meta/meta.xml"     target="meta"/>
 	<target     mode="xpath"   value="concat(xalan:nodeset($datasource)/datasource/article/entry/@handle, '/index.html')"/>
 </xsl:variable>
 
@@ -36,7 +36,8 @@
 					<xsl:value-of select="."/>
 				</a>
 			</xsl:for-each>
-			<xsl:text> | Adrian Kummerländer</xsl:text>
+			<xsl:text> | </xsl:text>
+			<xsl:value-of select="$root/meta/author"/>
 		</p>
 		<xsl:copy-of select="content/node()"/>
 	</div>

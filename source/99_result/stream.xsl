@@ -48,7 +48,8 @@
 				<xsl:value-of select="."/>
 			</a>
 		</xsl:for-each>
-		<xsl:text> | Adrian Kummerländer</xsl:text>
+		<xsl:text> | </xsl:text>
+		<xsl:value-of select="$root/meta/author"/>
 	</p>
 	<xsl:copy-of select="$article/content/*"/>
 </xsl:template>
