@@ -98,6 +98,9 @@
 						concat($prefix, '/', @source)
 					)/self::file/*/*"/>
 				</xsl:when>
+				<xsl:when test="@mode = 'expression'">
+					<xsl:copy-of select="dyn:evaluate(@source)"/>
+				</xsl:when>
 			</xsl:choose>
 		</xsl:element>
 	</xsl:for-each>
@@ -180,6 +183,20 @@
 					<xsl:with-param name="target"            select="$meta/target"/>
 				</xsl:call-template>
 			</xsl:for-each>
+		</xsl:when>
+		<xsl:when test="$main_source/@mode = 'expression'">
+			<xsl:call-template name="compile">
+				<xsl:with-param name="main">
+					<xsl:element name="{$main_source/@target}">
+						<xsl:copy-of select="dyn:evaluate($main_source/@source)"/>
+					</xsl:element>
+				</xsl:with-param>
+				<xsl:with-param name="support"           select="$support_source"/>
+				<xsl:with-param name="transformation"    select="$transformation"/>
+				<xsl:with-param name="datasource_prefix" select="$task/meta/datasource_prefix"/>
+				<xsl:with-param name="target_prefix"     select="$task/target"/>
+				<xsl:with-param name="target"            select="$meta/target"/>
+			</xsl:call-template>
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:call-template name="compile">

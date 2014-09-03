@@ -11,11 +11,11 @@
 <xsl:include href="[utility/datasource.xsl]"/>
 
 <xsl:variable name="meta">
-	<datasource type="main"  mode="full" source="01_files/source.xml" target="files"/>
+	<datasource type="main"  mode="expression" source="$root/source/directory[1]/directory" target="files"/>
 	<target     mode="plain" value="pages.xml"/> 
 </xsl:variable>
 
-<xsl:template match="files/pages//file[./extension = '.md']">
+<xsl:template match="files/directory[@name = 'pages']//file[@extension = '.md']">
 	<xsl:variable name="content">
 		<xsl:call-template name="formatter">
 			<xsl:with-param name="format">kramdown</xsl:with-param>
@@ -23,7 +23,7 @@
 		</xsl:call-template>
 	</xsl:variable>
 
-	<entry handle="{./name}">
+	<entry handle="{@name}">
 		<title>
 			<xsl:value-of select="xalan:nodeset($content)/h1"/>
 		</title>

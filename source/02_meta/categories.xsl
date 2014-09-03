@@ -10,8 +10,8 @@
 <xsl:include href="[utility/datasource.xsl]"/>
 
 <xsl:variable name="meta">
-	<datasource type="main"    mode="full" source="01_files/source.xml" target="files"/>
-	<datasource type="support" mode="full" source="02_data/pages.xml"   target="pages"/>
+	<datasource type="main"  mode="expression" source="$root/source/directory[1]/directory" target="files"/>
+	<datasource type="support" mode="full" source="01_data/pages.xml"   target="pages"/>
 	<target     mode="plain"   value="categories.xml"/> 
 </xsl:variable>
 
@@ -30,15 +30,15 @@
 	</page>
 </xsl:template>
 
-<xsl:template match="files/pages/*[name() != 'file']">
-	<entry handle="{name()}">
+<xsl:template match="files/directory[@name = 'pages']/directory">
+	<entry handle="{@name}">
 		<xsl:apply-templates />
 	</entry>
 </xsl:template>
 
-<xsl:template match="files/pages/*/file[./extension = '.md']">
+<xsl:template match="files/directory[@name = 'pages']/*/file[@extension = '.md']">
 	<xsl:call-template name="get_page_data">
-		<xsl:with-param name="handle" select="./name"/>
+		<xsl:with-param name="handle" select="@name"/>
 	</xsl:call-template>
 </xsl:template>
 

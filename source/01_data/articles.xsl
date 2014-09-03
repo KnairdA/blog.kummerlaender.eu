@@ -11,7 +11,7 @@
 <xsl:include href="[utility/datasource.xsl]"/>
 
 <xsl:variable name="meta">
-	<datasource type="main"  mode="full" source="01_files/source.xml" target="files"/>
+	<datasource type="main"  mode="expression" source="$root/source/directory[1]/directory" target="files"/>
 	<target     mode="plain" value="articles.xml"/> 
 </xsl:variable>
 
@@ -47,18 +47,18 @@
 <xsl:template name="list_tags">
 	<xsl:param name="path"/>
 
-	<xsl:for-each select="$root/files/tags/*[./file/full = $path]">
-		<tag><xsl:value-of select="name()"/></tag>
+	<xsl:for-each select="$root/files/directory[@name = 'tags']/*[./file/full = $path]">
+		<tag><xsl:value-of select="@name"/></tag>
 	</xsl:for-each>
 </xsl:template>
 
-<xsl:template match="files/articles">
+<xsl:template match="files/directory[@name = 'articles']">
 	<xsl:apply-templates select="file">
-		<xsl:sort select="name" order="descending"/>
+		<xsl:sort select="@name" order="descending"/>
 	</xsl:apply-templates>
 </xsl:template>
 
-<xsl:template match="files/articles/file[./extension = '.md']">
+<xsl:template match="files/directory[@name = 'articles']/file[@extension = '.md']">
 	<xsl:variable name="content">
 		<xsl:call-template name="formatter">
 			<xsl:with-param name="format">kramdown</xsl:with-param>
@@ -66,16 +66,16 @@
 		</xsl:call-template>
 	</xsl:variable>
 
-	<entry handle="{substring(./name, 12, string-length(./name))}">
+	<entry handle="{substring(@name, 12, string-length(@name))}">
 		<title>
 			<xsl:value-of select="xalan:nodeset($content)/h1"/>
 		</title>
 		<date>
 			<full>
-				<xsl:value-of select="substring(./name, 0, 11)"/>
+				<xsl:value-of select="substring(@name, 0, 11)"/>
 			</full>
 			<year>
-				<xsl:value-of select="substring(./name, 0, 5)"/>
+				<xsl:value-of select="substring(@name, 0, 5)"/>
 			</year>
 		</date>
 		<tags>

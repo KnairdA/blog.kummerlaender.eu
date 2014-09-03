@@ -8,9 +8,9 @@
 <xsl:include href="[utility/date-time.xsl]"/>
 
 <xsl:variable name="meta">
-	<datasource type="main"    mode="iterate" source="03_meta/paginated_articles.xml" target="page"/>
-	<datasource type="support" mode="full"    source="03_meta/meta.xml"               target="meta"/>
-	<datasource type="support" mode="full"    source="02_data/articles.xml"           target="articles"/>
+	<datasource type="main"    mode="iterate" source="02_meta/paginated_articles.xml" target="page"/>
+	<datasource type="support" mode="full"    source="02_meta/meta.xml"               target="meta"/>
+	<datasource type="support" mode="full"    source="01_data/articles.xml"           target="articles"/>
 	<target     mode="xpath"   value="concat(xalan:nodeset($datasource)/datasource/page/entry/@index, '/index.html')"/>
 </xsl:variable>
 

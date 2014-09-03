@@ -13,6 +13,8 @@
 	indent="no"
 />
 
+<xsl:include href="utility/datasource.xsl"/>
+
 <xsl:template name="list">
 	<xsl:param name="base"/>
 
@@ -26,16 +28,20 @@
 				</directory>
 			</xsl:when>
 			<xsl:otherwise>
-				<file name="{./name}" extension="{./extension}"/>
+				<file name="{./name}" extension="{./extension}">
+					<xsl:copy-of select="full"/>
+				</file>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:for-each>
 </xsl:template>
 
 <xsl:template match="datasource">
+	<xsl:copy-of select="meta"/>
+
 	<source>
 		<xsl:call-template name="list">
-			<xsl:with-param name="base" select="."/>
+			<xsl:with-param name="base" select="meta/source"/>
 		</xsl:call-template>
 	</source>
 </xsl:template>

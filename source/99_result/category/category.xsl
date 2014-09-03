@@ -9,8 +9,8 @@
 <xsl:include href="[utility/master.xsl]"/>
 
 <xsl:variable name="meta">
-	<datasource type="main"    mode="iterate" source="03_meta/categories.xml" target="category"/>
-	<datasource type="support" mode="full"    source="03_meta/meta.xml"       target="meta"/>
+	<datasource type="main"    mode="iterate" source="02_meta/categories.xml" target="category"/>
+	<datasource type="support" mode="full"    source="02_meta/meta.xml"       target="meta"/>
 	<target     mode="xpath"   value="concat(xalan:nodeset($datasource)/datasource/category/entry/@handle, '/index.html')"/>
 </xsl:variable>
 

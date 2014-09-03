@@ -7,8 +7,8 @@
 <xsl:include href="[utility/master.xsl]"/>
 
 <xsl:variable name="meta">
-	<datasource type="main"    mode="full" source="03_meta/articles.xml"     target="articles"/>
-	<datasource type="support" mode="full" source="03_meta/meta.xml"         target="meta"/>
+	<datasource type="main"    mode="full" source="02_meta/articles.xml"     target="articles"/>
+	<datasource type="support" mode="full" source="02_meta/meta.xml"         target="meta"/>
 	<datasource type="support" mode="full" source="00_content/microblog.xml" target="microblog"/>
 	<target     mode="plain"   value="archive/index.html"/> 
 </xsl:variable>

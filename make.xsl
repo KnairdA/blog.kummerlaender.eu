@@ -14,6 +14,9 @@
 	indent="no"
 />
 
+<xsl:variable name="source">source</xsl:variable>
+<xsl:variable name="target">target</xsl:variable>
+
 <xsl:template name="generate">
 	<xsl:param name="input"/>
 	<xsl:param name="transformation"/>
@@ -25,26 +28,20 @@
 </xsl:template>
 
 <xsl:template match="/">
-	<xsl:variable name="source">source</xsl:variable>
-	<xsl:variable name="target">target</xsl:variable>
-
 	<xsl:variable name="list_source">
 		<datasource>
-			<xsl:value-of select="$source"/>
-		</datasource>
-	</xsl:variable>
-
-	<xsl:variable name="plan_source">
-		<datasource>
-			<xsl:call-template name="generate">
-				<xsl:with-param name="input" select="$list_source"/>
-				<xsl:with-param name="transformation">list.xsl</xsl:with-param>
-			</xsl:call-template>
 			<meta>
 				<source><xsl:value-of select="$source"/></source>
 				<target><xsl:value-of select="$target"/></target>
 			</meta>
 		</datasource>
+	</xsl:variable>
+
+	<xsl:variable name="plan_source">
+		<xsl:call-template name="generate">
+			<xsl:with-param name="input" select="$list_source"/>
+			<xsl:with-param name="transformation">list.xsl</xsl:with-param>
+		</xsl:call-template>
 	</xsl:variable>
 
 	<xsl:variable name="process_source">
