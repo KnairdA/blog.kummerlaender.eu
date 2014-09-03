@@ -150,22 +150,6 @@
 	<xsl:variable name="support_source" select="$meta/datasource[@type = 'support']"/>
 
 	<xsl:choose>
-		<xsl:when test="$main_source/@mode = 'full'">
-			<xsl:call-template name="compile">
-				<xsl:with-param name="main">
-					<xsl:element name="{$main_source/@target}">
-						<xsl:copy-of select="InputXSLT:read-file(
-							concat($task/meta/datasource_prefix, '/', $main_source/@source)
-						)/self::file/*/*"/>
-					</xsl:element>
-				</xsl:with-param>
-				<xsl:with-param name="support"           select="$support_source"/>
-				<xsl:with-param name="transformation"    select="$transformation"/>
-				<xsl:with-param name="datasource_prefix" select="$task/meta/datasource_prefix"/>
-				<xsl:with-param name="target_prefix"     select="$task/target"/>
-				<xsl:with-param name="target"            select="$meta/target"/>
-			</xsl:call-template>
-		</xsl:when>
 		<xsl:when test="$main_source/@mode = 'iterate'">
 			<xsl:for-each select="InputXSLT:read-file(
 				concat($task/meta/datasource_prefix, '/', $main_source/@source)
@@ -184,22 +168,24 @@
 				</xsl:call-template>
 			</xsl:for-each>
 		</xsl:when>
-		<xsl:when test="$main_source/@mode = 'expression'">
-			<xsl:call-template name="compile">
-				<xsl:with-param name="main">
-					<xsl:element name="{$main_source/@target}">
-						<xsl:copy-of select="dyn:evaluate($main_source/@source)"/>
-					</xsl:element>
-				</xsl:with-param>
-				<xsl:with-param name="support"           select="$support_source"/>
-				<xsl:with-param name="transformation"    select="$transformation"/>
-				<xsl:with-param name="datasource_prefix" select="$task/meta/datasource_prefix"/>
-				<xsl:with-param name="target_prefix"     select="$task/target"/>
-				<xsl:with-param name="target"            select="$meta/target"/>
-			</xsl:call-template>
-		</xsl:when>
 		<xsl:otherwise>
 			<xsl:call-template name="compile">
+				<xsl:with-param name="main">
+					<xsl:choose>
+						<xsl:when test="$main_source/@mode = 'full'">
+							<xsl:element name="{$main_source/@target}">
+								<xsl:copy-of select="InputXSLT:read-file(
+									concat($task/meta/datasource_prefix, '/', $main_source/@source)
+								)/self::file/*/*"/>
+							</xsl:element>
+						</xsl:when>
+						<xsl:when test="$main_source/@mode = 'expression'">
+							<xsl:element name="{$main_source/@target}">
+								<xsl:copy-of select="dyn:evaluate($main_source/@source)"/>
+							</xsl:element>
+						</xsl:when>
+					</xsl:choose>
+				</xsl:with-param>
 				<xsl:with-param name="support"           select="$support_source"/>
 				<xsl:with-param name="transformation"    select="$transformation"/>
 				<xsl:with-param name="datasource_prefix" select="$task/meta/datasource_prefix"/>
