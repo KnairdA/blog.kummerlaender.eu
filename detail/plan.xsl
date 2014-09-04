@@ -15,7 +15,7 @@
 	indent="no"
 />
 
-<xsl:include href="utility/datasource.xsl"/>
+<xsl:include href="[utility/datasource.xsl]"/>
 
 <xsl:template name="traverse">
 	<xsl:param name="source"/>

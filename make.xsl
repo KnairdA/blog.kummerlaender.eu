@@ -23,7 +23,7 @@
 
 	<xsl:copy-of select="InputXSLT:generate(
 		$input,
-		string($transformation)
+		InputXSLT:read-file(string($transformation))/self::file/node()
 	)/self::generation/node()"/>
 </xsl:template>
 
@@ -40,27 +40,27 @@
 	<xsl:variable name="plan_source">
 		<xsl:call-template name="generate">
 			<xsl:with-param name="input" select="$list_source"/>
-			<xsl:with-param name="transformation">list.xsl</xsl:with-param>
+			<xsl:with-param name="transformation">detail/list.xsl</xsl:with-param>
 		</xsl:call-template>
 	</xsl:variable>
 
 	<xsl:variable name="process_source">
 		<xsl:call-template name="generate">
 			<xsl:with-param name="input" select="$plan_source"/>
-			<xsl:with-param name="transformation">plan.xsl</xsl:with-param>
+			<xsl:with-param name="transformation">detail/plan.xsl</xsl:with-param>
 		</xsl:call-template>
 	</xsl:variable>
 
 	<xsl:variable name="summarize_source">
 		<xsl:call-template name="generate">
 			<xsl:with-param name="input" select="$process_source"/>
-			<xsl:with-param name="transformation">process.xsl</xsl:with-param>
+			<xsl:with-param name="transformation">detail/process.xsl</xsl:with-param>
 		</xsl:call-template>
 	</xsl:variable>
 
 	<xsl:call-template name="generate">
 		<xsl:with-param name="input" select="$summarize_source"/>
-		<xsl:with-param name="transformation">summarize.xsl</xsl:with-param>
+		<xsl:with-param name="transformation">detail/summarize.xsl</xsl:with-param>
 	</xsl:call-template>
 </xsl:template>
 
