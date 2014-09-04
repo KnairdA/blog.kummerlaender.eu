@@ -17,6 +17,8 @@
 
 <xsl:include href="utility/datasource.xsl"/>
 
+<xsl:variable name="source_tree" select="$root/source"/>
+
 <xsl:template name="create_link">
 	<xsl:param name="from"/>
 	<xsl:param name="to"/>
