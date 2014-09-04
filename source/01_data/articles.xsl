@@ -7,42 +7,13 @@
 	exclude-result-prefixes="xalan InputXSLT"
 >
 
-<xsl:include href="[utility/helper.xsl]"/>
+<xsl:include href="[utility/formatter.xsl]"/>
 <xsl:include href="[utility/datasource.xsl]"/>
 
 <xsl:variable name="meta">
 	<datasource type="main"  mode="expression" source="$root/source/directory[1]/directory" target="files"/>
 	<target     mode="plain" value="articles.xml"/> 
 </xsl:variable>
-
-<xsl:template match="@*|node()" mode="embellish">
-	<xsl:copy>
-		<xsl:apply-templates select="@*|node()" mode="embellish"/>
-	</xsl:copy>
-</xsl:template>
-
-<xsl:template match="pre" mode="embellish">
-	<xsl:variable name="formatted_code">
-		<xsl:call-template name="formatter">
-			<xsl:with-param name="format">
-				<xsl:text>highlight --out-format=xhtml --inline-css --style=molokai --fragment --enclose-pre --wrap-simple --syntax=</xsl:text>
-				<xsl:choose>
-					<xsl:when test="code/@class">
-						<xsl:value-of select="substring(code/@class, 10, string-length(code/@class))"/>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:text>txt</xsl:text>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:with-param>
-			<xsl:with-param name="source" select="code/text()"/>
-		</xsl:call-template>
-	</xsl:variable>
-
-	<pre>
-		<xsl:copy-of select="xalan:nodeset($formatted_code)/pre/node()"/>
-	</pre>
-</xsl:template>
 
 <xsl:template name="list_tags">
 	<xsl:param name="path"/>
@@ -61,7 +32,6 @@
 <xsl:template match="files/directory[@name = 'articles']/file[@extension = '.md']">
 	<xsl:variable name="content">
 		<xsl:call-template name="formatter">
-			<xsl:with-param name="format">kramdown</xsl:with-param>
 			<xsl:with-param name="source" select="InputXSLT:read-file(./full)/text()"/>
 		</xsl:call-template>
 	</xsl:variable>
@@ -84,7 +54,7 @@
 			</xsl:call-template>
 		</tags>
 		<content>
-			<xsl:apply-templates select="xalan:nodeset($content)/*[name() != 'h1']" mode="embellish"/>
+			<xsl:copy-of select="xalan:nodeset($content)/*[name() != 'h1']"/>
 		</content>
 	</entry>
 </xsl:template>

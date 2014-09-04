@@ -7,7 +7,7 @@
 	exclude-result-prefixes="xalan InputXSLT"
 >
 
-<xsl:include href="[utility/helper.xsl]"/>
+<xsl:include href="[utility/formatter.xsl]"/>
 <xsl:include href="[utility/datasource.xsl]"/>
 
 <xsl:variable name="meta">
@@ -18,7 +18,6 @@
 <xsl:template match="files/directory[@name = 'pages']//file[@extension = '.md']">
 	<xsl:variable name="content">
 		<xsl:call-template name="formatter">
-			<xsl:with-param name="format">kramdown</xsl:with-param>
 			<xsl:with-param name="source" select="InputXSLT:read-file(./full)/text()"/>
 		</xsl:call-template>
 	</xsl:variable>
