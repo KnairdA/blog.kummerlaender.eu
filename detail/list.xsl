@@ -13,7 +13,7 @@
 	indent="no"
 />
 
-<xsl:include href="[utility/datasource.xsl]"/>
+<xsl:include href="utility/datasource.xsl"/>
 
 <xsl:template name="list">
 	<xsl:param name="base"/>

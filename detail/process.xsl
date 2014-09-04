@@ -15,7 +15,7 @@
 	indent="no"
 />
 
-<xsl:include href="[utility/datasource.xsl]"/>
+<xsl:include href="utility/datasource.xsl"/>
 
 <xsl:variable name="source_tree" select="$root/source"/>
 
