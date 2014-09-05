@@ -8,7 +8,7 @@
 >
 
 <xsl:output
-	method="xml"
+	method="text"
 	omit-xml-declaration="yes"
 	encoding="UTF-8"
 	indent="no"
