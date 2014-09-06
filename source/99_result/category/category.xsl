@@ -18,15 +18,13 @@
 	<xsl:value-of select="/datasource/category/entry/@handle"/>
 </xsl:template>
 
-<xsl:template name="page_entry">
-	<xsl:param name="source"/>
-
+<xsl:template match="entry/page">
 	<li>
 		<em>»</em>
-		<a href="{$url}/page/{$source/@handle}">
-			<strong><xsl:value-of select="$source/title"/></strong>
+		<a href="{$url}/page/{@handle}">
+			<strong><xsl:value-of select="title"/></strong>
 			<p>
-				<xsl:copy-of select="$source/digest/node()"/>
+				<xsl:copy-of select="digest/node()"/>
 			</p>
 		</a>
 	</li>
@@ -40,43 +38,9 @@
 	</h3>
 	<div class="archiv columns">
 		<ul class="prettylist">
-			<xsl:variable name="ceiling"  select="count(page) + 1"/>
-			<xsl:variable name="boundary" select="$ceiling div 2"/>
-
-			<xsl:variable name="sorted_pages">
-				<xsl:for-each select="page">
-					<xsl:sort select="digest/@size" data-type="number" order="descending"/>
-
-					<xsl:if test="position() &lt;= $boundary">
-						<xsl:copy-of select="."/>
-					</xsl:if>
-				</xsl:for-each>
-
-				<xsl:for-each select="page">
-					<xsl:sort select="digest/@size" data-type="number" order="ascending"/>
-
-					<xsl:if test="position() &lt; $boundary">
-						<xsl:copy-of select="."/>
-					</xsl:if>
-				</xsl:for-each>
-			</xsl:variable>
-
-			<xsl:variable name="lower_half" select="xalan:nodeset($sorted_pages)/page[position() &lt;= $boundary]"/>
-			<xsl:variable name="upper_half" select="xalan:nodeset($sorted_pages)/page[position() &gt;  $boundary]"/>
-
-			<xsl:for-each select="$lower_half">
-				<xsl:variable name="index" select="position()"/>
-
-				<xsl:call-template name="page_entry">
-					<xsl:with-param name="source" select="."/>
-				</xsl:call-template>
-
-				<xsl:if test="$upper_half[$index]">
-					<xsl:call-template name="page_entry">
-						<xsl:with-param name="source" select="$upper_half[$index]"/>
-					</xsl:call-template>
-				</xsl:if>
-			</xsl:for-each>
+			<xsl:apply-templates select="page">
+				<xsl:sort select="digest/@size" data-type="number" order="descending"/>
+			</xsl:apply-templates>
 		</ul>
 	</div>
 </xsl:template>
