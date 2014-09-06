@@ -132,7 +132,7 @@
 		<xsl:call-template name="resolve_target">
 			<xsl:with-param name="prefix"     select="$target_prefix"/>
 			<xsl:with-param name="target"     select="$target"/>
-			<xsl:with-param name="datasource" select="$datasource"/>
+			<xsl:with-param name="datasource" select="xalan:nodeset($datasource)/*[1]"/>
 		</xsl:call-template>
 	</xsl:variable>
 

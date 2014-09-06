@@ -11,7 +11,7 @@
 <xsl:variable name="meta">
 	<datasource type="main"    mode="iterate" source="02_meta/categories.xml" target="category"/>
 	<datasource type="support" mode="full"    source="02_meta/meta.xml"       target="meta"/>
-	<target     mode="xpath"   value="concat(xalan:nodeset($datasource)/datasource/category/entry/@handle, '/index.html')"/>
+	<target     mode="xpath"   value="concat($datasource/category/entry/@handle, '/index.html')"/>
 </xsl:variable>
 
 <xsl:template name="title-text">

@@ -10,7 +10,7 @@
 <xsl:variable name="meta">
 	<datasource type="main"    mode="iterate" source="01_data/articles.xml" target="article"/>
 	<datasource type="support" mode="full"    source="02_meta/meta.xml"     target="meta"/>
-	<target     mode="xpath"   value="concat(xalan:nodeset($datasource)/datasource/article/entry/@handle, '/index.html')"/>
+	<target     mode="xpath"   value="concat($datasource/article/entry/@handle, '/index.html')"/>
 </xsl:variable>
 
 <xsl:template name="title-text">
