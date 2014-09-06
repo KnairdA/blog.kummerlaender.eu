@@ -1,0 +1,16 @@
+<task type="generate">
+	<input mode="embedded">
+		<datasource>
+			<meta>
+				<source>source</source>
+				<target>target</target>
+			</meta>
+		</datasource>
+	</input>
+	<transformation mode="chain">
+		<link>detail/list.xsl</link>
+		<link>detail/plan.xsl</link>
+		<link>detail/process.xsl</link>
+		<link>detail/summarize.xsl</link>
+	</transformation>
+</task>
