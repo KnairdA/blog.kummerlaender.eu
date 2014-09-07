@@ -34,8 +34,9 @@ pre{padding:1em;border-radius:0.75em;color:#f8f8f2;background:#272822}
 #main .article table tr:last-child {border-bottom:none}
 #main .article table tr th{font-weight:normal;padding:0.2em 1em}
 #main .article table tr td{padding:0.2em 1em}
-#main a img{padding:0.2em; border:0.1em solid #e3e8e8; display:block;  margin-left:auto;  margin-right:auto}
-#main a img.clear{border:none}
+#main img{padding:0.2em; border:0.1em solid #e3e8e8; display:block; margin-left:auto; margin-right:auto}
+#main img.full{max-width:100%}
+#main img.clear{border:none}
 #pagination{height:1.5em; margin-top:0.5em}
 #pagination span.disabled{display:none}
 #pagination span a{text-decoration:none; color:#272828}
@@ -68,8 +69,6 @@ pre{padding:1em;border-radius:0.75em;color:#f8f8f2;background:#272822}
 .commentlist ol{margin-top:0.2em; border-top:0.1em solid #e3e8e8}
 .commentlist ol li{background:none; font-size:0.8em}
 .commentlist ol li.dateitem{padding:0; font-weight:bold}
-.project{border-bottom:0.2em dotted #e3e8e8; padding-top:0.5em; padding-bottom:0.5em; overflow:hidden}
-.project img{background:#e3e8e8; border-radius:0.3em; padding:0.2em; margin-right:1em; width:200px; height:150px}
 .lpos{float:left}
 .rpos{float:right}
 .mpos{margin:0 auto; display:block}
@@ -81,7 +80,7 @@ pre{padding:1em;border-radius:0.75em;color:#f8f8f2;background:#272822}
 
 @media screen and (max-width:725px){
 	#content{width:98%}
-	img.full{width:98%}
+	#main img{width:98%}
 	#main .article h2 a{max-width:90%}
 	.columns {column-count:1;-moz-column-count:1;-webkit-column-count:1}
 	.columns .column {width:100%}
