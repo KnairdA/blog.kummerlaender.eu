@@ -63,7 +63,7 @@
 				</div>
 			</div>
 			<div id="last_line">
-				<a href="https://github.com/KnairdA/InputXSLT">Made with XSLT</a>
+				<a href="https://github.com/KnairdA/blog.kummerlaender.eu">Made with XSLT</a>
 				<ul>
 					<li><a href="{$url}/page/contact">Contact</a></li>
 					<li class="last_item"><a href="{$url}/atom.xml">Feed</a></li>
