@@ -18,7 +18,7 @@
 </xsl:template>
 
 <xsl:template match="article/entry">
-	<div class="last article">
+	<div class="article">
 		<h2>
 			<xsl:text>» </xsl:text>
 			<a href="{$url}/article/{@handle}">
@@ -41,6 +41,12 @@
 		</p>
 		<xsl:copy-of select="content/node()"/>
 	</div>
+
+	<div id="isso-thread"></div>
+
+	<script type="text/javascript" src="/comments/js/embed.min.js" data-isso-avatar="false" data-isso-vote="false" data-isso-css="false">
+		<xsl:text> </xsl:text>
+	</script>
 </xsl:template>
 
 </xsl:stylesheet>
