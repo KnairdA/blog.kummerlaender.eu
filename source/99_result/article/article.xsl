@@ -38,6 +38,8 @@
 			</xsl:for-each>
 			<xsl:text> | </xsl:text>
 			<xsl:value-of select="$root/meta/author"/>
+			<xsl:text> | </xsl:text>
+			<a href="#isso-thread">Comments</a>
 		</p>
 		<xsl:copy-of select="content/node()"/>
 	</div>
