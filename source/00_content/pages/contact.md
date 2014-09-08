@@ -1,11 +1,11 @@
 # Contact
 
-**eMail:** adrian[ät]kummerlaender[punkt]eu  
+**eMail:** adrian[at]kummerlaender[dot]eu  
 **Public Key:** [key.kummerlaender.eu](http://key.kummerlaender.eu)  
-**Jabber:** adrian[unterstrich]kummerlaender[ät]jabber[punkt]ccc[punkt]de  
+**Jabber:** adrian[underscore]kummerlaender[at]jabber[dot]ccc[dot]de  
 **Twitter:** [KnairdA](https://twitter.com/KnairdA)  
 **Github:** [KnairdA](https://github.com/KnairdA)  
-**cgit** [code.kummerlaender.eu](http://code.kummerlaender.eu)
+**cgit:** [code.kummerlaender.eu](http://code.kummerlaender.eu)
 
 ### About me
 
