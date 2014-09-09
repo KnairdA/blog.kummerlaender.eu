@@ -33,7 +33,7 @@
 
 	<h2>
 		<xsl:text>» </xsl:text>
-		<a href="{$url}/article/{$handle}">
+		<a href="/article/{$handle}">
 			<xsl:value-of select="$article/title"/>
 		</a>
 	</h2>
@@ -44,7 +44,7 @@
 		</xsl:call-template> 
 		<xsl:text> | </xsl:text>
 		<xsl:for-each select="$article/tags/tag">
-			<a href="{$url}/tag/{.}">
+			<a href="/tag/{.}">
 				<xsl:value-of select="."/>
 			</a>
 		</xsl:for-each>
@@ -60,14 +60,14 @@
 	<div id="pagination">
 		<xsl:if test="@index > 0">
 			<span>
-				<a class="pagination-previous" href="{$url}/{@index - 1}">
+				<a class="pagination-previous" href="/{@index - 1}">
 					<xsl:text>« newer</xsl:text>
 				</a>
 			</span>
 		</xsl:if>
 		<xsl:if test="@index &lt; @total - 1">
 			<span>
-				<a class="pagination-next" href="{$url}/{@index + 1}">
+				<a class="pagination-next" href="/{@index + 1}">
 					<xsl:text>older »</xsl:text>
 				</a>
 			</span>

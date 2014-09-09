@@ -20,7 +20,7 @@
 	<div class="last article">
 		<h2>
 			<xsl:text>» </xsl:text>
-			<a href="{$url}/page/{@handle}">
+			<a href="/page/{@handle}">
 				<xsl:value-of select="title"/>
 			</a>
 		</h2>

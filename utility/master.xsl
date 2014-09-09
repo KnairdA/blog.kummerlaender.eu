@@ -14,13 +14,12 @@
 />
 
 <xsl:variable name="root" select="/datasource"/>
-<xsl:variable name="url" select="$root/meta/url"/>
 
 <xsl:template name="list_tags">
 	<ul>
 		<xsl:for-each select="$root/meta/tags/entry">
 			<li>
-				<a href="{$url}/tag/{@handle}">
+				<a href="/tag/{@handle}">
 					<xsl:value-of select="@handle"/>
 				</a>
 			</li>
@@ -37,7 +36,7 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 
 	<title><xsl:call-template name="title-text"/> @ <xsl:value-of select="$root/meta/title"/></title>
-	<link rel="stylesheet" type="text/css" href="{$url}/main.css" />
+	<link rel="stylesheet" type="text/css" href="/main.css" />
 
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /> 
 </head>
@@ -47,11 +46,11 @@
 			<div id="nav_wrap">
 				<h1><xsl:value-of select="$root/meta/title"/></h1>
 				<ul>
-					<li><a href="{$url}/0">Start</a></li>
-					<li><a href="{$url}/archive">Archive</a></li>
-					<li><a href="{$url}/category/projects">Projects</a></li>
-					<li><a href="{$url}/page/contact">Contact</a></li>
-					<li class="last_item"><a href="{$url}/atom.xml">Feed</a></li>
+					<li><a href="/0">Start</a></li>
+					<li><a href="/archive">Archive</a></li>
+					<li><a href="/category/projects">Projects</a></li>
+					<li><a href="/page/contact">Contact</a></li>
+					<li class="last_item"><a href="/atom.xml">Feed</a></li>
 				</ul>
 			</div>
 			<div id="main">
@@ -65,8 +64,8 @@
 			<div id="last_line">
 				<a href="https://github.com/KnairdA/blog.kummerlaender.eu">Made with XSLT</a>
 				<ul>
-					<li><a href="{$url}/page/contact">Contact</a></li>
-					<li class="last_item"><a href="{$url}/atom.xml">Feed</a></li>
+					<li><a href="/page/contact">Contact</a></li>
+					<li class="last_item"><a href="/atom.xml">Feed</a></li>
 				</ul>
 			</div>
 		</div>

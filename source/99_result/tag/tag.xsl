@@ -31,7 +31,7 @@
 	<li>
 		<xsl:value-of select="date"/>
 		<xsl:text> » </xsl:text>
-		<a href="{$url}/article/{@handle}">
+		<a href="/article/{@handle}">
 			<xsl:value-of select="title"/>
 		</a>
 	</li>

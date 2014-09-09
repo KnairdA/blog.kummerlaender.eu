@@ -48,7 +48,7 @@
 
 <xsl:template match="entry/article">
 	<li>
-		<a href="{$url}/article/{@handle}">
+		<a href="/article/{@handle}">
 			<xsl:value-of select="title"/>
 		</a>
 	</li>

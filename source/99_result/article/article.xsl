@@ -21,7 +21,7 @@
 	<div class="article">
 		<h2>
 			<xsl:text>» </xsl:text>
-			<a href="{$url}/article/{@handle}">
+			<a href="/article/{@handle}">
 				<xsl:value-of select="title"/>
 			</a>
 		</h2>
@@ -32,7 +32,7 @@
 			</xsl:call-template> 
 			<xsl:text> | </xsl:text>
 			<xsl:for-each select="tags/tag">
-				<a href="{$url}/tag/{.}">
+				<a href="/tag/{.}">
 					<xsl:value-of select="."/>
 				</a>
 			</xsl:for-each>

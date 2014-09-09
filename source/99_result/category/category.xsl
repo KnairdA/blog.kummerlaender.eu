@@ -21,7 +21,7 @@
 <xsl:template match="entry/page">
 	<li>
 		<em>»</em>
-		<a href="{$url}/page/{@handle}">
+		<a href="/page/{@handle}">
 			<strong><xsl:value-of select="title"/></strong>
 			<p>
 				<xsl:copy-of select="digest/node()"/>
