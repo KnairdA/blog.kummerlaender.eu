@@ -35,6 +35,7 @@ pre{padding:1em;border-radius:.75em;color:#f8f8f2;background:#272822;white-space
 #main .article table tr:last-child{border-bottom:0}
 #main .article table tr th{font-weight:normal;padding:.2em 1em}
 #main .article table tr td{padding:.2em 1em}
+#main .footnotes {border-top:.3em dotted #e3e8e8}
 #main img{padding:.2em;border:.1em solid #e3e8e8;display:block;margin-left:auto;margin-right:auto}
 #main img.full{max-width:100%}
 #main img.clear{border:0}
