@@ -38,7 +38,7 @@
 	<title><xsl:call-template name="title-text"/> @ <xsl:value-of select="$root/meta/title"/></title>
 	<link rel="stylesheet" type="text/css" href="/main.css" />
 
-	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /> 
+	<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico" /> 
 </head>
 <body>
 	<div id="wrapper">
