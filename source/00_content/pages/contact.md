@@ -9,7 +9,7 @@
 
 Further information about myself may be found on the [about page](/page/about).
 
-### Legal
+## Legal
 
 Responsible for all contents: Adrian Kummerländer
 

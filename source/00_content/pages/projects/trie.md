@@ -4,7 +4,7 @@
 
 The implementation may be found on [Github] or [cgit].
 
-### Current features
+## Current features
 
 * Specializable tree element type
 * Adding, removing and resolving paths in the prefix tree

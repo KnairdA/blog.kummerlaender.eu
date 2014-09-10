@@ -13,14 +13,14 @@ Auswirkungen dieser Möglichkeiten schlagen sich beispielsweise regelmäßig in 
 
 Auch aus Sicht des Datenschutzes und beim Blick auf die AGBs diverser Plattformen sollte einem die Gefahr, die übermäßiges Verlagern von Daten in fremde Hände birgt, bewusst werden.
 
-### Alternativen
+## Alternativen
 
 Es gibt Möglichkeiten das Unterdrücken und Kontrollieren von Kommunikation zumindest so lange das Netz selbst noch verfügbar ist zu erschweren. Ein erster Schritt kann das Ersetzen von Plattformen wie Facebook oder Twitter mit Software wie z.B. [Diaspora](https://joindiaspora.com/) oder [StatusNet](http://status.net/) sein. Daten speichern und Tauschen lässt sich - auch auf Hardware die unter eigener Kontrolle steht - realisieren dank Projekten wie [OwnCloud](http://owncloud.org/). Zum Tauschen von Daten gibt es heute schon weit verbreitete dezentrale Protokolle wie BitTorrent. InstantMessaging ist bequem über [Jabber](http://einfachjabber.de/) möglich. Auch anonymes Nutzen des Internet und anonymes Bereitstellen von Anwendungen im Internet ist mit [Tor](https://www.torproject.org/) machbar.
 
 Diese Dienste lassen sich alle über eigene Server verwenden - wer wie ich einen Schritt weiter gehen möchte kann es auch mit einem Rechner bei sich zu Hause, über die eigene Internetanbindung machen. Hier gibt es dank der zunehmenden Beliebtheit von [ARM-Prozessoren](http://de.wikipedia.org/wiki/ARM-Architektur) einen stetigen Nachschub an Hardware. Beispiele hierfür sind die [CuBox](http://www.solid-run.com/) und die Steckdosenrechner von [Marvell](http://www.marvell.com/solutions/plug-computers/) wie der [SheevaPlug](http://de.wikipedia.org/wiki/SheevaPlug) mit dem ich persönlich über die letzten zwei Jahre sehr gute Erfahrungen gemacht habe.  
 Diese Computer vereinen für die üblichen Fälle gut ausreichende Rechenleistung mit einem sehr geringen Stromverbrauch (aktuell etwa 5 Watt) was auch bei ganzjährlichem Betrieb kaum Kosten entstehen lässt.
 
-### Ausblick
+## Ausblick
 
 Man stelle sich vor jeder hätte einen solchen Server bei sich am Laufen. Dieser Server könnte über eine Diaspora Instanz ein Teil eines globalen, dezentralen, sozialen Netzwerks sein, über einen Jabber-Server Echtzeitkommunikation ermöglichen und über OwnCloud Daten freigeben. Jeder könnte jeden Service anbieten und wenn eine Instanz ausfällt betrifft es nur einen: den Ausgefallenen.  
 Ein Projekt das versucht diese Idee zu verwirklichen ist die [Freedom](http://wiki.debian.org/FreedomBox)[Box](http://freedomboxfndn.mirocommunity.org/video/9/elevate-2011).  

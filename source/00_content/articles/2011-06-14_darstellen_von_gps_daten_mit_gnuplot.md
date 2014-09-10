@@ -69,7 +69,7 @@ def printCsv(gpxPositions):
 ~~~
 {: .language-python}
 
-### Plotten mit gnuplot
+## Plotten mit gnuplot
 
 <a href="http://imgur.com/RHlNp"><img src="http://i.imgur.com/RHlNpl.jpg" alt="Gnuplot output" class="clear full"/></a>
 

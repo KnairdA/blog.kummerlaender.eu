@@ -60,6 +60,6 @@ Wenn Debian jetzt auf dem SheevaPlug läuft und man sich über SSH einloggen kon
 
 Über die Paketverwaltung kann man jetzt ganz einfach die benötigte Software installieren. Ich setzte auf meinem Plug z.B. lighttpd als Webserver mit PHP5 und MySQL für diese Website ein. Es empfielt sich /var und /tmp auszulagern um Löschzyklen zu sparen. Für /tmp eignet sich eine ramdisk.
 
-### Erfahrungen
+## Erfahrungen
 
 Ein Debian ist eine gute Alternative zu dem vorinstallierten Ubuntu 9.04. Denn dieses wirft Fehler bei booten aus und hat anfangs Konfigurationsprobleme. Auch braucht es im Vergleich zum Debian eine Ewigkeit zum booten. Das mag bei einem Server nicht wichtig sein, aber ich finde es dennoch schön schnell rebooten zu können. Das gute ist, dass man wenn man schon Erfahrung mit Ubuntu hat auch sehr gut mit Debian zurechtkommt. Aber Ubuntu Karmic lässt sich leider nicht mehr auf dem SheevaPlug installieren. Der SheevaPlug ist erstaunlich schnell. Er erstellt die Seiten etwa doppelt so schnell wie die Server des vorher von mir verwendeten Gratishoster “bplaced.net”. Auch hat er einen sehr geringen Stromverbrauch von nur 5 Watt. Und selbst wenn Webhostingangebote zumindest in der Internetanbindung schneller sein mögen, hat man mit einem SheevaPlug einen sehr günstigen Root-Server, auf dem man tun und lassen kann was man will.

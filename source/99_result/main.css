@@ -20,7 +20,7 @@ pre{padding:1em;border-radius:.75em;color:#f8f8f2;background:#272822;white-space
 #main h2 a{font-size:.8em;text-decoration:none !important;color:#272828;font-weight:normal;display:inline-block;vertical-align:middle;max-width:95%}
 #main h2 a:hover{text-decoration:underline !important}
 #main h3{font-size:1.05em;font-weight:normal;margin-bottom:.5em;border-bottom:.1em solid #e3e8e8}
-#main h4{font-weight:normal;font-size:1.25em;margin:0}
+#main h4{font-size:1.05em;font-weight:normal;margin-bottom:.5em;border-bottom:.1em solid #e3e8e8}
 #main .article a{text-decoration:underline;color:#272828}
 #main .article a:hover{color:black}
 #main .article ul{float:none;margin-left:2em;text-align:left}
@@ -51,6 +51,7 @@ pre{padding:1em;border-radius:.75em;color:#f8f8f2;background:#272822;white-space
 #last_line a:hover{text-decoration:underline}
 #last_line ul{margin-top:-0.2em;float:right;padding:.4em 0}
 #isso-thread{margin-top:1em;font-size:.95em}
+#isso-thread h4{font-weight:normal;font-size:1.25em;margin:0}
 #isso-thread .form-wrapper{padding:1em;overflow:hidden}
 #isso-thread .form-wrapper input{border:.3em solid #e3e8e8;margin:.3em 0 .3em 0}
 #isso-thread .form-wrapper .textarea{border:.3em solid #e3e8e8;width:100%;height:8em;color:#272828}
@@ -71,7 +72,7 @@ pre{padding:1em;border-radius:.75em;color:#f8f8f2;background:#272822;white-space
 .columns{column-count:2;-moz-column-count:2;-webkit-column-count:2;column-gap:0;-moz-column-gap:0;-webkit-column-gap:0}
 .columns a{color:#272828;text-decoration:none}
 .columns a:hover{text-decoration:underline}
-.column {-webkit-column-break-inside:avoid;-moz-column-break-inside:avoid;column-break-inside:avoid}
+.column{-webkit-column-break-inside:avoid;-moz-column-break-inside:avoid;column-break-inside:avoid}
 .taglist ul{padding:.2em;float:none;overflow:hidden}
 .taglist ul li{margin:.2em 0 .2em 0;padding:.2em}
 .articlelist ol{margin:0;padding:.3em;list-style:none}

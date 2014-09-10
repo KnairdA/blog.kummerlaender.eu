@@ -68,7 +68,7 @@ Das leere Template `xsl:template match="text()"` sorgt dafür, dass alle XML-Zwe
 
 Zum Anpassen des Datums verwende ich - wie auch in diesem Blog - die [date-time.xsl](http://symphony-cms.com/download/xslt-utilities/view/20506/) Transformation.
 
-### Generieren des RSS Feed
+## Generieren des RSS Feed
 
 Mit der eben beschriebenen XSLT lässt sich jetzt in drei Schritten das fertige RSS generieren:
 

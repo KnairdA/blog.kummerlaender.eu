@@ -34,7 +34,7 @@ We could write appropriate classes to wrap our object instance pointers by ourse
 shiny new _smart pointer_ templates that give us flexible and standardised templates that do just that: wrap our pointers and limit their
 lifetime to a scope.
 
-### std::unique_ptr
+## std::unique_ptr
 
 > A unique pointer is an object that owns another object and manages that other object through a pointer.
 > More precisely, a unique pointer is an object u that stores a pointer to a second object p and will dispose of
@@ -48,7 +48,7 @@ contained pointer - because of that the `std::unique_ptr` only implies that it i
 This possibility to retrieve the raw pointer is not a weakness because it enables us to use normal raw pointers as a way to imply: you are allowed to
 use this object instance in any way you like, but you are not required to think about its destruction.
 
-### std::shared_ptr
+## std::shared_ptr
 
 > The shared\_ptr class template stores a pointer, usually obtained via new. shared\_ptr implements semantics
 > of shared ownership; the last remaining owner of the pointer is responsible for destroying the object, or
@@ -66,7 +66,7 @@ the subscriber list. If we use a `std::shared_ptr` for this example we can regul
 it from our subscriber list. As long as we have one or more owners outside the factory that are using the object to retrieve events we know that it is still
 required to be supplied, if that is no longer the case we can safely remove it from the subscriber list.
 
-### std::weak_ptr
+## std::weak_ptr
 
 > The weak\_ptr class template stores a weak reference to an object that is already managed by a shared\_ptr.
 > To access the object, a weak\_ptr can be converted to a shared_ptr using the member function lock.  
@@ -78,7 +78,7 @@ that a function returning such a smart pointer is implying that we grant the cal
 the contained object instance does not exist anymore. We can not assume that we have a usable instance and will have to check before converting the `std::weak_ptr` to
 a `std::shared_ptr`.
 
-### What I prefer to use
+## What I prefer to use
 
 As I already hinted earlier I am only seldomly using a `std::shared_ptr` and the accompanying `std::weak_ptr` and am mostly relying on the combination of
 a single, distinct object owning `std::unique_ptr` that passes around "use only" raw pointers to other objects that are guaranteed to not exceed the lifetime of the owner

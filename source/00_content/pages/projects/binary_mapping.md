@@ -6,7 +6,7 @@ These structures can then be traversed using integrated containers and iterators
 
 A explanation of an earlier version of this template library can be found on this [blog]. The source code is available via both [Github] and [cgit].
 
-### Current features
+## Current features
 
 * Support for any kind of flat structure that can be expressed using integral types and arbitrarily sized byte-arrays
 * Support for serialization in either big or little endianess

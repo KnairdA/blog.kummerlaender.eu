@@ -42,6 +42,18 @@
 	</xsl:copy>
 </xsl:template>
 
+<xsl:template match="h2" mode="embellish">
+	<h3>
+		<xsl:copy-of select="node()"/>
+	</h3>
+</xsl:template>
+
+<xsl:template match="h3" mode="embellish">
+	<h4>
+		<xsl:copy-of select="node()"/>
+	</h4>
+</xsl:template>
+
 <xsl:template match="pre" mode="embellish">
 	<xsl:call-template name="highlighter">
 		<xsl:with-param name="source" select="code/text()"/>

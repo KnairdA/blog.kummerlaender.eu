@@ -4,7 +4,7 @@
 
 The source code is available on both my [Github] profile and [cgit].
 
-### Current features
+## Current features
 
 * Bidirectional iteration through unicode codepoints
 * The class itself does not rely on any external libraries

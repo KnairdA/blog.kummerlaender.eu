@@ -49,7 +49,7 @@ Weiterhin gibt es das u.a. in [NEMO](http://wiki.merproject.org/wiki/Nemo) verwe
 
 [Gnome 3](http://www.gnome.org/gnome-3/) sieht nach einer für Tablets gut geeigneten Oberfläche aus und fühlt sich nach meinen Tests auch sehr danach an. Für Smartphones ist die aktuelle Gnome Iteration jedoch aus meiner Sicht momentan nicht geeignet da dort schlichtweg zu wenig Bildschirmfläche vorhanden ist.
 
-### Ausblick
+## Ausblick
 
 Zusammenfassend lässt sich sagen, dass das Hauptproblem momentan nicht fehlende Software sondern fehlende Hardware-Plattformen sind. Es gibt keinen Hersteller der sich zumindest mit einer kleinen Produktreihe voll zu Open Source und Linux bekennt. Die zwei empfehlenswertesten Optionen sind aus meiner Sicht entweder das N900 oder dessen Nachfolger N9 - der Rest des Marktes hat sich weitgehend auf iOS und Android Geräte beschränkt, es fehlt an wirklichen Alternativen zu diesen beiden. Das ein Markt für eine solche Alternative vorhanden ist lässt sich allein schon daran erkennen wie gefragt das Nokia N9 in Ländern ist für die Nokia es garnicht anbieten will - vermutlich um Windows Phone nicht zu gefährden. Es gibt dann schon eine gewisse Genugtung wenn gerüchteweise mehr N9 Exemplare als Lumina's (gleiches Gehäuse, Windows Phone) verkauft werden ;)
 

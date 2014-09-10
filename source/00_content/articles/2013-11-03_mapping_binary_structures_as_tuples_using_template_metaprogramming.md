@@ -12,7 +12,7 @@ For the purpose of this article I am going to limit myself to flat structures wi
 write mappings like [EdgeId](https://github.com/KnairdA/GraphStorage/blob/master/src/storage/id/edge_id.cc) in a more compact and efficient way. This also includes support for handling
 differences in endianness and In-place modification of the structure fields. 
 
-### Mapping buffers as tuples
+## Mapping buffers as tuples
 
 To be able to easily work with structure definitions using template metaprogramming I am relying on the standard libraries [_std::tuple_](http://en.cppreference.com/w/cpp/utility/tuple)
 template.
@@ -123,7 +123,7 @@ std::cout << mapping.get<1>() << std::endl;
 ~~~
 {: .language-cpp}
 
-### Endianness
+## Endianness
 
 As you may remember this does not take endianness into account as I defined as a requirement in the beginning. I first thought about including support for different endianness types into the
 _BinaryMapping_ template class which worked, but led to problems as soon as I mixed calls to _get_ and _set_. The resulting problems could of course have been fixed but this would probably
@@ -212,7 +212,7 @@ It should be evident that the way both the _serialize_ and _deserialize_ templat
 is that no actual _std::tuple_ instantiation instance is touched and instead of setting pointers to the buffer we are only reordering the bytes of each section of the buffer corresponding to
 a tuple element. This results in a complete In-place conversion between different byte orderings using the methods provided by a _ByteSorter_ template such as _BigEndianSorter_.
 
-### Conclusion
+## Conclusion
 
 At last I am now able to do everything I planned in the beginning in a very compact way using the _Serializer_, _TupleReader_ and _BinaryMapping_ templates. In practice this now looks like this:
 

@@ -33,7 +33,7 @@ tmpfs	/tmp	tmpfs	nodev,nosuid	0	0
 ~~~
 {: .language-sh}
 
-### Verschlüsselung?
+## Verschlüsselung?
 
 Eigentlich bin ich was Daten angeht sehr paranoid - meine relevanten Speichermedien sind alle vollverschlüsselt, dass gilt auch für die Betriebsystem-Partitionen. Ich achte sehr darauf,
 dass keinerlei eigentlich verschlüsselte Daten in unverschlüsselte Gefilde "ausbrechen"... für die SSD muss ich vorerst auf einen Teil davon verzichten.  
@@ -43,6 +43,6 @@ Dank hdparm kann diese ja in einen Ruhemodus versetzt werden und muss so nicht d
 
 Die komplette Verschlüsselung der SSD wird jedoch erst nach einem deutlich größeren Hardwareupgrade wieder Sinn machen. So schaffen aktuelle Prozessoren dank des [AES-NI](http://en.wikipedia.org/wiki/AES_instruction_set) Befehlssatzes hunderte MB pro Sekunde Durchsatz, dieser ist dann auch für eine SSD wieder groß genug. 
 
-### Fazit
+## Fazit
 
 Alles in allem bin ich mit meinem Umstieg trotz der nötigen Abstriche sehr zurieden und möchte nicht mehr auf ein System ohne SSD zurück. Denen, die sich näher mit dem Thema auseinandersetzen wollen, empfehle ich die entsprechende Seite im englischen Arch-Wiki: [SSD](https://wiki.archlinux.org/index.php/SSD) und zur Kaufberatung die Tests auf [StorageReview.com](http://www.storagereview.com/).

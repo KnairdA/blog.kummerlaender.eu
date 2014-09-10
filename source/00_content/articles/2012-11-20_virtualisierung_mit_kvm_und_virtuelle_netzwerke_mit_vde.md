@@ -8,7 +8,7 @@ rumfliegen haben. Was ich will, ist also eine "richtige" Netzwerk-Konfiguration 
 
 Als Virtualisierungs-System setze ich auf KVM, die Distribution der Wahl ist weiterhin ArchLinux.
 
-### Kernel Based Virtual Machine
+## Kernel Based Virtual Machine
 
 [KVM](http://www.linux-kvm.org/page/Main_Page) ist das direkt im Linux-Kernel integrierte Virtualisierung-System. Einzige Voraussetzung dafür ist ein Prozessor mit Virtualisierungs-Funktionen, diese sollten die meisten der in den
 letzten Jahren auf den Markt gekommenen Prozessoren besitzen - selbst mein Core Duo aus 2007 führt KVM einwandfrei aus. Ansonsten verhält sich KVM identisch zu [QEMU](http://wiki.qemu.org/Main_Page), der einzige Unterschied ist,
@@ -35,7 +35,7 @@ Dieser verwendet das als erster Parameter übergebene Gerät als Festplatte und 
 als Wert des Parameters `-vnc` auch eine von einem Doppelpunkt angeführte Zahl übergeben werden um die Grafik-Ausgabe der VM an einen VNC-Server anzubinden (z.B. `-vnc :1` für `127.0.0.1:1`). Diese
 Funktion verwende ich nicht, da ich ausschließlich über das interne Netzwerk die im Gast installierten Dienste nutze und administrative Tätigkeiten immer über SSH durchführe.
 
-### Netzwerken mit VDE
+## Netzwerken mit VDE
 
 [VDE](http://wiki.virtualsquare.org/wiki/index.php/VDE_Basic_Networking) steht für Virtual Distributed Ethernet und ermöglicht genau das was der Name erahnen lässt: Virtuelle Switches die beispielsweise VMs in einem Host internen LAN verbinden können.
 
@@ -88,7 +88,7 @@ esac
 
 Anpassbar ist hierbei das Interface, um z.B. daheim `eth0` und unterwegs wahlweise `wlan0` oder `usb0` verwenden zu können.
 
-### KVM Hardware Error
+## KVM Hardware Error
 
 Nach einer Kernel Aktualisierung im ArchLinux Gast-System, kam es beim Neustart plötzlich zu dieser etwas erschreckenden Meldung:
 
@@ -127,7 +127,7 @@ modprobe kvm_intel emulate_invalid_guest_state=0
 
 Um den `emulate_invalid_guest_state` Parameter dauerhaft zu setzen reicht ein Eintrag in `/etc/modprobe.d`.
 
-### Fazit
+## Fazit
 
 Mithilfe der beschriebenen Konfiguration und den Scripts lassen sich KVM VMs unsichtbar im Hintergrund starten und in einem Host-internen virtuellen LAN ansteuern. Bei Bedarf kann dieses virtuelle Netz mithilfe von Routen erweitert werden. Für den Netzzugriff in den Gast-Systemen reicht eine einfache statische Konfiguration.  
 Ich werde das Ganze in nächster Zeit vermutlich noch etwas  erweitern und verbessern, aber diese Grundlage ist auf jeden Fall besser als die von mir am Anfang genutzten SSH-Tunnel zwischen Gast und Host. 
