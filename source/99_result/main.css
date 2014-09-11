@@ -15,7 +15,7 @@ pre{padding:1em;border-radius:.75em;color:#f8f8f2;background:#272822;white-space
 #main{overflow:hidden}
 #main .article{border-bottom:.3em dotted #e3e8e8;padding-bottom:.5em;margin-top:1em;text-align:justify}
 #main .last{border:0}
-#main p{margin-bottom:.7em}
+#main p{margin-bottom:.7em;text-align:justify}
 #main h2{font-size:1.4em;margin:0;color:#F80}
 #main h2 a{font-size:.8em;text-decoration:none !important;color:#272828;font-weight:normal;display:inline-block;vertical-align:middle;max-width:95%}
 #main h2 a:hover{text-decoration:underline !important}
@@ -61,7 +61,7 @@ pre{padding:1em;border-radius:.75em;color:#f8f8f2;background:#272822;white-space
 #isso-root a{text-decoration:underline;color:#272828}
 #isso-root a:hover{color:black}
 #isso-root .isso-follow-up{margin-left:2em;padding-top:.5em}
-#isso-root .isso-comment{border-top:.3em solid #e3e8e8;margin-bottom:.5em;text-align:justify}
+#isso-root .isso-comment{border-top:.3em solid #e3e8e8;margin-bottom:.5em}
 #isso-root .isso-comment-header{font-size:.75em;padding:.3em 0 .3em 0}
 #isso-root .isso-comment-header .spacer{visibility:hidden}
 #isso-root .isso-comment-header a{text-decoration:none;margin:0 .1em 0 .1em}
@@ -69,10 +69,10 @@ pre{padding:1em;border-radius:.75em;color:#f8f8f2;background:#272822;white-space
 #isso-root .isso-comment-footer{overflow:hidden;font-size:.75em}
 #isso-root .isso-comment-footer .reply{float:right}
 .archiv{margin-top:1em}
-.columns{column-count:2;-moz-column-count:2;-webkit-column-count:2;column-gap:0;-moz-column-gap:0;-webkit-column-gap:0}
+.columns{column-count:2;-moz-column-count:2;-webkit-column-count:2;column-gap:1em;-moz-column-gap:1em;-webkit-column-gap:1em}
 .columns a{color:#272828;text-decoration:none}
 .columns a:hover{text-decoration:underline}
-.column{-webkit-column-break-inside:avoid;-moz-column-break-inside:avoid;column-break-inside:avoid}
+.column{-webkit-column-break-inside:avoid;break-inside:avoid-column;overflow:hidden}
 .taglist ul{padding:.2em;float:none;overflow:hidden}
 .taglist ul li{margin:.2em 0 .2em 0;padding:.2em}
 .articlelist ol{margin:0;padding:.3em;list-style:none}
