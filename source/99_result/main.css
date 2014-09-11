@@ -51,7 +51,7 @@ pre{padding:1em;border-radius:.75em;color:#f8f8f2;background:#272822;white-space
 #last_line a:hover{text-decoration:underline}
 #last_line ul{margin-top:-0.2em;float:right;padding:.4em 0}
 #isso-thread{margin-top:1em;font-size:.95em}
-#isso-thread h4{font-weight:normal;font-size:1.25em;margin:0}
+#isso-thread h4{font-weight:normal;font-size:1.25em;margin:0;border:none}
 #isso-thread .form-wrapper{padding:1em;overflow:hidden}
 #isso-thread .form-wrapper input{border:.3em solid #e3e8e8;margin:.3em 0 .3em 0}
 #isso-thread .form-wrapper .textarea{border:.3em solid #e3e8e8;width:100%;height:8em;color:#272828}
