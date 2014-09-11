@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet
 	version="1.0"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:xalan="http://xml.apache.org/xalan"
 	exclude-result-prefixes="xalan"
 >
 
 <xsl:include href="[utility/master.xsl]"/>
+<xsl:include href="[utility/xhtml.xsl]"/>
 
 <xsl:variable name="meta">
 	<datasource type="main"    mode="iterate" source="02_meta/categories.xml" target="category"/>
@@ -24,7 +26,7 @@
 		<a href="/page/{@handle}">
 			<strong><xsl:value-of select="title"/></strong>
 			<p>
-				<xsl:copy-of select="digest/node()"/>
+				<xsl:apply-templates select="digest/node()" mode="xhtml"/>
 			</p>
 		</a>
 	</li>

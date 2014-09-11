@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet
 	version="1.0"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 >
 
 <xsl:include href="[utility/master.xsl]"/>
+<xsl:include href="[utility/xhtml.xsl]"/>
 <xsl:include href="[utility/date-time.xsl]"/>
 
 <xsl:variable name="meta">
@@ -51,7 +53,8 @@
 		<xsl:text> | </xsl:text>
 		<xsl:value-of select="$root/meta/author"/>
 	</p>
-	<xsl:copy-of select="$article/content/*"/>
+
+	<xsl:apply-templates select="$article/content/node()" mode="xhtml"/>
 </xsl:template>
 
 <xsl:template match="page/entry">

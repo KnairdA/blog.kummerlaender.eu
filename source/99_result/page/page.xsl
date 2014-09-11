@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet
 	version="1.0"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 >
 
 <xsl:include href="[utility/master.xsl]"/>
+<xsl:include href="[utility/xhtml.xsl]"/>
 
 <xsl:variable name="meta">
 	<datasource type="main"    mode="iterate" source="01_data/pages.xml" target="page"/>
@@ -25,7 +27,8 @@
 			</a>
 		</h2>
 		<p class="info"/>
-		<xsl:copy-of select="content/*"/>
+
+		<xsl:apply-templates select="content/node()" mode="xhtml"/>
 	</div>
 </xsl:template>
 
