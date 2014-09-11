@@ -1,1 +1,0 @@
-../../articles/2010-12-09_plugbox_linux_ein_archlinux_port_fuer_den_sheevaplug.md

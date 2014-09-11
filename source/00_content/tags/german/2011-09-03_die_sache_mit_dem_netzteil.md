@@ -1,1 +1,0 @@
-../../articles/2011-09-03_die_sache_mit_dem_netzteil.md
