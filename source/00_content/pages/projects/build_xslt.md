@@ -38,6 +38,6 @@ While BuildXSLT offers enough flexibility for all kinds of different XSLT based 
 {: .language-xsl}
 
 [InputXSLT]: /page/input_xslt/
-[static site generator]: https://github.com/KnairdA/blog.kummerlaender.eu/
+[static site generator]: /page/this_website/
 [Github]: https://github.com/KnairdA/BuildXSLT/
 [cgit]: http://code.kummerlaender.eu/BuildXSLT/
