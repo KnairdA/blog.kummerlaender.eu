@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet
 	version="1.0"
+	xmlns="http://www.w3.org/2005/Atom"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 >
 
@@ -30,28 +31,45 @@
 	<xsl:copy/>
 </xsl:template>
 
-<xsl:template match="/">
-	<feed xmlns="http://www.w3.org/2005/Atom">
-		<id><xsl:value-of select="$url"/></id>
-		<title><xsl:value-of select="datasource/meta/title"/></title>
+<xsl:template match="datasource">
+	<feed>
+		<link href="{$url}/atom.xml" rel="self" />
+
+		<id>
+			<xsl:value-of select="concat($url, '/')"/>
+		</id>
+		<title>
+			<xsl:value-of select="meta/title"/>
+		</title>
 		<author>
 			<name>
 				<xsl:value-of select="$author"/>
 			</name>
 		</author>
+		<updated>
+			<xsl:value-of select="articles/entry[1]/date/full"/>
+			<xsl:text>T00:00:01+02:00</xsl:text>
+		</updated>
 
-		<xsl:apply-templates select="datasource/articles/entry[position() &lt;= 5]"/>
+		<xsl:apply-templates select="articles/entry[position() &lt;= 5]"/>
 	</feed>
 </xsl:template>
 
-<xsl:template match="datasource/articles/entry">
+<xsl:template match="articles/entry">
 	<entry xmlns="http://www.w3.org/2005/Atom">
+		<id>
+			<xsl:value-of select="$url"/>
+			<xsl:text>/article/</xsl:text>
+			<xsl:value-of select="@handle"/>
+		</id>
 		<title>
 			<xsl:value-of select="title"/>
 		</title>
 		<link>
 			<xsl:attribute name="href">
-				<xsl:value-of select="$url"/>/article/<xsl:value-of select="@handle"/>
+				<xsl:value-of select="$url"/>
+				<xsl:text>/article/</xsl:text>
+				<xsl:value-of select="@handle"/>
 			</xsl:attribute>
 		</link>
 		<content type="xhtml">
