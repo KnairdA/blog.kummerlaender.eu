@@ -6,13 +6,13 @@ OpenSlides ist ein auf dem Python-Webframework [Django](https://www.djangoprojec
 
 Das UI ist dabei in den Administrationsbereich, über den sämtliche Daten eingegeben werden können, und eine Beamer-Ansicht geteilt. Beide dieser Komponenten laufen in einem gewöhnlichen Webbrowser. Das Aussehen lässt sich also einfach durch Modifikation der Templates und der CSS-Formatierungen an die eigenen Wünsche anpassen. 
 
-<a href="http://imgur.com/eNDNN"><img src="http://i.imgur.com/eNDNNl.jpg" alt="" title="KPT OpenSlides" class="full"/></a>
+<img src="http://static.kummerlaender.eu/media/kpt_it.jpg" alt="KPT OpenSlides" class="full"/>
 
 Nachdem ich anfangs alle Wahlen, bekannten Teilnehmer und Anträge in das Redaktionsystem eingespiesen hatte, ließ sich am Parteitag selbst dann mit wenigen Mausklicks eine ansprechende Präsentation des aktuellen Themas erzeugen.  
 Wahlergebnisse waren ebenso wie die Annahme oder Ablehnung eines Antrags über entsprechende Formulare schnell eingepflegt und dargestellt.
 Sehr gefallen hat mir im Vorfeld auch die Möglichkeit der Generierung von Antragsbüchern als PDF.
 
-<a href="http://imgur.com/NzwVH"><img src="http://i.imgur.com/NzwVHl.png" alt="" title="KPT OpenSlides" class="full"/></a>
+<img src="http://static.kummerlaender.eu/media/kpt_openslides.png" alt="KPT OpenSlides" class="full"/>
 
 Der Funktionsumfang von OpenSlides geht jedoch über die bloße Darstellung der TO auf einem Beamer hinaus. So kann wenn gewünscht jeder Teilnehmer über sein eigenes Endgerät auf das Webinterface zugreifen und als Deligierter an der Versammlung teilnehmen - also Abstimmen, Wählen und Anträge stellen.  
 Theoretisch ermöglicht es diese Software also - bei entsprechender Authentifizierung - die Durchführung von dezentralen Versammlungen. Aber auch wenn dies z.B. aufgrund von zur Nachvollziehbarkeit nötiger Klarnamenspflicht nicht in Frage kommt, ergibt sich doch so für die Teilnehmer immerhin die Möglichkeit den Ablauf auf einem eigenen Gerät nachzuverfolgen.

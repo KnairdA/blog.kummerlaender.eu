@@ -12,7 +12,7 @@ auch unter diesem Namen als Album veröffentlicht wurde. Somit war für mich ab 
 lassen konnte. Und ich wurde nicht enttäuscht, das drei Stunden andauernde Konzert war fantastisch und bewegt sich für mich außerhalb jeder Skala, die man errichten könnte. Im Folgenden werde
 ich deshalb einfach einen Ausschnitt des, auch auf DVD aufgenommenen, Konzertes für sich sprechen lassen:
 
-<a href="https://www.youtube.com/watch?v=rxd6sxLxdys"><img src="http://i.imgur.com/hoPnKLUl.jpg" alt="" title="Epica Retrospect Unleashed" class="full"/></a>
+<a href="https://www.youtube.com/watch?v=rxd6sxLxdys"><img src="http://static.kummerlaender.eu/media/retrospect_unleashed.jpg" alt="Epica Retrospect Unleashed" title="Epica Retrospect Unleashed" class="full"/></a>
 
 Neben Epica-eigenen Liedern, wie dem obigen Titel _Unleashed_ des 2009 erschienenen Albums _Design Your Universe_, spielte das Ensemble auch Cover von klassischen Stücken wie _Stabat Mater Dolorosa_ im Duett mit der aktuellen
 Nightwish-Sängerin Floor Jansen, den _Imperial March_ des Starwars-Soundtracks sowie ein Medley der orchestralen Fassungen einiger Epica-Lieder. Das Orchester und der Chor waren also optimal
@@ -34,7 +34,7 @@ nachvollziehen. Werbung war nicht übermäßig und wenn dann hauptsächlich auf 
 Open-Air Veranstaltung so gut erlebt habe, Kritik üben. 
 Die diesjährige Band-Aufstellung des Festivals war aus meiner Sicht sehr gut, besonders zugesagt haben mir in zufälliger Reihenfolge Nightwish, Powerwolf, Sabaton, Trivium, das Lingua Mortis Orchestra und Alestorm. Als Ausschnitt hier Nightwish's _Ghost Love Score_:
 
-<a href="https://www.youtube.com/watch?v=JYjIlHWBAVo"><img src="http://i.imgur.com/q3E6qx1l.jpg" alt="" title="Nightwish Showtime, Storytime Ghost Love Score" class="full"/></a>
+<a href="https://www.youtube.com/watch?v=JYjIlHWBAVo"><img src="http://static.kummerlaender.eu/media/nightwish_ghost_love_score.jpg" alt="Nightwish Showtime, Storytime Ghost Love Score" title="Nightwish Showtime, Storytime Ghost Love Score" class="full"/></a>
 
 Neben Metal-Konzerten besuche ich auch gerne Konzerte der in meiner Gegend angesiedelten sinfonischen Blasorchester. Besonders hervorheben möchte ich dieses Jahr das in Kooperation mit einer eigens gegründeten Rock-Band durchgeführte Konzert der [Stadtmusik Stockach](http://www.musikverein-stockach.de/). Bei diesem im Oktober stattgefundenen mit [_Symphonic meets Rock_](http://www.wochenblatt.net/heute/nachrichten/article/wenn-die-grenzen-fallen.html) betitelten Konzert spielte die Stadtmusik meines Heimatortes u.a. das _Concerto for Group and Orchestra_ von Jon Lord. 
 
