@@ -11,7 +11,7 @@
 	<target     mode="plain" value="paginated_articles.xml"/> 
 </xsl:variable>
 
-<xsl:variable name="total" select="floor(count(datasource/articles/entry) div 2)"/>
+<xsl:variable name="total" select="ceiling(count(datasource/articles/entry) div 2)"/>
 
 <xsl:template match="articles/entry[position() mod 2 = 1]">
 	<entry index="{floor(position() div 2)}" total="{$total}">
