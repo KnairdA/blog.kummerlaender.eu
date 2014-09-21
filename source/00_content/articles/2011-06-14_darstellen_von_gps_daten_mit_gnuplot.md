@@ -71,7 +71,7 @@ def printCsv(gpxPositions):
 
 ## Plotten mit gnuplot
 
-<img src="http://static.kummerlaender.eu/media/gnuplot_gpx.jpg" alt="Gnuplot output" class="clear full"/>
+![Gnuplot output](http://static.kummerlaender.eu/media/gnuplot_gpx.jpg){: .full .clear}
 
 Eine solche, dreidimensionale Ausgabe der GPS Daten zu erzeugen ist mit der `splot`-Funktion sehr einfach.
 
@@ -102,4 +102,4 @@ Falls jemand den Artikel mit meinen Daten nachvollziehen möchte - das GPX-File 
 
 Zum Schluss hier noch ein Blick vom Weg auf den Kronberg Richtung Jakobsbad im Appenzell:
 
-<img src="http://static.kummerlaender.eu/media/kronberg.jpg" alt="Aussicht auf Jakobsbad im Appenzell" class="full"/>
+![Aussicht auf Jakobsbad im Appenzell](http://static.kummerlaender.eu/media/kronberg.jpg){: .full}

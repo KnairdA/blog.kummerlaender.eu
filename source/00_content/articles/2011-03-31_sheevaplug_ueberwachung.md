@@ -4,7 +4,7 @@ Um den Überblick über die Auslastung und den Traffic meines SheevaPlugs zu beh
 
 Den Systemmonitor Conky lasse ich mit dem Befehl `ssh -X -vv -Y -p 22 adrian@asterix "conky -c /home/adrian/.conkyrc"` über X-forwarding in meiner XFCE-Session anzeigen. Das klappt einwandfrei und ergibt zusammen mit dieser [Conky-Konfiguration](http://adrianktools.redirectme.net/files/.conkyrc) und einer lokalen Conky-Instanz folgendes Bild:
 
-<img alt="Zwei Conky-Instanzen unter XFCE" src="http://static.kummerlaender.eu/media/remote_conky.jpg" class="full" />
+![Zwei Conky-Instanzen unter XFCE](http://static.kummerlaender.eu/media/remote_conky.jpg){: .full}
 
 Zusätzlich loggt der SheevaPlug regelmäßig die aktuellen Systemdaten wie CPU-Auslastung, Netzwerkverkehr und belegten Arbeitsspeicher und generiert sie zu Graphen die mir dann jede Nacht per eMail zugesand werden.
 Zum Loggen der Daten verwende ich dstat das mit folgendem, von einem Cron-Job gestarteten Befehl aufgerufen wird:
@@ -87,7 +87,7 @@ s.quit()
 
 Als Endergebniss erhalte ich dann täglich solche Grafiken per Mail:
 
-<img alt="CPU Plot" class="clear full" src="http://static.kummerlaender.eu/media/cpu_plot.jpg" />
+![CPU Plot](http://static.kummerlaender.eu/media/cpu_plot.jpg){: .full .clear}
 
 Ich finde es immer wieder erstaunlich mit wie wenigen Zeilen Quelltext man interessante Sachen unter Linux erzeugen kann – oder besser wie viel Programme wie gnuplot mit nur wenigen Anweisungen erzeugen können. So hat das komplette Schreiben dieser Scripts mit Recherche nur etwa 1,5 Stunden gedauert – inklusive Testen.  
 Alle verwendeten Programme sind in den ArchLinux Paketquellen vorhanden – auch in denen von PlugBox-Linux, einer Portierung von ArchLinux auf ARM-Plattformen die ich nur immer wieder empfehlen kann – besonders nach den jetzt oft erscheinenden Paket-Updates. Aber dazu auch dieser Artikel: [Plugbox Linux – Ein ArchLinux Port für den SheevaPlug](/article/plugbox_linux_ein_archlinux_port_fuer_den_sheevaplug/).
