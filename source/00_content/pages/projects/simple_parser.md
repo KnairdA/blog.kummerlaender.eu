@@ -11,7 +11,13 @@ This application marks the first steps in C++ I took a couple of years back and 
 * Calculating terms with basic operators while respecting the priority of each operator
 * Support for parentheses
 * Support for alphabetic constants
-* Export of the expression tree as [Graphviz] dot for visualization
+* Export of the expression tree as [Graphviz] `dot` for visualization
+
+## Visualization
+
+The ability to export the internal binary expression tree resulting from the parsed term as [Graphviz] `dot` is useful for both visualization and debugging purposes. In the following image you can see the depiction of the tree resulting from the arbitrarily chosen term `2.5*(2+3-(3/2+1*(21+11+(5*2))))`:
+
+![Visualization of the parsed tree using Graphviz](http://static.kummerlaender.eu/media/parser_tree.png){: .full}
 
 [Graphviz]: http://www.graphviz.org/
 [Github]: https://github.com/KnairdA/SimpleParser/
