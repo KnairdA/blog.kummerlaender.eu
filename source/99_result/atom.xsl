@@ -25,7 +25,8 @@
 
 <xsl:template match="datasource">
 	<feed>
-		<link href="{$url}/atom.xml" rel="self" />
+		<link href="{$url}/atom.xml" rel="self"      title="/home/adrian"         type="application/atom+xml"/>
+		<link href="{$url}"          rel="alternate" title="Start @ /home/adrian" type="text/xhtml"/>
 
 		<id>
 			<xsl:value-of select="concat($url, '/')"/>
@@ -57,7 +58,7 @@
 		<title>
 			<xsl:value-of select="title"/>
 		</title>
-		<link>
+		<link rel="alternate" title="{title}">
 			<xsl:attribute name="href">
 				<xsl:value-of select="$url"/>
 				<xsl:text>/article/</xsl:text>
