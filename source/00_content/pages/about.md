@@ -1,6 +1,6 @@
 # About me
 
-![picture of me in Scotland](/media/me_header.jpg){: .full .clear}
+![picture of me in Scotland](/media/me_header.png){: .full .clear}
 
 Hi, my name is Adrian Kummerländer. I am a twenty-year-old Software Developer located in southern Germany.
 
