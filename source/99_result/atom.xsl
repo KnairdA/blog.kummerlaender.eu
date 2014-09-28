@@ -12,6 +12,8 @@
 	indent="no"
 />
 
+<xsl:include href="[utility/xhtml.xsl]"/>
+
 <xsl:variable name="meta">
 	<datasource type="main"    mode="full" source="01_data/articles.xml" target="articles"/>
 	<datasource type="support" mode="full" source="02_meta/meta.xml"     target="meta"/>
@@ -20,16 +22,6 @@
 
 <xsl:variable name="url"    select="datasource/meta/url"/>
 <xsl:variable name="author" select="datasource/meta/author"/>
-
-<xsl:template match="*" mode="xhtml_copy">
-	<xsl:element name="{name()}" namespace="http://www.w3.org/1999/xhtml">
-		<xsl:apply-templates select="@*|node()" mode="xhtml_copy" />
-	</xsl:element>
-</xsl:template>
-
-<xsl:template match="@*|text()|comment()" mode="xhtml_copy">
-	<xsl:copy/>
-</xsl:template>
 
 <xsl:template match="datasource">
 	<feed>
@@ -74,7 +66,7 @@
 		</link>
 		<content type="xhtml">
 			<div xmlns="http://www.w3.org/1999/xhtml">
-				<xsl:apply-templates mode="xhtml_copy" select="content/node()" />
+				<xsl:apply-templates select="content/node()" mode="xhtml"/>
 			</div>
 		</content>
 		<updated>
