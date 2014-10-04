@@ -95,10 +95,10 @@ unset multiplot
 
 Mit `set terminal png size 1280,1024` und `set output "output.png"` werden zuerst das Ausgabemedium, die Größe und der Dateiname der Ausgabe definiert. Dannach aktiviert `set multiplot` den gnuplot-Modus, bei dem mehrere Plots in einer Ausgabe angezeigt werden können. Dieses Verhalten brauchen wir hier, um sowohl die Strecke selbst als rote Line, als auch die zur Verdeutlichung verwendeten blauen Linien gleichzeitig anzuzeigen.
 Mit `set [y,x,z]range` werden die Außengrenzen des zu plottenden Bereichs gesetzt. Dies ließe sich natürlich auch über ein Script automatisch erledigen. Als Nächstes wird mit `set view 28,272,1,1` die Blickrichtung und Skalierung definiert. `set ticslevel 0` sorgt dafür, dass die Z-Achse direkt auf der Grundebene beginnt. Um ein Gitter auf der Grundfläche anzuzeigen, gibt es `set grid`.  
-Als letztes werden jetzt die zwei Plots mit `splot` gezeichnet. Die Angaben hinter `with` Steuern hierbei das Aussehen der Linien.
+Als letztes werden jetzt die zwei Plots mit `splot` gezeichnet. Die Angaben hinter `with` steuern hierbei das Aussehen der Linien.
 
 Falls jemand den Artikel mit meinen Daten nachvollziehen möchte - das GPX-File kann hier heruntergeladen werden: 
- [wanderung_120611.gpx](http://blog.kummerlaender.eu/workspace/media/upload/wanderung_120611.gpx)
+ [2011-06-12.gpx](http://static.kummerlaender.eu/media/2011-06-12.gpx)
 
 Zum Schluss hier noch ein Blick vom Weg auf den Kronberg Richtung Jakobsbad im Appenzell:
 
