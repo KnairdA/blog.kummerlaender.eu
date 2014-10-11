@@ -13,6 +13,7 @@ My toolset currently consists of the following applications:
 * [fish] as my default shell
 * [urxvt] as terminal emulator
 * [conky] for displaying system information in [i3bar]
+* [twmn] for displaying notifications
 
 [GNU stow]: https://www.gnu.org/software/stow/
 [Github]: https://github.com/KnairdA/dotfiles
@@ -26,3 +27,4 @@ My toolset currently consists of the following applications:
 [urxvt]: http://software.schmorp.de/pkg/rxvt-unicode.html
 [conky]: http://conky.sourceforge.net/
 [i3bar]: http://i3wm.org/docs/i3bar-protocol.html
+[twmn]: https://github.com/sboli/twmn
