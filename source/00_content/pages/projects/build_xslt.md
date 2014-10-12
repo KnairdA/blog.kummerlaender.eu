@@ -4,21 +4,32 @@
 
 It aims to provide a foundation for building more complex applications such as a fully fledged [static site generator] by enabling users to define _XML Makefiles_ instead of manually calling single [InputXSLT] transformations.
 
-The source code of BuildXSLT is available on both my [Github] profile and [cgit].
+The source code of _BuildXSLT_ is available on both my [Github] profile and [cgit].
 
 ## Current features
 
 * processing tasks contained within _XML Makefiles_
 * generating single transformations
 * generating chained transformations
+* using external modules such as [StaticXSLT]
 * using files or embedded XML-trees as transformation input
 
 ## Usage example
 
-While BuildXSLT offers enough flexibility for all kinds of different XSLT based generation tasks it was specifically built to cater for the requirements of the [static site generator] this site is built with. As such its _XML Makefile_ makes for the best demonstration of what one can do with BuildXSLT:
+While _BuildXSLT_ offers enough flexibility for all kinds of different XSLT based generation tasks it was specifically built to cater for the requirements of the [static site generator] this site is built with. As such its module definition file and the _XML Makefile_ used to call it makes for the best demonstration of what one can do with _BuildXSLT_:
 
 ~~~
-<task type="generate">
+<transformation mode="chain">
+    <link>src/steps/list.xsl</link>
+    <link>src/steps/plan.xsl</link>
+    <link>src/steps/process.xsl</link>
+    <link>src/steps/summarize.xsl</link>
+</transformation>
+~~~
+{: .language-xsl}
+
+~~~
+<task type="module">
 	<input mode="embedded">
 		<datasource>
 			<meta>
@@ -27,17 +38,13 @@ While BuildXSLT offers enough flexibility for all kinds of different XSLT based 
 			</meta>
 		</datasource>
 	</input>
-	<transformation mode="chain">
-		<link>detail/list.xsl</link>
-		<link>detail/plan.xsl</link>
-		<link>detail/process.xsl</link>
-		<link>detail/summarize.xsl</link>
-	</transformation>
+	<definition mode="file">[StaticXSLT.xml]</definition>
 </task>
 ~~~
 {: .language-xsl}
 
 [InputXSLT]: /page/input_xslt/
-[static site generator]: /page/this_website/
+[static site generator]: /page/static_xslt/
+[StaticXSLT]: /page/static_xslt/
 [Github]: https://github.com/KnairdA/BuildXSLT/
 [cgit]: http://code.kummerlaender.eu/BuildXSLT/
