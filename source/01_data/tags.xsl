@@ -7,7 +7,7 @@
 <xsl:include href="[utility/datasource.xsl]"/>
 
 <xsl:variable name="meta">
-	<datasource type="main"  mode="expression" source="$source_tree/directory[@name = '00_content']/directory" target="files"/>
+	<datasource type="main"  mode="xpath" source="$source_tree/directory[@name = '00_content']/directory" target="files"/>
 	<target     mode="plain" value="tags.xml"/> 
 </xsl:variable>
 

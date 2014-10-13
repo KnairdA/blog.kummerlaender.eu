@@ -10,8 +10,8 @@
 <xsl:include href="[utility/datasource.xsl]"/>
 
 <xsl:variable name="meta">
-	<datasource type="main"    mode="expression" source="$source_tree/directory[@name = '00_content']/directory" target="files"/>
-	<datasource type="support" mode="full"       source="01_data/pages.xml"                                      target="pages"/>
+	<datasource type="main"    mode="xpath" source="$source_tree/directory[@name = '00_content']/directory" target="files"/>
+	<datasource type="support" mode="full"  source="01_data/pages.xml"                                      target="pages"/>
 	<target     mode="plain"   value="categories.xml"/> 
 </xsl:variable>
 
