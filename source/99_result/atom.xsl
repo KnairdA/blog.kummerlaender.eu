@@ -50,6 +50,14 @@
 
 <xsl:template match="articles/entry">
 	<entry xmlns="http://www.w3.org/2005/Atom">
+		<link rel="alternate" title="{title}">
+			<xsl:attribute name="href">
+				<xsl:value-of select="$url"/>
+				<xsl:text>/article/</xsl:text>
+				<xsl:value-of select="@handle"/>
+			</xsl:attribute>
+		</link>
+
 		<id>
 			<xsl:value-of select="$url"/>
 			<xsl:text>/article/</xsl:text>
@@ -58,22 +66,20 @@
 		<title>
 			<xsl:value-of select="title"/>
 		</title>
-		<link rel="alternate" title="{title}">
-			<xsl:attribute name="href">
-				<xsl:value-of select="$url"/>
-				<xsl:text>/article/</xsl:text>
-				<xsl:value-of select="@handle"/>
-			</xsl:attribute>
-		</link>
+		<author>
+			<name>
+				<xsl:value-of select="$author"/>
+			</name>
+		</author>
+		<updated>
+			<xsl:value-of select="date/full"/>
+			<xsl:text>T00:00:01+02:00</xsl:text>
+		</updated>
 		<content type="xhtml">
 			<div xmlns="http://www.w3.org/1999/xhtml">
 				<xsl:apply-templates select="content/node()" mode="xhtml"/>
 			</div>
 		</content>
-		<updated>
-			<xsl:value-of select="date/full"/>
-			<xsl:text>T00:00:01+02:00</xsl:text>
-		</updated>
 	</entry>
 </xsl:template>
 
