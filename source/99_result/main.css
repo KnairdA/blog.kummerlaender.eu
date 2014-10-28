@@ -1,8 +1,7 @@
 body{margin:0;padding:0;font:1em Droid Sans,sans-serif,Verdana,Arial,FreeSans;color:#272828;word-wrap:break-word}
 p{margin:0;line-height:1.5em}
 ul{margin:0;padding:0;list-style:none}
-ul li{float:left;padding:0 .2em}
-ul li.last_item{padding-right:0}
+ul li{float:left;padding:0 0 0 .2em}
 ul li a{text-decoration:none;color:#272828;background:#e3e8e8;border-radius:.3em;padding:.2em}
 ul li a:hover{text-decoration:underline}
 blockquote{border-left:.4em solid #e3e8e8;margin-left:0;padding-left:1em}

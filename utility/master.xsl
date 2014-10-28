@@ -32,31 +32,49 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="author" content="Adrian Kummerländer" />
-	<meta name="robots" content="all"/>
-	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<meta name="author"             content="Adrian Kummerländer" />
+	<meta name="description"        content="Adrian Kummerländer's blog on software development, linux and open source" />
+	<meta name="robots"             content="all"/>
+	<meta name="viewport"           content="width=device-width,initial-scale=1.0"/>
 
-	<title><xsl:call-template name="title-text"/> @ <xsl:value-of select="$root/meta/title"/></title>
-	<link rel="stylesheet" type="text/css" href="/main.css" />
-
+	<link rel="stylesheet"    type="text/css"     href="/main.css" />
 	<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico" /> 
+
+	<title>
+		<xsl:call-template name="title-text"/> @ <xsl:value-of select="$root/meta/title"/>
+	</title>
 </head>
 <body>
 	<div id="wrapper">
 		<div id="content">
 			<div id="nav_wrap">
-				<h1><xsl:value-of select="$root/meta/title"/></h1>
+				<h1>
+					<xsl:value-of select="$root/meta/title"/>
+				</h1>
+
 				<ul>
-					<li><a href="/0">Start</a></li>
-					<li><a href="/archive">Archive</a></li>
-					<li><a href="/category/projects">Projects</a></li>
-					<li><a href="/page/contact">Contact</a></li>
-					<li class="last_item"><a href="/atom.xml">Feed</a></li>
+					<li>
+						<a href="/0">Start</a>
+					</li>
+					<li>
+						<a href="/archive">Archive</a>
+					</li>
+					<li>
+						<a href="/category/projects">Projects</a>
+					</li>
+					<li>
+						<a href="/page/contact">Contact</a>
+					</li>
+					<li>
+						<a href="/atom.xml">Feed</a>
+					</li>
 				</ul>
 			</div>
+
 			<div id="main">
 				<xsl:apply-templates />
 			</div>
+
 			<div id="footer_wrap">
 				<div class="taglist">
 					<xsl:call-template name="list_tags"/>
@@ -64,9 +82,14 @@
 			</div>
 			<div id="last_line">
 				<a href="/page/static_xslt/">Made with XSLT</a>
+
 				<ul>
-					<li><a href="/page/contact">Contact</a></li>
-					<li class="last_item"><a href="/atom.xml">Feed</a></li>
+					<li>
+						<a href="/page/contact">Contact</a>
+					</li>
+					<li>
+						<a href="/atom.xml">Feed</a>
+					</li>
 				</ul>
 			</div>
 		</div>
