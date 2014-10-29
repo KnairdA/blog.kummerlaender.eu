@@ -25,16 +25,18 @@
 <xsl:template match="articles">
 	<div class="column articlelist archivlist">
 		<xsl:text>Past articles:</xsl:text>
-		<ol>
+
+		<ol class="topline">
 			<xsl:apply-templates select="entry"/>
 		</ol>
 	</div>
 </xsl:template>
 
 <xsl:template match="microblog">
-	<div class="column taglist archivtag">
+	<div class="column">
 		<a href="https://twitter.com/KnairdA">Microblog:</a>
-		<ul class="prettylist">
+
+		<ul class="prettylist sparselist topline">
 			<xsl:apply-templates select="item[substring(text, 1, 1) != '@'][position() &lt;= 9]" />
 		</ul>
 	</div>

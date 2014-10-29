@@ -22,7 +22,8 @@
 		<xsl:text>All articles tagged as &#187;</xsl:text>
 		<xsl:value-of select="@handle"/>
 		<xsl:text>&#171;</xsl:text>
-		<ol>
+
+		<ol class="topline">
 			<xsl:apply-templates />
 		</ol>
 	</div>

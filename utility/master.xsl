@@ -14,19 +14,7 @@
 	indent="no"
 />
 
-<xsl:variable name="root" select="/datasource"/>
-
-<xsl:template name="list_tags">
-	<ul>
-		<xsl:for-each select="$root/meta/tags/entry">
-			<li>
-				<a href="/tag/{@handle}">
-					<xsl:value-of select="@handle"/>
-				</a>
-			</li>
-		</xsl:for-each>
-	</ul>
-</xsl:template>
+<xsl:variable name="root" select="datasource"/>
 
 <xsl:template match="/">
 <html>
@@ -47,7 +35,7 @@
 <body>
 	<div id="wrapper">
 		<div id="content">
-			<div id="nav_wrap">
+			<div id="navigation">
 				<h1>
 					<xsl:value-of select="$root/meta/title"/>
 				</h1>
@@ -75,12 +63,19 @@
 				<xsl:apply-templates />
 			</div>
 
-			<div id="footer_wrap">
-				<div class="taglist">
-					<xsl:call-template name="list_tags"/>
-				</div>
+			<div id="tags">
+				<ul>
+					<xsl:for-each select="datasource/meta/tags/entry">
+						<li>
+							<a href="/tag/{@handle}">
+								<xsl:value-of select="@handle"/>
+							</a>
+						</li>
+					</xsl:for-each>
+				</ul>
 			</div>
-			<div id="last_line">
+
+			<div id="footer">
 				<a href="/page/static_xslt/">Made with XSLT</a>
 
 				<ul>
