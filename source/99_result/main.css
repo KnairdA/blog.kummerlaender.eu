@@ -13,7 +13,7 @@ pre{padding:1em;border-radius:.75em;color:#f8f8f2;background:#272822;white-space
 #navigation h1{color:#F80;font-size:1.2em;font-weight:normal;float:left;padding:.2em;padding-left:0;margin:0}
 #main{overflow:hidden}
 #main .article{border-bottom:.3em dotted #e3e8e8;padding-bottom:.5em;margin-top:1em;text-align:justify}
-#main .last{border:0}
+#main .last{border:none}
 #main p{margin-bottom:.7em;text-align:justify}
 #main h2{font-size:1.4em;margin:0;color:#F80}
 #main h2 a{font-size:.8em;text-decoration:none !important;color:#272828;font-weight:normal;display:inline-block;vertical-align:middle;max-width:95%}
@@ -25,7 +25,7 @@ pre{padding:1em;border-radius:.75em;color:#f8f8f2;background:#272822;white-space
 #main .article ul li{list-style-type:circle;float:none}
 #main .article ul li a{background:0}
 #main .article .info{font-size:.8em;margin-bottom:.5em;margin-left:1.5em}
-#main .article .info a{text-decoration:none;color:#272828;margin:0 .1em 0 .1em}
+#main .article .info a{text-decoration:none;color:#272828}
 #main .article .info a:hover{text-decoration:underline}
 #main .article table{border-collapse:collapse;border-left:.4em solid #e3e8e8;margin:1em}
 #main .article table thead{border-bottom:.1em solid #272828}

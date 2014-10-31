@@ -19,7 +19,9 @@
 	<xsl:param name="path"/>
 
 	<xsl:for-each select="$root/files/directory[@name = 'tags']/*[./file/full = $path]">
-		<tag><xsl:value-of select="@name"/></tag>
+		<tag>
+			<xsl:value-of select="@name"/>
+		</tag>
 	</xsl:for-each>
 </xsl:template>
 

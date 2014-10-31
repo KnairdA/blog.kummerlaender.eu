@@ -37,6 +37,7 @@
 				<a href="/tag/{.}">
 					<xsl:value-of select="."/>
 				</a>
+				<xsl:text> </xsl:text>
 			</xsl:for-each>
 			<xsl:text> | </xsl:text>
 			<xsl:value-of select="$root/meta/author"/>
