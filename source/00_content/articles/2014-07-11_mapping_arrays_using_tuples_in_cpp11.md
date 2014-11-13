@@ -27,7 +27,7 @@ struct IndexSequence {
 ~~~
 {: .language-cpp}
 
-This is achieved by the [`IndexSequence` template](https://github.com/KnairdA/InputXSLT/blob/master/src/support/type/sequence.h) above by recursively specializing the `Sequence` template using static recursion controlled by the standard libraries template metaprogramming utility template `std::conditional`. This means that e.g. the type `Sequence<0, 1, 2, 3>` can also be defined as `IndexSequence<4>::type`.
+This is achieved by the [`IndexSequence` template](https://github.com/KnairdA/InputXSLT/blob/49e2010b489ab6d5516a9abd896c67738e0dc1cc/src/support/type/sequence.h) above by recursively specializing the `Sequence` template using static recursion controlled by the standard libraries template metaprogramming utility template `std::conditional`. This means that e.g. the type `Sequence<0, 1, 2, 3>` can also be defined as `IndexSequence<4>::type`.
 
 Now all that is required to accomplish the goal is instantiating the sequence type and passing it to a variadic member template as [follows](https://github.com/KnairdA/InputXSLT/blob/master/src/function/base.h):
 
@@ -61,3 +61,5 @@ inline xalan::XalanDocument* callConstructDocument(
 As we can see a `IndexSequence` template specialization instance is passed to the variadic `callConstructDocument` method to expose the actual sequence values as `Index`. This method then resolves the `Index` parameter pack as both the array and `std::tuple` index inside the calls to the `valueGetter.get` template method which is called for every sequence element because of this. What this means is that we are now able to implement non-template `constructDocument` methods inside XSLT external function implementations such as [FunctionTransform](https://github.com/KnairdA/InputXSLT/blob/master/src/function/transform.h). The values passed to these methods are automatically extracted from the argument array and converted into their respective types as required.
 
 While this article only provided a short overview of mapping arrays using tuples in C++11 one may view the full implementation on [Github](https://github.com/KnairdA/InputXSLT/blob/master/src/function/base.h) or [cgit](http://code.kummerlaender.eu/InputXSLT/tree/src/function/base.h).
+
+**Update:** The recently passed C++14 standard adds a [`std::integer_sequence`](http://en.cppreference.com/w/cpp/utility/integer_sequence) template to the standard library which covers the same use case as the custom `Sequence`  and `IndexSequence` templates detailed in this article. `FunctionBase` was already [modified](https://github.com/KnairdA/InputXSLT/commit/b9d62d5ce1e3f92a8ab34239c6e4044ad57180df) accordingly as one should obviously rely on the standard's version of a integer sequence in the future.
