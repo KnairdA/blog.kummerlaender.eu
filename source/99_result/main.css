@@ -6,6 +6,7 @@ ul li a{text-decoration:none;color:#272828;background:#e3e8e8;border-radius:.3em
 ul li a:hover{text-decoration:underline}
 blockquote{border-left:.4em solid #e3e8e8;margin-left:0;padding-left:1em}
 pre{padding:1em;border-radius:.75em;color:#f8f8f2;background:#272822;white-space:pre-wrap}
+code{margin:0 .1em;padding:0 .5em;border:.1em solid #e3e8e8;background-color:#f8f8f8;border-radius:.3em}
 #wrapper{width:870px;margin:2em auto;background:url(media/top.png) no-repeat top center,url(media/bottom.png) no-repeat bottom center,url(media/single.png) repeat top center}
 #content{width:720px;margin:0 auto;padding-top:70px;padding-bottom:70px}
 #navigation{overflow:hidden;border-bottom:.3em solid #e3e8e8;padding-bottom:.1em}
