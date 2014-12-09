@@ -28,24 +28,20 @@
 	</xsl:choose>
 </xsl:template>
 
-<xsl:template name="get_article">
-	<xsl:param name="handle"/>
-
-	<xsl:variable name="article" select="$root/articles/entry[@handle = $handle]"/>
-
+<xsl:template match="articles/entry" mode="resolve">
 	<h2>
 		<xsl:text>» </xsl:text>
-		<a href="/article/{$handle}">
-			<xsl:value-of select="$article/title"/>
+		<a href="/article/{@handle}">
+			<xsl:value-of select="title"/>
 		</a>
 	</h2>
 	<p class="info">
 		<xsl:call-template name="format-date">
-			<xsl:with-param name="date" select="$article/date/full"/>
+			<xsl:with-param name="date" select="date/full"/>
 			<xsl:with-param name="format" select="'M x, Y'"/>
-		</xsl:call-template> 
+		</xsl:call-template>
 		<xsl:text> | </xsl:text>
-		<xsl:for-each select="$article/tags/tag">
+		<xsl:for-each select="tags/tag">
 			<a href="/tag/{.}">
 				<xsl:value-of select="."/>
 			</a>
@@ -55,7 +51,7 @@
 		<xsl:value-of select="$root/meta/author"/>
 	</p>
 
-	<xsl:apply-templates select="$article/content/node()" mode="xhtml"/>
+	<xsl:apply-templates select="content/node()" mode="xhtml"/>
 </xsl:template>
 
 <xsl:template match="page/entry">
@@ -80,19 +76,17 @@
 </xsl:template>
 
 <xsl:template match="page/entry/article">
+	<xsl:variable name="handle" select="@handle"/>
+
 	<xsl:choose>
 		<xsl:when test="position() = last()">
 			<div class="last article">
-				<xsl:call-template name="get_article">
-					<xsl:with-param name="handle" select="@handle"/>
-				</xsl:call-template>
+				<xsl:apply-templates select="$root/articles/entry[@handle = $handle]" mode="resolve"/>
 			</div>
 		</xsl:when>
 		<xsl:otherwise>
 			<div class="article">
-				<xsl:call-template name="get_article">
-					<xsl:with-param name="handle" select="@handle"/>
-				</xsl:call-template>
+				<xsl:apply-templates select="$root/articles/entry[@handle = $handle]" mode="resolve"/>
 			</div>
 		</xsl:otherwise>
 	</xsl:choose>

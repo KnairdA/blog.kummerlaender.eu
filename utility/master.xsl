@@ -16,6 +16,14 @@
 
 <xsl:variable name="root" select="datasource"/>
 
+<xsl:template match="meta/tags/entry" mode="master">
+	<li>
+		<a href="/tag/{@handle}">
+			<xsl:value-of select="@handle"/>
+		</a>
+	</li>
+</xsl:template>
+
 <xsl:template match="/">
 <html>
 <head>
@@ -26,7 +34,7 @@
 	<meta name="viewport"           content="width=device-width,initial-scale=1.0"/>
 
 	<link rel="stylesheet"    type="text/css"     href="/main.css" />
-	<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico" /> 
+	<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico" />
 
 	<title>
 		<xsl:call-template name="title-text"/> @ <xsl:value-of select="$root/meta/title"/>
@@ -65,13 +73,7 @@
 
 			<div id="tags">
 				<ul>
-					<xsl:for-each select="datasource/meta/tags/entry">
-						<li>
-							<a href="/tag/{@handle}">
-								<xsl:value-of select="@handle"/>
-							</a>
-						</li>
-					</xsl:for-each>
+					<xsl:apply-templates select="datasource/meta/tags/entry" mode="master"/>
 				</ul>
 			</div>
 

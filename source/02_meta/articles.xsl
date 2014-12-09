@@ -11,30 +11,26 @@
 	<target     mode="plain" value="articles.xml"/> 
 </xsl:variable>
 
-<xsl:key name="years" match="datasource/articles/entry/date/year/text()" use="." />
+<xsl:key name="years" match="datasource/articles/entry/date/year/text()" use="."/>
+
+<xsl:template match="articles/entry" mode="resolve">
+	<article handle="{@handle}">
+		<title>
+			<xsl:value-of select="title"/>
+		</title>
+		<date>
+			<xsl:value-of select="date/full"/>
+		</date>
+	</article>
+</xsl:template>
 
 <xsl:template match="articles">
 	<xsl:for-each select="entry/date/year/text()[generate-id() = generate-id(key('years',.)[1])]">
+		<xsl:variable name="year" select="."/>
+
 		<entry handle="{.}">
-			<xsl:call-template name="get_articles">
-				<xsl:with-param name="year" select="."/>
-			</xsl:call-template>
+			<xsl:apply-templates select="$root/articles/entry[./date/year = $year]" mode="resolve"/>
 		</entry>
-	</xsl:for-each>
-</xsl:template>
-
-<xsl:template name="get_articles">
-	<xsl:param name="year"/>
-
-	<xsl:for-each select="/datasource/articles/entry[date/year = $year]">
-		<article handle="{@handle}">
-			<title>
-				<xsl:value-of select="title"/>
-			</title>
-			<date>
-				<xsl:value-of select="date/full"/>
-			</date>
-		</article>
 	</xsl:for-each>
 </xsl:template>
 

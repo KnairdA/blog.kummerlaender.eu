@@ -12,17 +12,15 @@
 	<target     mode="plain"   value="tags.xml"/> 
 </xsl:variable>
 
-<xsl:template name="get_article_data">
-	<xsl:param name="handle"/>
-
-	<xsl:variable name="article" select="$root/articles/entry[@handle = $handle]/*[self::title | self::date]"/>
-
-	<title>
-		<xsl:value-of select="$article/self::title"/>
-	</title>
-	<date>
-		<xsl:value-of select="$article/self::date/full"/>
-	</date>
+<xsl:template match="articles/entry" mode="resolve">
+	<article handle="{@handle}">
+		<title>
+			<xsl:value-of select="title"/>
+		</title>
+		<date>
+			<xsl:value-of select="date/full"/>
+		</date>
+	</article>
 </xsl:template>
 
 <xsl:template match="tags/entry">
@@ -32,11 +30,9 @@
 </xsl:template>
 
 <xsl:template match="tags/*/article">
-	<article handle="{@handle}">
-		<xsl:call-template name="get_article_data">
-			<xsl:with-param name="handle" select="@handle"/>
-		</xsl:call-template>
-	</article>
+	<xsl:variable name="handle" select="@handle"/>
+
+	<xsl:apply-templates select="$root/articles/entry[@handle = $handle]" mode="resolve"/>
 </xsl:template>
 
 </xsl:stylesheet>

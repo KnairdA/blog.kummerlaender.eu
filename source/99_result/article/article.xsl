@@ -31,7 +31,7 @@
 			<xsl:call-template name="format-date">
 				<xsl:with-param name="date" select="date/full"/>
 				<xsl:with-param name="format" select="'M x, Y'"/>
-			</xsl:call-template> 
+			</xsl:call-template>
 			<xsl:text> | </xsl:text>
 			<xsl:for-each select="tags/tag">
 				<a href="/tag/{.}">

@@ -12,17 +12,13 @@
 
 <xsl:variable name="meta">
 	<datasource type="main"  mode="xpath" source="$source_tree/directory[@name = '00_content']/directory" target="files"/>
-	<target     mode="plain" value="articles.xml"/> 
+	<target     mode="plain" value="articles.xml"/>
 </xsl:variable>
 
-<xsl:template name="list_tags">
-	<xsl:param name="path"/>
-
-	<xsl:for-each select="$root/files/directory[@name = 'tags']/*[./file/full = $path]">
-		<tag>
-			<xsl:value-of select="@name"/>
-		</tag>
-	</xsl:for-each>
+<xsl:template match="files/directory[@name = 'tags']/*" mode="resolve">
+	<tag>
+		<xsl:value-of select="@name"/>
+	</tag>
 </xsl:template>
 
 <xsl:template match="files/directory[@name = 'articles']">
@@ -51,9 +47,9 @@
 			</year>
 		</date>
 		<tags>
-			<xsl:call-template name="list_tags">
-				<xsl:with-param name="path" select="./full"/>
-			</xsl:call-template>
+			<xsl:variable name="self" select="."/>
+
+			<xsl:apply-templates select="$root/files/directory[@name = 'tags']/*[./file/full = $self/full]" mode="resolve"/>
 		</tags>
 		<content>
 			<xsl:copy-of select="xalan:nodeset($content)/*[name() != 'h1']"/>

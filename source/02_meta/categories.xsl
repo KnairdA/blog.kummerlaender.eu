@@ -15,17 +15,13 @@
 	<target     mode="plain"   value="categories.xml"/> 
 </xsl:variable>
 
-<xsl:template name="get_page_data">
-	<xsl:param name="handle"/>
-
-	<xsl:variable name="page" select="$root/pages/entry[@handle = $handle]"/>
-
-	<page handle="{$handle}">
+<xsl:template match="pages/entry" mode="resolve">
+	<page handle="{@handle}">
 		<title>
-			<xsl:value-of select="$page/title"/>
+			<xsl:value-of select="title"/>
 		</title>
-		<digest size="{string-length($page/content/p[1])}">
-			<xsl:copy-of select="$page/content/p[1]/node()"/>
+		<digest size="{string-length(content/p[1])}">
+			<xsl:copy-of select="content/p[1]/node()"/>
 		</digest>
 	</page>
 </xsl:template>
@@ -37,9 +33,9 @@
 </xsl:template>
 
 <xsl:template match="files/directory[@name = 'pages']/*/file[@extension = '.md']">
-	<xsl:call-template name="get_page_data">
-		<xsl:with-param name="handle" select="@name"/>
-	</xsl:call-template>
+	<xsl:variable name="handle" select="@name"/>
+
+	<xsl:apply-templates select="$root/pages/entry[@handle = $handle]" mode="resolve"/>
 </xsl:template>
 
 </xsl:stylesheet>
