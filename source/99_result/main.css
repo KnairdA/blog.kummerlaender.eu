@@ -61,14 +61,17 @@ code{margin:0 .1em;padding:0 .5em;border:.1em solid #e3e8e8;background-color:#f8
 #isso-root{padding:1em}
 #isso-root a{text-decoration:underline;color:#272828}
 #isso-root a:hover{color:black}
+#isso-root .spacer{visibility:hidden}
 #isso-root .isso-follow-up{margin-left:2em;padding-top:.5em}
 #isso-root .isso-comment{border-top:.3em solid #e3e8e8;margin-bottom:.5em}
 #isso-root .isso-comment-header{font-size:.75em;padding:.3em 0 .3em 0}
-#isso-root .isso-comment-header .spacer{visibility:hidden}
 #isso-root .isso-comment-header a{text-decoration:none;margin:0 .1em 0 .1em}
 #isso-root .isso-comment-header a:hover{text-decoration:underline}
 #isso-root .isso-comment-footer{overflow:hidden;font-size:.75em}
 #isso-root .isso-comment-footer .reply{float:right}
+#isso-root .isso-comment-footer .edit{display:none}
+#isso-root .isso-comment-footer .downvote{display:none}
+#isso-root .isso-comment-footer .upvote{display:none}
 .archiv{margin-top:1em}
 .topline{margin-top:.2em;border-top:.1em solid #e3e8e8}
 .columns{column-count:2;-moz-column-count:2;-webkit-column-count:2;column-gap:1em;-moz-column-gap:1em;-webkit-column-gap:1em}
