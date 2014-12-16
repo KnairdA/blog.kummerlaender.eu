@@ -14,4 +14,4 @@ Although software development and tickering with my computer systems definitely 
 
 I use this website to document some of my [thoughts and experiences](/archive) concerning software development and various other topics in addition to summarizing some of my [projects](/category/projects).
 
-[^1]: This really is the official translation of my recognized trade but I for one prefer referring to myself simply as Software Developer
+[^1]: This mouthful really is the official translation of my recognized trade but I for one prefer referring to myself simply as Software Developer
