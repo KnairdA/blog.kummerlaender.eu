@@ -1,6 +1,6 @@
 # GraphStorage
 
-…is a Graph storage and query library based on Google LevelDB.
+…is a Graph storage and query library based on Google LevelDB and written in C++.
 
 It currently supports integer indexed nodes with properties and directed edges with types. The integer IDs are serialized _by hand_, values are serialized using protocol buffers. Everything is stored in a single sorted [LevelDB] database.
 
