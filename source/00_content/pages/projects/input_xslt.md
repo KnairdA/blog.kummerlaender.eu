@@ -2,7 +2,7 @@
 
 …is a Apache Xalan based XSLT extension enabling access to external commands, the filesystem and calling further transformations from inside a transformation.
 
-It is used as the base for the static site generation system used to generate the whole website you are currently viewing and is available via [Github] or [cgit].
+It is used as the base for the static site generation system used to generate the whole website you are currently viewing and is available under the terms of the _Apache License_ via [Github] or [cgit].
 
 ## Why?
 
