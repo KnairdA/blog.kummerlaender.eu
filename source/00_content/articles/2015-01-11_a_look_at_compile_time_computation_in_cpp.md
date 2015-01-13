@@ -4,8 +4,6 @@ The C++ language landscape may be pretty old by now but that doesn't mean that i
 
 Besides C-style macros C++ templates present one additional language element that is guaranteed by the standard to be executed at compile time. In this context the [proof] that this template system is Turing complete manages to both illustrate its power and demonstrate its bewildering complexity. As it is pretty unrealistic that one would implement _common application logic_ in terms of a Turing machine just to achieve compile time computation, a easier way of expressing _compile time programs_ has to be found.
 
-## Spectroscopy of `constexpr`
-
 ## Compile time list processing
 
 My first attempt at facilitating compile time computation is a _functional-style_ list library based on template metaprogramming: [ConstList]. This library handles lists in a fashion simmilar to how it is done in languages such as Scheme or Haskell, i.e. by providing functions such as `fold` and `map` which manipulate a basic list type based on _Cons_ expressions. As an example one may consider how ConstList's `map` function is expressed in terms of `foldr`:
@@ -34,6 +32,40 @@ To summarize: The approach taken in my implementation of ConstList may be a nice
 ## Types as values…
 
 …and templates as functions.
+
+## Spectroscopy of `constexpr`
+
+As was already mentioned, prior to the C++11 standard the only way to perform compile time computations was to rely on macros and template metaprogramming. While both of those can be thought of as separate functional-style languages inside C++, the `constexpr` keyword allows one to declare a normal function as _potentially executable_ at compile time. So contrary to template metaprogramming based solutions we don't have a strong guarantee that our _compile time program_ is actually evaluated at compile time and would have to look at the generated Assembler output when in doubt. Sadly this is actually not much more than what is possible in _normal_ C++ compiled by a _sufficiently smart compiler_, e.g. the listing below is evaluated at compile time by gcc without any usage of `constexpr` or template metaprogramming:
+
+~~~
+int example(int x) {
+	return 2 * x;
+}
+
+int recursive_example(const int& target, int current = 0) {
+	if ( current == target) {
+		return current;
+	} else {
+		return recursive_example(target, ++current);
+	}
+}
+
+int main(int, char**) {
+	return example(
+		recursive_example(21)
+	);
+}
+~~~
+{: .language-cpp}
+
+Where the verbose Assembler output is aquired as follows (note that the same command also works for Clang):
+
+~~~
+> g++ -S -fverbose-asm -O2 example.cc -o example.asm
+> grep example.asm -n -e 42
+95:	movl	$42, %eax	#,
+~~~
+{: .language-sh}
 
 [proof]: http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3670
 [ConstList]: /page/const_list/
