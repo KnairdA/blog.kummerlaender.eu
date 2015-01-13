@@ -87,10 +87,26 @@ Where the verbose Assembler output is acquired as follows (note that the same co
 ~~~
 {: .language-sh}
 
-## Types as values…
+One area where the example above would not work and one would thus require the `constexpr` keyword, is when one wants to use the result of a function as e.g. a template parameter or any other value that is required by the standard to be defined at compile time. While this is certainly useful it - contrary to what one could think after first hearing about `constexpr` - doesn't quite enable one to explicitly write _compile time programs_ in the same way as _normal_ programs.
 
-…and templates as functions.
+## Types as values and templates as functions
+
+As I hinted at previously the only way to handle e.g. lists in the same way as in [ConstList] while enabling value-dependent result types is to think of types as values and templates as functions. This translates to each `CAR` value of a _Cons_ being stored in the form of a `std::integral_constant` specialization instantiation.
+
+This would limit all compile time operations performed in this manner to only dealing with values that can be passed as template parameters, to cite the standard:
+
+> A non-type _template-parameter_ shall have one of the following (optionally _cv-qualified_) types:  
+> 	- integral or enumeration type, [...]  
+> ([ISO C++ Standard draft, N3797], p. 329)
+
+Where integral types are defined as follows:
+
+> Types `bool`, `char`, `char16_t`, `char32_t`, `wchar_t`, and the signed and unsigned integer types are collectively called _integral_ types. A synonym for integral type is _integer type_. [...]  
+> ([ISO C++ Standard draft, N3797], p. 86)
+
+So as it turns out the restriction imposed by being forced to rely on template parameters is not as severe as I for one thought at first, especially since compositions of these types in e.g. structures are not hindered by this. For example usage of templates such as `std::tuple` and even compile time string operations via variadic template parameter packs of type `char` should be possible.
 
 [proof]: http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3670
 [ConstList]: /page/const_list/
 [test cases]: https://github.com/KnairdA/ConstList/blob/master/test.cc
+[ISO C++ Standard draft, N3797]: http://www.open-std.org/jtc1/sc22/wg21/
