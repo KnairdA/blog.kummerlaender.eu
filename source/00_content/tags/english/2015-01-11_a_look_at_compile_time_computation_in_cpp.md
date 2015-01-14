@@ -1,1 +1,0 @@
-../../articles/2015-01-11_a_look_at_compile_time_computation_in_cpp.md
