@@ -2,7 +2,7 @@
 
 …is the XSLT based static site generation framework especially developed to generate this website.
 
-Its MIT licensed source code is available both [Github] and [cgit].
+Its MIT licensed source code is available on both [Github] and [cgit].
 
 The implementation of a pure[^1] XSLT solution to the problem of static site generation required the development of a collection of external functions enabling access to the filesystem, external applications and other transformations from inside XSLT. These external functions are not part of this project and were developed separately as [InputXSLT]. Additionally a basic XSLT build system was developed to make _StaticXSLT_ usable for different projects which is available as [BuildXSLT].
 
