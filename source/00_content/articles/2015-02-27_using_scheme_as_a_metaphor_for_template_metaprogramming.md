@@ -92,9 +92,57 @@ using Every = Fold<
 ~~~
 {:.language-cpp}
 
-If we ignore the need to explicitly declare the predicate as a _template template parameter_ i.e. as a function this example is very simmilar to its _Scheme_ equivalent. Concerning the function used to fold the list it is actually less verbose than the _Scheme_ version of `Every` as we can directly pass `tav::And` instead of wrapping it in a lambda expression, which is required in _Scheme_ because it's `and` is a macro.
+If we ignore the need to explicitly declare the predicate as a _template template parameter_ i.e. as a function this example is very simmilar to its _Scheme_ equivalent. Concerning the function used to fold the list it is actually less verbose than the _Scheme_ version of `Every` as we can directly pass `tav::And` instead of wrapping it in a lambda expression as is required in _Scheme_ [^1].
+
+Sadly the actual implementations of e.g. `tav::Fold` are not as easily expressed. The recursive nature of folding a list or even constructing its underlying pair based structure using the variadic `tav::List` requires partial template specializations which are not allowed for template aliases[^2].
+
+~~~
+template <
+	template<typename, typename> class Function,
+	typename                           Initial,
+	typename                           Pair
+>
+struct fold_pair {
+	typedef Function<
+		Car<Pair>,
+		Eval<fold_pair<Function, Initial, Cdr<Pair>>>
+	> type;
+};
+
+template <
+	template<typename, typename> class Function,
+	typename                           Initial
+>
+struct fold_pair<Function, Initial, void> {
+	typedef Initial type;
+};
+~~~
+{:.language-cpp}
+
+While the listing of `tav::detail::fold_pair` shows how the partial specialization of its `Pair` parameter allows recursion until the list ends[^3], it also forces us to define it's actual type in terms of a public `type` member `typedef`. Such a member type definition can lead to cluttering the code with `typename` keywords which is why [TypeAsValue] employs a simple `tav::Eval` template alias to hide all `typename *::type` constructs.
+
+~~~
+template <
+	template<typename, typename> class Function,
+	typename                           Initial,
+	typename                           List
+>
+using Fold = Eval<detail::fold_pair<Function, Initial, List>>;
+~~~
+{:.language-cpp}
+
+Hiding member type defintions behind template aliases enables most _higher_ functionality and applications built using it's functions to be written in a reasonably minimalistic - _Scheme_ like - fashion as we can see in e.g. the listing of `Every`. This also explains why `tav::Pair` recursively defines it's own type, as we would otherwise have to be quite careful where to resolve `tav::Eval`.
+
+## Partial function application
+
+## Examples
+
+## Summary
 
 [^0]: ISO C++ Standard draft, N3797, § 3.9.1 _Fundamental types_, Section 7
+[^1]: `and` needs to be wrapped in anonymous function in _Scheme_ because it is not a function but a macro
+[^2]: ISO C++ Standard draft, N3797, § 14.5 _Template declarations_, Section 3
+[^3]: _TypeAsValue_ currently represents _Scheme_'s empty list `'()` as `void`
 
 [appropriate article]: /article/a_look_at_compile_time_computation_in_cpp/
 [ConstList]: /page/const_list/
