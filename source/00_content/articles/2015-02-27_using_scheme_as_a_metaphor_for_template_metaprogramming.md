@@ -133,7 +133,46 @@ using Fold = Eval<detail::fold_pair<Function, Initial, List>>;
 
 Hiding member type defintions behind template aliases enables most _higher_ functionality and applications built using it's functions to be written in a reasonably minimalistic - _Scheme_ like - fashion as we can see in e.g. the listing of `Every`. This also explains why `tav::Pair` recursively defines it's own type, as we would otherwise have to be quite careful where to resolve `tav::Eval`.
 
-## Partial function application
+### Bindings
+
+Not all programs are sensibly expressed as a nested chain of function calls if we want to reuse some values, separate functionality into appropriately named functions and hide complexity via private bindings. While in _Scheme_ one would use `let` and the like for this purpose, such functionality is not easily replicated in the context of template metaprogramming. This is why _TypeAsValue_ uses a alternate and more _C++ like_ solution to this problem by simply making use of the standard object oriented aspects of the language.
+
+~~~
+template <
+	template<typename, typename> class Comparator,
+	typename                           Sequence
+>
+class quick_sort {
+	private:
+		using index = Divide<Length<Sequence>, Size<2>>;
+		using pivot = Nth<index, Sequence>;
+
+		using partitions = Partition<
+			Apply<Comparator, pivot, _0>::template function,
+			DeleteNth<index, Sequence>
+		>;
+
+		using lhs = Car<partitions>;
+		using rhs = Cdr<partitions>;
+
+	public:
+		using type = Concatenate<
+			Eval<quick_sort<Comparator, lhs>>,
+			List<pivot>,
+			Eval<quick_sort<Comparator, rhs>>
+		>;
+};
+
+template <template<typename, typename> class Comparator>
+struct quick_sort<Comparator, void> {
+	typedef void type;
+};
+~~~
+{:.language-cpp}
+
+Above we can see the complete listing of the _Quick Sort_ implementation employed by the `tav::Sort` template alias. At first glance this looks rather different from a _Scheme_ program but if we look closer on could argue that it is a equivalent of a `let` binding where the _private_ section of `tav::detail::quick_sort` contains the bound constants and the _public_ section contains the body.
+
+### Partial function application
 
 ## Examples
 
