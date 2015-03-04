@@ -138,6 +138,18 @@ Hiding member type defintions behind template aliases enables most _higher_ func
 Not all programs are sensibly expressed as a nested chain of function calls if we want to reuse some values, separate functionality into appropriately named functions and hide complexity via private bindings. While in _Scheme_ one would use `let` and the like for this purpose, such functionality is not easily replicated in the context of template metaprogramming. This is why _TypeAsValue_ uses a alternate and more _C++ like_ solution to this problem by simply making use of the standard object oriented aspects of the language.
 
 ~~~
+// (define (quick_sort comparator sequence)
+//   (if (null-list? sequence)
+//     (list)
+//     (let* ([index      (quotient (length sequence) 2)]
+//            [pivot      (nth index sequence)]
+//            [partitions (partition (lambda (x) (comparator pivot x))
+//                                   (delete-nth index sequence))]
+//            [lhs        (car partitions)]
+//            [rhs        (cdr partitions)])
+//       (concatenate (list (quick_sort comparator lhs)
+//                          (list pivot)
+//                          (quick_sort comparator rhs))))))
 template <
 	template<typename, typename> class Comparator,
 	typename                           Sequence
@@ -170,9 +182,29 @@ struct quick_sort<Comparator, void> {
 ~~~
 {:.language-cpp}
 
-Above we can see the complete listing of the _Quick Sort_ implementation employed by the `tav::Sort` template alias. At first glance this looks rather different from a _Scheme_ program but if we look closer on could argue that it is a equivalent of a `let` binding where the _private_ section of `tav::detail::quick_sort` contains the bound constants and the _public_ section contains the body.
+Above we can see the complete listing of the _Quick Sort_ implementation employed by the `tav::Sort` template alias. At first glance this looks rather different from the corresponding _Scheme_ program but if we look closer one could argue that it is a equivalent of a `let` binding where the _private_ section of `tav::detail::quick_sort` contains the bound constants and the _public_ section contains the body.
 
 ### Partial function application
+
+While partial application of the `comparator` function in the _Scheme_ _Quick Sort_ implementation is achieved via anonymous functions I have not as of yet thought of a good way to implement full support of lambda expressions in [TypeAsValue]. This is why there is currently only support for _single level_ partial function evaluation using `tav::Apply`.
+
+To put it simply `tav::Apply` implements a `std::bind` analog for usage in a template metaprogramming context. This means that it _returns_ a new template for a given template including all its arguments where some or all of those arguments may be placeholders. In this context a placeholder is a specialization of the `tav::detail::placeholder` template on a arbitrary integer value that represents the index of the argument to the _returned_ template the placeholder should resolve to.
+
+~~~
+// (define result
+//         (map (lambda (x) (+ 2 x))
+//              (list 1 2 3)))
+// => (list 3 4 5)
+using result = tav::Map<
+	tav::Apply<tav::Add, tav::Int<2>, tav::_0>::template function,
+	tav::List<tav::Int<1>, tav::Int<2>, tav::Int<3>>
+>;
+~~~
+{:.language-cpp}
+
+Note that `tav::_0` is just an alias to `tav::detail::placeholder<0>`. The `tav::Apply` template automatically selects a matching implementation as its base class depending on the count of placeholder arguments using `tav::Cond`. If there are more than two placeholder arguments it _returns_ a generic variadic template as its `function` alias whereas there is a explicit version for one, two or zero placeholders. The zero placeholder variant of `tav::Apply` is useful if function application has to be deferred as is required for e.g. invalid value handling.
+
+As we can see this kind of partial function application is obviously no full replacement for actual template based lambda expressions but they serve as a _good enough_ solution until a nice approach to enabling placeholders as arguments in nested templates can be developed. Alternatively one could argue that the scenarios where one could use lambda expressions are better served by defining local templates and bindings as described in the previous section to e.g. increase readability by actually naming functions.
 
 ## Examples
 
