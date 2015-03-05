@@ -2,7 +2,7 @@
 
 Back in January I looked at compile time computation in C++ based on handling lists in a _functional fashion_ using a mixture between templates, generic lambda expressions and `constexpr` functions. The conclusion of the [appropriate article] was that the inherent restrictions of the approach taken in [ConstList], namely the missing guarantee on compile time evaluation, inability to make return types depend on actual values and lambda expressions being unable to be declared as constant make viewing types as values and templates as functions the superior approach. This article describes how this approach works out in practice.
 
-While [ConstList] turned out to be of limited use in actually performing compile time computations its list manipulation and query functionality was already inspired by how lists are handled in _LISP_ respectively its more minimalistic dialect _Scheme_, especially by the functionality described in the latter's [SRFI-1].  
+While [ConstList] turned out to be of limited use in actually performing compile time computations, its list manipulation and query functionality was already inspired by how lists are handled in _LISP_ respectively its more minimalistic dialect _Scheme_, especially by the functionality described in the latter's [SRFI-1].  
 When I started developing a new library porting this basic concept to the _type as value and templates as functions_ approach called [TypeAsValue] it quickly turned out that a _Scheme_ like paradigm maps quite well to template metaprogramming. This was initially very surprising as I did not expect that C++ templates would actually feel like a - admittedly rather verbose - functional programming language if used in a certain way.
 
 ~~~
@@ -22,13 +22,13 @@ using sum = tav::Fold<
 ~~~
 {:.language-cpp}
 
-As we can see compile time computations expressed using this approach are more or less direct mappings of their _Scheme_ equivalent if we overlook the need to explicitly declare types as well as the different syntax used for defining bindings.
+As we can see compile time computations expressed using this approach are more or less direct mappings of their _Scheme_ equivalent if we overlook the need to explicitly declare types, the different syntax used for defining bindings as well as it's immutability.
 
 While [TypeAsValue] started out as a direct reimplementation of my previous attempt I am happy to say that the conclusions drawn concerning the superiority of a stricly template metaprogramming based implementation held true and enabled the implementation of equivalents for large parts of the _Scheme_ list library. This includes actual content dependent list manipulations such as `filter`, which were impossible to implement in [ConstList], in addition to e.g. a compile time implementation of _Quick Sort_.
 
 ## Types as values
 
-The desire to express values in terms of types restricts the set of usable types to _integral types_ as only those types may be used as template parameters. According to the standard[^0] this includes all _integer types_ i.e. all non-floating-point types such as `bool`, `char` and `int`. In case of [TypeAsValue] all values are expressed as specializations of `std::integral_constant` that wrapped in template aliases to simplify their declaration.
+The desire to express values in terms of types restricts the set of usable types to _integral types_ as only those types may be used as template parameters. According to the standard[^0] this includes all _integer types_ i.e. all non-floating-point types such as `bool`, `char` and `int`. In case of [TypeAsValue] all values are expressed as specializations of `std::integral_constant` wrapped in template aliases to simplify their declaration.
 
 ~~~
 using answer = tav::Int<42>;       // std::integral_constant<int, 42>
@@ -55,9 +55,9 @@ struct Pair : detail::pair_tag {
 ~~~
 {:.language-cpp}
 
-As we can see expressing a pair type in terms of a template type is very straight forward. Note that the recursive `type` definition will be discussed further in the next section on _templates as functions_. Each `Pair` specialization derives from `detail::pair_tag` to simplify verification of values as pairs in `tav::IsPair`. The naming of the parameters as `CAR` and `CDR` is a reference to pair types being constructed using `tav::Cons` analogously to _Scheme_, where the pair `(1 . 2)` may be constructed using `(cons 1 2)`.
+As we can see expressing a pair type in terms of a type template is very straight forward. Note that the recursive `type` definition will be discussed further in the next section on _templates as functions_. Each `Pair` specialization derives from `detail::pair_tag` to simplify verification of values as pairs in `tav::IsPair`. The naming of the parameters as `CAR` and `CDR` is a reference to pair types being constructed using `tav::Cons` analogously to _Scheme_, where the pair `(1 . 2)` may be constructed using `(cons 1 2)`.
 
-To summarize the type concept employed in [TypeAsValue] we can say that all actual values are stored in `std::integral_constant` specializations that enable extraction in a template context via their constant `value` member. Those types are then aggregated into structures using the `tav::Pair` template. This means that we can easily provide _functions_ to work on these _values_ in the form of template types and their parameters as will be discussed in the following section.
+To summarize the type concept employed in [TypeAsValue] we can say that all actual values are stored in `std::integral_constant` specializations that enable extraction in a template context via their constant `value` member. Those types are then aggregated into structures using the `tav::Pair` template. This means that we can easily provide _functions_ to work on these _values_ in the form of type templates and their parameters as will be discussed in the following section.
 
 ## Templates as functions
 
@@ -131,7 +131,7 @@ using Fold = Eval<detail::fold_pair<Function, Initial, List>>;
 ~~~
 {:.language-cpp}
 
-Hiding member type defintions behind template aliases enables most _higher_ functionality and applications built using it's functions to be written in a reasonably minimalistic - _Scheme_ like - fashion as we can see in e.g. the listing of `Every`. This also explains why `tav::Pair` recursively defines it's own type, as we would otherwise have to be quite careful where to resolve `tav::Eval`.
+Hiding member type defintions behind template aliases enables most _higher_ functionality and applications built using it's functions to be written in a reasonably minimalistic - _Scheme_ like - fashion as we can see in e.g. the listing of `Every`. This also explains why `tav::Pair` recursively defines it's own type, as we would otherwise have to be quite careful where to resolve it.
 
 ### Bindings
 
@@ -202,21 +202,37 @@ using result = tav::Map<
 ~~~
 {:.language-cpp}
 
-Note that `tav::_0` is just an alias to `tav::detail::placeholder<0>`. The `tav::Apply` template automatically selects a matching implementation as its base class depending on the count of placeholder arguments using `tav::Cond`. If there are more than two placeholder arguments it _returns_ a generic variadic template as its `function` alias whereas there is a explicit version for one, two or zero placeholders. The zero placeholder variant of `tav::Apply` is useful if function application has to be deferred as is required for e.g. invalid value handling.
+Note that `tav::_0` is just an alias to `tav::detail::placeholder<0>`. The `tav::Apply` template automatically selects a matching implementation as its base class depending on the count of placeholder arguments using `tav::Cond`. If there are more than two placeholder arguments it _returns_ a generic variadic template as its `function` alias whereas there is a explicit version for one, two or zero placeholders. The zero placeholder variant of `tav::Apply` is useful if function application has to be deferred as is required for e.g. handling of invalid values.
 
-As we can see this kind of partial function application is obviously no full replacement for actual template based lambda expressions but they serve as a _good enough_ solution until a nice approach to enabling placeholders as arguments in nested templates can be developed. Alternatively one could argue that the scenarios where one could use lambda expressions are better served by defining local templates and bindings as described in the previous section to e.g. increase readability by actually naming functions.
+As we can see this kind of partial function application obviously is no full replacement for actual template based lambda expressions but it serves as a _good enough_ solution until a nice approach to enabling placeholders as arguments in nested templates can be developed. Alternatively one could argue that the scenarios where one could use lambda expressions are better served by defining local templates and bindings as described in the previous section to e.g. increase readability by actually naming functions.
 
 ## Examples
 
+While the above listings and explanations should provide a basic overview about what I mean by using _Scheme_ as a metaphor for template metaprogramming, some actual examples of how [TypeAsValue] may be used to do some concrete compile time computation are certainly useful.
+
+For this reason the library includes two example applications, namely a implementation of the _Sieve of Eratosthenes_ and a _Turing machine_ [^4] simulator. To further support the analogy between functional and template metaprogramming both of these examples as well as all test cases are documented using their respective _Scheme_ equivalent.
+
+Both of these examples are certainly not what [TypeAsValue] might be used for in practice. I imagine the most viable real word use case for template metaprogramming based compile time computation to be the implementation of complex template based abstractions. For example it could serve as a utility to express base class selections and complex assertions of static parameters in a easily readable and hopefully relatable manner.
+
 ## Summary
+
+While the _Scheme_ metaphor for template metaprogramming in C++ certainly has it's limits, especially in the area of anonymous functions, I think that this article as well as the actual implementation of [TypeAsValue] are proof that it holds up quite well in many circumstances. As stated in the introduction to this article I was very surprised how close template metaprogramming can feel to a _real_ functional programming language. 
+
+All listings in this article as well as the [TypeAsValue] library itself are freely available under the terms of the MIT license on [Github] and [cgit]. Feel free to check them out and contribute - I am especially interested in practical solutions to providing better partial function application support or even full compile time lambda expressions that do not require the whole library to be designed around this concept.
+
+Finally I want to reference the [Boost MPL] library which supports everything and more than the solution described in this article without relying on any _modern_ language features such as variadic templates. All _non-experimental_ projects should probably use it instead of [TypeAsValue], not the least because of greater portability.
 
 [^0]: ISO C++ Standard draft, N3797, § 3.9.1 _Fundamental types_, Section 7
 [^1]: `and` needs to be wrapped in anonymous function in _Scheme_ because it is not a function but a macro
 [^2]: ISO C++ Standard draft, N3797, § 14.5 _Template declarations_, Section 3
 [^3]: _TypeAsValue_ currently represents _Scheme_'s empty list `'()` as `void`
+[^4]: Previously proofed in [C++ Templates are Turing Complete](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3670) _(2003)_
 
 [appropriate article]: /article/a_look_at_compile_time_computation_in_cpp/
 [ConstList]: /page/const_list/
 [TypeAsValue]: /page/type_as_value/
 [SRFI-1]: http://srfi.schemers.org/srfi-1/srfi-1.html
 [`std::integral_constant`]: http://en.cppreference.com/w/cpp/types/integral_constant
+[Boost MPL]: http://www.boost.org/doc/libs/1_57_0/libs/mpl/doc/index.html
+[Github]: https://github.com/KnairdA/TypeAsValue/
+[cgit]: http://code.kummerlaender.eu/TypeAsValue/
