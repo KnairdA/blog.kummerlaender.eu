@@ -4,9 +4,11 @@
 
 As its name implies it follows the overall concept of viewing types as values and templates as functions manipulating those values.
 
-This library is a expanded reimplementation of my previous attempt at this problem: [ConstList]. As detailed in the appropriate [blog article] the mixed approach between generic lambda expressions, `constexpr` marked functions and template metaprogramming doesn't offer sufficient flexibility which led me to approach compile time computation in a slightly different manner via this new library. As one might notice this boils down to using _Scheme_ as a metaphor for C++ template metaprogramming. In fact all [test cases] and examples are documented by representing their logic in _Scheme_.
+This library is a expanded reimplementation of my previous attempt at this problem: [ConstList]. As detailed in the appropriate [blog article] the mixed approach between generic lambda expressions, `constexpr` marked functions and template metaprogramming doesn't offer sufficient flexibility which led me to approach compile time computation in a slightly different manner via this new library. As one might notice this boils down to using _Scheme_ as a metaphor for C++ template metaprogramming. In fact all [test cases] and [examples] are documented by representing their logic in _Scheme_.
 
 Its MIT licensed source code is available on both [Github] and [cgit].
+
+Furthermore an overview of this library alongside some background information is available in the form of a blog article on [using _Scheme_ as a metaphor for template metaprogramming].
 
 ## Current features
 
@@ -41,11 +43,12 @@ const std::size_t count = tav::Length<
 ~~~
 {: .language-cpp}
 
-Additionally there is a implementation of the _Sieve of Eratosthenes_ available as a more extensive [example].
+More extensive [examples] are available in the form of implementations of the _Sieve of Eratosthenes_ as well as of a _Turing machine_.
 
 [ConstList]: /page/const_list/
 [blog article]: /article/a_look_at_compile_time_computation_in_cpp/
+[using _Scheme_ as a metaphor for template metaprogramming]: /article/using_scheme_as_a_metaphor_for_template_metaprogramming/
 [Github]: https://github.com/KnairdA/TypeAsValue/
 [cgit]: http://code.kummerlaender.eu/TypeAsValue/
 [test cases]: https://github.com/KnairdA/TypeAsValue/blob/master/test.cc
-[example]: https://github.com/KnairdA/TypeAsValue/blob/master/example/prime/prime.cc
+[examples]: https://github.com/KnairdA/TypeAsValue/blob/master/example/

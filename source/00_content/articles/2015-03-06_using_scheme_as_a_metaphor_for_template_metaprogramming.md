@@ -232,22 +232,23 @@ Finally I want to reference the [Boost MPL] library which supports everything an
 [ConstList]: /page/const_list/
 [TypeAsValue]: /page/type_as_value/
 [SRFI-1]: http://srfi.schemers.org/srfi-1/srfi-1.html
-[`std::integral_constant`]: http://en.cppreference.com/w/cpp/types/integral_constant
-[`std::bind`]: http://en.cppreference.com/w/cpp/utility/functional/bind
-[`tav::Filter`]: https://github.com/KnairdA/TypeAsValue/blob/master/src/list/operation/higher/filter.h
-[`tav::Any`]: https://github.com/KnairdA/TypeAsValue/blob/master/src/list/operation/higher/query.h
-[`tav::Every`]: https://github.com/KnairdA/TypeAsValue/blob/master/src/list/operation/higher/query.h
-[`tav::Fold`]: https://github.com/KnairdA/TypeAsValue/blob/master/src/list/operation/higher/fold.h
-[`tav::Sort`]: https://github.com/KnairdA/TypeAsValue/blob/master/src/list/operation/higher/sort.h
-[`tav::Apply`]: https://github.com/KnairdA/TypeAsValue/blob/master/src/function/apply.h
-[`tav::detail::placeholder`]: https://github.com/KnairdA/TypeAsValue/blob/master/src/function/detail/placeholder.h
-[`tav::And`]: https://github.com/KnairdA/TypeAsValue/blob/master/src/operation/logic.h
-[`tav::Eval`]: https://github.com/KnairdA/TypeAsValue/blob/master/src/type.h
-[`tav::Pair`]: https://github.com/KnairdA/TypeAsValue/blob/master/src/pair.h
-[`tav::Cons`]: https://github.com/KnairdA/TypeAsValue/blob/master/src/list/cons.h
-[`tav::List`]: https://github.com/KnairdA/TypeAsValue/blob/master/src/list/list.h
-[`tav::Cond`]: https://github.com/KnairdA/TypeAsValue/blob/master/src/conditional/cond.h
 [example applications]: https://github.com/KnairdA/TypeAsValue/tree/master/example
 [Boost MPL]: http://www.boost.org/doc/libs/1_57_0/libs/mpl/doc/index.html
 [Github]: https://github.com/KnairdA/TypeAsValue/
 [cgit]: http://code.kummerlaender.eu/TypeAsValue/
+
+[`std::integral_constant`]: http://en.cppreference.com/w/cpp/types/integral_constant
+[`std::bind`]: http://en.cppreference.com/w/cpp/utility/functional/bind
+[`tav::Filter`]: https://github.com/KnairdA/TypeAsValue/blob/299781bccc5c7d1b212198b5a9a55ee9447603c5/src/list/operation/higher/filter.h
+[`tav::Any`]: https://github.com/KnairdA/TypeAsValue/blob/299781bccc5c7d1b212198b5a9a55ee9447603c5/src/list/operation/higher/query.h
+[`tav::Every`]: https://github.com/KnairdA/TypeAsValue/blob/299781bccc5c7d1b212198b5a9a55ee9447603c5/src/list/operation/higher/query.h
+[`tav::Fold`]: https://github.com/KnairdA/TypeAsValue/blob/299781bccc5c7d1b212198b5a9a55ee9447603c5/src/list/operation/higher/fold.h
+[`tav::Sort`]: https://github.com/KnairdA/TypeAsValue/blob/299781bccc5c7d1b212198b5a9a55ee9447603c5/src/list/operation/higher/sort.h
+[`tav::Apply`]: https://github.com/KnairdA/TypeAsValue/blob/299781bccc5c7d1b212198b5a9a55ee9447603c5/src/function/apply.h
+[`tav::detail::placeholder`]: https://github.com/KnairdA/TypeAsValue/blob/299781bccc5c7d1b212198b5a9a55ee9447603c5/src/function/detail/placeholder.h
+[`tav::And`]: https://github.com/KnairdA/TypeAsValue/blob/299781bccc5c7d1b212198b5a9a55ee9447603c5/src/operation/logic.h
+[`tav::Eval`]: https://github.com/KnairdA/TypeAsValue/blob/299781bccc5c7d1b212198b5a9a55ee9447603c5/src/type.h
+[`tav::Pair`]: https://github.com/KnairdA/TypeAsValue/blob/299781bccc5c7d1b212198b5a9a55ee9447603c5/src/pair.h
+[`tav::Cons`]: https://github.com/KnairdA/TypeAsValue/blob/299781bccc5c7d1b212198b5a9a55ee9447603c5/src/list/cons.h
+[`tav::List`]: https://github.com/KnairdA/TypeAsValue/blob/299781bccc5c7d1b212198b5a9a55ee9447603c5/src/list/list.h
+[`tav::Cond`]: https://github.com/KnairdA/TypeAsValue/blob/299781bccc5c7d1b212198b5a9a55ee9447603c5/src/conditional/cond.h
