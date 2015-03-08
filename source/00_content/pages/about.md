@@ -4,7 +4,7 @@
 
 Hi, my name is Adrian Kummerländer. I am a twenty-year-old Software Developer located in southern Germany.
 
-I taught myself programming at the age of 10 and spent the first few years developing software in _Delphi_ and _C#_. After switching from the _Windows_ ecosystem to _Linux_ as my primary operating system I started developing primarily in _JavaScript_, _XSLT_ and _C++_ altough I enjoy it a lot to experiment with other languages such as _Scala_, _Haskell_ and _Python_.
+I taught myself programming at the age of 10 and spent the first few years developing software in _Delphi_ and _C#_. After switching from the _Windows_ ecosystem to _Linux_ as my primary operating system I started developing primarily in _JavaScript_, _XSLT_ and _C++_ altough I enjoy it a lot to experiment with other languages such as _Scala_, _Haskell_ and _Scheme_.
 
 My professional education in software development started with my apprenticeship as a _"computer science expert with subject area software development"_[^1] at [_Sybit_](http://sybit.de) in 2010 which I concluded with distinction in 2013. 
 
