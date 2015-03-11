@@ -8,7 +8,7 @@
 
 <xsl:variable name="meta">
 	<datasource type="main"  mode="xpath" source="$source_tree/directory[@name = '00_content']/directory" target="files"/>
-	<target     mode="plain" value="tags.xml"/> 
+	<target     mode="plain" value="tags.xml"/>
 </xsl:variable>
 
 <xsl:template match="files/directory[@name = 'tags']/directory">

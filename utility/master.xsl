@@ -48,7 +48,7 @@
 					<xsl:value-of select="$root/meta/title"/>
 				</h1>
 
-				<ul>
+				<ul class="buttonlist">
 					<li>
 						<a href="/0">Start</a>
 					</li>
@@ -72,7 +72,7 @@
 			</div>
 
 			<div id="tags">
-				<ul>
+				<ul class="buttonlist">
 					<xsl:apply-templates select="datasource/meta/tags/entry" mode="master"/>
 				</ul>
 			</div>
@@ -80,7 +80,7 @@
 			<div id="footer">
 				<a href="/page/static_xslt/">Made with XSLT</a>
 
-				<ul>
+				<ul class="buttonlist">
 					<li>
 						<a href="/page/contact">Contact</a>
 					</li>

@@ -23,10 +23,10 @@
 </xsl:template>
 
 <xsl:template match="articles">
-	<div class="column articlelist archivlist">
+	<div class="column">
 		<xsl:text>Past articles:</xsl:text>
 
-		<ol class="topline">
+		<ol class="topline articlelist archivlist">
 			<xsl:apply-templates select="entry"/>
 		</ol>
 	</div>

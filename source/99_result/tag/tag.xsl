@@ -18,12 +18,12 @@
 </xsl:template>
 
 <xsl:template match="tag/entry">
-	<div class="archiv articlelist archivlist">
+	<div class="archiv">
 		<xsl:text>All articles tagged as &#187;</xsl:text>
 		<xsl:value-of select="@handle"/>
 		<xsl:text>&#171;</xsl:text>
 
-		<ol class="topline">
+		<ol class="topline articlelist archivlist">
 			<xsl:apply-templates />
 		</ol>
 	</div>
