@@ -8,7 +8,7 @@ This also means that I did not shut down the SheevaPlug but it _happily_ continu
 
 ## Requirements
 
-While one could use any computer equipped with a network connection as a personal server it pays off invest in a _Plug Computer_ like the SheevaPlug[^2] or any other low-power [single board computer]. Most of these devices combine a small form factor with low-power usage, passive cooling and enough performance to run web applications.
+While one could use any computer equipped with a network connection as a personal server it pays off to invest in a _Plug Computer_ like the SheevaPlug[^2] or any other low-power [single board computer]. Most of these devices combine a small form factor with low power usage, passive cooling and enough performance to run web applications.
 
 Besides a viable computing platform one also requires a Internet connection that offers a public IP address and is not hidden behind a provider subnet. A static IP address on the other hand is not required as a dynamic DNS setup based on [NoIP] or [DynDNS] works really well in my experience. The IP address assigned to my home connection doesn't change more than once a day and downtimes due to DNS related problems were minimal.
 
