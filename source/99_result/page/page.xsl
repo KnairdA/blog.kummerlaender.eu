@@ -19,7 +19,7 @@
 </xsl:template>
 
 <xsl:template match="page/entry">
-	<div class="last article">
+	<div class="article">
 		<h2>
 			<xsl:text>» </xsl:text>
 			<a href="/page/{@handle}">

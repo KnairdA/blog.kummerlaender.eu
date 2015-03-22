@@ -48,7 +48,9 @@
 		<xsl:apply-templates select="content/node()" mode="xhtml"/>
 	</div>
 
-	<div id="isso-thread"></div>
+	<div id="isso-thread">
+		<xsl:text> </xsl:text>
+	</div>
 
 	<script type="text/javascript" src="/comments/js/embed.min.js" data-isso-avatar="false" data-isso-vote="false" data-isso-css="false">
 		<xsl:text> </xsl:text>

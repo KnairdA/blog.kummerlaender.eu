@@ -28,6 +28,37 @@
 	</xsl:choose>
 </xsl:template>
 
+<xsl:template match="page/entry">
+	<div>
+		<xsl:apply-templates select="article"/>
+	</div>
+
+	<div id="pagination">
+		<xsl:if test="@index > 0">
+			<span>
+				<a class="pagination-previous" href="/{@index - 1}">
+					<xsl:text>« newer</xsl:text>
+				</a>
+			</span>
+		</xsl:if>
+		<xsl:if test="@index &lt; @total - 1">
+			<span>
+				<a class="pagination-next" href="/{@index + 1}">
+					<xsl:text>older »</xsl:text>
+				</a>
+			</span>
+		</xsl:if>
+	</div>
+</xsl:template>
+
+<xsl:template match="entry/article">
+	<xsl:variable name="handle" select="@handle"/>
+
+	<div class="article">
+		<xsl:apply-templates select="$root/articles/entry[@handle = $handle]" mode="resolve"/>
+	</div>
+</xsl:template>
+
 <xsl:template match="articles/entry" mode="resolve">
 	<h2>
 		<xsl:text>» </xsl:text>
@@ -54,42 +85,5 @@
 	<xsl:apply-templates select="content/node()" mode="xhtml"/>
 </xsl:template>
 
-<xsl:template match="page/entry">
-	<xsl:apply-templates />
-
-	<div id="pagination">
-		<xsl:if test="@index > 0">
-			<span>
-				<a class="pagination-previous" href="/{@index - 1}">
-					<xsl:text>« newer</xsl:text>
-				</a>
-			</span>
-		</xsl:if>
-		<xsl:if test="@index &lt; @total - 1">
-			<span>
-				<a class="pagination-next" href="/{@index + 1}">
-					<xsl:text>older »</xsl:text>
-				</a>
-			</span>
-		</xsl:if>
-	</div>
-</xsl:template>
-
-<xsl:template match="page/entry/article">
-	<xsl:variable name="handle" select="@handle"/>
-
-	<xsl:choose>
-		<xsl:when test="position() = last()">
-			<div class="last article">
-				<xsl:apply-templates select="$root/articles/entry[@handle = $handle]" mode="resolve"/>
-			</div>
-		</xsl:when>
-		<xsl:otherwise>
-			<div class="article">
-				<xsl:apply-templates select="$root/articles/entry[@handle = $handle]" mode="resolve"/>
-			</div>
-		</xsl:otherwise>
-	</xsl:choose>
-</xsl:template>
 
 </xsl:stylesheet>

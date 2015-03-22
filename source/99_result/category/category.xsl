@@ -20,6 +20,22 @@
 	<xsl:value-of select="/datasource/category/entry/@handle"/>
 </xsl:template>
 
+<xsl:template match="category/entry">
+	<h3>
+		<xsl:text>All pages categorized as &#187;</xsl:text>
+		<xsl:value-of select="@handle"/>
+		<xsl:text>&#171;</xsl:text>
+	</h3>
+
+	<div class="columns">
+		<ul class="prettylist">
+			<xsl:apply-templates select="page">
+				<xsl:sort select="digest/@size" data-type="number" order="descending"/>
+			</xsl:apply-templates>
+		</ul>
+	</div>
+</xsl:template>
+
 <xsl:template match="entry/page">
 	<li>
 		<em>»</em>
@@ -30,21 +46,6 @@
 			</p>
 		</a>
 	</li>
-</xsl:template>
-
-<xsl:template match="category/entry">
-	<h3>
-		<xsl:text>All pages categorized as &#187;</xsl:text>
-		<xsl:value-of select="@handle"/>
-		<xsl:text>&#171;</xsl:text>
-	</h3>
-	<div class="archiv columns">
-		<ul class="prettylist">
-			<xsl:apply-templates select="page">
-				<xsl:sort select="digest/@size" data-type="number" order="descending"/>
-			</xsl:apply-templates>
-		</ul>
-	</div>
 </xsl:template>
 
 </xsl:stylesheet>
