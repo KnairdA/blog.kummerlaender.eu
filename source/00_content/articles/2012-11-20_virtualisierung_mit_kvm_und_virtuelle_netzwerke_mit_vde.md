@@ -26,7 +26,6 @@ des Gast-Systems werden auf die gleiche Weise gesetzt. Aus diesem Grund gehe ich
 Hier als Beispiel mein derzeitiger Standardaufruf von KVM, der für alle VMs gleich ist. Dynamisch ist allein das zu verwendende Speicher-Gerät - in meinem Fall verschiedene Image-Dateien.
 
 ~~~
-#!/bin/sh
 qemu-kvm -cpu host -hda $1 -m 1024 -daemonize -vnc none -usb -net nic -net vde
 ~~~
 {: .language-sh}
@@ -45,21 +44,21 @@ Meine Konfiguration hält sich dabei im wesentlichen an den [Vorschlag](https://
 #!/bin/sh
 case "$1" in
 	start)
-		tunctl -t tap0
+		ip tuntap add tap0 mode tap
 		vde_switch -tap tap0 -daemon -pidfile .switch.pid -mod 660 -group kvm
-		ifconfig tap0 192.168.100.254 netmask 255.255.255.0
+		ip addr add dev tap0 192.168.100.254/24
+		ip link set dev tap0 up
 	;;
 	stop)
 		kill -9 `cat .switch.pid`
 		rm .switch.pid
-		tunctl -d tap0
+		ip tuntap del tap0 mode tap
 	;;
 esac
 ~~~
 {: .language-sh}
 
-Dieses Script erzeugt ein virtuelles Interface `tap0` und verbindet ein neues, als Daemon im Hintergrund laufendes, virtuelles Switch mit diesem. Als nächstes wird dann noch eine statische IP
-Konfiguration für das virtuelle Interface definiert. Durch diese können alle mit `-net nic -net vde` Parametern gestarteten KVM Gäste über die IP `192.168.100.254` auf den Host zugreifen.
+Dieses Script erzeugt ein virtuelles Interface `tap0` und verbindet ein neues, als Daemon im Hintergrund laufendes, virtuelles Switch mit diesem. Als nächstes wird dann noch eine statische IP Konfiguration für das virtuelle Interface definiert. Durch diese können alle mit `-net nic -net vde` Parametern gestarteten KVM Gäste über die IP `192.168.100.254` auf den Host zugreifen.
 
 In den Gast-Systemen selbst muss zusätzlich eine statische IP Konfiguration vorgenommen werden:
 
