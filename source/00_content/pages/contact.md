@@ -3,7 +3,6 @@
 **eMail:** adrian[at]kummerlaender[dot]eu  
 **Public Key:** [key.kummerlaender.eu](http://key.kummerlaender.eu)  
 **Jabber:** adrian[underscore]kummerlaender[at]jabber[dot]ccc[dot]de  
-**Twitter:** [KnairdA](https://twitter.com/KnairdA)  
 **Github:** [KnairdA](https://github.com/KnairdA)  
 **cgit:** [code.kummerlaender.eu](http://code.kummerlaender.eu)
 
