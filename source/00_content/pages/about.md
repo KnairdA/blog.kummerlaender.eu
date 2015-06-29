@@ -8,7 +8,9 @@ I taught myself programming at the age of 10 and spent the first few years devel
 
 My professional education in software development started with my apprenticeship as a _"computer science expert with subject area software development"_[^1] at [_Sybit_](http://sybit.de) in 2010 which I concluded with distinction in 2013. 
 
-While my primary activity nowadays is studying for my A levels at the _Technische Oberschule_ I still work as a part-time developer at _Sybit_ in the _SAP CRM_ area where I mainly develop business printout processes using _ABAP_, _JavaScript_ and _XSLT_ in addition to _SAP WebUI_ development.
+Since then I work as a part-time developer at _Sybit_ in the _SAP CRM_ area where I mainly develop business printout processes using _ABAP_, _JavaScript_ and _XSLT_ in addition to _SAP WebUI_ development.
+
+Between 2013 and 2015 I also studied for my A levels at the _Technische Oberschule_ which I concluded with distinction and a grade point average of _1.1_. My current plan for the future is to study mathematics starting this fall.
 
 Although software development and tickering with my computer systems definitely is a primary occupation of mine both professionally and recreationally, I also enjoy reading _hard science fiction_ books and attending concerts and festivals of _orchestral_ and _Metal_ music. If you are interested, a overview of my musical interests is available as a [blog article](/article/musikalischer_jahresruekblick_2013/) in German. 
 
