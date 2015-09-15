@@ -13,7 +13,7 @@ Since then I work as a part-time developer at _Sybit_ in the _SAP CRM_ area wher
 Between 2013 and 2015 I also studied for my A levels at the _Technische Oberschule_ which I concluded top of my class and with a grade point average of _1.1_.  
 Starting this fall I will study mathematics at the Karlsruhe Institute of Technology.
 
-Although software development and tickering with my computer systems definitely is a primary occupation of mine both professionally and recreationally, I also enjoy reading _hard science fiction_ books and attending concerts and festivals of _orchestral_ and _Metal_ music. If you are interested, a overview of my musical interests is available as a [blog article](/article/musikalischer_jahresruekblick_2013/) in German. 
+Although software development and tickering with my computer systems definitely is a primary occupation of mine both professionally and recreationally, I also enjoy reading _hard science fiction_ books and attending concerts and festivals of _Classical_ and _Metal_ music.
 
 I use this website to document some of my [thoughts and experiences](/archive) concerning software development and various other topics in addition to summarizing some of my [projects](/category/projects).
 
