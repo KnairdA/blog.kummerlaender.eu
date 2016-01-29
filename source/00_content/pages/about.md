@@ -10,8 +10,9 @@ My professional education in software development started with my apprenticeship
 
 Since then I work as a part-time developer at _Sybit_ in the _SAP CRM_ area where I mainly develop business printout processes using _ABAP_, _JavaScript_ and _XSLT_ in addition to _SAP WebUI_ development.
 
-Between 2013 and 2015 I also studied for my A levels at the _Technische Oberschule_ which I concluded top of my class and with a grade point average of _1.1_.  
-Starting this fall I will study mathematics at the Karlsruhe Institute of Technology.
+Between 2013 and 2015 I studied for my A levels at the _Technische Oberschule_ which I concluded top of my class and with a grade point average of _1.1_.
+
+Currently I am studying mathematics at the Karlsruhe Institute of Technology.
 
 Although software development and tickering with my computer systems definitely is a primary occupation of mine both professionally and recreationally, I also enjoy reading _hard science fiction_ books and attending concerts and festivals of _Classical_ and _Metal_ music.
 
