@@ -4,6 +4,7 @@
 **Public Key:** [key.kummerlaender.eu](http://key.kummerlaender.eu)  
 **Jabber:** adrian[underscore]kummerlaender[at]jabber[dot]ccc[dot]de  
 **Github:** [KnairdA](https://github.com/KnairdA)  
+**GitLab:** [KnairdA](https://gitlab.com/u/KnairdA)  
 **cgit:** [code.kummerlaender.eu](http://code.kummerlaender.eu)
 
 Further information about myself may be found on the [about page](/page/about).
