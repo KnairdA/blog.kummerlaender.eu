@@ -22,7 +22,7 @@ Furthermore _MetaTerm_'s command mode exposes a JavaScript prompt through `:exec
 
 ## Screenshot
 
-![MetaTerm in action](http://static.kummerlaender.eu/media/metaterm_1.png)
+![MetaTerm in action](https://static.kummerlaender.eu/media/metaterm_1.png)
 
 [Github]: https://github.com/KnairdA/MetaTerm/
 [cgit]: http://code.kummerlaender.eu/MetaTerm/

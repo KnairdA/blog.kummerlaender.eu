@@ -2,7 +2,7 @@
 
 Yesterday I randomly stumbled upon my trusty old _N900_ in a drawer and decided to charge it and revisit past times. Maybe I am becoming older and more nostalgic and this is clouding my judgement but I feel that in _2009_ mobile devices had more character. Booting up the _N900_ and being greeted by the familiar but nowadays seldomly heard _Nokia_ jingle followed by a actually usable mobile Linux distribution makes me feel right at home in a way that today's devices - in my case a _Jolla_ with a _TOHKBDv2_ external keyboard - somehow simply can't.
 
-![N900](http://static.kummerlaender.eu/media/n900.png)
+![N900](https://static.kummerlaender.eu/media/n900.png)
 
 While the _Jolla_ may have much faster hardware, a bigger screen, multipoint touch and shiny fluid animations it just doesn't measure up to the old _Maemo_ devices when the primary use case is to have an actual mobile computer instead of a communications gadget.
 
@@ -11,7 +11,7 @@ The first and foremost problem is of course the lack of hardware based user inte
 To prevent misunderstandings: I am very grateful for the work _Dirk et. al._ did with [FunkyOtherHalf] to produce a usable external keyboard for the _Jolla_ in a very limited production run of only a few thousand devices. If you view it as what it is - a prototype - it actually exceeds all expections one could have reasonably had.  
 But sadly this does not change the reality that at least my other half keyboard is not consistently usable in a day to day fashion. The magnet based connection between the keyboard part an the backcover of the _Jolla_ is rather flaky and sometimes requires reconnects during usage. Furthermore some keys, in my case _U_ and _N_, don't work as well as the other keys which frequently disrupts the flow of typing. If you were to disregard these issues, the keyboard itself, especially the layout, would be better than the _N900_'s - sadly only in theory as it's slider mechanism and feel of use in practice is still superior.
 
-![Jolla with TOHKBDv2](http://static.kummerlaender.eu/media/jolla.png)
+![Jolla with TOHKBDv2](https://static.kummerlaender.eu/media/jolla.png)
 
 Of course the _Jolla_ has it's strengths: _SailfishOS_ is a pleasure to use[^0] and the faster internals are essential to using it without having to wait on the device every other interaction. Also the replacement of _GTK_ with _Qt's QML_ as the primary _UI_ framework was definitly the right step and being able to execute _Android_ applications is useful for when there is no _SailfishOS_ counterpart.  
 But while slow the _N900_ is superior in other situations such as direct sunlight and precision usage using a stylus. The transreflective background of the display means that one can turn off the backlight completly if the sun is shining bright enough and use it as a source of light whereas the _Jolla_ display is often not readable in bright sunlight.
