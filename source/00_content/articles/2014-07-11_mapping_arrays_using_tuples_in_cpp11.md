@@ -27,7 +27,7 @@ struct IndexSequence {
 ~~~
 {: .language-cpp}
 
-This is achieved by the [`IndexSequence`](https://github.com/KnairdA/InputXSLT/blob/49e2010b489ab6d5516a9abd896c67738e0dc1cc/src/support/type/sequence.h) template above by recursively specializing the `Sequence` template using static recursion controlled by the standard libraries template metaprogramming utility template `std::conditional`. This means that e.g. the type `Sequence<0, 1, 2, 3>` can also be defined as `IndexSequence<4>::type`.
+This is achieved by the [`IndexSequence`](https://github.com/KnairdA/InputXSLT/blob/49e2010b489ab6d5516a9abd896c67738e0dc1cc/src/support/type/sequence.h) template above by recursively specializing the `Sequence` template using static recursion controlled by the standard library's template metaprogramming utility template `std::conditional`. This means that e.g. the type `Sequence<0, 1, 2, 3>` can also be defined as `IndexSequence<4>::type`.
 
 Now all that is required to accomplish the goal is instantiating the sequence type and passing it to a variadic member template as [follows](https://github.com/KnairdA/InputXSLT/blob/master/src/function/base.h):
 

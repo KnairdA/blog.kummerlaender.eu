@@ -14,7 +14,7 @@ A explanation of an earlier version of this template library can be found on thi
 * Support for developing custom types to be used in the Container and Iterator templates
 * Support for nesting structures inside each other
 * BitField template offers bit-level access to ByteField byte-arrays
-* Doesn't require any external libraries besides the GNU libraries `endian.h`
+* Doesn't require any external libraries besides the GNU library's `endian.h`
 * Header only library because of heavy usage of template metaprogramming
 * Unit Tests based on GoogleTest
 * MIT license

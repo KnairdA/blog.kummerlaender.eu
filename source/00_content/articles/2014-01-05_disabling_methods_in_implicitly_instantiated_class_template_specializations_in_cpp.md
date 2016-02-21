@@ -19,7 +19,7 @@ inline typename std::enable_if<
 ~~~
 {: .language-cpp}
 
-As we can see I am relying on the standard libraries `std::enable_if` template to enable the method only if the _Helper_ template argument equals the type _UndefinedEndian_. One may wonder why I am supplying the `std::enable_if` template with the argument _Helper_ instead of directly specifying the class template argument _Endianess_. This was needed because of the following paragraph of the ISO C++ standard:
+As we can see I am relying on the standard library's `std::enable_if` template to enable the method only if the _Helper_ template argument equals the type _UndefinedEndian_. One may wonder why I am supplying the `std::enable_if` template with the argument _Helper_ instead of directly specifying the class template argument _Endianess_. This was needed because of the following paragraph of the ISO C++ standard:
 
 > The implicit instantiation of a class template specialization causes the implicit instantiation of the declarations, but not of the definitions or default arguments, of the class member functions, [...]  
 > ([ISO C++ Standard draft, N3337](http://www.open-std.org/jtc1/sc22/wg21/), p. 346)

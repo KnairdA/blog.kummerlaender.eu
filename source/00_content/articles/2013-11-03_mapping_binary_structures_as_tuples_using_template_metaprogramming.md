@@ -14,7 +14,7 @@ differences in endianness and In-place modification of the structure fields.
 
 ## Mapping buffers as tuples
 
-To be able to easily work with structure definitions using template metaprogramming I am relying on the standard libraries [_std::tuple_](http://en.cppreference.com/w/cpp/utility/tuple)
+To be able to easily work with structure definitions using template metaprogramming I am relying on the standard library's [_std::tuple_](http://en.cppreference.com/w/cpp/utility/tuple)
 template.
 
 ~~~
