@@ -18,9 +18,9 @@ This project consists of a library `libChangeLog` and a matching wrapper bash sc
 	> change rm example
 	removed 'example'
 
-The goal is to develop `change` into a utility that can be dropped in front of any non-suid (function interposition via `LD_PRELOAD` is thankfully not allowed for suid-executables) application and generate a summary that will explain the actual happenings of a terminal session. While this is not very useful for simple, self-explanatory commands such as `mv $this $to_that` it is certainly helpful whenever files are changed by interactive applications that do not provide their own directly visible logging such as text editors. Such an application will in turn be useful for e.g. documenting shell sessions.
+`change` aims to be a utility that can be dropped in front of any non-suid (function interposition via `LD_PRELOAD` is thankfully not allowed for suid-executables) application and generate a summary that will explain the actual happenings of a terminal session. While this is not very useful for simple, self-explanatory commands such as `mv $this $to_that` it is certainly helpful whenever files are changed by interactive applications that do not provide their own directly visible logging such as text editors. Such an application is in turn useful for e.g. documenting shell sessions.
 
-_change_ is implemented in C++ and is available via [Github] and [cgit].
+`change` is written in Bash while the library it preloads is implemented in C++. Both are available via [Github] and [cgit].
 
 ## Filtering
 
@@ -37,6 +37,8 @@ For example the following ruleset intructs the library to restrict the output `c
 	# log and backup files
 	.*\.viminfo
 	.*\.sw[px]
+
+If the library is used via `change` it will automatically try to load a ruleset matching the wrapped applications name. Currently the respository packages such definitions for _vim_, _gvim_ and _neovim_.
 
 [Github]: https://github.com/KnairdA/change/
 [cgit]: http://code.kummerlaender.eu/change/
