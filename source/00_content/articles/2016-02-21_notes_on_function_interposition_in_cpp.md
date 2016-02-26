@@ -22,7 +22,7 @@ However the use case that led me to dive into this topic was to develop a tool t
 
 To interpose a given function the library provided to the dynamic linker via `LD_PRELOAD` simply needs to contain a function symbol of the same name and signature.While this is not a problem in C it can be problematic in C++ as the compiler per default performs _name mangling_ to convert a given function signature to a plain string[^1]. Luckily this can be prevented by enclosing the functions to be interposed in an `external "C"` block.
 
-Note that this only applies if we want to specifically interpose C functions from C++. There is nothing stopping us from interposing any function in a shared library as long as we can get the compiler to generate the correct symbol name. Accordingly also works for C++ class member functions or functions of libraries written in other languages such as D.
+Note that this only applies if we want to specifically interpose C functions from C++. There is nothing stopping us from interposing any function in a shared library as long as we can get the compiler to generate the correct symbol name. Accordingly this also works for C++ class member functions or functions of libraries written in other languages such as D.
 
 To check if the symbols are exported correctly we can use `nm` which ĺists the symbols in ELF object files.
 
