@@ -3,8 +3,8 @@
 **eMail:** adrian[at]kummerlaender[dot]eu  
 **Public Key:** [key.kummerlaender.eu](https://key.kummerlaender.eu)  
 **Jabber:** adrian[underscore]kummerlaender[at]jabber[dot]ccc[dot]de  
+**Telegram:** [KnairdA](https://telegram.me/KnairdA)  
 **Github:** [KnairdA](https://github.com/KnairdA)  
-**cgit:** [code.kummerlaender.eu](https://code.kummerlaender.eu)
 
 Further information about myself may be found on the [about page](/page/about).
 
@@ -16,6 +16,5 @@ All contents of this website that are created by me are freely available under t
 
 Further legal information is also available in [German].
 
-[eurid.eu]: http://www.eurid.eu/en/whois-search
 [CC-BY-SA]: http://creativecommons.org/licenses/by-sa/3.0/
 [German]: /page/impressum
