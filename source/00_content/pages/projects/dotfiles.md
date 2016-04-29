@@ -13,8 +13,8 @@ My toolset currently consists of the following applications:
 * [fish] as my default shell
 * [urxvt] as terminal emulator
 * [conky] for displaying system information in [i3bar]
+* [rofi] as program launcher
 * [twmn] for displaying notifications
-* [dmenu] as program launcher
 * [zathura] for displaying documents
 
 [GNU stow]: https://www.gnu.org/software/stow/
@@ -30,5 +30,5 @@ My toolset currently consists of the following applications:
 [conky]: http://conky.sourceforge.net/
 [i3bar]: http://i3wm.org/docs/i3bar-protocol.html
 [twmn]: https://github.com/sboli/twmn
-[dmenu]: http://tools.suckless.org/dmenu/
+[rofi]: https://davedavenport.github.io/rofi/
 [zathura]: https://pwmt.org/projects/zathura/
