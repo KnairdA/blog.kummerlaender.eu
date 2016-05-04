@@ -28,6 +28,10 @@
 	<link rel="stylesheet"    type="text/css"     href="/main.css" />
 	<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico" />
 
+	<xsl:if test="//p[@class = 'math']">
+		<link rel="stylesheet" type="text/css" href="/math.css" />
+	</xsl:if>
+
 	<title>
 		<xsl:call-template name="title-text"/> @ <xsl:value-of select="$root/meta/title"/>
 	</title>

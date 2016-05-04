@@ -17,7 +17,25 @@
 	)/self::command/node()"/>
 </xsl:template>
 
-<xsl:template name="highlighter">
+<xsl:template name="math_highlighter">
+	<xsl:param name="source"/>
+
+	<xsl:variable name="formatted_expression">
+		<xsl:call-template name="plain_formatter">
+			<xsl:with-param name="format">
+				<xsl:text>tex2html --inline '</xsl:text>
+				<xsl:value-of select="$source"/>
+				<xsl:text>'</xsl:text>
+			</xsl:with-param>
+		</xsl:call-template>
+	</xsl:variable>
+
+	<p class="math">
+		<xsl:copy-of select="xalan:nodeset($formatted_expression)/node()"/>
+	</p>
+</xsl:template>
+
+<xsl:template name="code_highlighter">
 	<xsl:param name="source"/>
 	<xsl:param name="language"/>
 
@@ -55,7 +73,7 @@
 </xsl:template>
 
 <xsl:template match="pre" mode="embellish">
-	<xsl:call-template name="highlighter">
+	<xsl:call-template name="code_highlighter">
 		<xsl:with-param name="source" select="code/text()"/>
 		<xsl:with-param name="language">
 			<xsl:choose>
@@ -67,6 +85,12 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:with-param>
+	</xsl:call-template>
+</xsl:template>
+
+<xsl:template match="script" mode="embellish">
+	<xsl:call-template name="math_highlighter">
+		<xsl:with-param name="source" select="text()"/>
 	</xsl:call-template>
 </xsl:template>
 

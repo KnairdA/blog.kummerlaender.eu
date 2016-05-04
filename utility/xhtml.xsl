@@ -5,14 +5,22 @@
 >
 
 <xsl:template match="*" mode="xhtml">
-    <xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml">
-        <xsl:copy-of select="@*"/>
-        <xsl:apply-templates select="node()" mode="xhtml"/>
-    </xsl:element>
+	<xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml">
+		<xsl:copy-of select="@*"/>
+		<xsl:apply-templates select="node()" mode="xhtml"/>
+	</xsl:element>
+</xsl:template>
+
+<xsl:template match="span" mode="xhtml">
+	<span>
+		<xsl:copy-of select="@*"/>
+		<xsl:apply-templates select="node()" mode="xhtml"/>
+		<xsl:comment></xsl:comment>
+	</span>
 </xsl:template>
 
 <xsl:template match="comment() | processing-instruction()" mode="xhtml">
-    <xsl:copy/>
+	<xsl:copy/>
 </xsl:template>
 
 </xsl:stylesheet>
