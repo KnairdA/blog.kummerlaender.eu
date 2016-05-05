@@ -15,7 +15,9 @@
 	<span>
 		<xsl:copy-of select="@*"/>
 		<xsl:apply-templates select="node()" mode="xhtml"/>
-		<xsl:comment></xsl:comment>
+		<xsl:if test="not(node())">
+			<xsl:comment></xsl:comment>
+		</xsl:if>
 	</span>
 </xsl:template>
 
