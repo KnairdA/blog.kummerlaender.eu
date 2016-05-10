@@ -8,7 +8,7 @@ Its source code is available on both [Github] and [cgit].
 
 ## Usage
 
-_MetaTerm_ starts in insert mode which means that one can simply start typing a command and trigger it's execution by pressing _enter_.
+_MetaTerm_ starts in insert mode which means that one can simply start typing a command and trigger its execution by pressing _enter_.
 
 The list of running and killed terminal instances is navigable using _vim-like_ keybindings, i.e. using `j` and `k`. Additionally one can jump to the top using `g` and to the bottom using `G`. Navigation is also accessible in command mode via `:next`, `:prev` and `:jump <INDEX>`.
 

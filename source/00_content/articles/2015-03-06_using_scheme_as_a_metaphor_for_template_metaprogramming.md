@@ -2,7 +2,7 @@
 
 Back in January I looked at compile time computation in C++ based on handling lists in a _functional fashion_ using a mixture between templates, generic lambda expressions and `constexpr` functions. The conclusion of the [appropriate article] was that the inherent restrictions of the approach taken in [ConstList], namely the missing guarantee on compile time evaluation, inability to make return types depend on actual values and lambda expressions being unable to be declared as constant make viewing types as values and templates as functions the superior approach. This article describes how this approach works out in practice.
 
-While [ConstList] turned out to be of limited use in actually performing compile time computations, it's list manipulation and query functionality was already inspired by how lists are handled in _LISP_ respectively its more minimalistic dialect _Scheme_, especially by the functionality described in the latter's [SRFI-1].  
+While [ConstList] turned out to be of limited use in actually performing compile time computations, its list manipulation and query functionality was already inspired by how lists are handled in _LISP_ respectively its more minimalistic dialect _Scheme_, especially by the functionality described in the latter's [SRFI-1].  
 When I started developing a new library porting this basic concept to the _type as value and templates as functions_ approach called [TypeAsValue] it quickly turned out that a _Scheme_ like paradigm maps quite well to template metaprogramming. This was initially very surprising as I did not expect that C++ templates would actually feel like a - admittedly rather verbose - functional programming language if used in a certain way.
 
 ~~~
@@ -22,7 +22,7 @@ using sum = tav::Fold<
 ~~~
 {:.language-cpp}
 
-As we can see compile time computations expressed using this approach are more or less direct mappings of their _Scheme_ equivalent if we overlook the need to explicitly declare types, the different syntax used for defining bindings as well as it's immutability.
+As we can see compile time computations expressed using this approach are more or less direct mappings of their _Scheme_ equivalent if we overlook the need to explicitly declare types, the different syntax used for defining bindings as well as its immutability.
 
 While [TypeAsValue] started out as a direct reimplementation of my previous attempt I am happy to say that the conclusions drawn concerning the superiority of a stricly template metaprogramming based implementation held true and enabled the implementation of equivalents for large parts of the _Scheme_ list library. This includes actual content dependent list manipulations such as [`tav::Filter`], which were impossible to implement in [ConstList], in addition to e.g. a compile time implementation of _Quick Sort_.
 
@@ -119,7 +119,7 @@ struct fold_pair<Function, Initial, void> {
 ~~~
 {:.language-cpp}
 
-While the listing of `tav::detail::fold_pair` shows how the partial specialization of its [`tav::Pair`] parameter allows recursion until the list ends[^3], it also forces us to define it's actual type in terms of a public `type` member `typedef`. Such a member type definition can lead to cluttering the code with `typename` keywords which is why [TypeAsValue] employs a simple [`tav::Eval`] template alias to hide all `typename *::type` constructs.
+While the listing of `tav::detail::fold_pair` shows how the partial specialization of its [`tav::Pair`] parameter allows recursion until the list ends[^3], it also forces us to define its actual type in terms of a public `type` member `typedef`. Such a member type definition can lead to cluttering the code with `typename` keywords which is why [TypeAsValue] employs a simple [`tav::Eval`] template alias to hide all `typename *::type` constructs.
 
 ~~~
 template <
@@ -131,7 +131,7 @@ using Fold = Eval<detail::fold_pair<Function, Initial, List>>;
 ~~~
 {:.language-cpp}
 
-Hiding member type defintions behind template aliases enables most _higher_ functionality and applications built using it's functions to be written in a reasonably minimalistic - _Scheme_ like - fashion as we can see in e.g. the listing of [`tav::Every`]. This also explains why [`tav::Pair`] recursively defines it's own type, as we would otherwise have to be quite careful where to resolve it.
+Hiding member type defintions behind template aliases enables most _higher_ functionality and applications built using its functions to be written in a reasonably minimalistic - _Scheme_ like - fashion as we can see in e.g. the listing of [`tav::Every`]. This also explains why [`tav::Pair`] recursively defines its own type, as we would otherwise have to be quite careful where to resolve it.
 
 ### Bindings
 
@@ -216,7 +216,7 @@ Both of these examples are certainly not what [TypeAsValue] might be used for in
 
 ## Summary
 
-While the _Scheme_ metaphor for template metaprogramming in C++ certainly has it's limits, especially in the area of anonymous functions, I think that this article as well as the actual implementation of [TypeAsValue] are proof that it holds up quite well in many circumstances. As stated in the introduction to this article I was very surprised how close template metaprogramming can feel to a _real_ functional programming language. 
+While the _Scheme_ metaphor for template metaprogramming in C++ certainly has its limits, especially in the area of anonymous functions, I think that this article as well as the actual implementation of [TypeAsValue] are proof that it holds up quite well in many circumstances. As stated in the introduction to this article I was very surprised how close template metaprogramming can feel to a _real_ functional programming language. 
 
 All listings in this article as well as the [TypeAsValue] library itself are freely available under the terms of the MIT license on [Github] and [cgit]. Feel free to check them out and contribute - I am especially interested in practical solutions to providing better partial function application support or even full compile time lambda expressions that do not require the whole library to be designed around this concept.
 

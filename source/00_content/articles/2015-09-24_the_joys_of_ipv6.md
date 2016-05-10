@@ -77,7 +77,7 @@ One disadvantage of _IPv6_ in comparison to _IPv4_ is that the addresses are not
 
 One possible solution for this is to build some kind of private _DNS_ that announces the _IPv6_ addresses of all my devices so they can more easily find each other. But before doing that I will first wait until the _SheevaPlug_ gets assigned a new _IPv6_ address by my provider - in the best case that will never happen.
 
-There are some privacy concerns around this property of _IPv6_ as never changing addresses allow for even easier long-term tracking of individual Internet usage. These concerns are addressed by it's [privacy extensions]. While these extensions may be a good idea for devices used to consume the Internet[^6] I have disabled them on my dynamically addressed servers by setting `net.ipv6.conf.all.use_tempaddr` to zero.
+There are some privacy concerns around this property of _IPv6_ as never changing addresses allow for even easier long-term tracking of individual Internet usage. These concerns are addressed by its [privacy extensions]. While these extensions may be a good idea for devices used to consume the Internet[^6] I have disabled them on my dynamically addressed servers by setting `net.ipv6.conf.all.use_tempaddr` to zero.
 
 [^0]: Previously called _KabelBW_ in southern Germany
 [^1]: I received the shipment confirmation and tracking code days after I had already received the package and _Unitymedia_ knew nothing about this. It seems they mixed up my package and sent it way to soon.

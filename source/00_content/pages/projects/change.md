@@ -24,7 +24,7 @@ This project consists of a library `libChangeLog` and a matching wrapper bash sc
 
 ## Filtering
 
-Due to it's nature of interposing low level system calls such as `write` and `unlink` the library by default exposes lots of the internal write logic of the wrapped application. For instance it reports _vim_ creating a file called `4913` to verify the target directory's writability as well as the creation of various temporary backup files. While this is certainly interesting for debugging purposes it hinders the library's goal of providing a higher level summary consisting primarily of the actions the user explicity performed such as the changed file contents.
+Due to its nature of interposing low level system calls such as `write` and `unlink` the library by default exposes lots of the internal write logic of the wrapped application. For instance it reports _vim_ creating a file called `4913` to verify the target directory's writability as well as the creation of various temporary backup files. While this is certainly interesting for debugging purposes it hinders the library's goal of providing a higher level summary consisting primarily of the actions the user explicity performed such as the changed file contents.
 
 To solve this problem one may provide a list of regular expressions to be matched against the file paths via the `CHANGE_LOG_IGNORE_PATTERN_PATH` environment variable.
 
