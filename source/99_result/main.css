@@ -36,7 +36,8 @@ code{margin:0 .1em;padding:0 .5em;border:.1em solid #e3e8e8;background-color:#f8
 #content .footnotes {border-top:.3em dotted #e3e8e8}
 #content img{padding:.2em;border:.1em solid #e3e8e8;display:block;margin-left:auto;margin-right:auto;max-width:95%}
 #content img.clear{border:0;max-width:100%}
-#content .math{padding:0.5em;font-size:1.25em;line-height:0}
+#content p.math{padding:0.5em;font-size:1.25em;line-height:0;text-align:center}
+#content span.math{line-height:0}
 #pagination{height:1.5em;margin-top:.5em}
 #pagination span.disabled{display:none}
 #pagination span a{text-decoration:none;color:#272828}

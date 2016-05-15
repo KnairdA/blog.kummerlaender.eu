@@ -30,9 +30,7 @@
 		</xsl:call-template>
 	</xsl:variable>
 
-	<p class="math">
-		<xsl:copy-of select="xalan:nodeset($formatted_expression)/node()"/>
-	</p>
+	<xsl:copy-of select="xalan:nodeset($formatted_expression)/*"/>
 </xsl:template>
 
 <xsl:template name="code_highlighter">
@@ -89,9 +87,22 @@
 </xsl:template>
 
 <xsl:template match="script" mode="embellish">
-	<xsl:call-template name="math_highlighter">
-		<xsl:with-param name="source" select="text()"/>
-	</xsl:call-template>
+	<xsl:choose>
+		<xsl:when test="contains(@type, 'mode=display')">
+			<p class="math">
+				<xsl:call-template name="math_highlighter">
+					<xsl:with-param name="source" select="text()"/>
+				</xsl:call-template>
+			</p>
+		</xsl:when>
+		<xsl:otherwise>
+			<span class="math">
+				<xsl:call-template name="math_highlighter">
+					<xsl:with-param name="source" select="text()"/>
+				</xsl:call-template>
+			</span>
+		</xsl:otherwise>
+	</xsl:choose>
 </xsl:template>
 
 <xsl:template name="formatter">
