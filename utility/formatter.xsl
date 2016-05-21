@@ -19,18 +19,21 @@
 
 <xsl:template name="math_highlighter">
 	<xsl:param name="source"/>
+	<xsl:param name="arguments"/>
 
 	<xsl:variable name="formatted_expression">
 		<xsl:call-template name="plain_formatter">
 			<xsl:with-param name="format">
-				<xsl:text>tex2html --inline '</xsl:text>
+				<xsl:text>tex2html </xsl:text>
+				<xsl:value-of select="$arguments"/>
+				<xsl:text> '</xsl:text>
 				<xsl:value-of select="$source"/>
 				<xsl:text>'</xsl:text>
 			</xsl:with-param>
 		</xsl:call-template>
 	</xsl:variable>
 
-	<xsl:copy-of select="xalan:nodeset($formatted_expression)/*"/>
+	<xsl:copy-of select="xalan:nodeset($formatted_expression)/node()"/>
 </xsl:template>
 
 <xsl:template name="code_highlighter">
@@ -60,13 +63,13 @@
 
 <xsl:template match="h2" mode="embellish">
 	<h3>
-		<xsl:copy-of select="node()"/>
+		<xsl:apply-templates select="node()" mode="embellish"/>
 	</h3>
 </xsl:template>
 
 <xsl:template match="h3" mode="embellish">
 	<h4>
-		<xsl:copy-of select="node()"/>
+		<xsl:apply-templates select="node()" mode="embellish"/>
 	</h4>
 </xsl:template>
 
@@ -98,7 +101,8 @@
 		<xsl:otherwise>
 			<span class="math">
 				<xsl:call-template name="math_highlighter">
-					<xsl:with-param name="source" select="text()"/>
+					<xsl:with-param name="source"    select="text()"/>
+					<xsl:with-param name="arguments" select="'--inline'"/>
 				</xsl:call-template>
 			</span>
 		</xsl:otherwise>
