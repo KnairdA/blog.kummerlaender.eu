@@ -12,13 +12,13 @@
 </xsl:template>
 
 <xsl:template match="span" mode="xhtml">
-	<span>
+	<xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml">
 		<xsl:copy-of select="@*"/>
 		<xsl:apply-templates select="node()" mode="xhtml"/>
 		<xsl:if test="not(node())">
 			<xsl:comment></xsl:comment>
 		</xsl:if>
-	</span>
+	</xsl:element>
 </xsl:template>
 
 <xsl:template match="comment() | processing-instruction()" mode="xhtml">

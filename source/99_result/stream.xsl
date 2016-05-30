@@ -59,6 +59,26 @@
 	</div>
 </xsl:template>
 
+<xsl:template match="a" mode="xhtml">
+	<xsl:choose>
+		<xsl:when test="(@class = 'footnote') or (@class = 'reversefootnote')">
+			<xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml">
+				<xsl:copy-of select="@class"/>
+				<xsl:attribute name="href">
+					<xsl:value-of select="concat('/article/', ancestor::entry/@handle, '/', @href)"/>
+				</xsl:attribute>
+				<xsl:apply-templates select="node()" mode="xhtml"/>
+			</xsl:element>
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml">
+				<xsl:copy-of select="@*"/>
+				<xsl:apply-templates select="node()" mode="xhtml"/>
+			</xsl:element>
+		</xsl:otherwise>
+	</xsl:choose>
+</xsl:template>
+
 <xsl:template match="articles/entry" mode="resolve">
 	<h2>
 		<xsl:text>» </xsl:text>
