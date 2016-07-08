@@ -4,11 +4,12 @@
 
 Hi, my name is Adrian Kummerländer. I am a twenty-one-year-old Software Developer located in southern Germany.
 
-I taught myself programming at the age of 10 and spent the first few years developing software in _Delphi_ and _C#_. After switching from the _Windows_ ecosystem to _Linux_ as my primary operating system I started developing primarily in _JavaScript_, _XSLT_ and _C++_ altough I enjoy it a lot to experiment with other languages such as _Scala_, _Haskell_ and _Scheme_.
+I taught myself programming at the age of 10 and spent the first few years developing software in _Delphi_ and _C#_. After switching from the _Windows_ ecosystem to _Linux_ as my primary operating system I started developing primarily in _XSLT_, _Scheme_ and _C++_ altough I enjoy it a lot to experiment with other languages such as _Scala_ and _Haskell_.
 
-My professional education in software development started with my apprenticeship as a _"computer science expert with subject area software development"_[^1] at [_Sybit_](http://sybit.de) in 2010 which I concluded with distinction in 2013. 
+My professional education in software development started with an apprenticeship as a _"computer science expert with subject area software development"_[^1] at [_Sybit_](http://sybit.de) in 2010 which I concluded with distinction in 2013.  
+My final project was on _optimizing the development of Adobe Interactive Forms in SAP CRM projects using modularization_. This entailed the development of a custom preprocessor language enabling meta programming in [XFA](http://partners.adobe.com/public/developer/xml/index_arch.html) templates on SAP systems.
 
-Since then I work as a part-time developer at _Sybit_ in the _SAP CRM_ area where I mainly develop business printout processes using _ABAP_, _JavaScript_ and _XSLT_ in addition to _SAP WebUI_ development.
+Since then I work as a part-time developer at _Sybit_ in the _SAP CRM_ area where I mainly develop business printout processes using _ABAP_, _JavaScript_ and _XSLT_ in addition to _SAP WebUI_ development. In addition to that I also occasionally do both voluntary and paid web design work.
 
 Between 2013 and 2015 I studied for my A levels at the _Technische Oberschule_ which I concluded top of my class and with a grade point average of _1.1_.
 
