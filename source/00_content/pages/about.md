@@ -2,7 +2,7 @@
 
 ![picture of me in Scotland](/media/me_header.png){: .full .clear}
 
-Hi, my name is Adrian Kummerländer. I am a twenty-one-year-old Software Developer located in southern Germany.
+Hi, my name is Adrian Kummerländer. I am a twenty-two-year-old Software Developer located in southern Germany.
 
 I taught myself programming at the age of 10 and spent the first few years developing software in _Delphi_ and _C#_. After switching from the _Windows_ ecosystem to _Linux_ as my primary operating system I started developing primarily in _XSLT_, _Scheme_ and _C++_ altough I enjoy it a lot to experiment with other languages such as _Scala_ and _Haskell_.
 
