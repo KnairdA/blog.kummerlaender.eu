@@ -17,15 +17,8 @@
 </xsl:variable>
 
 <xsl:template name="title-text">
-	<xsl:choose>
-		<xsl:when test="/datasource/page/entry/@index = 0">
-			<xsl:text>Start</xsl:text>
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:text>Page </xsl:text>
-			<xsl:value-of select="/datasource/page/entry/@index"/>
-		</xsl:otherwise>
-	</xsl:choose>
+	<xsl:text>Page </xsl:text>
+	<xsl:value-of select="/datasource/page/entry/@index"/>
 </xsl:template>
 
 <xsl:template match="page/entry">

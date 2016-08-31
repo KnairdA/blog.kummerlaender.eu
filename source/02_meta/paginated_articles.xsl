@@ -8,14 +8,15 @@
 
 <xsl:variable name="meta">
 	<datasource type="main"  mode="full" source="01_data/articles.xml" target="articles"/>
-	<target     mode="plain" value="paginated_articles.xml"/> 
+	<target     mode="plain" value="paginated_articles.xml"/>
 </xsl:variable>
 
-<xsl:variable name="total" select="ceiling(count(datasource/articles/entry) div 2)"/>
+<xsl:variable name="page_size">3</xsl:variable>
+<xsl:variable name="total" select="ceiling(count(datasource/articles/entry) div $page_size)"/>
 
-<xsl:template match="articles/entry[position() mod 2 = 1]">
-	<entry index="{floor(position() div 2)}" total="{$total}">
-		<xsl:apply-templates mode="group" select=". | following-sibling::entry[not(position() > 1)]"/>
+<xsl:template match="articles/entry[position() mod $page_size = 1]">
+	<entry index="{floor(position() div $page_size)}" total="{$total}">
+		<xsl:apply-templates mode="group" select=". | following-sibling::entry[not(position() > ($page_size - 1))]"/>
 	</entry>
 </xsl:template>
 

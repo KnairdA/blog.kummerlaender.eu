@@ -1,6 +1,9 @@
 body{margin:0;padding:0;font:1em sans-serif;color:#272828;word-wrap:break-word}
-a, a:visited{color:#272822}
-p{margin:0;line-height:1.75em}
+a, a:visited{text-decoration:underline;color:#272828}
+a:hover{color:black}
+h1, h2{margin:0;color:#272828;font-weight:bold}
+h1 a, h2 a{text-decoration:none}
+p{margin:0 0 .5em 0;text-align:justify;line-height:1.75em}
 ul{margin:0;padding:0;list-style:none}
 blockquote{border-left:.4em solid #e3e8e8;margin-left:0;padding-left:1em}
 pre{font-family:monospace;padding:1em;border-radius:.75em;color:#f8f8f2;background:#272822;white-space:pre-wrap}
@@ -10,13 +13,13 @@ code{font-family:monospace;margin:0 .1em;padding:0 .5em;border:.1em solid #e3e8e
 .border_bottom{border-bottom:.3em solid #e3e8e8}
 .border_top{border-top:.3em solid #e3e8e8}
 #navigation{padding:2em 0 0 0}
-#navigation h1{color:#F80;font-size:1.4em;font-weight:normal;float:left;padding:0 .2em 0 0;margin:0}
+#navigation h1{color:#F80;font-size:1.4em;font-weight:bold;float:left;padding:0 .2em 0 0;margin:0}
 #navigation ul{float:right;font-size:1.1em}
 #content p{margin-bottom:.7em;text-align:justify}
 #content h2{font-size:1.4em;margin:0;color:#F80}
 #content h2 a, h2 span{font-size:.8em;text-decoration:none !important;color:#272828;font-weight:normal;display:inline-block;vertical-align:middle;max-width:95%}
 #content h2 a:hover{text-decoration:underline !important}
-#content h3, #content h4{font-size:1.05em;font-weight:normal;padding-bottom:.2em;margin-bottom:.5em;border-bottom:.1em solid #e3e8e8}
+#content h3, #content h4{font-size:1.05em;font-weight:normal;padding-bottom:.2em;margin:.8em 0 .5em 0;border-bottom:.1em solid #e3e8e8}
 #content .article{border-bottom:.3em dotted #e3e8e8;padding-bottom:.5em;margin-top:1em;text-align:justify}
 #content .article:last-child{border:none}
 #content .article a{text-decoration:underline;color:#272828}
@@ -91,6 +94,9 @@ code{font-family:monospace;margin:0 .1em;padding:0 .5em;border:.1em solid #e3e8e
 .commentlist ol{margin-top:.2em;border-top:.1em solid #e3e8e8}
 .commentlist ol li{background:0;font-size:.8em}
 .commentlist ol li.dateitem{padding:0;font-weight:bold}
+.menuhead{border-bottom:0.1em solid #e3e8e8;overflow:hidden;padding:0;margin-top:0.8em}
+.menuhead h3{float:left;padding:0.4em 0 0 0;margin:0 !important;border:none !important}
+.menuhead ul{float:right;padding:0;font-size:1.1em}
 @media screen and (max-width:46em){
 	#content .article h2 a{max-width:90%}
 	#navigation{padding:.3em 0 0 0}

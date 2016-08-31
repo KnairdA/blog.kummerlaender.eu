@@ -16,9 +16,18 @@
 <xsl:template name="title-text">Archive</xsl:template>
 
 <xsl:template match="articles">
-	<h3>
-		<xsl:text>Past articles</xsl:text>
-	</h3>
+	<div class="menuhead">
+		<h3>Past articles</h3>
+
+		<ul class="buttonlist">
+			<li>
+				<a href="/0">Stream</a>
+			</li>
+			<li>
+				<a href="https://code.kummerlaender.eu/blog_content/">Source</a>
+			</li>
+		</ul>
+	</div>
 
 	<ol class="articlelist archivlist">
 		<xsl:apply-templates select="entry"/>
@@ -29,6 +38,7 @@
 	<li class="dateitem">
 		<xsl:value-of select="@handle"/>
 	</li>
+
 	<xsl:apply-templates />
 </xsl:template>
 

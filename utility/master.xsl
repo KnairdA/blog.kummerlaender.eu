@@ -37,30 +37,28 @@
 	</title>
 </head>
 <body>
-	<div id="header" class="full border_bottom">
-		<div id="navigation" class="center">
-			<h1>
-				<xsl:value-of select="$root/meta/title"/>
-			</h1>
+	<div id="navigation" class="center border_bottom">
+		<h1>
+			<xsl:value-of select="$root/meta/title"/>
+		</h1>
 
-			<ul class="buttonlist">
-				<li>
-					<a href="/0">Start</a>
-				</li>
-				<li>
-					<a href="/archive">Archive</a>
-				</li>
-				<li>
-					<a href="/category/projects">Projects</a>
-				</li>
-				<li>
-					<a href="/page/contact">Contact</a>
-				</li>
-				<li>
-					<a href="/atom.xml">Feed</a>
-				</li>
-			</ul>
-		</div>
+		<ul class="buttonlist">
+			<li>
+				<a href="/">Start</a>
+			</li>
+			<li>
+				<a href="/archive">Archive</a>
+			</li>
+			<li>
+				<a href="/category/projects">Projects</a>
+			</li>
+			<li>
+				<a href="/page/contact">Contact</a>
+			</li>
+			<li>
+				<a href="/atom.xml">Feed</a>
+			</li>
+		</ul>
 	</div>
 
 	<div id="content" class="center">
