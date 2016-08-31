@@ -1,6 +1,6 @@
 # Notes on function interposition in C++
 
-To counterbalance the fastly increased amount of time I am spending on purely theoretical topics since I started studying mathematics, my most recent leisure time project was to familiarize myself with function interposition in C++ on Linux. This article will document some of the ins and outs of using this technique in an actual project in addition to describing how the acquisition of the interposed function's pointer may be reasonably abstracted by a function template.
+To counterbalance the vastly increased amount of time I am spending on purely theoretical topics since I started studying mathematics, my most recent leisure time project was to familiarize myself with function interposition in C++ on Linux. This article will document some of the ins and outs of using this technique in an actual project in addition to describing how the acquisition of the interposed function's pointer may be reasonably abstracted by a function template.
 
 ## Basics
 
