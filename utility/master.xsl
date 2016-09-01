@@ -28,7 +28,7 @@
 	<link rel="stylesheet"    type="text/css"     href="/main.css" />
 	<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico" />
 
-	<xsl:if test="//p[@class = 'math']">
+	<xsl:if test="//*[(self::p or self::span) and @class = 'math']">
 		<link rel="stylesheet" type="text/css" href="/math.css" />
 	</xsl:if>
 
