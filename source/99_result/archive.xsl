@@ -24,7 +24,7 @@
 				<a href="/0">Stream</a>
 			</li>
 			<li>
-				<a href="https://code.kummerlaender.eu/blog_content/">Source</a>
+				<a href="https://code.kummerlaender.eu/blog_content/tree/articles">Source</a>
 			</li>
 		</ul>
 	</div>
