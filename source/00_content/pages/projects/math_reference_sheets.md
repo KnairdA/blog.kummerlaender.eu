@@ -1,17 +1,17 @@
-# Math reference sheets
+# Mathematikzusammenfassungen
 
-…important definitions, theorems and lemmas in a compact format I wrote to support my exam preparations.
+…zentrale Definitionen, Theoreme und Lemmata in kompaktem Format zur Unterstützung meiner Prüfungsvorbereitungen.
 
-Covers large parts of what I revised for the exams of the _Analysis 1_ and _Analysis 2_ lectures I attended at KIT. The reference sheet covering linear algebra is currently in development as the corresponding exams are still in my future.
+Diese Zusammenfassungen schließen große Teile dessen ein, was ich für die Prüfungen zu den _Analysis I&II_ sowie _Lineare Algebra I&II_ Vorlesungen wiederholt habe, welche ich im Rahmen meines Mathematikstudiums am KIT besucht habe.
 
-The LaTeX source is available on both [Github] and [cgit]. PDF renderings of the [Analysis I&II] and [Linear Algebra I&II] reference sheets are also available.
+Das resultierende PDF der in _LaTeX_ gesetzten und auf [Github] sowie [cgit] verfügbaren Quellen der [Analysis] bzw. [Lineare Algebra] Kurzzusammenfassung steht zum Download bereit.
 
-## Compilation
+## Generierung
 
 	pdflatex -jobname=analysis zusammenfassung.tex
 	pdflatex -jobname=lineare_algebra zusammenfassung.tex
 
 [Github]: https://github.com/KnairdA/math_reference_sheets/
 [cgit]: https://code.kummerlaender.eu/math_reference_sheets/
-[Analysis I&II]: https://static.kummerlaender.eu/media/ana12_zusammenfassung.pdf
-[Linear Algebra I&II]: https://static.kummerlaender.eu/media/la12_zusammenfassung.pdf
+[Analysis]: https://static.kummerlaender.eu/media/ana12_zusammenfassung.pdf
+[Lineare Algebra]: https://static.kummerlaender.eu/media/la12_zusammenfassung.pdf
