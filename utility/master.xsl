@@ -25,8 +25,9 @@
 	<meta name="robots"             content="all"/>
 	<meta name="viewport"           content="width=device-width,initial-scale=1.0"/>
 
-	<link rel="stylesheet"    type="text/css"     href="/main.css" />
-	<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico" />
+	<link rel="stylesheet"    type="text/css"             href="/main.css" />
+	<link rel="shortcut icon" type="image/x-icon"         href="/media/favicon.ico" />
+	<link rel='alternate'     type='application/atom+xml' href='/atom.xml'/>
 
 	<xsl:if test="//*[(self::p or self::span) and @class = 'math']">
 		<link rel="stylesheet" type="text/css" href="/math.css" />
