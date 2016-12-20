@@ -24,12 +24,10 @@
 	<xsl:variable name="formatted_expression">
 		<xsl:call-template name="plain_formatter">
 			<xsl:with-param name="format">
-				<xsl:text>tex2html </xsl:text>
+				<xsl:text>katex </xsl:text>
 				<xsl:value-of select="$arguments"/>
-				<xsl:text> '</xsl:text>
-				<xsl:value-of select="$source"/>
-				<xsl:text>'</xsl:text>
 			</xsl:with-param>
+			<xsl:with-param name="source" select="$source"/>
 		</xsl:call-template>
 	</xsl:variable>
 
@@ -95,6 +93,9 @@
 			<p class="math">
 				<xsl:call-template name="math_highlighter">
 					<xsl:with-param name="source" select="text()"/>
+					<xsl:with-param name="arguments">
+						<xsl:text>--display-mode</xsl:text>
+					</xsl:with-param>
 				</xsl:call-template>
 			</p>
 		</xsl:when>
@@ -102,7 +103,6 @@
 			<span class="math">
 				<xsl:call-template name="math_highlighter">
 					<xsl:with-param name="source"    select="text()"/>
-					<xsl:with-param name="arguments" select="'--inline'"/>
 				</xsl:call-template>
 			</span>
 		</xsl:otherwise>

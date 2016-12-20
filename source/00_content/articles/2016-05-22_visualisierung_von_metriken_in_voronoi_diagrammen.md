@@ -19,7 +19,7 @@ Diese Anforderungen bedeuten, dass eine Funktion genau dann als Norm gesehen wer
 
 Betrachten wir an dieser Stelle die Defintion der häufig verwendeten Klasse der p-Normen:
 
-$$\|x\|_p := \left(\displaystyle\sum_{i=1}^{n} \vert x_i \vert ^p\right)^\frac{1}{p} \; \textrm{mit} \; x \in \mathbb{R}^n ,\; p \in \mathbb{R_{\geq1}}$$
+$$\|x\|_p := \left(\displaystyle\sum_{i=1}^{n} \vert x_i \vert ^p\right)^\frac{1}{p} \; \text{mit} \; x \in \mathbb{R}^n ,\; p \in \mathbb{R_{\geq1}}$$
 
 Beachtenswerter Weise geht aus dieser Norm für $$p=1$$ die Betragsnorm, also die Aufsummierung aller Komponentenbeträge des gegebenen Vektors, sowie für $$p=2$$ die sogenannte Euklidische Norm hervor. Durch Verschieben von $$p$$ im Intervall $$[1, \infty]$$ lässt sich dabei die charakteristische Rautenform der Einheitskugel[^4] der Betragsnorm über die tatsächlich kugelförmige Einheitskugel der Euklidischen Norm in die quadratische Form der Maximumsnorm überführen ($$p \rightarrow \infty$$).
 
@@ -27,11 +27,11 @@ Beachtenswerter Weise geht aus dieser Norm für $$p=1$$ die Betragsnorm, also di
 
 Kommen wir nun zum Begriff des Abstands zwischen zwei Zahlen, welcher in Form von Metriken auf algebraische Strukturen wie Vektorräume übertragen wird. Wie in der Einführung dieses Abschnits beschrieben, haben wir den Abstand zwischen Zahlen schon in der Schule über den Betrag der Differenz beschrieben. Wir kennen an dieser Stelle in Form des Satz des Pythagoras auch schon eine sinnvolle Definition für den Abstand zwischen Punkten in $$\mathbb{R}^2$$:
 
-$$d(x,y) := \sqrt{\vert x_1-x_2 \vert ^2 - \vert y_1-y_2 \vert ^2} \; \textrm{mit} \; x, y \in \mathbb{R}^2$$
+$$d(x,y) := \sqrt{\vert x_1-x_2 \vert ^2 - \vert y_1-y_2 \vert ^2} \; \text{mit} \; x, y \in \mathbb{R}^2$$
 
 Diese Metrik über dem zweidimensionalen reellen Vektorraum lässt sich, auf folgende naheliegende Art und Weise, in eine Metrik für alle endlich dimensionalen $$\mathbb{R}$$-Vektorräume erweitern:
 
-$$d(x,y) := \sqrt{\displaystyle\sum_{i=1}^{n} \vert x_i - y_i \vert ^2} \; \textrm{mit} \; x, y \in \mathbb{R}^n$$
+$$d(x,y) := \sqrt{\displaystyle\sum_{i=1}^{n} \vert x_i - y_i \vert ^2} \; \text{mit} \; x, y \in \mathbb{R}^n$$
 
 Diese Metrik auf Grundlage des Satz des Pythagoras wird als Euklidische Metrik bezeichnet. Sie ist eine der Metriken, welche wir im weiteren Verlauf dieses Artikels in Voronoi-Diagrammen visualisieren werden.
 
@@ -47,13 +47,13 @@ Bei der Betrachtung der Definitionen von p-Norm und Euklidischer Metrik fällt a
 
 Es liegt also Nahe, dass auch aus die Betragsnorm mit $$p=1$$ eine Metrik induziert - die sogenannte Mannheimer-Metrik:
 
-$$d(x,y) := \displaystyle\sum_{i=1}^{n} \vert x_i - y_i \vert \; \textrm{mit} \; x, y \in \mathbb{R}^n$$
+$$d(x,y) := \displaystyle\sum_{i=1}^{n} \vert x_i - y_i \vert \; \text{mit} \; x, y \in \mathbb{R}^n$$
 
 Die Bezeichnung dieser Metrik als Mannheimer-, Manhattan oder auch Taxi-Metrik wird nachvollziehbar, wenn wir uns bewusst machen, dass sie die Betragsdifferenzen der Punkte aufsummiert und somit den Weg beschreibt, den ein Taxi in einem Straßenraster nachvollziehen müsste, wie es in Mannheim und zahlreichen nordamerikanischen Städten üblich ist, um von A nach B zu gelangen.
 
 Wir haben also nun zwei Metriken kennengelernt, die beide für verschiedene $$p$$ aus der gleichen p-Norm hervorgehen. Die Mathematik charakterisierende Suche nach gemeinsamen Mustern in abstrakten Strukturen legt nahe, dass so, wie die Betragsnorm und die Euklidische Norm Varianten der allgemeineren Klasse der p-Normen sind, auch die Mannheimer und Euklidische Metrik Varianten einer allgemeineren Klasse von Metriken sind. Diese allgemeinere Klasse beschreiben wir in Form der Minkowski-Metrik:
 
-$$d(x,y) := \left(\displaystyle\sum_{i=1}^{n} \vert x_i - y_i \vert ^p\right)^\frac{1}{p} \; \textrm{mit} \; x, y \in \mathbb{R}^n ,\; p \in \mathbb{R_+}$$
+$$d(x,y) := \left(\displaystyle\sum_{i=1}^{n} \vert x_i - y_i \vert ^p\right)^\frac{1}{p} \; \text{mit} \; x, y \in \mathbb{R}^n ,\; p \in \mathbb{R_+}$$
 
 Die Beschreibung der Euklidischen und Mannheimer-Metrik als Varianten der Minkowski-Metrik ist damit gerechtfertigt, dass diese für $$p=1$$ beziehungsweise $$p=2$$ aus ihr hervorgehen.
 
@@ -147,7 +147,7 @@ void generate_minkowski_voronoi(const double p) {
 ~~~
 {:.language-cpp}
 
-Die Punktmenge ist dabei die, welche in obigen Beispiel Diagrammen zu betrachten ist. Alles, was wir an dieser Stelle über die zentrale Funktion `imgen::write_ppm` wissen müssen, ist, dass diese formell ein Bild über der Menge $$M := \{(x, y) \in \mathbb{Z}^2 \vert \: x \in [-\frac{w}{2}, \frac{w}{2}] \land y \in [-\frac{h}{2}, \frac{h}{2}]\}$$ mit Höhe $$h$$ und Breite $$w$$ aufspannt und für $$\forall \: (x, y) \in M$$ die gegebene Funktion $$\mathbb{Z} \times \mathbb{Z} \rightarrow [0, 255] \times [0, 255] \times [0, 255]$$ aufruft, wobei die Tupel ihrer Bildmenge als Farben interpretiert werden.
+Die Punktmenge ist dabei die, welche in obigen Beispiel Diagrammen zu betrachten ist. Alles, was wir an dieser Stelle über die zentrale Funktion `imgen::write_ppm` wissen müssen, ist, dass diese formell ein Bild über der Menge $$M := \{(x, y) \in \mathbb{Z}^2 \vert \: x \in [-\frac{w}{2}, \frac{w}{2}] \land y \in [-\frac{h}{2}, \frac{h}{2}]\}$$ mit Höhe $$h$$ und Breite $$w$$ aufspannt und für $$\forall \: (x, y) \in M$$ die gegebene Funktion $$\mathbb{Z} \times \mathbb{Z} \rightarrow [255] \times [255] \times [255]$$ aufruft, wobei die Tupel ihrer Bildmenge als Farben interpretiert werden.
 
 Zur Kennzeichnung der Referenzvektoren wird jeweils eine abgeschlossene Kugel unter der verwendeten Metrik mit Radius 5 gezogen. Dies hat den schönen Nebeneffekt, dass wir anhand der Form der Punktmarkierungen schon Rückschlüsse auf die zur Generierung verwendete Metrik ziehen können, da die Markierungen nur skalierte Versionen der Einheitskugel sind, welche wir im vorangehenden Abschnitt besprochen haben.
 

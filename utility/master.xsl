@@ -30,7 +30,7 @@
 	<link rel='alternate'     type='application/atom+xml' href='/atom.xml'/>
 
 	<xsl:if test="//*[(self::p or self::span) and @class = 'math']">
-		<link rel="stylesheet" type="text/css" href="/math.css" />
+		<link rel="stylesheet" type="text/css" href="https://static.kummerlaender.eu/katex/katex.min.css" />
 	</xsl:if>
 
 	<title>
