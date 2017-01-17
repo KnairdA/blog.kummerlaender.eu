@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet
 	version="1.0"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:xalan="http://xml.apache.org/xalan"
 	xmlns:InputXSLT="function.inputxslt.application"
@@ -76,8 +77,8 @@
 		<xsl:with-param name="source" select="code/text()"/>
 		<xsl:with-param name="language">
 			<xsl:choose>
-				<xsl:when test="code/@class">
-					<xsl:value-of select="substring(code/@class, 10, string-length(code/@class))"/>
+				<xsl:when test="@class">
+					<xsl:value-of select="@class"/>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:text>txt</xsl:text>
@@ -87,9 +88,17 @@
 	</xsl:call-template>
 </xsl:template>
 
-<xsl:template match="script" mode="embellish">
+<xsl:template match="div[@class = 'figure']" mode="embellish">
+	<p>
+		<xsl:apply-templates select="img" mode="embellish"/>
+	</p>
+</xsl:template>
+
+<xsl:template match="div[@class = 'footnotes']/hr" mode="embellish"/>
+
+<xsl:template match="span[contains(@class, 'math')]" mode="embellish">
 	<xsl:choose>
-		<xsl:when test="contains(@type, 'mode=display')">
+		<xsl:when test="contains(@class, 'display')">
 			<p class="math">
 				<xsl:call-template name="math_highlighter">
 					<xsl:with-param name="source" select="text()"/>
@@ -102,7 +111,7 @@
 		<xsl:otherwise>
 			<span class="math">
 				<xsl:call-template name="math_highlighter">
-					<xsl:with-param name="source"    select="text()"/>
+					<xsl:with-param name="source" select="text()"/>
 				</xsl:call-template>
 			</span>
 		</xsl:otherwise>
@@ -114,7 +123,7 @@
 
 	<xsl:variable name="content">
 		<xsl:call-template name="plain_formatter">
-			<xsl:with-param name="format">kramdown</xsl:with-param>
+			<xsl:with-param name="format">pandoc -f markdown -t html --katex --no-highlight</xsl:with-param>
 			<xsl:with-param name="source" select="$source"/>
 		</xsl:call-template>
 	</xsl:variable>
