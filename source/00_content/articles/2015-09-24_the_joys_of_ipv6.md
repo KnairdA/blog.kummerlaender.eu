@@ -16,14 +16,16 @@ This brings me to the main point of this article: _IPv6_ instantly enables all m
 
 ## The vision
 
-	2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
-		link/ether 00:50:##:##:##:## brd ff:ff:ff:ff:ff:ff
-		inet 192.168.178.2/24 brd 192.168.178.255 scope global eth0
-		   valid_lft forever preferred_lft forever
-		inet6 2a02:8071:####:####:###:####:####:####/64 scope global mngtmpaddr dynamic 
-		   valid_lft 604799sec preferred_lft 302399sec
-		inet6 fe80::250:43ff:fe01:6d36/64 scope link 
-		   valid_lft forever preferred_lft forever
+```
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+	link/ether 00:50:##:##:##:## brd ff:ff:ff:ff:ff:ff
+	inet 192.168.178.2/24 brd 192.168.178.255 scope global eth0
+	   valid_lft forever preferred_lft forever
+	inet6 2a02:8071:####:####:###:####:####:####/64 scope global mngtmpaddr dynamic 
+	   valid_lft 604799sec preferred_lft 302399sec
+	inet6 fe80::250:43ff:fe01:6d36/64 scope link 
+	   valid_lft forever preferred_lft forever
+```
 
 As we can see my examplary device connected to my new provider's router not only gets the normal _IPv4_ and _IPv6_ subnet addresses but also a `scope global` _IPv6_ address which is accessible from any _IPv6_ enabled host on the Internet using e.g. `ping6`.
 
@@ -37,34 +39,38 @@ The only challenge standing in the way of actually being able to do all the nice
 
 While I already had various _OpenVPN_ instances set up on both my virtual server hosting this website as well as the _SheevaPlug_, neither of them were _IPv6_ enabled. This required some trickery to change - especially in combination with my chosen _iptable_ manager _[UFW]_ and some _systemd_ details previously unknown to me.
 
-	proto udp
-	proto udp6
-	
-	dev tun
-	tun-ipv6
-	
-	# [...] certificates
-	
-	server      10.8.0.0 255.255.255.0
-	server-ipv6 2a01:4f8:c17:77a:4000::/66
-	
-	# [...] further unrelated settings
-	
-	push "redirect-gateway def1"
-	push "redirect-gateway-ipv6 def1"
-	push "route-ipv6 ::/0 fe80::1 100"
+```
+proto udp
+proto udp6
+
+dev tun
+tun-ipv6
+
+# [...] certificates
+
+server      10.8.0.0 255.255.255.0
+server-ipv6 2a01:4f8:c17:77a:4000::/66
+
+# [...] further unrelated settings
+
+push "redirect-gateway def1"
+push "redirect-gateway-ipv6 def1"
+push "route-ipv6 ::/0 fe80::1 100"
+```
 
 These are the relevant sections of the server configuration of my _IPv6_ proxy VPN. The `proto udp6` flag enables access to the VPN via _IPv6_. `tun-ipv6` enables _IPv6_ support on the _TUN_ interface created by _OpenVPN_ while the `server-ipv6` statement declares the global _IPv6_ subnet designated for clients of the VPN[^3]. Finally the `push` directives tell the clients that they should route all their _IPv6_ traffic through the VPN.
 
 To make this configuration work one also has to add the following statements to the head of `/etc/ufw/before.rules`[^4]:
 
-	# nat Table rules
-	*nat
-	:POSTROUTING ACCEPT [0:0]
+```
+# nat Table rules
+*nat
+:POSTROUTING ACCEPT [0:0]
 
-	# Allow traffic from clients to ens3
-	-F
-	-A POSTROUTING -s 10.8.0.0/24 -o ens3 -j MASQUERADE
+# Allow traffic from clients to ens3
+-F
+-A POSTROUTING -s 10.8.0.0/24 -o ens3 -j MASQUERADE
+```
 
 Additionally the `net.ipv6.conf.all.forwarding` parameter has to be set to `1` using e.g. `sysctl`. If you also use _systemd-networkd_ as your network manager, make sure that the parameter `IPv6Forward` is set to `yes` for your external interface.  
 Note that these are all the settings I changed while playing around in order to make the VPN work - it very well may be that not all of them are strictly required.

@@ -18,17 +18,16 @@ The source code of _BuildXSLT_ is available on both my [Github] profile and [cgi
 
 While _BuildXSLT_ offers enough flexibility for all kinds of different XSLT based generation tasks it was specifically built to cater for the requirements of the [static site generator] this site is built with. As such its module definition file and the _XML Makefile_ used to call it makes for the best demonstration of what one can do with _BuildXSLT_:
 
-~~~
+```xsl
 <transformation mode="chain">
     <link>src/steps/list.xsl</link>
     <link>src/steps/plan.xsl</link>
     <link>src/steps/process.xsl</link>
     <link>src/steps/summarize.xsl</link>
 </transformation>
-~~~
-{: .language-xsl}
+```
 
-~~~
+```xsl
 <task type="module">
 	<input mode="embedded">
 		<datasource>
@@ -40,8 +39,7 @@ While _BuildXSLT_ offers enough flexibility for all kinds of different XSLT base
 	</input>
 	<definition mode="file">[StaticXSLT.xml]</definition>
 </task>
-~~~
-{: .language-xsl}
+```
 
 [InputXSLT]: /page/input_xslt/
 [static site generator]: /page/static_xslt/

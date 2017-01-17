@@ -14,5 +14,4 @@ Sollten sich nicht von mir erstellte Inhalte auf diesen Seiten finden, eine ents
 
 Alle eigenen Inhalte stehen - soweit nicht anders gekennzeichnet - unter einer Creative Commons [CC-BY-SA] Lizenz.
 
-[Eurid]: http://www.eurid.eu/en/whois-search
 [CC-BY-SA]: http://creativecommons.org/licenses/by-sa/3.0/de/

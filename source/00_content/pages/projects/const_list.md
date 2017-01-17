@@ -22,7 +22,7 @@ Note that these restrictions were overcome in my [second attempt] at this proble
 
 ## Usage example
 
-~~~
+```cpp
 const int sum{
 	ConstList::foldr(
 		ConstList::make(1, 2, 3, 4, 5),
@@ -32,8 +32,7 @@ const int sum{
 		0
 	)
 }; // => 15
-~~~
-{: .language-cpp}
+```
 
 [Github]: https://github.com/KnairdA/ConstList/
 [cgit]: http://code.kummerlaender.eu/ConstList/

@@ -7,9 +7,8 @@ Erst sah es so aus, als würde ich nicht darum herum kommen das Betriebsystem ne
 
 Dabei handelt es sich um ein kleines Linux welches mithilfe des normalen [Flashers](http://tablets-dev.nokia.com/maemo-dev-env-downloads.php) direkt in den RAM des N900 kopiert und dort gebootet werden kann. Vom rescueOS aus kann man dann das Root-Dateisystem problemlos einbinden und Probleme beheben. Zum Starten reicht das [initrd Image](http://n900.quitesimple.org/rescueOS/rescueOS-1.0.img) und folgender Befehl:
 
-~~~
+```sh
 flasher-3.5 -k 2.6.37 -n initrd.img -l -b"rootdelay root=/dev/ram0"
-~~~
-{: .language-sh}
+```
 
 Nähere Informationen zur Verwendung und den Funktionen finden sich in der rescueOS [Dokumentation](http://n900.quitesimple.org/rescueOS/documentation.txt).

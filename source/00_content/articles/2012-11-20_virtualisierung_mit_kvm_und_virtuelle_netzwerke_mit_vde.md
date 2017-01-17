@@ -25,10 +25,9 @@ des Gast-Systems werden auf die gleiche Weise gesetzt. Aus diesem Grund gehe ich
 
 Hier als Beispiel mein derzeitiger Standardaufruf von KVM, der für alle VMs gleich ist. Dynamisch ist allein das zu verwendende Speicher-Gerät - in meinem Fall verschiedene Image-Dateien.
 
-~~~
+```sh
 qemu-kvm -cpu host -hda $1 -m 1024 -daemonize -vnc none -usb -net nic -net vde
-~~~
-{: .language-sh}
+```
 
 Dieser verwendet das als erster Parameter übergebene Gerät als Festplatte und setzt neben den nötigen Netzwerk-Einstellungen die VM mittels `-daemonize` in den Hintergrund. Falls benötigt, kann
 als Wert des Parameters `-vnc` auch eine von einem Doppelpunkt angeführte Zahl übergeben werden um die Grafik-Ausgabe der VM an einen VNC-Server anzubinden (z.B. `-vnc :1` für `127.0.0.1:1`). Diese
@@ -40,7 +39,7 @@ Funktion verwende ich nicht, da ich ausschließlich über das interne Netzwerk d
 
 Meine Konfiguration hält sich dabei im wesentlichen an den [Vorschlag](https://wiki.archlinux.org/index.php/QEMU#Networking_with_VDE2) im englischen Arch-Wiki, welchen ich in ein einfaches Script verpackt habe:
 
-~~~
+```sh
 #!/bin/sh
 case "$1" in
 	start)
@@ -55,8 +54,7 @@ case "$1" in
 		ip tuntap del tap0 mode tap
 	;;
 esac
-~~~
-{: .language-sh}
+```
 
 Dieses Script erzeugt ein virtuelles Interface `tap0` und verbindet ein neues, als Daemon im Hintergrund laufendes, virtuelles Switch mit diesem. Als nächstes wird dann noch eine statische IP Konfiguration für das virtuelle Interface definiert. Durch diese können alle mit `-net nic -net vde` Parametern gestarteten KVM Gäste über die IP `192.168.100.254` auf den Host zugreifen.
 
@@ -70,7 +68,7 @@ In den Gast-Systemen selbst muss zusätzlich eine statische IP Konfiguration vor
 
 Um das interne virtuelle LAN bei Bedarf mit der Außenwelt zu verbinden gibt es ebenfalls ein kleines Script welches die nötige Route erzeugt bzw. löscht:
 
-~~~
+```sh
 #!/bin/sh
 case "$1" in
 	start)
@@ -82,8 +80,7 @@ case "$1" in
 		echo "0" > /proc/sys/net/ipv4/ip_forward
 	;;
 esac
-~~~
-{: .language-sh}
+```
 
 Anpassbar ist hierbei das Interface, um z.B. daheim `eth0` und unterwegs wahlweise `wlan0` oder `usb0` verwenden zu können.
 
@@ -91,38 +88,39 @@ Anpassbar ist hierbei das Interface, um z.B. daheim `eth0` und unterwegs wahlwei
 
 Nach einer Kernel Aktualisierung im ArchLinux Gast-System, kam es beim Neustart plötzlich zu dieser etwas erschreckenden Meldung:
 
-	KVM: entry failed, hardware error 0x80000021
-	
-	If you're running a guest on an Intel machine without unrestricted mode
-	support, the failure can be most likely due to the guest entering an invalid
-	state for Intel VT. For example, the guest maybe running in big real mode
-	which is not supported on less recent Intel processors.
-	
-	EAX=00000000 EBX=0020fa5c ECX=00000000 EDX=fffff000
-	ESI=f6d29014 EDI=00000001 EBP=f6461fa0 ESP=f6461f60
-	EIP=c0128443 EFL=00010246 [---Z-P-] CPL=0 II=0 A20=1 SMM=0 HLT=0
-	ES =007b 00000000 ffffffff 00c0f300 DPL=3 DS   [-WA]
-	CS =0060 00000000 ffffffff 00c09b00 DPL=0 CS32 [-RA]
-	SS =0068 00000000 ffffffff 00c09300 DPL=0 DS   [-WA]
-	DS =007b 00000000 ffffffff 00c0f300 DPL=3 DS   [-WA]
-	FS =00d8 36648000 ffffffff 00809300 DPL=0 DS16 [-WA]
-	GS =00e0 f6d2f540 00000018 00409100 DPL=0 DS   [--A]
-	LDT=0000 ffff0000 f0000fff 00f0ff00 DPL=3 CS64 [CRA]
-	TR =0080 f6d2d3c0 0000206b 00008b00 DPL=0 TSS32-busy
-	GDT=     f6d28000 000000ff
-	IDT=     c060b000 000007ff
-	CR0=8005003b CR2=ffffffff CR3=006ef000 CR4=000006d0
-	DR0=0000000000000000 DR1=0000000000000000 DR2=0000000700000000 DR3=0000000000000000 
-	DR6=00000000ffff0ff0 DR7=0000000000000400
-	EFER=0000000000000000
-	Code=00 8b 15 c4 b5 61 c0 55 89 e5 5d 8d 84 10 00 c0 ff ff 8b 00 <c3> 8d b6 00 00 00 00 8d bf 00 00 00 00 8b 15 a0 ae 61 c0 55 89 e5 53 89 c3 b8 30 00 00 00
+```
+KVM: entry failed, hardware error 0x80000021
+
+If you're running a guest on an Intel machine without unrestricted mode
+support, the failure can be most likely due to the guest entering an invalid
+state for Intel VT. For example, the guest maybe running in big real mode
+which is not supported on less recent Intel processors.
+
+EAX=00000000 EBX=0020fa5c ECX=00000000 EDX=fffff000
+ESI=f6d29014 EDI=00000001 EBP=f6461fa0 ESP=f6461f60
+EIP=c0128443 EFL=00010246 [---Z-P-] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =007b 00000000 ffffffff 00c0f300 DPL=3 DS   [-WA]
+CS =0060 00000000 ffffffff 00c09b00 DPL=0 CS32 [-RA]
+SS =0068 00000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =007b 00000000 ffffffff 00c0f300 DPL=3 DS   [-WA]
+FS =00d8 36648000 ffffffff 00809300 DPL=0 DS16 [-WA]
+GS =00e0 f6d2f540 00000018 00409100 DPL=0 DS   [--A]
+LDT=0000 ffff0000 f0000fff 00f0ff00 DPL=3 CS64 [CRA]
+TR =0080 f6d2d3c0 0000206b 00008b00 DPL=0 TSS32-busy
+GDT=     f6d28000 000000ff
+IDT=     c060b000 000007ff
+CR0=8005003b CR2=ffffffff CR3=006ef000 CR4=000006d0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000700000000 DR3=0000000000000000 
+DR6=00000000ffff0ff0 DR7=0000000000000400
+EFER=0000000000000000
+Code=00 8b 15 c4 b5 61 c0 55 89 e5 5d 8d 84 10 00 c0 ff ff 8b 00 <c3> 8d b6 00 00 00 00 8d bf 00 00 00 00 8b 15 a0 ae 61 c0 55 89 e5 53 89 c3 b8 30 00 00 00
+```
 
 Dies sah für mich im ersten Moment wie ein klarer Hardware-Fehler aus, alle Informationen die sich über meine bevorzugte Suchmaschine finden ließen, waren jedoch für andere Situationen und ältere Kernel Versionen als `3.6.6-1`. Nach Tests mit verschiedenen Parametern für die zuständigen Kernel-Module, funktionierte es schließlich nach Laden des Moduls mit folgendem Befehl wieder einwandfrei:
 
-~~~
+```sh
 modprobe kvm_intel emulate_invalid_guest_state=0
-~~~
-{: .language-sh}
+```
 
 Um den `emulate_invalid_guest_state` Parameter dauerhaft zu setzen reicht ein Eintrag in `/etc/modprobe.d`.
 

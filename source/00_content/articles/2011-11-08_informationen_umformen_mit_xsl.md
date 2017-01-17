@@ -8,7 +8,7 @@ Schlussendlich habe ich dann eine [XSLT](http://de.wikipedia.org/wiki/XSLT) gesc
 
 Mit XSL lassen sich XML Dateien in andere Formen bringen. Da Mediawiki mehr oder weniger valides XHTML ausgibt, kann man, nachdem das XHTML mit [Tidy](http://tidy.sourceforge.net) ein wenig aufgeräumt wurde, sehr einfach die [Terminliste](http://wiki.piratenpartei.de/BW:Kreisverband_Konstanz/Termine) extrahieren und gleichzeitig in RSS umformen:
 
-~~~
+```xsl
 <xsl:stylesheet version="1.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:x="http://www.w3.org/1999/xhtml"
@@ -57,8 +57,7 @@ Mit XSL lassen sich XML Dateien in andere Formen bringen. Da Mediawiki mehr oder
 <xsl:template match="text()"/>
 
 </xsl:stylesheet>
-~~~
-{: .language-xsl}
+```
 
 Der Kern dieses XSL ist nicht mehr als ein Template welches auf den [XPATH](http://de.wikipedia.org/wiki/XPATH) zum Finden der Terminliste reagiert. Die For-Each-Schleife iteriert dann durch die Termine und formt diese entsprechend in RSS um.  
 Der einzige Knackpunkt kommt daher, dass XHTML kein normales XML ist und somit seinen eigenen Namespace hat. Diesen sollte man im Element `xsl:stylesheet` korrekt angeben, sonst funktioniert nichts. Auch muss im XPATH Ausdruck dann vor jedem Element ein `x:` eingefügt werden um dem XSL Prozessor den Namespace für das jeweilige Element mitzuteilen.
@@ -72,17 +71,16 @@ Zum Anpassen des Datums verwende ich - wie auch in diesem Blog - die [date-time.
 
 Mit der eben beschriebenen XSLT lässt sich jetzt in drei Schritten das fertige RSS generieren:
 
-~~~
+```sh
 #!/bin/sh
 wget -O termine_wiki.html "http://wiki.piratenpartei.de/BW:Kreisverband_Konstanz/Termine"
 tidy -asxml -asxhtml -O termine_tidy.html termine_wiki.html
 xsltproc --output termine_kvkn.rss --novalid termine_kvkn.xsl termine_tidy.html
-~~~
-{: .language-sh}
+```
 
 In PHP ist das ganze dann zusammen mit sehr einfachem Caching auch direkt auf einem Webserver einsetzbar:
 
-~~~
+```php
 define('CACHE_TIME', 6);
 define('CACHE_FILE', 'rss.cache');
 
@@ -139,5 +137,4 @@ function generate_rss()
 		return false;
 	}
 }
-~~~
-{: .language-php}
+```

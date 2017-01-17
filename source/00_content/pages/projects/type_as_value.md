@@ -30,7 +30,7 @@ Furthermore an overview of this library alongside some background information is
 
 ## Usage example
 
-~~~
+```cpp
 // λ (length (filter odd? (list 1 2 3)))
 // 2
 
@@ -40,8 +40,7 @@ const std::size_t count = tav::Length<
         tav::List<tav::Int<1>, tav::Int<2>, tav::Int<3>>
     >
 >::value;
-~~~
-{: .language-cpp}
+```
 
 More extensive [examples] are available in the form of implementations of the _Sieve of Eratosthenes_ as well as of a _Turing machine_.
 

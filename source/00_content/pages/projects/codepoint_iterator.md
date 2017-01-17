@@ -18,7 +18,7 @@ For readers versed in German a [blog article] describing the implementation in a
 While all features of this class are demonstrated by Google-Test based [Unit-Tests] we can see a basic `UTF8::CodepointIterator` usage example in the following code snippet. The [example text] is written in Old Norse runes.
 
 
-~~~
+```cpp
 std::string test(u8"ᛖᚴ ᚷᛖᛏ ᛖᛏᛁ ᚧ ᚷᛚᛖᚱ ᛘᚾ ᚦᛖᛋᛋ ᚨᚧ ᚡᛖ ᚱᚧᚨ ᛋᚨᚱ");
 
 for ( UTF8::CodepointIterator iter(test.cbegin());
@@ -26,8 +26,7 @@ for ( UTF8::CodepointIterator iter(test.cbegin());
 	  ++iter ) {
 	std::wcout << static_cast<wchar_t>(*iter);
 }
-~~~
-{: .language-cpp}
+```
 
 [Github]: https://github.com/KnairdA/CodepointIterator
 [cgit]: http://code.kummerlaender.eu/CodepointIterator/

@@ -6,7 +6,7 @@ To counterbalance the vastly increased amount of time I am spending on purely th
 
 Most if not all of the applications and services one commonly uses are not monolithic executables that one could execute on the _bare metal_ but depend on a number of separate libraries that provide useful abstractions the actual application is built upon. As most application share a common set of library dependencies it would be quite wasteful to package each application with its own separate copy of a given library. This is why most libraries are commonly _linked dynamically_ which means that e.g. a call to _random library function_ `f` is not resolved during compilation by replacing it with the library provided source code or a fixed reference to the implementation of `f` but resolved respectively linked at runtime. For Linux applications this dynamic resolution is commonly performed by _the dynamic linker_ `ld.so`.
 
-Instance specific configuration of this library is possible via a set of environment variables. One of these variables is `LD_PRELOAD` which enables us to provide "[...] a list of additional, user-specified, ELF shared objects to be loaded before all others [that] can be used to selectively override functions in other shared objects." (`ld.so` manpage, section on `LD_PRELOAD`).
+Instance specific configuration of this library is possible via a set of environment variables. One of these variables is `LD_PRELOAD` which enables us to provide "[...] a list of additional, user-specified, ELF shared objects to be loaded before all others that can be used to selectively override functions in other shared objects." (`ld.so` manpage, section on `LD_PRELOAD`).
 
 This feature is what is commonly referred to as function interposition and is what will be discussed in the following sections. Other options for intercepting function calls such as `ptrace` are not covered by this particular article.
 
@@ -26,13 +26,15 @@ Note that this only applies if we want to specifically interpose C functions fro
 
 To check if the symbols are exported correctly we can use `nm` which ĺists the symbols in ELF object files.
 
-	> nm libChangeLog.so | grep "open\|write"
-	000000000009e866 T open
-	000000000009e99b T write
-	000000000009ea5d T writev
-	000000000009f61a W _Z11track_writei
-	000000000009f6ec W _Z11track_writeRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
-	[...]
+```sh
+> nm libChangeLog.so | grep "open\|write"
+000000000009e866 T open
+000000000009e99b T write
+000000000009ea5d T writev
+000000000009f61a W _Z11track_writei
+000000000009f6ec W _Z11track_writeRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+[...]
+```
 
 As we can see interposing this library would lead to the application calling the library's `open`, `write` and `writev` functions instead of the standard C library's. Note that the C++ source additionally needs to be compiled as position-independent code to be usable as a shared library at all. If one uses _clang_ or _g++_ this is easily achieved by adding the `-fPIC` option.
 
@@ -42,10 +44,9 @@ As we can see interposing this library would lead to the application calling the
 
 Although we can now replace functions in a target application with our own logic the goal remains to merely interpose a function which means that we have to call the actual function at some point. The dynamic linker library offers a function to acquire the address of the next symbol with a given name in the resolution stack in the form of `dlsym`. This function is defined in the `dlfcn.h` header and requires the interposed library to be linked to `ld.so`.
 
-~~~
+```c
 void* dlsym(void* handle, const char* symbol);
-~~~
-{:.language-c}
+```
 
 While `handle` can be used to restrict the resolution to a specific shared library we pass a special pseudo-handle `RTLD_NEXT` which instructs the function to return the address of the next symbol whose name equals the null-terminated `symbol` parameter.
 
@@ -53,17 +54,16 @@ Note that `RTLD_NEXT` is only defined by `dlfcn.h` if `_GNU_SOURCE` is defined d
 
 If we were working in C we could directly assign the returned pointer of type `void*` to a function pointer of the function's signature. However this sort of cast is not allowed in C++ which is why we need to manually copy the address of the symbol into a function pointer. This may be achieved using `std::memcpy`.
 
-~~~
+```cpp
 const void* symbol_address{ dlsym(RTLD_NEXT, "write") };
 ssize_t (actual_function*)(int, const void*, size_t){};
 
 std::memcpy(&actual_function, &symbol_address, sizeof(symbol_address));
-~~~
-{:.language-cpp}
+```
 
 To prevent `dlsym` from being unneccessarily called more than once for a given symbol name one probably wants to persist the function pointer to e.g. a static variable local to the function body.
 
-~~~
+```cpp
 static ssize_t (actual_function*)(int, const void*, size_t){};
 
 if ( !actual_function ) {
@@ -71,8 +71,7 @@ if ( !actual_function ) {
 
 	std::memcpy(&actual_function, &symbol_address, sizeof(symbol_address));
 }
-~~~
-{:.language-cpp}
+```
 
 This logic should be placed in the function body and not for instance in a global initialization function as it is not guaranteed that such a function will be executed prior to any calls to interposed functions. The next section will describe an approach to reduce unneccessary code duplication in this context.
 
@@ -80,15 +79,14 @@ This logic should be placed in the function body and not for instance in a globa
 
 The most straight forward approach to abstracting the usage of `dlsym` is to wrap it in a more C++-like function template. To prevent unneccessary duplication of the functions return and parameter types as well as to hide the _strange_ syntax of function pointer declaration we first define a template alias as follows:
 
-~~~
+```cpp
 template <class Result, typename... Arguments>
 using ptr = Result(*)(Arguments...);
-~~~
-{:.language-cpp}
+```
 
 This allows us to define function pointers in a fashion simmilar to `std::function` and can be used as the template parameter of our actual `dlsym` abstraction.
 
-~~~
+```cpp
 template <typename FunctionPtr>
 FunctionPtr get_ptr(const std::string& symbol_name) {
 	const void* symbol_address{ dlsym(RTLD_NEXT, symbol_name.c_str()) };
@@ -98,12 +96,11 @@ FunctionPtr get_ptr(const std::string& symbol_name) {
 
 	return actual_function;
 }
-~~~
-{:.language-cpp}
+```
 
 This extraction of all `dlsym` calls into a single function template will come in handy during the section on _problems in practice_. Furthermore it allows us to write the exemplary interposition of the `write` library function in the following way which I for one find to be more maintainable and overall nicer looking than its c-style equivalent.
 
-~~~
+```cpp
 ssize_t write(int fd, const void* buffer, size_t count) {
 	static actual::ptr<ssize_t, int, const void*, size_t> actual_write{};
 
@@ -115,8 +112,7 @@ ssize_t write(int fd, const void* buffer, size_t count) {
 
 	return actual_write(fd, buffer, count);
 }
-~~~
-{:.language-cpp}
+```
 
 ## Problems in practice
 

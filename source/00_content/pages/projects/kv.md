@@ -8,16 +8,17 @@ The MIT licensed source code may be found on [Github] or [cgit].
 
 ## Usage example
 
-|Command                      |Description                                         |
-|`kv [show]`                  |List all stores                                     |
-|`kv [show] test`             |List all keys of store _test_                       |
-|`kv [show] test dummy`       |Print value of key _dummy_ in store _test_          |
-|`kv all`                     |List all keys and values of all stores              |
-|`kv all test`                |List all keys and values of store _test_            |
-|`kv all test dummy`          |Display key and value of key _dummy_ in store _test_|
-|`kv write test dummy example`|Write value _example_ to key _dummy_ in store _test_|
-|`kv delete test dummy`       |Delete key _dummy_ of store _test_                  |
-|`kv rename test dummy dummy2`|Rename key _dummy_ of store _test_ to _dummy2_      |
+Command                       Description
+----------------------------- ----------------------------------------------------
+`kv [show]`                   List all stores
+`kv [show] test`              List all keys of store _test_
+`kv [show] test dummy`        Print value of key _dummy_ in store _test_
+`kv all`                      List all keys and values of all stores
+`kv all test`                 List all keys and values of store _test_
+`kv all test dummy`           Display key and value of key _dummy_ in store _test_
+`kv write test dummy example` Write value _example_ to key _dummy_ in store _test_
+`kv delete test dummy`        Delete key _dummy_ of store _test_
+`kv rename test dummy dummy2` Rename key _dummy_ of store _test_ to _dummy2_
 
 [Github]: https://github.com/KnairdA/kv/
 [cgit]: http://code.kummerlaender.eu/kv/

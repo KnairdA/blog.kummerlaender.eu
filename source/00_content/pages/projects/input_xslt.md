@@ -12,12 +12,13 @@ Contrary to popular opinion I actually like XSLT as a content transformation lan
 
 The following table summarizes all the external functions provided by InputXSLT. They are available under the `InputXSLT` namespace after including `function.inputxslt.application` into the stylesheet element. 
 
-|Function           |Description                                                                                                   |
-|`read-file`        |Reading plain text files as text and XML files as node trees                                                  |
-|`read-directory`   |Traversing filesystem directories                                                                             |
-|`external-command` |Executing external commands including support for providing the input stream and capturing the output stream  |
-|`write-file`       |Committing plain text or node trees to the filesystem                                                         |
-|`generate`         |Calling transformations including support for capturing the result or committing it directly to the filesystem|
+Function           Description
+------------------ --------------------------------------------------------------------------------------------------------------
+`read-file`        Reading plain text files as text and XML files as node trees
+`read-directory`   Traversing filesystem directories
+`external-command` Executing external commands including support for providing the input stream and capturing the output stream
+`write-file`       Committing plain text or node trees to the filesystem
+`generate`         Calling transformations including support for capturing the result or committing it directly to the filesystem
 
 The `ixslt` XSLT frontent provided by InputXSLT also implements a custom include entity resolver alongside to an easy to use interface for implementing further custom extension functions.
 

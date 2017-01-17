@@ -14,7 +14,7 @@ As Xalan itself offers no easy way of creating node trees from scratch I had to 
 
 Because Xerces doesn't fully adhere to the principles of [RAII] I suggest wrapping [`xercesc::DOMDocument`] inside a `std::unique_ptr` specialized on a corresponding custom deleter as follows:
 
-~~~
+```cpp
 class document_deleter {
 	friend std::unique_ptr<xercesc::DOMDocument, document_deleter>;
 
@@ -35,14 +35,13 @@ document_ptr document(
 		nullptr
 	)
 );
-~~~
-{: .language-cpp}
+```
 
 Notable in the example above is the usage of a special [`XercesStringGuard`] class template I implemented to simplify the conversion between `char` based strings and the custom `XMLCh` type used by Xerces. After one has constructed the desired document tree using the standard DOM manipulations provided by [`xercesc::DOMDocument`] the next step is the conversion of this Xerces specific document into a [`xalan::XalanDocument`] instance usable by Xalan.
 
 As Xalan is based on Xerces it offers a class especially for this task called [`xalan::XercesDOMWrapperParsedSource`] that may be used as follows:
 
-~~~
+```cpp
 xalan::XercesParserLiaison parser;
 xalan::XercesDOMSupport domSupport(parser);
 xalan::XercesDOMWrapperParsedSource parsedSource(
@@ -52,12 +51,11 @@ xalan::XercesDOMWrapperParsedSource parsedSource(
 );
 
 xalan::XalanDocument* const xalanDocument = parsedSource.getDocument();
-~~~
-{: .language-cpp}
+```
 
 After one has converted the Xerces document into a Xalan document its parent nodes have to be included into a [`xalan::XPathExecutionContext::BorrowReturnMutableNodeRefList`] which then may finally be passed into `xalan::XObjectFactory::createNodeSet`.
 
-~~~
+```cpp
 xalan::XPathExecutionContext::BorrowReturnMutableNodeRefList nodes(
 	executionContext
 );
@@ -67,8 +65,7 @@ nodes->addNodes(
 );
 
 return executionContext.getXObjectFactory().createNodeSet(nodes);
-~~~
-{: .language-cpp}
+```
 
 Note that while the listings above should be enough to get you started on implementing external functions which are able to return node trees, they do not contain the logic necessary to keep the [`xalan::XercesDOMWrapperParsedSource`] instance including its helper classes alive through the whole duration of processing a XSL transformation and do not showcase the additional method implementations required to satisfy the [`xalan::Function`] interface.
 

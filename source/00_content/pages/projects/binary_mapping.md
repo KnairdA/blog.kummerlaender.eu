@@ -21,7 +21,7 @@ A explanation of an earlier version of this template library can be found on thi
 
 ## Usage example
 
-~~~
+```cpp
 BinaryMapping::Container<
     BinaryMapping::Tuple<
         BinaryMapping::LittleEndian,
@@ -40,8 +40,7 @@ for ( auto&& tuple : container ) {
 }
 
 std::uint32_t test = container.at(5).get<0>();
-~~~
-{: .language-cpp}
+```
 
 The code listed above defines a container of a tuple consisting of a `std::uint32_t`, `std::int16_t`, 3-byte and `std::uint8_t` field with little endianess, instantiates a buffer containing ten instances of this tuple, iterates through all 10 elements, gives them values, transparently converts to the correct endianess and extracts the value of the first field of the fifth tuple contained in the buffer. In short: BinaryMapping is a library that abstracts endianess aware serializing of binary structures into structures, containers and iterators. If you are interested in further details of the usage of all features provided by BinaryMapping don't hesitate to check out the [documentation].
 

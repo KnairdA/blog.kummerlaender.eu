@@ -17,7 +17,7 @@ A prefix tree or _Trie_ is a data structure that can be used to store a dynamic 
 
 The following example demonstrates the usage of the `Trie` class template specialized on a key and value type. While the first is obviously required the second may be ommitted if not required. Further usage examples are available as Google-Test based [test cases].
 
-~~~
+```cpp
 Trie<uint8_t, uint8_t> trie;
 
 trie.add({1, 1, 1, 1}, 42);
@@ -28,8 +28,7 @@ trie.add({2, 3, 1, 2}, 45);
 std::cout << trie.get({1, 1, 1, 1})       << std::endl; // true
 std::cout << trie.get({1, 1, 1, 1}).get() << std::endl; // 42
 std::cout << trie.get({1, 2})             << std::endl; // false
-~~~
-{: .language-cpp}
+```
 
 [Github]: https://github.com/KnairdA/Trie 
 [cgit]: http://code.kummerlaender.eu/Trie/

@@ -14,13 +14,13 @@ The implementation of the static site generator is contained within the `src/ste
 
 These transformations traverse the given source directory, plan tasks[^2] to be executed, process those tasks and summarize the result for the user.
 
-~~~
+```
 common:~# ixslt --input make.xml --transformation ../BuildXSLT/build.xsl
 Tasks processed:  19
 Tasks successful: 19
 ▶ Generation successful.
 common:~#
-~~~
+```
 
 The first of these transformations `list.xsl` traverses and lists a `source` directory containing various _levels_ depicting the different stages of the actual static site generation process as a base for all further processing.
 

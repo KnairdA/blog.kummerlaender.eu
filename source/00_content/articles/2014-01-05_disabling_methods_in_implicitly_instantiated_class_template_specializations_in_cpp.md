@@ -5,7 +5,7 @@ During my current undertaking of developing a [template based library](https://g
 The specific scenario I am talking about is disabling the _serialize_ and _deserialize_ template methods in all specializations of the
 _[Tuple](https://github.com/KnairdA/BinaryMapping/blob/master/src/tuple/tuple.h)_ class template whose _Endianess_ argument is not of the type _UndefinedEndian_. My first working implementation of this requirement looks as follows:
 
-~~~
+```cpp
 template <
 	typename CustomOrder,
 	typename Helper = Endianess
@@ -16,8 +16,7 @@ inline typename std::enable_if<
 >::type serialize() {
 	Serializer<InPlaceSorter<CustomOrder>>::serialize(this->tuple_);
 }
-~~~
-{: .language-cpp}
+```
 
 As we can see I am relying on the standard library's `std::enable_if` template to enable the method only if the _Helper_ template argument equals the type _UndefinedEndian_. One may wonder why I am supplying the `std::enable_if` template with the argument _Helper_ instead of directly specifying the class template argument _Endianess_. This was needed because of the following paragraph of the ISO C++ standard:
 
@@ -30,7 +29,7 @@ I defined a additional _Helper_ argument which defaults to the class template's 
 The code supplied above works as expected but has at least two flaws: There is an additonal template argument whose sole purpose is to work around the C++ standard to make _[SFINAE](https://en.wikipedia.org/wiki/Substitution_failure_is_not_an_error)_ possible and the return type of the method is obfuscated by the use of the `std::enable_if` template.
 Luckily it is not the only way of achieving our goal:
 
-~~~
+```cpp
 template <
 	typename CustomOrder,
 	typename = typename std::enable_if<
@@ -41,8 +40,7 @@ template <
 inline void serialize() {
 	Serializer<InPlaceSorter<CustomOrder>>::serialize(this->tuple_);
 }
-~~~
-{: .language-cpp}
+```
 
 In this second example implementation we are moving the `std::enable_if` template from the return type into a unnamed default template argument of the method. This unnamed default
 template argument which was not possible prior to the C++11 standard reduces the purpose of the `std::enable_if` template to selectively disabling method specializations. Additionally
@@ -50,7 +48,7 @@ the return type can be straight forwardly declared and the _Helper_ template arg
 
 But during my research concerning this problem I came up with one additional way of achieving our goal which one could argue is even better than the second example:
 
-~~~
+```cpp
 template <typename CustomOrder>
 inline void serialize() {
 	static_assert(
@@ -60,8 +58,7 @@ inline void serialize() {
 
 	Serializer<InPlaceSorter<CustomOrder>>::serialize(this->tuple_);
 }
-~~~
-{: .language-cpp}
+```
 
 This implementation of the _serialize_ method renounces any additonal template arguments and instead uses a declaration called `static_assert` which makes any specializations where
 the statement `std::is_same<Endianess, UndefinedEndian>::value` resolves to false ill-formed. Additionally it also returns a helpful message to the compiler log during such a situation.

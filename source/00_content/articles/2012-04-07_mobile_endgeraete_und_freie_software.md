@@ -11,7 +11,7 @@ Geräte die auf Android als Betriebssystem setzen bieten natürlich prinzipiell 
 
 Glücklicherweise sind wir nicht ganz auf Android-ausführende Hardware beschränkt. Das Mobiltelefon meiner Wahl ist seit etwa 2 Jahren beispielsweise das [N900](http://en.wikipedia.org/wiki/Nokia_N900), das aus meiner Sicht wirklich als **das** offene Gerät auf dem Markt angesehen werden kann. Ich könnte hier jetzt seitenweise Punkte aufzählen was alles mit dem N900 möglich ist aber es geht auch kurz:
 
-![N900](https://static.kummerlaender.eu/media/n900_teaser.png){: .full width="600px"}
+![N900](https://static.kummerlaender.eu/media/n900_teaser.png){.full width="600px"}
 
 Mit dem N900 lässt sich, ohne das man durch herstellerseitige Einschränkungen belästigt wird, alles machen was mit einem normalen Linux-Rechner geht. Die einzige mir bekannte Einschränkung ist: Teile der Hardware wie z.B. die Grafikkarte erfordern (noch) unfreie, geschlossene Treiber.
 
