@@ -15,7 +15,7 @@ Between 2013 and 2015 I studied for my A levels at the _Technische Oberschule_ w
 
 Currently I am studying mathematics at the Karlsruhe Institute of Technology.
 
-Although software development and tickering with my computer systems definitely is a primary occupation of mine both professionally and recreationally, I also enjoy reading _hard science fiction_ books and attending concerts and festivals of _Classical_ and _Metal_ music.
+Although software development and tinkering with my computer systems definitely is a primary occupation of mine both professionally and recreationally, I also enjoy reading _hard science fiction_ books and attending concerts and festivals of _Classical_ and _Metal_ music.
 
 I use this website to document some of my [thoughts and experiences](/archive) concerning software development and various other topics in addition to summarizing some of my [projects](/category/projects).
 
