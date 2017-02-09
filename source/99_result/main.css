@@ -53,27 +53,6 @@ code{font-family:monospace;margin:0 .1em;padding:0 .5em;border:.1em solid #e3e8e
 #footer a{text-decoration:none;color:#272828}
 #footer a:hover{text-decoration:underline}
 #footer ul{float:right;padding:0}
-#isso-thread{margin-top:1em;font-size:.95em}
-#isso-thread h4{font-weight:normal;font-size:1.25em;margin:0;border:none}
-#isso-thread .form-wrapper{padding:1em;overflow:hidden}
-#isso-thread .form-wrapper input{border:.3em solid #e3e8e8;margin:.3em 0 .3em 0}
-#isso-thread .form-wrapper .textarea{border:.3em solid #e3e8e8;width:100%;height:8em;color:#272828}
-#isso-thread .form-wrapper .placeholder{color:#858585}
-#isso-thread .auth-section .input-wrapper{float:left;margin-right:.3em}
-#isso-root{padding:1em}
-#isso-root a{text-decoration:underline;color:#272828}
-#isso-root a:hover{color:black}
-#isso-root .spacer{visibility:hidden}
-#isso-root .isso-follow-up{margin-left:2em;padding-top:.5em}
-#isso-root .isso-comment{border-top:.3em solid #e3e8e8;margin-bottom:.5em}
-#isso-root .isso-comment-header{font-size:.75em;padding:.3em 0 .3em 0}
-#isso-root .isso-comment-header a{text-decoration:none;margin:0 .1em 0 .1em}
-#isso-root .isso-comment-header a:hover{text-decoration:underline}
-#isso-root .isso-comment-footer{overflow:hidden;font-size:.75em}
-#isso-root .isso-comment-footer .reply{float:right}
-#isso-root .isso-comment-footer .edit{display:none}
-#isso-root .isso-comment-footer .downvote{display:none}
-#isso-root .isso-comment-footer .upvote{display:none}
 .columns{column-count:2;-moz-column-count:2;-webkit-column-count:2;column-gap:1em;-moz-column-gap:1em;-webkit-column-gap:1em}
 .column{-webkit-column-break-inside:avoid;break-inside:avoid-column;overflow:hidden}
 .buttonlist{overflow:hidden}
@@ -91,9 +70,6 @@ code{font-family:monospace;margin:0 .1em;padding:0 .5em;border:.1em solid #e3e8e
 .prettylist li a:hover{text-decoration:underline}
 .prettylist li p{margin:0 !important}
 .prettylist li em{font-style:normal;font-size:1.4em;color:#F80}
-.commentlist ol{margin-top:.2em;border-top:.1em solid #e3e8e8}
-.commentlist ol li{background:0;font-size:.8em}
-.commentlist ol li.dateitem{padding:0;font-weight:bold}
 .menuhead{border-bottom:0.1em solid #e3e8e8;overflow:hidden;padding:0;margin-top:0.8em}
 .menuhead h3{float:left;padding:0.4em 0 0 0;margin:0 !important;border:none !important}
 .menuhead ul{float:right;padding:0;font-size:1.1em}

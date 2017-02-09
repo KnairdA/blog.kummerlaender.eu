@@ -27,6 +27,7 @@
 				<xsl:value-of select="title"/>
 			</a>
 		</h2>
+
 		<p class="info">
 			<xsl:call-template name="format-date">
 				<xsl:with-param name="date" select="date/full"/>
@@ -41,20 +42,10 @@
 			</xsl:for-each>
 			<xsl:text> | </xsl:text>
 			<xsl:value-of select="$root/meta/author"/>
-			<xsl:text> | </xsl:text>
-			<a href="#isso-thread">Comments</a>
 		</p>
 
 		<xsl:apply-templates select="content/node()" mode="xhtml"/>
 	</div>
-
-	<div id="isso-thread">
-		<xsl:text> </xsl:text>
-	</div>
-
-	<script type="text/javascript" src="/comments/js/embed.min.js" data-isso-avatar="false" data-isso-vote="false" data-isso-css="false">
-		<xsl:text> </xsl:text>
-	</script>
 </xsl:template>
 
 </xsl:stylesheet>
