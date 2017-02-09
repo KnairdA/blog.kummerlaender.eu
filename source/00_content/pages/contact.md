@@ -2,7 +2,6 @@
 
 **eMail:** adrian[at]kummerlaender[dot]eu  
 **Public Key:** [key.kummerlaender.eu](https://key.kummerlaender.eu)  
-**Jabber:** adrian[underscore]kummerlaender[at]jabber[dot]ccc[dot]de  
 **Telegram:** [KnairdA](https://telegram.me/KnairdA)  
 **Github:** [KnairdA](https://github.com/KnairdA)  
 
