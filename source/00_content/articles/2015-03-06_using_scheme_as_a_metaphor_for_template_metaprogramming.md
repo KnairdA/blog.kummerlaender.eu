@@ -220,8 +220,8 @@ Finally I want to reference the [Boost MPL] library which supports everything an
 [^4]: Previously proofed in [C++ Templates are Turing Complete](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3670) _(2003)_
 
 [appropriate article]: /article/a_look_at_compile_time_computation_in_cpp/
-[ConstList]: /page/const_list/
-[TypeAsValue]: /page/type_as_value/
+[ConstList]: https://tree.kummerlaender.eu/projects/const_list/
+[TypeAsValue]: https://tree.kummerlaender.eu/projects/type_as_value/
 [SRFI-1]: http://srfi.schemers.org/srfi-1/srfi-1.html
 [example applications]: https://github.com/KnairdA/TypeAsValue/tree/master/example
 [Boost MPL]: http://www.boost.org/doc/libs/1_57_0/libs/mpl/doc/index.html

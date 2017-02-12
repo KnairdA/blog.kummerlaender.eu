@@ -28,14 +28,14 @@ If you should have further questions on my experience with self-hosting feel fre
 
 [SheevaPlug]: /tag/sheevaplug/
 [Marvell SheevaPlug]: https://www.globalscaletechnologies.com/t-sheevaplugdetails.aspx
-[statically generated]: /page/this_website/
+[statically generated]: https://tree.kummerlaender.eu/projects/xslt/blog/
 [Tarsnap]: http://tarsnap.com
 [single board computer]: http://linuxgizmos.com/top-10-hacker-sbcs-survey-results/ 
 [NoIP]: http://noip.com
 [DynDNS]: http://dyndns.com
 [FreedomBox]: http://freedomboxfoundation.org/
 [ArkOS]: https://arkos.io/
-[contact]: /page/contact/
+[contact]: https://tree.kummerlaender.eu/contact/
 
 [^1]: e.g. when one is able to access ones eMail and personal data repository in addition to the full private subnet from thousands of kilometers away
 [^2]: respectively a successor such as e.g. a _GuruPlug_

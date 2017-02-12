@@ -51,10 +51,7 @@
 				<a href="/archive">Archive</a>
 			</li>
 			<li>
-				<a href="/category/projects">Projects</a>
-			</li>
-			<li>
-				<a href="/page/contact">Contact</a>
+				<a href="https://tree.kummerlaender.eu/contact">Contact</a>
 			</li>
 			<li>
 				<a href="/atom.xml">Feed</a>
@@ -73,11 +70,11 @@
 	</div>
 
 	<div id="footer" class="center">
-		<a href="/page/static_xslt/">Made with XSLT</a>
+		<a href="https://tree.kummerlaender.eu/projects/xslt/">Made with XSLT</a>
 
 		<ul class="buttonlist">
 			<li>
-				<a href="/page/contact">Contact</a>
+				<a href="https://tree.kummerlaender.eu/contact">Contact</a>
 			</li>
 			<li>
 				<a href="/atom.xml">Feed</a>

@@ -149,6 +149,6 @@ One should however expect to dive deeper into C library internals and debug lowe
 
 For a real world example of how function interposition using `LD_PRELOAD` and C++ may be used to build a small but hopefully useful application feel free to check out [_change_] on [Github] or [cgit].
 
-[_change_]: /page/change/
+[_change_]: https://tree.kummerlaender.eu/projects/change/
 [Github]: https://github.com/KnairdA/change/
 [cgit]: https://code.kummerlaender.eu/change/

@@ -78,9 +78,9 @@ This `constructDocument` method receives all parameters declared in the `Functio
 [^1]: e.g. extension elements instead of only extension functions
 [^2]: [`read-file`], [`write-file`], [`read-directory`], [`external-command`] and [`generate`]
 
-[static site generation framework]: /page/static_xslt/
-[this website]: /page/this_website/
-[set of external functions]: /page/input_xslt/
+[static site generation framework]: https://tree.kummerlaender.eu/projects/xslt/static_xslt/
+[this website]: https://tree.kummerlaender.eu/projects/xslt/blog/
+[set of external functions]: https://tree.kummerlaender.eu/projects/xslt/input_xslt/
 [Apache Xalan]: http://xalan.apache.org/xalan-c/index.html
 [Xerces]: http://xerces.apache.org/xerces-c/index.html
 [`xalan::Function`]: https://xalan.apache.org/xalan-c/apiDocs/classFunction.html
@@ -99,5 +99,5 @@ This `constructDocument` method receives all parameters declared in the `Functio
 [`external-command`]: https://github.com/KnairdA/InputXSLT/blob/master/src/function/external_command.h
 [`generate`]: https://github.com/KnairdA/InputXSLT/blob/master/src/function/generate.h
 [base class]: https://github.com/KnairdA/InputXSLT/blob/master/src/function/base.h
-[InputXSLT]: /page/input_xslt/
+[InputXSLT]: https://tree.kummerlaender.eu/projects/xslt/input_xslt/
 [external function implementations]: https://github.com/KnairdA/InputXSLT/tree/master/src/function

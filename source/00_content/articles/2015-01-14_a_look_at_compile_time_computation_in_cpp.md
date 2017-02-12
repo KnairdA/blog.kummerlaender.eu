@@ -105,7 +105,7 @@ So as it turns out the restriction imposed by being forced to rely on template p
 After this brief look at compile time computation in C++, the approach detailed in this last section seems to be the most promising. While it is sadly not possible to consistently write code to be executed at compile time using `constexpr`, this newly extended keyword certainly enables writing some parts of a primarily template metaprogramming based program in _normal_ C++ which is very helpful. Personally my next step in this context will be to revamp [ConstList] to use [`std::integral_constant`] for value storage instead of member constants in an attempt at developing a way of manipulating data at compile time in a functional fashion.
 
 [proof]: http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3670
-[ConstList]: /page/const_list/
+[ConstList]: https://tree.kummerlaender.eu/projects/const_list/
 [`foldr`]: https://github.com/KnairdA/ConstList/blob/5d276c73df8fae74ee4c2e05a76cf9ada2a795c6/src/operation/higher/foldr.h
 [`map`]: https://github.com/KnairdA/ConstList/blob/5d276c73df8fae74ee4c2e05a76cf9ada2a795c6/src/operation/higher/misc.h
 [test cases]: https://github.com/KnairdA/ConstList/blob/master/test.cc
