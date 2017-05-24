@@ -1,6 +1,7 @@
 body{margin:0;padding:0;font:1em sans-serif;color:#272828;word-wrap:break-word}
 a, a:visited{text-decoration:underline;color:#272828}
 a:hover{color:black}
+a.more{font-family:"Segoe UI Symbol",sons-serif}/*edge workaround*/
 h1, h2{margin:0;color:#272828;font-weight:bold}
 h1 a, h2 a{text-decoration:none}
 p{margin:0 0 .5em 0;text-align:justify;line-height:1.75em}

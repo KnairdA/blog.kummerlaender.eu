@@ -69,7 +69,7 @@
 		<xsl:apply-templates select="content/p[1]/node()" mode="xhtml"/>
 		<xsl:text> </xsl:text>
 
-		<a href="/article/{@handle}">
+		<a class="more" href="/article/{@handle}">
 			<xsl:text>↪</xsl:text>
 		</a>
 	</p>
