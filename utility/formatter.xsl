@@ -96,6 +96,12 @@
 
 <xsl:template match="div[@class = 'footnotes']/hr" mode="embellish"/>
 
+<xsl:template match="div[@class = 'footnotes']//a[contains(@href, '#fnref')]" mode="embellish">
+	<a href="{@href}" class="more">
+		<xsl:apply-templates select="node()" mode="embellish"/>
+	</a>
+</xsl:template>
+
 <xsl:template match="span[contains(@class, 'math')]" mode="embellish">
 	<xsl:choose>
 		<xsl:when test="contains(@class, 'display')">
