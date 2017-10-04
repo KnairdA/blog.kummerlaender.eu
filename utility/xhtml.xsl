@@ -25,4 +25,25 @@
 	<xsl:copy/>
 </xsl:template>
 
+<xsl:template match="a[@class = 'footnoteRef']" mode="xhtml">
+	<xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml">
+		<xsl:copy-of select="@class"/>
+		<xsl:copy-of select="@id"/>
+		<xsl:attribute name="href">
+			<xsl:value-of select="concat('/article/', ancestor::entry/@handle, '/', @href)"/>
+		</xsl:attribute>
+		<xsl:apply-templates select="node()" mode="xhtml"/>
+	</xsl:element>
+</xsl:template>
+
+<xsl:template match="div[@class = 'footnotes']/ol/li/p/a[@class = 'more']" mode="xhtml">
+	<xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml">
+		<xsl:copy-of select="@class"/>
+		<xsl:attribute name="href">
+			<xsl:value-of select="concat('/article/', ancestor::entry/@handle, '/', @href)"/>
+		</xsl:attribute>
+		<xsl:apply-templates select="node()" mode="xhtml"/>
+	</xsl:element>
+</xsl:template>
+
 </xsl:stylesheet>
