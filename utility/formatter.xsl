@@ -129,7 +129,7 @@
 
 	<xsl:variable name="content">
 		<xsl:call-template name="plain_formatter">
-			<xsl:with-param name="format">pandoc -f markdown -t html --katex --no-highlight</xsl:with-param>
+			<xsl:with-param name="format">pandoc -f markdown -t html4 --katex --no-highlight -fmarkdown-implicit_figures</xsl:with-param>
 			<xsl:with-param name="source" select="$source"/>
 		</xsl:call-template>
 	</xsl:variable>
