@@ -25,7 +25,7 @@
 	<xsl:variable name="formatted_expression">
 		<xsl:call-template name="plain_formatter">
 			<xsl:with-param name="format">
-				<xsl:text>katex </xsl:text>
+				<xsl:text>./utility/katex/wrapper </xsl:text>
 				<xsl:value-of select="$arguments"/>
 			</xsl:with-param>
 			<xsl:with-param name="source" select="$source"/>
@@ -107,7 +107,7 @@
 		<xsl:when test="contains(@class, 'display')">
 			<p class="math">
 				<xsl:call-template name="math_highlighter">
-					<xsl:with-param name="source" select="text()"/>
+					<xsl:with-param name="source" select="substring(text(),3,string-length(text())-4)"/>
 					<xsl:with-param name="arguments">
 						<xsl:text>--display-mode</xsl:text>
 					</xsl:with-param>
@@ -117,7 +117,7 @@
 		<xsl:otherwise>
 			<span class="math">
 				<xsl:call-template name="math_highlighter">
-					<xsl:with-param name="source" select="text()"/>
+					<xsl:with-param name="source" select="substring(text(),3,string-length(text())-4)"/>
 				</xsl:call-template>
 			</span>
 		</xsl:otherwise>
