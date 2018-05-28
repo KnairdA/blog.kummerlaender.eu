@@ -4,12 +4,13 @@ stdenv.mkDerivation rec {
   name = "env";
   env = buildEnv { name = name; paths = buildInputs; };
   buildInputs = let
-    InputXSLT = callPackage ./InputXSLT.nix {};
+    InputXSLT = callPackage ./pkgs/InputXSLT.nix {};
+    KaTeX     = callPackage ./pkgs/KaTeX.nix {};
   in [
     InputXSLT
     pandoc
     highlight
-    nodejs
+    KaTeX
     python3
   ];
 }

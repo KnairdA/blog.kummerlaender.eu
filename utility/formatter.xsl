@@ -25,7 +25,7 @@
 	<xsl:variable name="formatted_expression">
 		<xsl:call-template name="plain_formatter">
 			<xsl:with-param name="format">
-				<xsl:text>./utility/katex/wrapper </xsl:text>
+				<xsl:text>katex </xsl:text>
 				<xsl:value-of select="$arguments"/>
 			</xsl:with-param>
 			<xsl:with-param name="source" select="$source"/>

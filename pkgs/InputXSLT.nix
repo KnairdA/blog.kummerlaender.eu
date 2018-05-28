@@ -13,6 +13,8 @@ stdenv.mkDerivation rec {
   buildInputs = [ cmake boost xalanc xercesc discount ];
 
   meta = with stdenv.lib; {
-    homepage = https://github.com/KnairdA/InputXSLT/;
+    description = "InputXSLT";
+    homepage    = https://github.com/KnairdA/InputXSLT/;
+    license     = stdenv.lib.licenses.asl20;
   };
 }
