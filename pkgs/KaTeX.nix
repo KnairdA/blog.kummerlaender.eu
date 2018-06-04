@@ -13,7 +13,6 @@ let
 
     installPhase = ''
       mkdir -p $out/share/katex
-
       cp katex.min.js $out/share/katex/
     '';
 
