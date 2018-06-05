@@ -6,4 +6,7 @@ let
   BuildXSLT  = pkgs.callPackage ./BuildXSLT.nix {};
 in pkgs.writeScriptBin
   "generate"
-  "${InputXSLT}/bin/ixslt --input make.xml --transformation ${BuildXSLT}/build.xsl --include ${StaticXSLT}/"
+  ''
+    #!/bin/sh
+    ${InputXSLT}/bin/ixslt --input make.xml --transformation ${BuildXSLT}/build.xsl --include ${StaticXSLT}/
+  ''
