@@ -209,7 +209,7 @@ Both of these examples are certainly not what [TypeAsValue] might be used for in
 
 While the _Scheme_ metaphor for template metaprogramming in C++ certainly has its limits, especially in the area of anonymous functions, I think that this article as well as the actual implementation of [TypeAsValue] are proof that it holds up quite well in many circumstances. As stated in the introduction to this article I was very surprised how close template metaprogramming can feel to a _real_ functional programming language.
 
-All listings in this article as well as the [TypeAsValue] library itself are freely available under the terms of the MIT license on [Github] and [cgit]. Feel free to check them out and contribute - I am especially interested in practical solutions to providing better partial function application support or even full compile time lambda expressions that do not require the whole library to be designed around this concept.
+All listings in this article as well as the [TypeAsValue] library itself are freely available under the terms of the MIT license on [Github] and [Gitea]. Feel free to check them out and contribute - I am especially interested in practical solutions to providing better partial function application support or even full compile time lambda expressions that do not require the whole library to be designed around this concept.
 
 Finally I want to reference the [Boost MPL] library which supports everything and more than the solution described in this article without relying on any _modern_ language features such as variadic templates. All _non-experimental_ projects should probably use it instead of [TypeAsValue], not the least because of greater portability.
 
@@ -226,7 +226,7 @@ Finally I want to reference the [Boost MPL] library which supports everything an
 [example applications]: https://github.com/KnairdA/TypeAsValue/tree/master/example
 [Boost MPL]: http://www.boost.org/doc/libs/1_57_0/libs/mpl/doc/index.html
 [Github]: https://github.com/KnairdA/TypeAsValue/
-[cgit]: http://code.kummerlaender.eu/TypeAsValue/
+[Gitea]: https://code.kummerlaender.eu/adrian/TypeAsValue/
 
 [`std::integral_constant`]: http://en.cppreference.com/w/cpp/types/integral_constant
 [`std::bind`]: http://en.cppreference.com/w/cpp/utility/functional/bind

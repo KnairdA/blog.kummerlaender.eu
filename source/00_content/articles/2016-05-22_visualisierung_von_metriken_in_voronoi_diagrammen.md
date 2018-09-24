@@ -153,7 +153,7 @@ Die Punktmenge ist dabei die, welche in obigen Beispiel Diagrammen zu betrachten
 
 Zur Kennzeichnung der Referenzvektoren wird jeweils eine abgeschlossene Kugel unter der verwendeten Metrik mit Radius 5 gezogen. Dies hat den schönen Nebeneffekt, dass wir anhand der Form der Punktmarkierungen schon Rückschlüsse auf die zur Generierung verwendete Metrik ziehen können, da die Markierungen nur skalierte Versionen der Einheitskugel sind, welche wir im vorangehenden Abschnitt besprochen haben.
 
-Der komplette Quellcode der aufgeführten Beispiele ist auf [Github] und [cgit] unter der MIT Lizenz frei verfügbar und kann so zur Generierung eigener Voronoi Diagramme herangezogen werden.
+Der komplette Quellcode der aufgeführten Beispiele ist auf [Github] und [Gitea] unter der MIT Lizenz frei verfügbar und kann so zur Generierung eigener Voronoi Diagramme herangezogen werden.
 
 ## Minimalistische Generierung von Pixelgrafiken in C++
 
@@ -231,11 +231,11 @@ Hiermit sind wir am Ende meines ersten textuellen Ausflugs an die Schnittstelle 
 
 Grundsätzlich finde ich Voronoi-Diagramme hilfreich, um eine visuelle Intuition für die Auswirkungen verschiedener Metriken zu gewinnen - gleichwohl diese in höheren Dimensionen schnell in ihrem Nutzen schwindet. Aber auch abgesehen vom praktischen Aspekten sind diese Diagramme eine schöne Möglichkeit in etwas anschaulicherem Kontext mit Mathematik zu spielen und schöne Bilder zu erzeugen.
 
-Ansätze zum Ausbau der im Rahmen dieses Artikels entstandenen Programme - an dieser Stelle noch einmal der Hinweis auf die Quellen bei [Github] und [cgit] - sind verschiedene Metriken in einem Diagramm zu mischen oder zu gewichten sowie sich praktische Einsatzszenarien für Voronoi-Diagramme anzuschauen. Wenn die Grafiken beispielweise bei dem ein oder anderen meiner Leser die Erinnerung an Strukturen in der Natur wie Bienenwaben oder aufeinandertreffende Seifenblasen geweckt haben, dann liegt das daran, dass sich Prozesse dieser Art tatsächlich über Voronoi-Diagramme betrachten lassen. Der entsprechende [Wikipedia-Artikel] liefert hier als Abschluss eine Auflistung zahlreicher Anwendungsbeispiele.
+Ansätze zum Ausbau der im Rahmen dieses Artikels entstandenen Programme - an dieser Stelle noch einmal der Hinweis auf die Quellen bei [Github] und [Gitea] - sind verschiedene Metriken in einem Diagramm zu mischen oder zu gewichten sowie sich praktische Einsatzszenarien für Voronoi-Diagramme anzuschauen. Wenn die Grafiken beispielweise bei dem ein oder anderen meiner Leser die Erinnerung an Strukturen in der Natur wie Bienenwaben oder aufeinandertreffende Seifenblasen geweckt haben, dann liegt das daran, dass sich Prozesse dieser Art tatsächlich über Voronoi-Diagramme betrachten lassen. Der entsprechende [Wikipedia-Artikel] liefert hier als Abschluss eine Auflistung zahlreicher Anwendungsbeispiele.
 
 [Github]: https://github.com/KnairdA/voronoi/
-[cgit]: https://code.kummerlaender.eu/voronoi/
+[Gitea]: https://code.kummerlaender.eu/adrian/voronoi/
 [Cairo]: https://www.cairographics.org/
 [Imagemagick]: http://www.imagemagick.org/
-[voronoi.sh]: https://code.kummerlaender.eu/voronoi/tree/voronoi.sh
+[voronoi.sh]: http://code.kummerlaender.eu/adrian/voronoi/src/branch/master/voronoi.sh
 [Wikipedia-Artikel]: https://en.wikipedia.org/wiki/Voronoi_diagram

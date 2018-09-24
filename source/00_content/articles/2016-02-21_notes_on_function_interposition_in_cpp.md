@@ -14,7 +14,7 @@ This feature is what is commonly referred to as function interposition and is wh
 
 Function interposition is useful in various practical scenarios such as providing custom memory allocators as drop in replacements for the appropriate standard library functions as well as monitoring the function calls of a application as an additional debugging avenue. Furthermore `LD_PRELOAD`'s nature of replacing library functions with custom logic in a not necessarily obvious manner makes it a security risk which is why it is disabled for e.g. `setuid` applications. But even with this restriction it may be used as a foundation for userland rootkits - for instance one could hijack the library functions used to interface with the file system and change what certain applications see. Such shenanigans could then in turn be used to manipulate the source code of an application during compilation while continuing to display the unchanged source code to the user via her chosen text editor and file hashing tool. More information on this kind of attack can be obtained e.g. in the _31c3_ talk on [reproducible builds] which is where I was first confronted with this risk.
 
-However the use case that led me to dive into this topic was to develop a tool to be dropped in front of any `LD_PRELOAD` supported program that would then monitor all relevant file system interactions and generate a nice summary of what was changed to be used for documentation purposes. The result of this undertaking is available on [Github] and [cgit].
+However the use case that led me to dive into this topic was to develop a tool to be dropped in front of any `LD_PRELOAD` supported program that would then monitor all relevant file system interactions and generate a nice summary of what was changed to be used for documentation purposes. The result of this undertaking is available on [Github] and [Gitea].
 
 [reproducible builds]: https://media.ccc.de/v/31c3_-_6240_-_en_-_saal_g_-_201412271400_-_reproducible_builds_-_mike_perry_-_seth_schoen_-_hans_steiner
 
@@ -147,8 +147,8 @@ Although this approach depends on interfacing with C code it can be reasonably a
 
 One should however expect to dive deeper into C library internals and debug lower level issues while actually wanting to implement higher level functionality. Furthermore we probably will not get away with just implementing an interposition of the function we are interested in but also other functions that depend on it in some fashion in some wrapped applications. Definitely exepect quite a few coredumps and deadlocks during development.
 
-For a real world example of how function interposition using `LD_PRELOAD` and C++ may be used to build a small but hopefully useful application feel free to check out [_change_] on [Github] or [cgit].
+For a real world example of how function interposition using `LD_PRELOAD` and C++ may be used to build a small but hopefully useful application feel free to check out [_change_] on [Github] or [Gitea].
 
 [_change_]: https://tree.kummerlaender.eu/projects/change/
 [Github]: https://github.com/KnairdA/change/
-[cgit]: https://code.kummerlaender.eu/change/
+[Gitea]: https://code.kummerlaender.eu/adrian/change/

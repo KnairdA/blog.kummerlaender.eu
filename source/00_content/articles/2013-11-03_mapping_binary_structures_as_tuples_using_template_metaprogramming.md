@@ -251,4 +251,4 @@ which basically is _just_ a large library of templates.
 The next step in extending the templates explained in this article would probably be adapting the _BinaryMapping_ template to offer sliding window like iteration over larger buffers and extending
 the supported data types.
 
-__Update:__ The current version of a small C++ template library extending the _BinaryMapping_ templates detailed in this article may be found on [Github](https://github.com/KnairdA/BinaryMapping/) or [cgit](http://code.kummerlaender.eu/BinaryMapping/).
+__Update:__ The current version of a small C++ template library extending the _BinaryMapping_ templates detailed in this article may be found on [Github](https://github.com/KnairdA/BinaryMapping/).

@@ -13,7 +13,7 @@ When I stood before this decision nearly _half a lifetime ago_[^4] my choice fel
 
 ![a Vim session in its natural environment](https://static.kummerlaender.eu/media/tinkering_with_meta_tools_screen_001.png)
 
-Altough the 122 lines including comments that currently make up most of my _Vim_ [configuration](https://code.kummerlaender.eu/dotfiles/tree/vim/.vimrc) are not much by most standards I have invested quite some time in setting the editor up to my taste - not the least by writing my very [own color scheme](https://code.kummerlaender.eu/dotfiles/tree/vim/.vim/colors/akr.vim) to match the rest of my primary desktop environment.  
+Altough the 122 lines including comments that currently make up most of my _Vim_ [configuration](https://github.com/KnairdA/dotfiles/blob/master/vim/.vimrc) are not much by most standards I have invested quite some time in setting the editor up to my taste - not the least by writing my very [own color scheme](https://github.com/KnairdA/dotfiles/blob/master/vim/.vim/colors/akr.vim) to match the rest of my primary desktop environment.  
 
 Over time I have [grown so accustomed](https://www.norfolkwinters.com/vim-creep/) to _Vim's_ keybindings that I now use them wherever possible including but not restricted to: my web browser, [PDF reader](https://pwmt.org/projects/zathura/), various IDEs, [image viewer](https://github.com/muennich/sxiv) and window manager of choice.
 
@@ -36,7 +36,7 @@ I find it very useful to have a certain set of information available at all time
 [NixOS]:      https://nixos.org/
 [GuixSD]:     https://www.gnu.org/software/guix/
 [etckeeper]:  https://github.com/joeyh/etckeeper
-[dotfiles]:   https://code.kummerlaender.eu/dotfiles/
+[dotfiles]:   https://github.com/KnairdA/dotfiles/
 [GNU stow]:   https://www.gnu.org/software/stow/
 [dict]:       http://www.dict.org/links.html
 [passman]:    https://github.com/dkellner/passman
@@ -61,7 +61,7 @@ As one can see in the screeshot above the current browser setup I use to deal wi
 For now it is good enough and fullfills my primary use cases: Having access to most of my sources independent of network availability[^7], preventing the unpleasant situation of wanting to consult a vaguely remembered source only to find that it is not available anymore as well as full text search over all interesting pages I visited.
 
 Archiving the web ties into the last section of this article: note taking. While I write all my lecture notes and excercise sheet solutions using pen input on one of Microsoft's _Surface_[^8] devices I like to capture project and _research_ notes as well as general thoughts using a keyboard on my normal computer.  
-When taking notes as plain text I preferably want to do so using _Vim_ which rules out most of the already relatively [limited](http://tiddlywiki.com/) [selection](http://www.zim-wiki.org/) [of](http://strlen.com/treesheets/) open source desktop wiki software. After quite some time using [VimWiki] I currently use markdown files stored in a flat directory structure. Desktop integration is solved using a background Vim instance running in a _i3_ scratchpad as well as a _Rofi_ based [note selection dialog](https://code.kummerlaender.eu/dotfiles/tree/bin/rofi_wiki) that communicates with _Vim_ using remote commands. Advanced markdown features, syntax highlighting and conversion is based on [pandoc] integration plugins.  
+When taking notes as plain text I preferably want to do so using _Vim_ which rules out most of the already relatively [limited](http://tiddlywiki.com/) [selection](http://www.zim-wiki.org/) [of](http://strlen.com/treesheets/) open source desktop wiki software. After quite some time using [VimWiki] I currently use markdown files stored in a flat directory structure. Desktop integration is solved using a background Vim instance running in a _i3_ scratchpad as well as a _Rofi_ based [note selection dialog](https://github.com/KnairdA/dotfiles/blob/master/bin/rofi_wiki) that communicates with _Vim_ using remote commands. Advanced markdown features, syntax highlighting and conversion is based on [pandoc] integration plugins.  
 In addition to that I also now and then play around with _Emacs'_ [Org-mode] which can probably fulfill most of my requirements but requires considerable upfront configuration efforts to make it work consistently with _Evil_ for _Vim-style_ usage.
 
 [Gopher]:           https://en.wikipedia.org/wiki/Gopher_(protocol)
@@ -69,7 +69,7 @@ In addition to that I also now and then play around with _Emacs'_ [Org-mode] whi
 [Pentadactyl]:      http://5digits.org/pentadactyl/
 [TreeStyleTabs]:    https://github.com/piroor/treestyletab
 [ScrapBook X]:      https://github.com/danny0838/firefox-scrapbook
-[`.pentadactylrc`]: https://code.kummerlaender.eu/dotfiles/tree/pentadactyl/.pentadactylrc
+[`.pentadactylrc`]: https://github.com/KnairdA/dotfiles/blob/master/pentadactyl/.pentadactylrc
 [WARC]:             https://en.wikipedia.org/wiki/Web_ARChive
 [VimWiki]:          http://vimwiki.github.io/
 [pandoc]:           http://pandoc.org

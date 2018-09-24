@@ -64,7 +64,7 @@ Of course I was not satisfied merely porting my workflows onto a new superior di
 
 After getting settled in this new working environment I finally was out of distractions and moved on to my original wish of familiarizing myself with delegating non-graphical work to the GPU. The first presentable result of this undertaking is my minimalistic [fieldplay](https://anvaka.github.io/fieldplay/) clone [computicle](https://github.com/KnairdA/computicle).
 
-![computicle impression](https://code.kummerlaender.eu/computicle/plain/screenshot/computicle_1.png)
+![computicle impression](https://code.kummerlaender.eu/adrian/computicle/raw/branch/master/screenshot/computicle_1.png)
 
 What computicle does is simulate many particles moving according to a vector field described by a function $f : \mathbb{R}^2 \to \mathbb{R}^2$ that is interpreted as a ordinary differential equation to be solved using classical Runge-Kutta methods. As this problem translates into many similiar calculations performed per particle without any communication to other particles it is an ideal candidate for massive parallelization using GLSL compute shaders on the GPU.
 
@@ -148,7 +148,7 @@ window.render([&]() {
 
 One idea that I am currently toying with in respect to my future GPU-based projects is to abandon C++ as the host language and instead use a more flexible[^8] language such as Scheme or Haskell for generating the shader code and communicating with the GPU. This could work out well as the performance of CPU code doesn't matter as much when the bulk of the work is performed by shaders. At least this is the impression I got from my field visualization experiment - the CPU load was minimal independent of how many kiloparticles were simulated.
 
-![computicle impression](https://code.kummerlaender.eu/computicle/plain/screenshot/computicle_0.png)
+![computicle impression](https://code.kummerlaender.eu/adrian/computicle/raw/branch/master/screenshot/computicle_0.png)
 
 [^0]: See [nixos_system](https://github.com/KnairdA/nixos_system) and [nixos_home](https://github.com/KnairdA/nixos_home)
 [^1]: See the [summary node](http://tree.kummerlaender.eu/projects/xslt/) or [Expanding XSLT using Xalan and C++](/article/expanding_xslt_using_xalan_and_cpp/)

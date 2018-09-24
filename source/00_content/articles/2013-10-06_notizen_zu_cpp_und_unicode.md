@@ -20,7 +20,7 @@ Wir müssen in diesem Fall also auf externe Bibliotheken wie beispielweise [icon
 
 ## Ein UTF-8 Codepoint-Iterator in C++
 
-Um zumindest für rein lesende Zugriffe auf UTF-8 Strings nicht gleich eine Bibliothek wie Boost oder [easl](http://code.google.com/p/easl/) verwenden zu müssen habe ich einen einfachen UTF-8 Codepoint-Iterator anhand der Spezifikation in [RFC3629](http://tools.ietf.org/html/rfc3629) implementiert. Den Quellcode dieser Klasse stelle ich auf [Github](https://github.com/KnairdA/CodepointIterator) oder in [cgit](http://code.kummerlaender.eu/CodepointIterator/tree/) als Open Source unter der MIT-Lizenz zur freien Verfügung.
+Um zumindest für rein lesende Zugriffe auf UTF-8 Strings nicht gleich eine Bibliothek wie Boost oder [easl](http://code.google.com/p/easl/) verwenden zu müssen habe ich einen einfachen UTF-8 Codepoint-Iterator anhand der Spezifikation in [RFC3629](http://tools.ietf.org/html/rfc3629) implementiert. Den Quellcode dieser Klasse stelle ich auf [Github](https://github.com/KnairdA/CodepointIterator) oder in [Gitea](http://code.kummerlaender.eu/adrian/CodepointIterator/) als Open Source unter der MIT-Lizenz zur freien Verfügung.
 
 UTF-8 enkodiert die aktuell maximal 21 Bit eines Unicode Code-Points in bis zu vier Code-Units mit einer Länge von je einem Byte. Die verbleibenden 
 maximal 11 Bit werden dazu verwendet, Anfangs- und Fortsetzungs-Bytes eines Code-Points zu kennzeichnen und schon in der ersten Code-Unit zu definieren, in wie vielen Code-Units das aktuelle Symbol enkodiert ist.
