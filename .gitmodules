@@ -1,3 +1,4 @@
 [submodule "source/00_content"]
 	path = source/00_content
-	url = git@github.com:KnairdA/blog_content.git
+	url = https://github.com/KnairdA/blog_content.git
+	branch = master

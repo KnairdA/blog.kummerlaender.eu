@@ -20,8 +20,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="author"             content="Adrian Kummerländer" />
-	<meta name="description"        content="Adrian Kummerländer's blog on software development, linux and open source" />
+	<meta name="author"             content="{$root/meta/author}" />
+	<meta name="description"        content="{$root/meta/description}" />
 	<meta name="robots"             content="all"/>
 	<meta name="viewport"           content="width=device-width,initial-scale=1.0"/>
 
@@ -44,18 +44,7 @@
 		</h1>
 
 		<ul class="buttonlist">
-			<li>
-				<a href="/">Start</a>
-			</li>
-			<li>
-				<a href="/archive">Archive</a>
-			</li>
-			<li>
-				<a href="https://tree.kummerlaender.eu/contact">Contact</a>
-			</li>
-			<li>
-				<a href="/atom.xml">Feed</a>
-			</li>
+			<xsl:apply-templates select="$root/meta/header/navigation/link" mode="master"/>
 		</ul>
 	</div>
 
@@ -70,15 +59,12 @@
 	</div>
 
 	<div id="footer" class="center">
-		<a href="https://tree.kummerlaender.eu/projects/xslt/">Made with XSLT</a>
+		<a href="{$root/meta/footer/info/@href}">
+			<xsl:value-of select="$root/meta/footer/info/text()"/>
+		</a>
 
 		<ul class="buttonlist">
-			<li>
-				<a href="https://tree.kummerlaender.eu/contact">Contact</a>
-			</li>
-			<li>
-				<a href="/atom.xml">Feed</a>
-			</li>
+			<xsl:apply-templates select="$root/meta/footer/navigation/link" mode="master"/>
 		</ul>
 	</div>
 </body>
@@ -89,6 +75,14 @@
 	<li>
 		<a href="/tag/{@handle}">
 			<xsl:value-of select="@handle"/>
+		</a>
+	</li>
+</xsl:template>
+
+<xsl:template match="link" mode="master">
+	<li>
+		<a href="{@href}">
+			<xsl:value-of select="text()"/>
 		</a>
 	</li>
 </xsl:template>
