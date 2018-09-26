@@ -1,1 +1,0 @@
-../../articles/2018-06-23_nixos_gpu_assorted_topics.md

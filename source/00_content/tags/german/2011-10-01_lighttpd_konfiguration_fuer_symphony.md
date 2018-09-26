@@ -1,1 +1,0 @@
-../../articles/2011-10-01_lighttpd_konfiguration_fuer_symphony.md

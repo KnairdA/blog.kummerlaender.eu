@@ -1,1 +1,0 @@
-../../articles/2013-11-03_mapping_binary_structures_as_tuples_using_template_metaprogramming.md

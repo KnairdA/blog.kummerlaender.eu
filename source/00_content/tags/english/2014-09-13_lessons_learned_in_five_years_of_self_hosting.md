@@ -1,1 +1,0 @@
-../../articles/2014-09-13_lessons_learned_in_five_years_of_self_hosting.md

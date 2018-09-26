@@ -1,1 +1,0 @@
-../../articles/2010-02-06_debian_auf_dem_sheevaplug.md

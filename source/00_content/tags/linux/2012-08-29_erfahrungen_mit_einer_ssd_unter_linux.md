@@ -1,1 +1,0 @@
-../../articles/2012-08-29_erfahrungen_mit_einer_ssd_unter_linux.md

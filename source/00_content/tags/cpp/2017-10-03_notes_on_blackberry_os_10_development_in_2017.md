@@ -1,1 +1,0 @@
-../../articles/2017-10-03_notes_on_blackberry_os_10_development_in_2017.md

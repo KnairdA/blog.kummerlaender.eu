@@ -1,1 +1,0 @@
-../../articles/2011-06-14_darstellen_von_gps_daten_mit_gnuplot.md
