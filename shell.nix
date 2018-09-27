@@ -1,18 +1,20 @@
-with import <nixpkgs> {};
+{ system ? builtins.currentSystem }:
 
-stdenv.mkDerivation rec {
-  name = "blog-env";
-  env = buildEnv { name = name; paths = buildInputs; };
+let
+  pkgs    = import <nixpkgs> { inherit system; };
+  mypkgs  = import (fetchTarball "https://pkgs.kummerlaender.eu/nixexprs.tar.gz") { };
 
-  buildInputs = let
-    generate  = pkgs.callPackage ./pkgs/generate.nix {};
-    preview   = pkgs.callPackage ./pkgs/preview.nix {};
-    katex     = pkgs.callPackage ./pkgs/KaTeX.nix {};
-  in [
-    generate
-    preview
-    pandoc
-    highlight
-    katex
+in pkgs.stdenv.mkDerivation rec {
+  name = "blog.kummerlaender.eu";
+
+  buildInputs = [
+    pkgs.pandoc
+    pkgs.highlight
+    mypkgs.katex-wrapper
+    mypkgs.make-xslt
   ];
+
+  shellHook = ''
+    export NIX_SHELL_NAME="${name}"
+  '';
 }
