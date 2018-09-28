@@ -20,12 +20,7 @@
 		<h3>Past articles</h3>
 
 		<ul class="buttonlist">
-			<li>
-				<a href="/0">Stream</a>
-			</li>
-			<li>
-				<a href="https://code.kummerlaender.eu/blog_content/tree/articles">Source</a>
-			</li>
+			<xsl:apply-templates select="$root/meta/archive/navigation/link" mode="master"/>
 		</ul>
 	</div>
 
