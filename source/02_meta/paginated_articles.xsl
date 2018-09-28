@@ -11,7 +11,7 @@
 	<target     mode="plain" value="paginated_articles.xml"/>
 </xsl:variable>
 
-<xsl:variable name="page_size">3</xsl:variable>
+<xsl:variable name="page_size">6</xsl:variable>
 <xsl:variable name="total" select="ceiling(count(datasource/articles/entry) div $page_size)"/>
 
 <xsl:template match="articles/entry[position() mod $page_size = 1]">

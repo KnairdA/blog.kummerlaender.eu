@@ -21,7 +21,6 @@
 <xsl:template match="paginated">
 	<div>
 		<xsl:apply-templates select="entry[1]/article"/>
-		<xsl:apply-templates select="entry[2]/article"/>
 	</div>
 
 	<div id="pagination">
