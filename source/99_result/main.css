@@ -9,6 +9,8 @@ ul{margin:0;padding:0;list-style:none}
 blockquote{border-left:.4em solid #e3e8e8;margin-left:0;padding-left:1em}
 pre{font-family:monospace;padding:1em;border-radius:.75em;color:#f8f8f2;background:#272822;white-space:pre-wrap}
 code{font-family:monospace;margin:0 .1em;padding:0 .5em;border:.1em solid #e3e8e8;background-color:#f8f8f8;border-radius:.3em}
+sup{vertical-align:baseline;position:relative;top:-0.4em}
+sub{vertical-align:baseline;position:relative;top:0.4em}
 .full{width:100%}
 .center{width:45em;margin:0 auto;overflow:hidden}
 .border_bottom{border-bottom:.3em solid #e3e8e8}
