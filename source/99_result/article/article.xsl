@@ -29,19 +29,26 @@
 		</h2>
 
 		<p class="info">
-			<xsl:call-template name="format-date">
-				<xsl:with-param name="date" select="date/full"/>
-				<xsl:with-param name="format" select="'M x, Y'"/>
-			</xsl:call-template>
-			<xsl:text> | </xsl:text>
+			<span class="spacer">
+				<xsl:text>» </xsl:text>
+			</span>
+			<span class="text">
+				<xsl:call-template name="format-date">
+					<xsl:with-param name="date" select="date/full"/>
+					<xsl:with-param name="format" select="'M x, Y'"/>
+				</xsl:call-template>
+				<xsl:text> | </xsl:text>
+			</span>
 			<xsl:for-each select="tags/tag">
 				<a href="/tag/{.}">
 					<xsl:value-of select="."/>
 				</a>
 				<xsl:text> </xsl:text>
 			</xsl:for-each>
-			<xsl:text> | </xsl:text>
-			<xsl:value-of select="$root/meta/author"/>
+			<span class="text">
+				<xsl:text> | </xsl:text>
+				<xsl:value-of select="$root/meta/author"/>
+			</span>
 		</p>
 
 		<xsl:apply-templates select="content/node()" mode="xhtml"/>
