@@ -1,66 +1,74 @@
 @font-face{font-family:'Vollkorn';font-style:normal;src:local('Vollkorn Regular'), local('Vollkorn-Regular'), url(https://static.kummerlaender.eu/font/Vollkorn-Regular.woff2) format('woff2'), url(https://static.kummerlaender.eu/font/Vollkorn-Regular.woff) format('woff'), url(https://static.kummerlaender.eu/font/Vollkorn-Regular.ttf) format('truetype')}
 @font-face{font-family:'Vollkorn';font-style:italic;src:local('Vollkorn Italic'), local('Vollkorn-Italic'), url(https://static.kummerlaender.eu/font/Vollkorn-Italic.woff2) format('woff2'), url(https://static.kummerlaender.eu/font/Vollkorn-Italic.woff) format('woff'), url(https://static.kummerlaender.eu/font/Vollkorn-Italic.ttf) format('truetype')}
-@font-face{font-family:'Oswald Regular';font-style:normal;src:local('Oswald Regular'), url(https://static.kummerlaender.eu/font/Oswald-Regular.woff2) format('woff2'), url(https://static.kummerlaender.eu/font/Oswald-Regular.woff) format('woff'), url(https://static.kummerlaender.eu/font/Oswald-Regular.ttf) format('truetype')}
+@font-face{font-family:'Oswald Regular';font-style:normal;font-weight:normal;src:local('Oswald Regular'), url(https://static.kummerlaender.eu/font/Oswald-Regular.woff2) format('woff2'), url(https://static.kummerlaender.eu/font/Oswald-Regular.woff) format('woff'), url(https://static.kummerlaender.eu/font/Oswald-Regular.ttf) format('truetype')}
+@font-face{font-family:'Oswald Bold';font-style:normal;font-weight:normal;src:local('Oswald Bold'), url(https://static.kummerlaender.eu/font/Oswald-Bold.woff2) format('woff2'), url(https://static.kummerlaender.eu/font/Oswald-Bold.woff) format('woff'), url(https://static.kummerlaender.eu/font/Oswald-Bold.ttf) format('truetype')}
+
 body{margin:0;padding:0;font-size:1.1em;font-family:'Vollkorn',sans-serif;color:#272828;word-wrap:break-word}
 a, a:visited{text-decoration:underline;color:#272828}
-a:hover{color:black}
+a:hover{color:black;text-decoration:underline !important}
 a.more{font-family:"Segoe UI Symbol",sons-serif}/*edge workaround*/
-h1, h2{margin:0;color:#272828;font-weight:bold}
+h1, h2, h3, h4{margin:0;color:#272828;font-weight:normal}
 h1 a, h2 a{text-decoration:none}
 p{margin:0 0 .5em 0;text-align:justify;line-height:1.75em}
 ul{margin:0;padding:0;list-style:none}
 blockquote{border-left:.4em solid #e3e8e8;margin-left:0;padding-left:1em}
 pre{font-family:monospace;padding:1em;border-radius:.75em;color:#f8f8f2;background:#272822;white-space:pre-wrap}
 code{font-family:monospace;margin:0 .1em;padding:0 .5em;border:.1em solid #e3e8e8;background-color:#f8f8f8;border-radius:.3em}
-sup{vertical-align:baseline;position:relative;top:-0.4em}
+sup{vertical-align:baseline;position:relative;top:-0.6em}
 sub{vertical-align:baseline;position:relative;top:0.4em}
-.full{width:100%}
-.center{width:45em;margin:0 auto;overflow:hidden}
-.border_bottom{border-bottom:.3em solid #e3e8e8}
-.border_top{border-top:.3em solid #e3e8e8}
+
 #navigation{padding:2em 0 0 0;font-family:'Oswald Regular',sans-serif}
-#navigation h1{color:#F80;font-size:1.4em;font-weight:bold;float:left;padding:0 .2em 0 0;margin:0}
+#navigation h1{color:#F80;font-family:'Oswald Bold',sans-serif;font-size:1.4em;float:left;padding:0 .2em 0 0;margin:0}
 #navigation ul{float:right;font-size:1.1em}
+
 #content p{margin-bottom:.7em;text-align:justify}
-#content h2{font-family:'Oswald Regular',sans-serif;font-size:1.4em;margin:0;color:#F80}
-#content h2 a, h2 span{font-size:.8em;text-decoration:none !important;color:#272828;font-weight:normal;display:inline-block;vertical-align:middle;max-width:95%}
+#content h2{font-family:'Oswald Regular',sans-serif;font-size:1.2em;line-height:1em;margin:0;text-align:left}
+#content h2 .arrow{font-family:'Oswald Bold',sans-serif;font-size:1.4em;color:#F80}
+#content h2 a{text-decoration:none !important;display:inline-block;vertical-align:middle;max-width:95%}
 #content h2 a:hover{text-decoration:underline !important}
 #content h3, #content h4{font-size:1.05em;font-family:'Oswald Regular',sans-serif;font-weight:normal;padding-bottom:.2em;margin:.8em 0 .5em 0;border-bottom:.1em solid #e3e8e8}
-#content .article{border-bottom:.3em dotted #e3e8e8;padding-bottom:.5em;margin-top:1em;text-align:justify}
-#content .article:last-child{border:none}
-#content .article a{text-decoration:underline;color:#272828}
-#content .article a:hover{color:black}
-#content .article ul{float:none;margin-left:2em;text-align:left}
-#content .article ul li{list-style-type:circle;float:none}
-#content .article ul li a{background:0}
-#content .article .info{font-family:'Oswald Regular',sans-serif;margin:-.4em 0 .4em 0}
-#content .article .info .spacer{font-size:1.4em;font-weight:bold;visibility:hidden}
-#content .article .info .text{font-size:0.9em}
-#content .article .info a{font-size:.9em;text-decoration:none;color:#272828}
-#content .article .info a:hover{text-decoration:underline}
-#content .article table{border-collapse:collapse;border-left:.4em solid #e3e8e8;margin:1em}
-#content .article table thead{border-bottom:.1em solid #272828}
-#content .article table tr{border-bottom:.1em solid #272828}
-#content .article table tr:last-child{border-bottom:0}
-#content .article table tr th{font-weight:normal;padding:.2em 1em}
-#content .article table tr td{padding:.2em 1em}
-#content .footnotes {border-top:.3em dotted #e3e8e8}
 #content img{padding:.2em;border:.1em solid #e3e8e8;display:block;margin-left:auto;margin-right:auto;max-width:95%}
 #content img.clear{border:0;max-width:100%}
 #content p.math{padding:0.5em;line-height:0;text-align:center}
 #content span.math{line-height:0}
+#content ul{margin-left:2em;text-align:left}
+#content ul li{list-style-type:circle;float:none}
+#content ul li a{background:0}
+#content table{border-collapse:collapse;border-left:.4em solid #e3e8e8;margin:1em}
+#content table thead{border-bottom:.1em solid #272828}
+#content table tr{border-bottom:.1em solid #272828}
+#content table tr:last-child{border-bottom:0}
+#content table tr th{font-weight:normal;padding:.2em 1em}
+#content table tr td{padding:.2em 1em}
+#content .article{border-bottom:.3em dotted #e3e8e8;padding-bottom:.5em;margin-top:1em;text-align:justify}
+#content .article:last-child{border:none}
+#content .info{font-family:'Oswald Regular',sans-serif;margin-bottom:.4em;line-height:1em}
+#content .info .spacer{font-family:'Oswald Bold',sans-serif;font-size:1.68em;visibility:hidden}
+#content .info .text{font-size:0.9em}
+#content .info a{font-size:.9em;text-decoration:none;color:#272828}
+#content .info a:hover{text-decoration:underline}
+#content .footnotes{border-top:.3em dotted #e3e8e8}
+
 #pagination{font-family:'Oswald Regular',sans-serif;height:1.5em;margin-top:.5em}
 #pagination span.disabled{display:none}
 #pagination span a{text-decoration:none;color:#272828}
 #pagination span a:hover{text-decoration:underline}
 #pagination span a.pagination-previous{float:left}
 #pagination span a.pagination-next{float:right}
+
 #tags{overflow:hidden;border-top:.3em solid #e3e8e8;padding:.2em 0 0 0;font-family:'Oswald Regular',sans-serif}
 #tags li:first-child {margin-left:0}
+
 #footer{padding-top:.3em;font-family:'Oswald Regular',sans-serif}
 #footer a{text-decoration:none;color:#272828}
 #footer a:hover{text-decoration:underline}
 #footer ul{float:right;padding:0}
+
+.full{width:100%}
+.center{width:45em;margin:0 auto;overflow:hidden}
+.border_bottom{border-bottom:.3em solid #e3e8e8}
+.border_top{border-top:.3em solid #e3e8e8}
+.footnote-ref{text-decoration:none !important}
 .columns{column-count:2;-moz-column-count:2;-webkit-column-count:2;column-gap:1em;-moz-column-gap:1em;-webkit-column-gap:1em}
 .column{-webkit-column-break-inside:avoid;break-inside:avoid-column;overflow:hidden}
 .buttonlist{overflow:hidden}
@@ -72,11 +80,12 @@ sub{vertical-align:baseline;position:relative;top:0.4em}
 .articlelist li a{text-decoration:none}
 .articlelist li a:hover{text-decoration:underline}
 .archivlist li{background:0;padding-left:1em}
-.archivlist li.dateitem{padding:0;font-weight:bold}
+.archivlist li.dateitem{font-family:'Oswald Bold',sans-serif;padding:0}
 .menuhead{font-family:'Oswald Regular',sans-serif;border-bottom:0.1em solid #e3e8e8;overflow:hidden;padding:0;margin-top:0.8em}
 .menuhead h3{float:left;padding:0.4em 0 0 0;margin:0 !important;border:none !important}
 .menuhead ul{float:right;padding:0;font-size:1.1em}
-@media screen and (max-width:46em){
+
+@media screen and (max-width:51em){
 	#content .article h2 a{max-width:90%}
 	#navigation{padding:.3em 0 0 0}
 	.center{width:98%}
@@ -86,4 +95,7 @@ sub{vertical-align:baseline;position:relative;top:0.4em}
 @media screen and (max-width:30em){
 	#navigation h1{float:none}
 	#navigation ul{float:none}
+	#content .article p{text-align:left}
+	.arrow{display:none}
+	.spacer{display:none}
 }

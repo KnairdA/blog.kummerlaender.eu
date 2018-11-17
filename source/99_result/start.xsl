@@ -42,7 +42,9 @@
 
 <xsl:template match="articles/entry" mode="resolve">
 	<h2>
-		<xsl:text>» </xsl:text>
+		<span class="arrow">
+			<xsl:text>» </xsl:text>
+		</span>
 		<a href="/article/{@handle}">
 			<xsl:value-of select="title"/>
 		</a>
