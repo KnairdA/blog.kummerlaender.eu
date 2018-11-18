@@ -83,4 +83,14 @@
 	</p>
 </xsl:template>
 
+<xsl:template match="a[@class = 'footnote-ref']" mode="xhtml">
+	<xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml">
+		<xsl:copy-of select="@*[name()='id' or name()='class']"/>
+		<xsl:attribute name="href">
+			<xsl:value-of select="concat('/article/', ./ancestor::entry/@handle, '/', ./@href)"/>
+		</xsl:attribute>
+		<xsl:apply-templates select="node()" mode="xhtml"/>
+	</xsl:element>
+</xsl:template>
+
 </xsl:stylesheet>
