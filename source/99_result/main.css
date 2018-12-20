@@ -48,6 +48,7 @@ sub{vertical-align:baseline;position:relative;top:0.4em}
 #content .info a{font-size:.9em;text-decoration:none;color:#272828}
 #content .info a:hover{text-decoration:underline}
 #content .footnotes{border-top:.3em dotted #e3e8e8}
+#content video{padding:.2em;border:.1em solid #e3e8e8;display:block;margin-left:auto;margin-right:auto;max-width:95%}
 
 #pagination{font:normal 1em 'Oswald',sans-serif;height:1.5em;margin-top:.5em}
 #pagination span.disabled{display:none}
