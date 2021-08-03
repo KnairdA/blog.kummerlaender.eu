@@ -27,7 +27,7 @@
 
 	<link rel="stylesheet"    type="text/css"             href="/main.css" />
 	<link rel='alternate'     type='application/atom+xml' href='/atom.xml'/>
-	<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23ff8800%22></rect><path d=%22%22 fill=%22%23fff%22></path></svg>"/>
+	<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSIyMCIgZmlsbD0iI2ZmODgwMCI+PC9yZWN0PjxwYXRoIGZpbGw9IiNmZmYiIGQ9IiI+PC9wYXRoPjwvc3ZnPg=="/>
 
 	<xsl:if test="//*[(self::p or self::span) and @class = 'math']">
 		<link rel="stylesheet" type="text/css" href="https://static.kummerlaender.eu/katex/katex.min.css" />
