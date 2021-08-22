@@ -1,0 +1,62 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1629379628,
+        "narHash": "sha256-dI8wpEo7wIVWoTUk2oyWFUnlVHNKLs+ren1TqITN1mI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "a1007637cea374bd1bafd754cfd5388894c49129",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-21.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1629271619,
+        "narHash": "sha256-by9D3OkEKk4rOzJIMbC0uP2wP3Bt81auP5xmbmPg2a8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "7bbca9877caed472c6b5866ea09302cfcdce3dbf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-21.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "pkgs-personal": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1629652608,
+        "narHash": "sha256-eNcsdqMyK/Q3P0Tj16uDNcQzKIFf4CJkM7qTq3BdtF0=",
+        "ref": "master",
+        "rev": "fb63603b5eec859c84464e1a7f6f14931303f679",
+        "revCount": 52,
+        "type": "git",
+        "url": "https://code.kummerlaender.eu/pkgs"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://code.kummerlaender.eu/pkgs"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "pkgs-personal": "pkgs-personal"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
