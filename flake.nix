@@ -16,9 +16,27 @@
         pkgs-personal.katex-wrapper
         pkgs-personal.make-xslt
       ];
+    };
 
-      shellHook = ''
-        export NIX_SHELL_NAME="blog.kummerlaender.eu"
+    generate = content: pkgs.stdenv.mkDerivation {
+      name = "blog.kummerlaender.eu";
+
+      src = ./.;
+
+      LANG = "en_US.UTF-8";
+
+      buildInputs = [
+        pkgs.pandoc
+        pkgs.highlight
+        pkgs-personal.katex-wrapper
+        pkgs-personal.make-xslt
+      ];
+
+      installPhase = ''
+        cp -r ${content} source/00_content
+        make-xslt
+        mkdir $out
+        cp -Lr target/99_result/* $out
       '';
     };
   };
