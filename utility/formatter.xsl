@@ -126,12 +126,23 @@
 
 <xsl:template name="formatter">
 	<xsl:param name="source"/>
+	<xsl:param name="format"/>
 
 	<xsl:variable name="content">
-		<xsl:call-template name="plain_formatter">
-			<xsl:with-param name="format">pandoc -f markdown -t html4 --katex --no-highlight -fmarkdown-implicit_figures</xsl:with-param>
-			<xsl:with-param name="source" select="$source"/>
-		</xsl:call-template>
+		<xsl:choose>
+			<xsl:when test="contains($format, 'md')">
+				<xsl:call-template name="plain_formatter">
+					<xsl:with-param name="format">pandoc -f markdown -t html4 --katex --no-highlight -fmarkdown-implicit_figures</xsl:with-param>
+					<xsl:with-param name="source" select="$source"/>
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:call-template name="plain_formatter">
+					<xsl:with-param name="format">pandoc -f <xsl:value-of select="$format"/> -t html4 --katex --no-highlight</xsl:with-param>
+					<xsl:with-param name="source" select="$source"/>
+				</xsl:call-template>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:variable>
 
 	<xsl:apply-templates select="xalan:nodeset($content)" mode="embellish"/>

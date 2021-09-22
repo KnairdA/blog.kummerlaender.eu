@@ -27,10 +27,11 @@
 	</xsl:apply-templates>
 </xsl:template>
 
-<xsl:template match="files/directory[@name = 'articles']/file[@extension = '.md']">
+<xsl:template match="files/directory[@name = 'articles']/file[@extension = '.md' or @extension = '.org']">
 	<xsl:variable name="content">
 		<xsl:call-template name="formatter">
 			<xsl:with-param name="source" select="InputXSLT:read-file(./full)/text()"/>
+			<xsl:with-param name="format" select="substring(@extension,2)"/>
 		</xsl:call-template>
 	</xsl:variable>
 
