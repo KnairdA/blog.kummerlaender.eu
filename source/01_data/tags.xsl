@@ -19,7 +19,7 @@
 	</entry>
 </xsl:template>
 
-<xsl:template match="directory[@name = 'tags']/*/file[@extension = '.md']">
+<xsl:template match="directory[@name = 'tags']/*/file[@extension = '.md' or @extension = '.org']">
 	<article handle="{substring(@name, 12, string-length(@name))}"/>
 </xsl:template>
 
