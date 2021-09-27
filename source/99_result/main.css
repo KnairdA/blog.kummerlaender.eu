@@ -49,7 +49,7 @@ sub{vertical-align:baseline;position:relative;top:0.4em}
 #content .info a:hover{text-decoration:underline}
 #content .footnotes{border-top:.3em dotted #e3e8e8}
 #content video{padding:.2em;border:.1em solid #e3e8e8;display:block;margin:1em auto;max-width:95%}
-#content .flexcolumns{display:flex;flex-direction:row;flex-wrap:wrap;width:100%}
+#content .flexcolumns{display:flex;flex-direction:row;flex-wrap:wrap;width:100%;margin-bottom:1em}
 #content .flexcolumns > div{display:flex;flex-direction:column;flex-basis:100%;flex:1}
 #content .flexcolumns > div > span{text-align:center}
 
